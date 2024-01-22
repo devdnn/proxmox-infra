@@ -1,0 +1,6 @@
+{
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.defaultFormatter": "hashicorp.terraform",
+    "ansible.python.interpreterPath": "/home/dnaidu/.pyenv/versions/3.10.13/bin/python"
+}
