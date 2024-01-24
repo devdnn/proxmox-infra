@@ -46,6 +46,11 @@ variable "memory" {
   default = "2048"
 }
 
+variable "network_bridge" {
+  type    = string
+  default = "vmbr0"
+}
+
 variable "network_vlan" {
   type    = string
   default = "30"

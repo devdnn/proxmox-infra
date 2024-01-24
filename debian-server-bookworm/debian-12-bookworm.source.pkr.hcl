@@ -15,13 +15,13 @@ source "proxmox-iso" "debian-12" {
   memory                  = var.memory
   machine                 = "q35"
   bios                    = "seabios"
-  scsi_controller         = "virtio-scsi-pci"
+  scsi_controller         = "virtio-scsi-single"
   qemu_agent              = true
   cloud_init              = true
   cloud_init_storage_pool = var.storage_pool
 
   network_adapters {
-    bridge   = "vmbr0"
+    bridge   = var.network_bridge
     firewall = true
     model    = "virtio"
     vlan_tag = var.network_vlan
@@ -45,9 +45,9 @@ source "proxmox-iso" "debian-12" {
   http_port_min  = 8100
   http_port_max  = 8100
   boot_wait      = "10s"
-  boot_command   = ["<esc><wait>auto url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg<enter>"]
+  boot_command   = ["<esc><wait>auto url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed-bookworm.cfg<enter>"]
 
-  ssh_username = "root"
-  ssh_password = "packer"
+  ssh_username = "dnndev"
+  ssh_password  = "Float12345678"
   ssh_timeout  = "20m"
 }
