@@ -1,28 +1,19 @@
 ---
-- name: Upgrade All Packages To The Latest Version
+- name: Update and upgrade apt packages
   apt:
     update_cache: yes
-    upgrade: yes
+    upgrade: dist
 
-- name: Install Core Dependencies, Clean APT, & Remove Old Programs
+- name: Make sure dbus are running
+  service:
+    name: dbus
+    state: started
+    enabled: yes
+  
+- name: Autoremove unnecessary packages and clean up
   apt:
-    name: "{{item}}"
-    state: present
-    install_recommends: yes
     autoremove: yes
     autoclean: yes
-  loop:
-    - apt-transport-https
-    - ca-certificates
-    - cloud-init
-    - curl
-    - gnupg-agent
-    - htop
-    - linux-headers-amd64
-    - linux-image-amd64
-    - ncdu
-    - sudo
-    - software-properties-common
-    - tmux
-    - unattended-upgrades
-    - wget
+
+- name: cleanup machine-id
+  shell: truncate -s 0 /etc/machine-id

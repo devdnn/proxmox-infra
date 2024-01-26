@@ -82,6 +82,12 @@ source "proxmox-iso" "debian-12" {
 build {
   sources = ["source.proxmox-iso.debian-12"]
 
+  provisioner "shell" {
+    inline = [
+      "systemctl is-active --quiet dbus && echo 'DBus is active' || echo 'DBus is not active'"
+    ]
+  }
+
   # Using ansible playbooks to configure debian
   provisioner "ansible" {
     playbook_file       = "./ansible/debian_config.yml"
