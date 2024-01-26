@@ -34,7 +34,7 @@ variable "disk_format" {
 
 variable "disk_size" {
   type    = string
-  default = "16G"
+  default = "8G"
 }
 
 variable "storage_pool" {
@@ -56,6 +56,13 @@ variable "network_vlan" {
   default = "30"
 }
 
+variable "vm_name" {
+  type        = string
+  description = "VM name"
+  default     = "base-debian-bookworm-pkr"
+}
+
+
 variable "proxmox_api_token_secret" {
   type      = string
   sensitive = true
@@ -75,4 +82,16 @@ variable "proxmox_host" {
 variable "proxmox_node" {
   type    = string
   default = ""
+}
+
+variable "ssh_username" {
+  type        = string
+  description = "SSH username"
+  default     = "dnndev"
+}
+
+variable "ssh_password" {
+  type        = string
+  description = "SSH password"
+  default     = "Float12345678"
 }
