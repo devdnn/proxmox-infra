@@ -1,0 +1,5 @@
+---
+
+ntp: 192.168.20.1
+nas_ip: 192.168.30.34
+nas_host: storage.naiduden.dev

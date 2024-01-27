@@ -1,0 +1,5 @@
+---
+# server_ip: "{{ hostvars[groups['dev'] | difference(groups['client']) | first]['ansible_default_ipv4']['address'] }}"
+server_ip: "192.168.30.22"
+client_ip: "192.168.30.110"
+ansible_user: "dnndev"
