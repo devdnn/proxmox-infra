@@ -1,0 +1,12 @@
+---
+__postgres_version: "{{ postgres_version | regex_replace('\\.') }}"
+__postgres_packagename: "postgresql{{ __postgres_version }}"
+__postgres_daemon: "postgresql-{{ __postgres_version }}"
+__postgres_service_file: "/usr/lib/systemd/system/{{ __postgres_daemon }}.service"
+__postgres_packages:
+  - "{{ __postgres_packagename }}"
+  - "{{ __postgres_packagename }}-server"
+__postgres_data_dir: "{{ postgres_base_dir | default('/var/lib/pgsql/' + __postgres_version) }}/data"
+__postgres_config_path: "{{ __postgres_data_dir }}"
+__postgres_tls_key_path: "{{ __postgres_data_dir }}/tls/key/{{ postgres_tls_key_filename }}"
+__postgres_tls_cert_path: "{{ __postgres_data_dir }}/tls/certs/{{ postgres_tls_cert_filename }}"

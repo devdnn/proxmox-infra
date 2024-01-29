@@ -1,0 +1,86 @@
+{{ ansible_managed | comment }}
+# -----------------------------
+# PostgreSQL configuration file
+# -----------------------------
+
+#------------------------------------------------------------------------------
+# CONNECTIONS AND AUTHENTICATION
+#------------------------------------------------------------------------------
+
+# - Connection Settings -
+
+listen_addresses = '{{ postgres_connection_addresses | join(",") }}'
+port = {{ postgres_connection_port }}
+max_connections = 100
+unix_socket_directories = '{{ postgres_socket_directories | join(",") }}'
+
+# - Authentication -
+
+authentication_timeout = 1min
+password_encryption = {{ postgres_password_encryption }}
+
+# - SSL -
+
+{% if postgres_tls_enabled %}
+ssl = on
+ssl_cert_file = '{{ __postgres_tls_cert_path }}'
+ssl_key_file = '{{ __postgres_tls_key_path }}'
+{% else %}
+ssl = off
+{% endif %}
+
+
+#------------------------------------------------------------------------------
+# RESOURCE USAGE (except WAL)
+#------------------------------------------------------------------------------
+
+# - Memory -
+
+shared_buffers = 128MB
+dynamic_shared_memory_type = posix
+
+# - Checkpoints -
+
+max_wal_size = 1GB
+min_wal_size = 80MB
+
+
+#------------------------------------------------------------------------------
+# REPORTING AND LOGGING
+#------------------------------------------------------------------------------
+
+# - Where to Log -
+
+log_destination = '{{ postgres_log_destination | join(",") }}'
+{% if "stderr" in postgres_log_destination or "csvlog" in postgres_log_destination %}
+logging_collector = on
+{% else %}
+logging_collector = off
+{% endif %}
+log_directory = '{{ postgres_log_directory }}'
+log_filename = '{{ postgres_log_filename }}'
+log_rotation_age = {{ postgres_log_rotation_age }}
+log_rotation_size = {{ postgres_log_rotation_size }}
+log_truncate_on_rotation = on
+
+# - What to Log -
+
+log_line_prefix = '%m [%p] '
+log_timezone = 'Etc/UTC'
+
+
+#------------------------------------------------------------------------------
+# CLIENT CONNECTION DEFAULTS
+#------------------------------------------------------------------------------
+
+# - Locale and Formatting -
+
+datestyle = 'iso, mdy'
+timezone = 'Etc/UTC'
+
+lc_messages = 'en_US.UTF-8'
+lc_monetary = 'en_US.UTF-8'			# locale for monetary formatting
+lc_numeric = 'en_US.UTF-8'			# locale for number formatting
+lc_time = 'en_US.UTF-8'				# locale for time formatting
+
+default_text_search_config = 'pg_catalog.english'

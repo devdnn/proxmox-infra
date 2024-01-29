@@ -1,0 +1,19 @@
+---
+- block:
+    - name: Restart postgresql
+      service:
+        name: postgresql
+        state: restarted
+        enabled: yes
+        daemon_reload: yes
+      listen: restart postgresql
+
+    - name: Reload postgresql
+      service:
+        name: postgresql
+        state: reloaded
+        enabled: yes
+        daemon_reload: yes
+      listen: reload postgresql
+  become: true
+  become_user: dnndev
