@@ -32,9 +32,22 @@ resource "proxmox_virtual_environment_vm" "gitea" {
     full  = true
   }
 
+
+  initialization {
+    ip_config {
+      ipv4 {
+        address = "192.168.30.60/24"
+        gateway = "192.168.30.1"
+      }
+    }
+
+    datastore_id = var.storage_pool
+  }
+
   memory {
     dedicated = 1024
   }
+
 
   cpu {
     cores   = 2
