@@ -6,9 +6,9 @@ listen_addresses = '{{ postgresql_listen_addresses | default("*") }}'  # what IP
 port = {{ postgresql_port | default(5432) }}                           # Port number
 
 # Memory and Performance
-shared_buffers = '{{ postgresql_shared_buffers | default("128MB") }}'  # Memory for shared data
-work_mem = '{{ postgresql_work_mem | default("4MB") }}'                # Memory per query
-maintenance_work_mem = '{{ postgresql_maintenance_work_mem | default("64MB") }}' # Maintenance operations memory
+shared_buffers = {{ postgresql_shared_buffers | default("128MB") }}  # Memory for shared data
+work_mem = {{ postgresql_work_mem | default("4MB") }}                # Memory per query
+maintenance_work_mem = {{ postgresql_maintenance_work_mem | default("64MB") }} # Maintenance operations memory
 effective_cache_size = '{{ postgresql_effective_cache_size | default("256MB") }}' # Estimated cache size
 
 # Logging
@@ -20,4 +20,16 @@ password_encryption = {{ postgresql_password_encryption | default('scram-sha-256
 # Connection Settings
 max_connections = {{ postgresql_max_connections | default(100) }} # Max number of connections
 
-# Additional settings can be added as required
+#------------------------------------------------------------------------------
+# FILE LOCATIONS
+#------------------------------------------------------------------------------
+
+# The default values of these variables are driven from the -D command-line
+# option or PGDATA environment variable, represented here as ConfigDir.
+
+data_directory = '/var/lib/postgresql/{{ postgresql_version }}/main'		# use data in another directory # (change requires restart)
+hba_file = '/etc/postgresql/{{ postgresql_version }}/main/pg_hba.conf'	# host-based authentication file # (change requires restart)
+ident_file = '/etc/postgresql/{{ postgresql_version }}/main/pg_ident.conf'	# ident configuration file # (change requires restart)
+
+# If external_pid_file is not explicitly set, no extra PID file is written.
+external_pid_file = '/var/run/postgresql/{{ postgresql_version }}-main.pid'			# write an extra PID file # (change requires restart)

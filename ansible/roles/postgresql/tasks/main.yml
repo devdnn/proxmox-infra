@@ -1,7 +1,7 @@
 ---
 # tasks/main.yml
 - name: Install PostgreSQL
-  import_tasks: install-postgresql.yml
+  import_tasks: setup-postgresql.yml
 
 - name: Configure test database
   import_tasks: configure-test-database.yml

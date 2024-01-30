@@ -14,18 +14,18 @@
         line: 'LANG=en_US.UTF-8'
         state: present
 
+    - name: Ensure apt cache is up to date
+      apt:
+        update_cache: yes
+
     - name: Instal dependencies for PostgreSQL
       apt:
         name: "{{ item }}"
         state: latest
         update_cache: true
       loop:
-        - openssl
-        - libssl-dev
-        - libssl-doc
         - libpq-dev
         - python3-psycopg2
-        - python3-pip
 
     - name: Install PostgreSQL packages
       apt:
@@ -40,6 +40,21 @@
         name: postgresql
         state: started
         enabled: yes
+
+    - name: Copy PostgreSQL configuration template
+      template:
+        src: postgresql.conf.j2
+        dest: /etc/postgresql/{{ postgresql_version }}/main/postgresql.conf
+        owner: postgres
+        group: postgres
+        mode: '0644'
+      notify: Restart postgresql
+
+    - name: Apt Cleanup
+      apt:
+        autoclean: yes
+        autoremove: yes
+        state: latest
 
   # - name: Copy PostgreSQL configuration template
   #   template:
