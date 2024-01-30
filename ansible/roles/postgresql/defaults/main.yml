@@ -1,0 +1,43 @@
+---
+# Default values for PostgreSQL configuration
+
+# Basic server setup
+postgresql_version: "15"  # Version of PostgreSQL
+postgresql_locale: "en_US.UTF-8" # Locale settings for database
+postgresql_encoding: "UTF-8"  # Encoding for the database
+
+# Connection settings
+postgresql_listen_addresses: "localhost"  # IP addresses to listen on ('*' for all)
+postgresql_port: 5432 # Port for PostgreSQL to listen on
+
+postgresql_install_psycopg2: true   # Install psycopg2 Python library
+
+# Authentication settings
+postgresql_admin_user: "postgres" # Default admin user
+postgresql_default_auth_method: "scram-sha-256"   # Default authentication method
+
+# Database settings
+postgresql_max_connections: 100 # Maximum number of database connections
+postgresql_shared_buffers: "128MB" # Memory for shared data
+postgresql_work_mem: "4MB" # Memory per query
+postgresql_maintenance_work_mem: "64MB" # Maintenance operations memory
+postgresql_effective_cache_size: "256MB" # Estimated cache size
+
+# Replication settings (default: replication not configured)
+postgresql_wal_level: "minimal" # Write-ahead log level
+postgresql_max_wal_senders: 0 # Max WAL sender processes
+postgresql_wal_keep_segments: 0 # WAL segments to retain
+
+postgresql_password_encryption: "scram-sha-256" # Password encryption method
+postgresql_log_min_duration_statement: 10000 # Log queries longer than 10s
+
+# Point-In-Time Recovery (PITR) backup options
+#   https://www.postgresql.org/docs/current/continuous-archiving.html
+postgresql_backup_local_dir: >-
+  {{ '/var/lib/pgsql' if ansible_os_family == 'RedHat' else (
+      '/var/lib/postgresql' if ansible_os_family == 'Debian' else '~postgres') }}/backup
+postgresql_create_backup_dir: true
+# Sample
+postgresql_db: "testdb" # Database name for Gitea
+postgresql_user: "testUser" # PostgreSQL user for Gitea
+postgresql_password: "Test@123" # Password for the PostgreSQL Gitea user

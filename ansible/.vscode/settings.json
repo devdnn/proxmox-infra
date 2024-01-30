@@ -1,0 +1,7 @@
+{
+    "ansible.python.interpreterPath": "/home/dnaidu/.pyenv/versions/3.10.13/bin/python",
+    "[yaml,yml]": {
+        "editor.defaultFormatter": "fnando.linter"
+    },
+    "editor.detectIndentation": false
+}

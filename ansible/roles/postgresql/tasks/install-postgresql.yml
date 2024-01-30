@@ -1,0 +1,51 @@
+---
+# tasks file for PostgreSQL role
+
+- block:
+    - name: Ensure the locale exists
+      locale_gen:
+        name: en_US.UTF-8
+        state: present
+
+    - name: Set as default locale
+      lineinfile:
+        path: /etc/default/locale
+        regexp: '^LANG='
+        line: 'LANG=en_US.UTF-8'
+        state: present
+
+    - name: Instal dependencies for PostgreSQL
+      apt:
+        name: "{{ item }}"
+        state: latest
+        update_cache: true
+      loop:
+        - openssl
+        - libssl-dev
+        - libssl-doc
+        - libpq-dev
+        - python3-psycopg2
+        - python3-pip
+
+    - name: Install PostgreSQL packages
+      apt:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - postgresql-{{ postgresql_version }}
+        - postgresql-contrib-{{ postgresql_version }}
+
+    - name: Ensure PostgreSQL service is running
+      service:
+        name: postgresql
+        state: started
+        enabled: yes
+
+  # - name: Copy PostgreSQL configuration template
+  #   template:
+  #     src: postgresql.conf.j2
+  #     dest: /etc/postgresql/{{ postgresql_version }}/main/postgresql.conf
+  #   notify: restart postgresql
+  become_method: sudo
+  become_user: root
+  remote_user: dnndev

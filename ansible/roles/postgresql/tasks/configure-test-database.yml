@@ -1,0 +1,61 @@
+---
+# tasks/configure-test-database.yml
+- block:
+    - name: Create PostgreSQL user for testing
+      become: true
+      become_user: postgres
+      postgresql_user:
+        name: "{{postgresql_user}}"
+        password: "{{postgresql_password}}"
+        role_attr_flags: "CREATEDB,NOSUPERUSER"
+
+    - name: Create PostgreSQL database '{{postgresql_db}}'
+      become: true
+      become_user: postgres
+      postgresql_db:
+        name: "{{postgresql_db}}"
+        owner: "{{postgresql_user}}"
+        state: present
+        encoding: UTF-8
+        template: template0
+
+    # - name: Ensure'{{postgresql_user}}' has access
+    #   become: true
+    #   become_user: postgres
+    #   postgresql_user:
+    #     db: "{{postgresql_db}}"
+    #     name: "{{postgresql_user}}"
+    #     password: "{{postgresql_password}}"
+    #     objs: ALL_IN_SCHEMA
+    #     privs: SELECT,INSERT,UPDATE,DELETE
+
+    - name: Grant testuser all privileges on database '{{postgresql_db}}'
+      become: true
+      become_user: postgres
+      postgresql_privs:
+        db: "{{postgresql_db}}"
+        objs: ALL_IN_SCHEMA
+        privs: ALL
+        role: "{{postgresql_user}}"
+
+    - name: Create a sample table in '{{postgresql_db}}'
+      become: true
+      become_user: postgres
+      postgresql_query:
+        db: "{{postgresql_db}}"
+        query: |
+          CREATE TABLE IF NOT EXISTS sample_table (
+            id serial PRIMARY KEY,
+            name VARCHAR (50),
+            description TEXT
+          );
+
+    - name: Insert test rows into the sample table
+      become: true
+      become_user: postgres
+      postgresql_query:
+        db: "{{postgresql_db}}"
+        query: |
+          INSERT INTO sample_table (name, description) VALUES
+          ('Test Name 1', 'Description 1'),
+          ('Test Name 2', 'Description 2');

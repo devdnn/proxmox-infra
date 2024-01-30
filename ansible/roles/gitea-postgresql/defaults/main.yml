@@ -1,93 +1,21 @@
 ---
-postgres_repository_enabled: False
-postgres_version: 14
-postgres_repository_filename: "Postgresql-{{ postgres_version | regex_replace('\\.') }}"
-postgres_user: postgres
-postgres_group: postgres
+# Default variables for Gitea setup
 
-# @var postgres_base_dir: $ "_osdefault_"
+# Gitea specific variables
+gitea_version: "1.14.2"               # Version of Gitea to install
+gitea_user: "gitea"                   # User under which Gitea will run
+gitea_domain: "giteas.naiduden.dev"   # Domain for Gitea
+gitea_http_port: 3000                 # HTTP port for Gitea
+gitea_install_dir: "/opt/gitea"       # Installation directory for Gitea
+gitea_data_dir: "/var/lib/gitea"      # Data directory for Gitea
 
-postgres_log_destination:
-  - stderr
-postgres_log_directory: log
-postgres_log_filename: postgresql.log
-postgres_log_rotation_age: 1d
-postgres_log_rotation_size: 0
+# PostgreSQL specific variables
+postgresql_version: "15"              # PostgreSQL version
+postgresql_db: "giteadb"              # Database name for Gitea
+postgresql_user: "gitea"              # PostgreSQL user for Gitea
+postgresql_password: "Kites@123"      # Password for the PostgreSQL Gitea user
+postgresql_host: "localhost"          # Host where PostgreSQL is running
+postgresql_port: 5432                 # PostgreSQL port
 
-postgres_connection_port: 5432
-postgres_connection_addresses:
-  - localhost
-postgres_socket_directories:
-  - /var/run/postgresql
-
-postgres_password_encryption: scram-sha-256
-
-postgres_tls_enabled: False
-postgres_tls_cert_filename: "mycert.pem"
-postgres_tls_key_filename: "mykey.pem"
-postgres_tls_cert_source: mycert.pem
-postgres_tls_key_source: mykey.pem
-
-postgres_users: []
-# @var postgres_users:example: >
-# postgres_users:
-#   - name: jdoe #required; the rest are optional
-#     password: # defaults to not set
-#     encrypted: # defaults to 'yes'
-#     priv: # defaults to not set
-#     role_attr_flags: # defaults to not set
-#     db: # defaults to not set
-#     login_host: # defaults to 'localhost'
-#     login_password: # defaults to not set
-#     login_user: # defaults to '{{ postgres_user }}'
-#     login_unix_socket: # defaults to 1st of postgres_socket_directories
-#     port: # defaults to not set
-#     state: # defaults to 'present'
-#     pam_user: # defaults to not set
-# @end
-
-postgres_users_extra: []
-
-postgres_dbs: []
-# @var postgres_db:example: >
-# postgres_db:
-#   - name: "my_app"
-#     lc_collate: "en_US.UTF-8"
-#     lc_ctype: "en_US.UTF-8"
-#     encoding: "UTF-8"
-#     template: "template0"
-#     login_host: "localhost"
-#     login_password: "_omit_"
-#     login_user: "{{ postgres_user }}"
-#     login_unix_socket: "_omit_"
-#     port: "_omit_"
-#     owner: "_omit_"
-#     state: "present"
-# @end
-
-postgres_dbs_extra: []
-
-postgres_clean_hba_file: True
-postgres_hba_entries:
-  - contype: local
-    databases:
-      - all
-    users:
-      - all
-    auth_method: trust
-  - contype: host
-    databases:
-      - all
-    users:
-      - all
-    address: "127.0.0.1/32"
-    auth_method: "{{ postgres_password_encryption }}"
-  - contype: host
-    databases:
-      - all
-    users:
-      - all
-    address: "::1/128"
-    auth_method: "{{ postgres_password_encryption }}"
-
-postgres_hba_entries_extra: []
+# Other variables
+gitea_secret_key: "generate_a_random_key" # Secret key for Gitea

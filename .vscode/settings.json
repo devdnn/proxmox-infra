@@ -1,6 +1,21 @@
 {
-    "editor.formatOnSave": true,
-    "editor.formatOnPaste": true,
-    "editor.defaultFormatter": "hashicorp.terraform",
-    "ansible.python.interpreterPath": "/home/dnaidu/.pyenv/versions/3.10.13/bin/python"
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "ansible.python.interpreterPath": "/home/dnaidu/.pyenv/versions/3.10.13/bin/python",
+  "[yml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[hcl]": {
+    "editor.defaultFormatter": "hashicorp.terraform"
+  }
 }

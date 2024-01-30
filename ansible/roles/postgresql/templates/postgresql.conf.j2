@@ -1,0 +1,23 @@
+# postgresql.conf.j2
+# Template for PostgreSQL configuration
+
+# Listen addresses and port
+listen_addresses = '{{ postgresql_listen_addresses | default("*") }}'  # what IP address(es) to listen on
+port = {{ postgresql_port | default(5432) }}                           # Port number
+
+# Memory and Performance
+shared_buffers = '{{ postgresql_shared_buffers | default("128MB") }}'  # Memory for shared data
+work_mem = '{{ postgresql_work_mem | default("4MB") }}'                # Memory per query
+maintenance_work_mem = '{{ postgresql_maintenance_work_mem | default("64MB") }}' # Maintenance operations memory
+effective_cache_size = '{{ postgresql_effective_cache_size | default("256MB") }}' # Estimated cache size
+
+# Logging
+log_min_duration_statement = {{ postgresql_log_min_duration_statement | default(-1) }} # Log statements running longer than this time
+
+# Security and Authentication
+password_encryption = {{ postgresql_password_encryption | default('scram-sha-256') }} # Password encryption method
+
+# Connection Settings
+max_connections = {{ postgresql_max_connections | default(100) }} # Max number of connections
+
+# Additional settings can be added as required
