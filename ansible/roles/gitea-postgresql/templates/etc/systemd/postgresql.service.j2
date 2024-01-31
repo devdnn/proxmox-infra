@@ -1,4 +1,0 @@
-{{ ansible_managed | comment }}
-.include {{ __postgres_service_file }}
-[Service]
-Environment=PGDATA={{ __postgres_data_dir }}
