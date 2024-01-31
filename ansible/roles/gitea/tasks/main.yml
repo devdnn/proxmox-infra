@@ -1,0 +1,71 @@
+---
+# tasks/main.yml
+# - name: Gather variables for each operating system
+#   include_vars: "{{ item }}"
+#   with_first_found:
+#     - "{{ ansible_distribution | lower }}-{{ ansible_distribution_version | lower }}.yml"
+#     - "{{ ansible_distribution | lower }}-{{ ansible_distribution_major_version | lower }}.yml"
+#     - "{{ ansible_os_family | lower }}-{{ ansible_distribution_major_version | lower }}.yml"
+#     - "{{ ansible_distribution | lower }}.yml"
+#     - "{{ ansible_os_family | lower }}.yml"
+
+- name: "Check gitea version"
+  ansible.builtin.shell: "set -eo pipefail; /usr/local/bin/gitea -v | cut -d' ' -f 3"
+  args:
+    executable: /bin/bash
+  register: gitea_active_version
+  changed_when: false
+  failed_when: false
+  when: gitea_version_check|bool
+
+- name: "Download the binary"
+  ansible.builtin.get_url:
+    url: "{{ gitea_dl_url }}"
+    dest: /usr/local/bin/gitea
+    owner: root
+    group: root
+    mode: 0755
+    force: true
+  notify: "Restart gitea"
+  when: (not gitea_version_check|bool) or (not ansible_check_mode and (gitea_active_version.stdout != gitea_version))
+
+- name: Create users and groups
+  include_tasks: create-user.yml
+
+- name: Create gitea user, password and db in postgres
+  include_tasks: configure-giteadb-database.yml
+  when: gitea_db_type == "postgres"
+
+- name: "Create data directory"
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ gitea_user }}"
+    group: "{{ gitea_group }}"
+    mode: 'u=rwX,g=rX,o='
+    recurse: true
+  with_items:
+    - "{{ gitea_home }}"
+    - "{{ gitea_home }}/data"
+    - "{{ gitea_home }}/custom"
+    - "{{ gitea_home }}/custom/https"
+    - "{{ gitea_home }}/custom/mailer"
+    - "{{ gitea_home }}/indexers"
+    - "{{ gitea_home }}/log"
+    - "{{ gitea_repository_root }}"
+
+- name: Install and Configure Gitea
+  include_tasks: install.yml
+
+- name: Render Gitea systemd service file
+  include_tasks: install-systemd.yml
+  when: ansible_service_mgr == "systemd"
+
+- name: Configure gitea
+  ansible.builtin.template:
+    src: gitea.ini.j2
+    dest: /etc/gitea/app.ini
+    owner: "{{ gitea_user }}"
+    group: "{{ gitea_group }}"
+    mode: 0600
+  notify: Restart gitea

@@ -1,0 +1,117 @@
+---
+# Default variables for Gitea setup
+
+# Gitea specific variables
+
+# Gitea details for download
+gitea_version: "1.21.4"               # Version of Gitea to install
+gitea_version_check: true             # Check for new version of Gitea
+# URL to download Gitea from
+gitea_dl_url: "https://dl.gitea.io/gitea/{{ gitea_version }}/gitea-{{ gitea_version }}-linux-{{ gitea_arch }}"
+gitea_gpg_key: "7C9E68152594688862D62AF62D9AE806EC1592E2" # GPG key for Gitea
+gitea_gpg_server: "hkp://keys.openpgp.net" # GPG key server for Gitea
+
+gitea_app_name: "Gitea - Local"               # Name of the Gitea application
+gitea_user: "gitea"                   # User under which Gitea will run
+gite_user_home: "/etc/gitea"          # Home directory for Gitea user
+gitea_shell: "/bin/false"             # Shell for Gitea user
+gitea_group: "gitea"
+gitea_domain: "giteas.naiduden.dev"   # Domain for Gitea
+gitea_install_dir: "/opt/gitea"       # Installation directory for Gitea
+gitea_home: "/var/lib/gitea"      # Data directory for Gitea
+gitea_systemd_cap_net_bind_service: true # Allow Gitea to bind to privileged ports
+
+gitea_repository_root: "{{ gitea_home }}"
+gitea_user_repo_limit: -1
+gitea_force_private: true
+gitea_disable_http_git: false
+
+
+gitea_http_domain: 192.168.30.60
+gitea_root_url: http://192.168.30.60:3000
+gitea_protocol: http
+gitea_http_listen: 192.168.30.60
+gitea_http_port: 3000
+gitea_offline_mode: true
+
+
+gitea_lfs_server_enabled: true
+gitea_lfs_content_path: "{{ gitea_home }}/data/lfs"
+gitea_lfs_jwt_secret: ''
+gitea_lfs_secret: D2xUYD6LdIz1ErIWQ5Ea_X9__dxlfTYgwX94Bo_pZ70
+gitea_lfs_mode: true
+
+gitea_db_type: postgres
+gitea_db_host: 127.0.0.0:5432
+gitea_db_name: giteadb
+gitea_db_user: gitea
+gitea_db_password: Kites@123
+gitea_db_ssl: disable
+gitea_db_path: "{{ gitea_home }}/data/gitea.db"
+
+gitea_ssh_listen: 0.0.0.0
+gitea_ssh_domain: localhost
+gitea_start_ssh: true
+gitea_ssh_port: 2222
+
+gitea_secret_key: Kites@123
+gitea_internal_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYmYiOjE3MDY0OTQwNjR9.51ulp4bFFDMVHWBTtWtvO9kXAkrwQjq-bnmKggdDZkI
+gitea_disable_git_hooks: true
+
+gitea_show_user_email: false
+gitea_register_email_confirm: true
+gitea_disable_gravatar: true
+gitea_disable_registration: false
+gitea_show_registration_button: true
+gitea_require_signin: true
+gitea_enable_captcha: true
+gitea_only_allow_external_registration: false
+gitea_enable_notify_mail: false
+gitea_mail_default: onmention
+gitea_autowatch_new_repo: false
+gitea_autowatch_on_change: true
+gitea_show_mailstones_dashboard: true
+
+
+gitea_mailer_enabled: false
+gitea_mailer_skip_verify: false
+gitea_mailer_tls_enabled: true
+gitea_mailer_host: localhost:25
+gitea_mailer_from: noreply@your.domain
+gitea_mailer_user: ""
+gitea_mailer_password: ""
+gitea_mailer_type: smtp
+
+gitea_fail2ban_enabled: false
+gitea_fail2ban_jail_maxretry: 10
+gitea_fail2ban_jail_findtime: 3600
+gitea_fail2ban_jail_bantime: 900
+gitea_fail2ban_jail_action: iptables-allports
+
+gitea_oauth2_enabled: true
+gitea_oauth2_jwt_secret: ''
+
+gitea_metrics_enabled: false
+gitea_metrics_token: ~
+
+gitea_themes: gitea,arc-green
+gitea_theme_default: gitea
+
+gitea_repo_indexer_enabled: false
+gitea_repo_indexer_include: ""
+gitea_repo_indexer_exclude: ""
+gitea_repo_exclude_vendored: true
+gitea_repo_indexer_max_file_size: 1048576
+
+gitea_log_level: Info
+
+gitea_extra_config: ""
+
+gitea_backup_on_upgrade: false
+gitea_backup_location: "{{ gitea_home }}/backups/"
+
+
+# PostgreSQL specific variables
+postgresql_user: gitea
+postgresql_password: gitea
+postgresql_db: giteadb

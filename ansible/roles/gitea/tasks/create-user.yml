@@ -1,0 +1,31 @@
+---
+- name: Create Gitea Group
+  ansible.builtin.group:
+    name: "{{ gitea_group }}"
+    state: present
+
+- name: Create Gitea User
+  ansible.builtin.user:
+    name: "{{ gitea_user }}"
+    group: "{{ gitea_group }}"
+    home: "{{ gite_user_home }}"
+    shell: "{{ gitea_shell }}"
+    state: present
+    createhome: yes
+    system: yes
+    comment: "Gitea User"
+    password: "!"
+    force: yes
+
+- name: Change ownership of "{{ gite_user_home }}" to root:gitea
+  ansible.builtin.file:
+    path: "{{ gite_user_home }}"
+    owner: root
+    group: gitea
+    state: directory
+
+- name: Set permissions for "{{ gite_user_home }}" to 770
+  ansible.builtin.file:
+    path: "{{ gitea_home }}"
+    mode: '0770'
+    state: directory

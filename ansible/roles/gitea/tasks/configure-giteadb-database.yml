@@ -1,0 +1,20 @@
+---
+# tasks/configure-giteadb-database.yml
+- block:
+    - name: Create PostgreSQL user for testing
+      become: true
+      become_user: postgres
+      postgresql_user:
+        name: "{{postgresql_user}}"
+        password: "{{postgresql_password}}"
+        role_attr_flags: "CREATEDB,NOSUPERUSER"
+
+    - name: Create PostgreSQL database '{{postgresql_db}}'
+      become: true
+      become_user: postgres
+      postgresql_db:
+        name: "{{postgresql_db}}"
+        owner: "{{postgresql_user}}"
+        state: present
+        encoding: UTF-8
+        template: template0
