@@ -12,4 +12,11 @@ gitea_go_arch_map:
   armv6l: 'arm-6'
   armv5l: 'arm-5'
 
-gitea_arch: "{{ gitea_go_arch_map[ansible_architecture] | default(ansible_architecture) }}"
+gitea_arch: '{{ gitea_go_arch_map[ansible_architecture] | default(ansible_architecture) }}'
+
+gitea_http_domain: 192.168.30.60
+gitea_root_url: http://192.168.30.60:3000
+gitea_protocol: http
+gitea_http_listen: 192.168.30.60
+gitea_http_port: 3000
+gitea_offline_mode: true

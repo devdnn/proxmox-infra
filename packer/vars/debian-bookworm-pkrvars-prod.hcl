@@ -2,7 +2,7 @@ proxmox_api_token_id = "root@pam!packer"  # API Token ID
 proxmox_api_token_secret = "5f754bbe-36a6-4e95-9d56-337b8e8976a1"
 
 proxmox_host      = "192.168.30.24:8006"
-proxmox_node      = "kishkindha-pcli"
+proxmox_node      = "spmhampi"
 vmid              = "5000"
 cpu_type          = "kvm64"
 cores             = "2"

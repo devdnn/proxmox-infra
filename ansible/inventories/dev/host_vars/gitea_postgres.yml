@@ -1,0 +1,11 @@
+---
+# gitea values needed
+gitea_db_name: giteadb
+gitea_db_user: gitea
+gitea_db_password: gitea
+gitea_domain: gitea.naiduden.dev
+
+# postgres values needed
+postgres_db_name: giteadb
+postgres_db_user: gitea
+postgres_db_password: gitea

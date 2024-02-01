@@ -1,4 +1,4 @@
-APP_NAME = Gitea - Local
+APP_NAME = {{gitea_app_name}}
 RUN_USER = gitea
 WORK_PATH = /var/lib/gitea
 RUN_MODE = prod
@@ -18,10 +18,10 @@ LOG_SQL = false
 ROOT = /var/lib/gitea/data/gitea-repositories
 
 [server]
-SSH_DOMAIN = 192.168.30.60
-DOMAIN = 192.168.30.60
-HTTP_PORT = 3000
-ROOT_URL = http://192.168.30.60:3000/
+SSH_DOMAIN = {{gitea_http_domain}}
+DOMAIN = {{gitea_http_domain}}
+HTTP_PORT = {{gitea_http_port}}
+ROOT_URL = {{gitea_root_url}}
 APP_DATA_PATH = /var/lib/gitea/data
 DISABLE_SSH = false
 SSH_PORT = 2222
