@@ -19,8 +19,8 @@ provider "proxmox" {
 }
 
 resource "proxmox_virtual_environment_vm" "gitea" {
-  name        = "gitea"
-  description = "gitea server"
+  name        = var.vm_name
+  description = var.vm_description
   tags        = ["terraform", "gitea", var.environmenttype]
 
   node_name = var.proxmox_node
@@ -36,8 +36,8 @@ resource "proxmox_virtual_environment_vm" "gitea" {
   initialization {
     ip_config {
       ipv4 {
-        address = "192.168.30.60/24"
-        gateway = "192.168.30.1"
+        address = var.vm_ip_address
+        gateway = var.vm_gateway
       }
     }
 

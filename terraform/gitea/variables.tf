@@ -48,3 +48,23 @@ variable "environmenttype" {
   type    = string
   default = "dev"  
 }
+
+variable "vm_ip_address" {
+  type    = string
+  default = ""
+}
+
+variable "vm_gateway" {
+  type    = string
+  default = ""  
+}
+
+variable "vm_name" {
+  type    = string
+  default = ""
+}
+
+variable "vm_description" {
+  type    = string
+  default = ""  
+}

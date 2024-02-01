@@ -10,3 +10,9 @@ network_bridge = "vmbr0"
 network_vlan = "30"
 
 environmenttype = "dev"
+
+# VM Details
+vm_name = "gitea-dev"
+vm_description = "Gitea Dev Server"
+vm_ip_address = "192.168.30.60/24"
+vm_gateway = "192.168.30.1"
