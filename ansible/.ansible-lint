@@ -4,8 +4,9 @@
 exclude_paths:
   - .cache/
   - .github/
-  - inventory/
+  - inventories/
   - ${HOME}/.ansible/roles/
+  - ./roles/*/vars/
 
 skip_list:
   - fqcn-builtins
@@ -24,8 +25,8 @@ mock_roles:
   - kencx.ansible.nfs
 
 kinds:
-  - vars: "**/vars.yml"
-  - vars: "**/group_vars/*.yml"
-  - vars: "**/defaults/*.yml"
-  - tasks: "**/tasks/*.yml"
-  - playbook: "**/*.{yml,yaml}"
+  - vars: '**/vars.yml'
+  - vars: '**/group_vars/*.yml'
+  - vars: '**/defaults/*.yml'
+  - tasks: '**/tasks/*.yml'
+  - playbook: '**/*.{yml,yaml}'

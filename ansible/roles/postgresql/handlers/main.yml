@@ -1,17 +1,16 @@
 ---
-- block:
-    - name: Restart postgresql
-      service:
-        name: "{{ postgresql_service_name }}"
-        state: restarted
-        enabled: yes
-        daemon_reload: yes
-      listen: restart postgresql
+- name: Restart postgresql
+  service:
+    name: '{{ postgresql_service_name }}'
+    state: restarted
+    enabled: yes
+    daemon_reload: yes
+  listen: restart postgresql
 
-    - name: Reload postgresql
-      service:
-        name: "{{ postgresql_service_name }}"
-        state: reloaded
-        enabled: yes
-        daemon_reload: yes
-      listen: reload postgresql
+- name: Reload postgresql
+  service:
+    name: '{{ postgresql_service_name }}'
+    state: reloaded
+    enabled: yes
+    daemon_reload: yes
+  listen: reload postgresql
