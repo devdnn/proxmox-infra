@@ -1,0 +1,40 @@
+---
+- name: Restart postgresql
+  service:
+    name: '{{ postgresql_service_name }}'
+    state: restarted
+    enabled: yes
+    daemon_reload: yes
+  listen: restart postgresql
+
+- name: Reload postgresql
+  service:
+    name: '{{ postgresql_service_name }}'
+    state: reloaded
+    enabled: yes
+    daemon_reload: yes
+  listen: reload postgresql
+
+- name: Restart isc-kea-dhcp4-server
+  service:
+    name: isc-kea-dhcp4-server
+    state: restarted
+    enabled: yes
+    daemon_reload: yes
+  listen: restart isc-kea-dhcp4-server
+
+- name: Restart isc-kea-ctrl-agent
+  service:
+    name: isc-kea-ctrl-agent
+    state: restarted
+    enabled: yes
+    daemon_reload: yes
+  listen: restart isc-kea-ctrl-agent
+
+- name: Restart dnsmasq
+  service:
+    name: dnsmasq
+    state: restarted
+    enabled: yes
+    daemon_reload: yes
+  listen: restart dnsmasq

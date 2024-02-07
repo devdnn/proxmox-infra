@@ -1,0 +1,12 @@
+---
+- name: Install PostgreSQL
+  import_tasks: setup_postgresql.yml
+
+- name: Setup and Configure dnsmasq
+  import_tasks: setup_dnsmasq.yml
+
+- name: Create kea databases
+  import_tasks: create_kea_databases.yml
+
+- name: Setup and Configure kea
+  import_tasks: setup_kea.yml

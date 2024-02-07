@@ -1,0 +1,37 @@
+---
+# Default values for PostgreSQL configuration
+
+# Basic server setup
+postgresql_version: '15' # Version of PostgreSQL
+postgresql_locale: 'en_US.UTF-8' # Locale settings for database
+postgresql_encoding: 'UTF-8' # Encoding for the database
+
+# Connection settings
+postgresql_listen_addresses: 'localhost' # IP addresses to listen on ('*' for all)
+postgresql_port: 5432 # Port for PostgreSQL to listen on
+
+# Authentication settings
+postgresql_admin_user: 'postgres'
+
+postgresql_custom_config_dir: 'conf.d' # Directory for custom configuration files
+
+# kea database settings
+kea_db_name: 'keadb'
+kea_db_user: 'kea'
+kea_db_password: 'keadb@123'
+
+# domain details
+domain_name: 'dnstest1.naiduden.dev'
+domain_name_servers: '192.168.1.1'
+
+dhcp_server_ip: '192.168.1.1'
+
+dns_server_upstream: '192.168.30.43'
+
+dhcp_server_interface: 'eth1'
+
+# kea control agent settings
+kea_ctrl_agent_address: '192.168.1.1'
+kea_ctrl_agent_port: 8000
+kea_ctrl_agent_user: 'kea'
+kea_ctrl_agent_password: 'admin@123'

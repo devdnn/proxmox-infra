@@ -1,0 +1,85 @@
+---
+- block:
+    - name: Ensure curl is installed
+      package:
+        name: curl
+        state: present
+
+    - name: Download the kea setup script
+      get_url:
+        url: https://dl.cloudsmith.io/public/isc/kea-2-5/setup.deb.sh
+        dest: /tmp/setup.deb.sh
+        mode: 0755
+
+    - name: Run the kea setup script in shell
+      shell: /tmp/setup.deb.sh
+
+    - name: Update Apt Packages
+      apt:
+        update_cache: yes
+        upgrade: dist
+
+    - name: Upgrade System
+      apt:
+        upgrade: dist
+        update_cache: yes
+
+    - name: Install kea-dhcp server
+      apt:
+        name: isc-kea
+        state: present
+
+    - name: Initialize the kea database
+      command: 'kea-admin db-init pgsql -u {{ kea_db_user }} -p {{ kea_db_password }} -n {{ kea_db_name }}'
+
+    - name: Backup kea-dhcp4.conf
+      copy:
+        src: /etc/kea/kea-dhcp4.conf
+        dest: /etc/kea/kea-dhcp4.conf.bak
+        remote_src: yes
+
+    - name: Backup kea-dhcp6.conf
+      copy:
+        src: /etc/kea/kea-dhcp6.conf
+        dest: /etc/kea/kea-dhcp6.conf.bak
+        remote_src: yes
+
+    - name: Copy kea-dhcp4.conf template and overwrite the original
+      template:
+        src: kea-dhcp4.conf.j2
+        dest: /etc/kea/kea-dhcp4.conf
+        owner: root
+        group: _kea
+        mode: 0644
+      notify: restart isc-kea-dhcp4-server
+
+    - name: Backup kea-ctrl-agent.conf
+      copy:
+        src: /etc/kea/kea-ctrl-agent.conf
+        dest: /etc/kea/kea-ctrl-agent.conf.bak
+        remote_src: yes
+
+    - name: Copy kea-ctrl-agent.conf template and overwrite the original
+      template:
+        src: kea-ctrl-agent.conf.j2
+        dest: /etc/kea/kea-ctrl-agent.conf
+        owner: root
+        group: _kea
+        mode: 0644
+      notify: restart isc-kea-ctrl-agent
+
+    - name: Get status of kea-dhcp4-server
+      ansible.builtin.systemd:
+        name: isc-kea-dhcp4-server
+      register: kea_dhcp4_status
+
+    - debug:
+        var: kea_dhcp4_status.status.ActiveState
+
+    - name: Get status of kea-ctrl-agent
+      ansible.builtin.systemd:
+        name: isc-kea-ctrl-agent
+      register: kea_ctrl_agent_status
+
+    - debug:
+        var: kea_ctrl_agent_status.status.ActiveState

@@ -1,0 +1,10 @@
+---
+- hosts: kea_dhcp
+  become: yes
+  become_method: sudo
+  become_user: root
+  remote_user: root
+  vars:
+    ansible_ssh_pipelining: true
+  roles:
+    - role: kea_dhcp
