@@ -1,0 +1,1411 @@
+[90mThu, 08 Feb 2024 15:58:18 -0800[0m [32mINF[0m [1mgithub.com/Telmate/terraform-provider-proxmox/v2/proxmox/util.go:159[0m[36m >[0m Enabling the capture of log-library logs as ithe _capturelog flag was detected
+[90mThu, 08 Feb 2024 15:58:18 -0800[0m [32mINF[0m [1mgithub.com/Telmate/terraform-provider-proxmox/v2/proxmox/util.go:192[0m[36m >[0m Logging Started. Root Logger Set to level debug
+[90mThu, 08 Feb 2024 16:02:11 -0800[0m [32mINF[0m [1mgithub.com/Telmate/terraform-provider-proxmox/v2/proxmox/util.go:159[0m[36m >[0m Enabling the capture of log-library logs as ithe _capturelog flag was detected
+[90mThu, 08 Feb 2024 16:02:11 -0800[0m [32mINF[0m [1mgithub.com/Telmate/terraform-provider-proxmox/v2/proxmox/util.go:192[0m[36m >[0m Logging Started. Root Logger Set to level debug
+[90mThu, 08 Feb 2024 16:02:48 -0800[0m [32mINF[0m [1mgithub.com/Telmate/terraform-provider-proxmox/v2/proxmox/util.go:159[0m[36m >[0m Enabling the capture of log-library logs as ithe _capturelog flag was detected
+[90mThu, 08 Feb 2024 16:02:48 -0800[0m [32mINF[0m [1mgithub.com/Telmate/terraform-provider-proxmox/v2/proxmox/util.go:192[0m[36m >[0m Logging Started. Root Logger Set to level debug
+[90mThu, 08 Feb 2024 16:03:39 -0800[0m [32mINF[0m [1mgithub.com/Telmate/terraform-provider-proxmox/v2/proxmox/util.go:159[0m[36m >[0m Enabling the capture of log-library logs as ithe _capturelog flag was detected
+[90mThu, 08 Feb 2024 16:03:39 -0800[0m [32mINF[0m [1mgithub.com/Telmate/terraform-provider-proxmox/v2/proxmox/util.go:192[0m[36m >[0m Logging Started. Root Logger Set to level debug
+[90mThu, 08 Feb 2024 16:03:42 -0800[0m [32mINF[0m [1mgithub.com/Telmate/terraform-provider-proxmox/v2/proxmox/util.go:159[0m[36m >[0m Enabling the capture of log-library logs as ithe _capturelog flag was detected
+[90mThu, 08 Feb 2024 16:03:42 -0800[0m [32mINF[0m [1mgithub.com/Telmate/terraform-provider-proxmox/v2/proxmox/util.go:192[0m[36m >[0m Logging Started. Root Logger Set to level debug
+[90mThu, 08 Feb 2024 16:03:44 -0800[0m [32mINF[0m [1mgithub.com/Telmate/terraform-provider-proxmox/v2/proxmox/util.go:159[0m[36m >[0m Enabling the capture of log-library logs as ithe _capturelog flag was detected
+[90mThu, 08 Feb 2024 16:03:44 -0800[0m [32mINF[0m [1mgithub.com/Telmate/terraform-provider-proxmox/v2/proxmox/util.go:192[0m[36m >[0m Logging Started. Root Logger Set to level debug
+2024/02/08 16:03:44 [DEBUG] setting computed for "unused" from ComputedKeys
+2024/02/08 16:03:44 >>>>>>>>>> REQUEST:
+GET /api2/json/cluster/nextid HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56BE0::FuIidS9XSIKZ7tI3MNqyujk/XUB8oYofkMoObuFH6uGisZ5qsLm8KZHkneVLIcELc8yNLkUeedP2iRmAvt5LuEdA0P7/hy5sdzRRnzC3y19qmJSBHwy3MJVOBEAawV45GzPHjMiP5sWcA6ZLeEi1/O3Mf4MHxaKeQ5wFoulgQDUaJ1SdlSNEYhaGo/aw1O/DL/bEtPulAlJZJOT8KVjKqpHvDpjW96bflOYTjWuvvKuKp+nKITnws1SUjcdblLH4OCVgqhpNAVT6ZrtzZy5uppBz6xphQBh8Nn1dbudEksKtqdNaNgQ8ELgxKdR1CQnQ1buKg3QDe1DBLzxFecTp5w==
+CSRFPreventionToken: 65C56BE0:iPeCPHTpkpDKlvpMnkc5T+bgUZ0PXDmUPdS5S79/rP4
+Accept-Encoding: gzip
+
+2024/02/08 16:03:44 <<<<<<<<<< RESULT:
+HTTP/1.1 200 OK
+Content-Length: 14
+Cache-Control: max-age=0
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:03:44 GMT
+Expires: Fri, 09 Feb 2024 00:03:44 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":"305"}
+2024/02/08 16:03:44 >>>>>>>>>> REQUEST:
+POST /api2/json/nodes/pve/lxc HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Content-Length: 588
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56BE0::FuIidS9XSIKZ7tI3MNqyujk/XUB8oYofkMoObuFH6uGisZ5qsLm8KZHkneVLIcELc8yNLkUeedP2iRmAvt5LuEdA0P7/hy5sdzRRnzC3y19qmJSBHwy3MJVOBEAawV45GzPHjMiP5sWcA6ZLeEi1/O3Mf4MHxaKeQ5wFoulgQDUaJ1SdlSNEYhaGo/aw1O/DL/bEtPulAlJZJOT8KVjKqpHvDpjW96bflOYTjWuvvKuKp+nKITnws1SUjcdblLH4OCVgqhpNAVT6ZrtzZy5uppBz6xphQBh8Nn1dbudEksKtqdNaNgQ8ELgxKdR1CQnQ1buKg3QDe1DBLzxFecTp5w==
+CSRFPreventionToken: 65C56BE0:iPeCPHTpkpDKlvpMnkc5T+bgUZ0PXDmUPdS5S79/rP4
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip
+
+arch=amd64&cmode=tty&console=1&cores=2&cpulimit=0&cpuunits=1024&description=DHCP+Server+with+kea+and+postgresql+created+on+2024-02-09-12-03&hostname=dev-kea-dhcp-02&memory=2048&net0=bridge%3Dvmbr0%2Cip%3D192.168.30.81%2F24%2Ctag%3D30%2Cfirewall%3D1%2Cname%3Deth0%2Cgw%3D192.168.30.1&net1=name%3Deth1%2Cbridge%3Dvmbr2%2Cip%3D192.168.1.1%2F24%2Cgw%3D192.168.1.1&onboot=1&ostemplate=nasios%3Avztmpl%2Fdebian-12-standard_12.2-1_amd64.tar.zst&password=Float12345678&protection=0&rootfs=proxthin%3A32&start=0&storage=local&swap=0&tags=dhcp%3Bkea%3Bpostgresql%3Bdev&tty=2&unprivileged=1&vmid=305
+2024/02/08 16:03:44 <<<<<<<<<< RESULT:
+HTTP/1.1 500 hostname lookup 'pve' failed - failed to get address info for: pve: Name or service not known
+Connection: close
+Content-Length: 13
+Cache-Control: max-age=0
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:03:44 GMT
+Expires: Fri, 09 Feb 2024 00:03:44 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":null}
+[90mThu, 08 Feb 2024 16:04:11 -0800[0m [32mINF[0m [1mgithub.com/Telmate/terraform-provider-proxmox/v2/proxmox/util.go:159[0m[36m >[0m Enabling the capture of log-library logs as ithe _capturelog flag was detected
+[90mThu, 08 Feb 2024 16:04:11 -0800[0m [32mINF[0m [1mgithub.com/Telmate/terraform-provider-proxmox/v2/proxmox/util.go:192[0m[36m >[0m Logging Started. Root Logger Set to level debug
+[90mThu, 08 Feb 2024 16:04:13 -0800[0m [32mINF[0m [1mgithub.com/Telmate/terraform-provider-proxmox/v2/proxmox/util.go:159[0m[36m >[0m Enabling the capture of log-library logs as ithe _capturelog flag was detected
+[90mThu, 08 Feb 2024 16:04:13 -0800[0m [32mINF[0m [1mgithub.com/Telmate/terraform-provider-proxmox/v2/proxmox/util.go:192[0m[36m >[0m Logging Started. Root Logger Set to level debug
+2024/02/08 16:04:13 [DEBUG] setting computed for "unused" from ComputedKeys
+2024/02/08 16:04:13 >>>>>>>>>> REQUEST:
+GET /api2/json/cluster/nextid HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56BFD::phkM8SJAGoe3YVuXwPLMB7KSCw+XbvjirxzIIvH/N7Swk6wWZMp12DE4iZ7uKFFxUloWrQ186k76CX56Mt4J4TPxRpnjzA2EBOKHTExMHNdNmXQCZ7Mnbifg6QNpR3ExEmPxbsLrel4pKg107KsciWF3x/WnkMkEwxb1tClLN6sci0F5HlrTWMT/4nDn7tv5kADkH6ZMLrDKpuoswnOtjuVt7k94E0r8UxZ/O4QVqkxQ9iw5us1VoubvqgsBMKQ7kE5oOedMbXOb4IpZo+RKssAFtb7PzP19zdaIPKzUG+CLBygUTFiJ1q0Vo0mSab7/qgrxMIF4QpwFMvw6OUj1rg==
+CSRFPreventionToken: 65C56BFD:33LTwFioirJ0/ONZHOtNNEAiZzBGHkm+PoxuIWwXjLY
+Accept-Encoding: gzip
+
+2024/02/08 16:04:13 <<<<<<<<<< RESULT:
+HTTP/1.1 200 OK
+Content-Length: 14
+Cache-Control: max-age=0
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:04:13 GMT
+Expires: Fri, 09 Feb 2024 00:04:13 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":"305"}
+2024/02/08 16:04:13 >>>>>>>>>> REQUEST:
+POST /api2/json/nodes/lepakshi-lenovomini/lxc HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Content-Length: 588
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56BFD::phkM8SJAGoe3YVuXwPLMB7KSCw+XbvjirxzIIvH/N7Swk6wWZMp12DE4iZ7uKFFxUloWrQ186k76CX56Mt4J4TPxRpnjzA2EBOKHTExMHNdNmXQCZ7Mnbifg6QNpR3ExEmPxbsLrel4pKg107KsciWF3x/WnkMkEwxb1tClLN6sci0F5HlrTWMT/4nDn7tv5kADkH6ZMLrDKpuoswnOtjuVt7k94E0r8UxZ/O4QVqkxQ9iw5us1VoubvqgsBMKQ7kE5oOedMbXOb4IpZo+RKssAFtb7PzP19zdaIPKzUG+CLBygUTFiJ1q0Vo0mSab7/qgrxMIF4QpwFMvw6OUj1rg==
+CSRFPreventionToken: 65C56BFD:33LTwFioirJ0/ONZHOtNNEAiZzBGHkm+PoxuIWwXjLY
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip
+
+arch=amd64&cmode=tty&console=1&cores=2&cpulimit=0&cpuunits=1024&description=DHCP+Server+with+kea+and+postgresql+created+on+2024-02-09-12-04&hostname=dev-kea-dhcp-02&memory=2048&net0=ip%3D192.168.30.81%2F24%2Cgw%3D192.168.30.1%2Ctag%3D30%2Cfirewall%3D1%2Cbridge%3Dvmbr0%2Cname%3Deth0&net1=ip%3D192.168.1.1%2F24%2Cname%3Deth1%2Cgw%3D192.168.1.1%2Cbridge%3Dvmbr2&onboot=1&ostemplate=nasios%3Avztmpl%2Fdebian-12-standard_12.2-1_amd64.tar.zst&password=Float12345678&protection=0&rootfs=proxthin%3A32&start=0&storage=local&swap=0&tags=dhcp%3Bkea%3Bpostgresql%3Bdev&tty=2&unprivileged=1&vmid=305
+2024/02/08 16:04:14 <<<<<<<<<< RESULT:
+HTTP/1.1 200 OK
+Connection: close
+Content-Length: 85
+Cache-Control: max-age=0
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:04:14 GMT
+Expires: Fri, 09 Feb 2024 00:04:14 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":"UPID:lepakshi-lenovomini:00006A33:000BBE41:65C56BFE:vzcreate:305:root@pam:"}
+2024/02/08 16:04:14 >>>>>>>>>> REQUEST:
+GET /api2/json/nodes/lepakshi-lenovomini/tasks/UPID:lepakshi-lenovomini:00006A33:000BBE41:65C56BFE:vzcreate:305:root@pam:/status HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56BFD::phkM8SJAGoe3YVuXwPLMB7KSCw+XbvjirxzIIvH/N7Swk6wWZMp12DE4iZ7uKFFxUloWrQ186k76CX56Mt4J4TPxRpnjzA2EBOKHTExMHNdNmXQCZ7Mnbifg6QNpR3ExEmPxbsLrel4pKg107KsciWF3x/WnkMkEwxb1tClLN6sci0F5HlrTWMT/4nDn7tv5kADkH6ZMLrDKpuoswnOtjuVt7k94E0r8UxZ/O4QVqkxQ9iw5us1VoubvqgsBMKQ7kE5oOedMbXOb4IpZo+RKssAFtb7PzP19zdaIPKzUG+CLBygUTFiJ1q0Vo0mSab7/qgrxMIF4QpwFMvw6OUj1rg==
+CSRFPreventionToken: 65C56BFD:33LTwFioirJ0/ONZHOtNNEAiZzBGHkm+PoxuIWwXjLY
+Accept-Encoding: gzip
+
+2024/02/08 16:04:14 <<<<<<<<<< RESULT:
+HTTP/1.1 200 OK
+Content-Length: 240
+Cache-Control: max-age=0
+Connection: Keep-Alive
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:04:14 GMT
+Expires: Fri, 09 Feb 2024 00:04:14 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":{"starttime":1707437054,"upid":"UPID:lepakshi-lenovomini:00006A33:000BBE41:65C56BFE:vzcreate:305:root@pam:","pid":27187,"type":"vzcreate","status":"running","user":"root@pam","node":"lepakshi-lenovomini","id":"305","pstart":769601}}
+2024/02/08 16:04:16 >>>>>>>>>> REQUEST:
+GET /api2/json/nodes/lepakshi-lenovomini/tasks/UPID:lepakshi-lenovomini:00006A33:000BBE41:65C56BFE:vzcreate:305:root@pam:/status HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56BFD::phkM8SJAGoe3YVuXwPLMB7KSCw+XbvjirxzIIvH/N7Swk6wWZMp12DE4iZ7uKFFxUloWrQ186k76CX56Mt4J4TPxRpnjzA2EBOKHTExMHNdNmXQCZ7Mnbifg6QNpR3ExEmPxbsLrel4pKg107KsciWF3x/WnkMkEwxb1tClLN6sci0F5HlrTWMT/4nDn7tv5kADkH6ZMLrDKpuoswnOtjuVt7k94E0r8UxZ/O4QVqkxQ9iw5us1VoubvqgsBMKQ7kE5oOedMbXOb4IpZo+RKssAFtb7PzP19zdaIPKzUG+CLBygUTFiJ1q0Vo0mSab7/qgrxMIF4QpwFMvw6OUj1rg==
+CSRFPreventionToken: 65C56BFD:33LTwFioirJ0/ONZHOtNNEAiZzBGHkm+PoxuIWwXjLY
+Accept-Encoding: gzip
+
+2024/02/08 16:04:16 <<<<<<<<<< RESULT:
+HTTP/1.1 200 OK
+Content-Length: 240
+Cache-Control: max-age=0
+Connection: Keep-Alive
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:04:16 GMT
+Expires: Fri, 09 Feb 2024 00:04:16 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":{"node":"lepakshi-lenovomini","user":"root@pam","status":"running","type":"vzcreate","pid":27187,"upid":"UPID:lepakshi-lenovomini:00006A33:000BBE41:65C56BFE:vzcreate:305:root@pam:","starttime":1707437054,"id":"305","pstart":769601}}
+2024/02/08 16:04:18 >>>>>>>>>> REQUEST:
+GET /api2/json/nodes/lepakshi-lenovomini/tasks/UPID:lepakshi-lenovomini:00006A33:000BBE41:65C56BFE:vzcreate:305:root@pam:/status HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56BFD::phkM8SJAGoe3YVuXwPLMB7KSCw+XbvjirxzIIvH/N7Swk6wWZMp12DE4iZ7uKFFxUloWrQ186k76CX56Mt4J4TPxRpnjzA2EBOKHTExMHNdNmXQCZ7Mnbifg6QNpR3ExEmPxbsLrel4pKg107KsciWF3x/WnkMkEwxb1tClLN6sci0F5HlrTWMT/4nDn7tv5kADkH6ZMLrDKpuoswnOtjuVt7k94E0r8UxZ/O4QVqkxQ9iw5us1VoubvqgsBMKQ7kE5oOedMbXOb4IpZo+RKssAFtb7PzP19zdaIPKzUG+CLBygUTFiJ1q0Vo0mSab7/qgrxMIF4QpwFMvw6OUj1rg==
+CSRFPreventionToken: 65C56BFD:33LTwFioirJ0/ONZHOtNNEAiZzBGHkm+PoxuIWwXjLY
+Accept-Encoding: gzip
+
+2024/02/08 16:04:18 <<<<<<<<<< RESULT:
+HTTP/1.1 200 OK
+Content-Length: 240
+Cache-Control: max-age=0
+Connection: Keep-Alive
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:04:18 GMT
+Expires: Fri, 09 Feb 2024 00:04:18 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":{"pstart":769601,"id":"305","pid":27187,"upid":"UPID:lepakshi-lenovomini:00006A33:000BBE41:65C56BFE:vzcreate:305:root@pam:","starttime":1707437054,"node":"lepakshi-lenovomini","user":"root@pam","status":"running","type":"vzcreate"}}
+2024/02/08 16:04:20 >>>>>>>>>> REQUEST:
+GET /api2/json/nodes/lepakshi-lenovomini/tasks/UPID:lepakshi-lenovomini:00006A33:000BBE41:65C56BFE:vzcreate:305:root@pam:/status HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56BFD::phkM8SJAGoe3YVuXwPLMB7KSCw+XbvjirxzIIvH/N7Swk6wWZMp12DE4iZ7uKFFxUloWrQ186k76CX56Mt4J4TPxRpnjzA2EBOKHTExMHNdNmXQCZ7Mnbifg6QNpR3ExEmPxbsLrel4pKg107KsciWF3x/WnkMkEwxb1tClLN6sci0F5HlrTWMT/4nDn7tv5kADkH6ZMLrDKpuoswnOtjuVt7k94E0r8UxZ/O4QVqkxQ9iw5us1VoubvqgsBMKQ7kE5oOedMbXOb4IpZo+RKssAFtb7PzP19zdaIPKzUG+CLBygUTFiJ1q0Vo0mSab7/qgrxMIF4QpwFMvw6OUj1rg==
+CSRFPreventionToken: 65C56BFD:33LTwFioirJ0/ONZHOtNNEAiZzBGHkm+PoxuIWwXjLY
+Accept-Encoding: gzip
+
+2024/02/08 16:04:20 <<<<<<<<<< RESULT:
+HTTP/1.1 200 OK
+Content-Length: 258
+Cache-Control: max-age=0
+Connection: Keep-Alive
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:04:20 GMT
+Expires: Fri, 09 Feb 2024 00:04:20 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":{"pid":27187,"starttime":1707437054,"upid":"UPID:lepakshi-lenovomini:00006A33:000BBE41:65C56BFE:vzcreate:305:root@pam:","status":"stopped","user":"root@pam","node":"lepakshi-lenovomini","type":"vzcreate","exitstatus":"OK","pstart":769601,"id":"305"}}
+2024/02/08 16:04:20 >>>>>>>>>> REQUEST:
+GET /api2/json/cluster/resources?type=vm HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56BFD::phkM8SJAGoe3YVuXwPLMB7KSCw+XbvjirxzIIvH/N7Swk6wWZMp12DE4iZ7uKFFxUloWrQ186k76CX56Mt4J4TPxRpnjzA2EBOKHTExMHNdNmXQCZ7Mnbifg6QNpR3ExEmPxbsLrel4pKg107KsciWF3x/WnkMkEwxb1tClLN6sci0F5HlrTWMT/4nDn7tv5kADkH6ZMLrDKpuoswnOtjuVt7k94E0r8UxZ/O4QVqkxQ9iw5us1VoubvqgsBMKQ7kE5oOedMbXOb4IpZo+RKssAFtb7PzP19zdaIPKzUG+CLBygUTFiJ1q0Vo0mSab7/qgrxMIF4QpwFMvw6OUj1rg==
+CSRFPreventionToken: 65C56BFD:33LTwFioirJ0/ONZHOtNNEAiZzBGHkm+PoxuIWwXjLY
+Accept-Encoding: gzip
+
+2024/02/08 16:04:20 <<<<<<<<<< RESULT:
+HTTP/1.1 200 OK
+Content-Length: 2470
+Cache-Control: max-age=0
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:04:20 GMT
+Expires: Fri, 09 Feb 2024 00:04:20 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":[{"disk":0,"netin":0,"maxcpu":2,"maxdisk":34359738368,"netout":0,"id":"qemu/100","diskwrite":0,"name":"another-test","status":"stopped","node":"lepakshi-lenovomini","type":"qemu","cpu":0,"diskread":0,"maxmem":4294967296,"vmid":100,"uptime":0,"template":0,"mem":0},{"status":"stopped","node":"lepakshi-lenovomini","type":"qemu","name":"ubuntu-code-server","diskwrite":0,"netout":0,"id":"qemu/105","maxdisk":137438953472,"netin":0,"maxcpu":4,"disk":0,"template":0,"mem":0,"uptime":0,"diskread":0,"maxmem":8489271296,"vmid":105,"cpu":0},{"status":"stopped","node":"lepakshi-lenovomini","type":"qemu","name":"test-admin","diskwrite":0,"netout":0,"id":"qemu/300","maxdisk":8589934592,"netin":0,"maxcpu":2,"disk":0,"template":0,"mem":0,"uptime":0,"diskread":0,"maxmem":4294967296,"vmid":300,"cpu":0},{"status":"stopped","node":"lepakshi-lenovomini","type":"qemu","diskwrite":0,"name":"gitea-dev","maxdisk":68719476736,"netout":0,"tags":"dev;gitea;terraform","id":"qemu/301","disk":0,"netin":0,"maxcpu":2,"template":0,"mem":0,"diskread":0,"maxmem":1073741824,"vmid":301,"uptime":0,"cpu":0},{"uptime":0,"diskread":0,"maxmem":12884901888,"vmid":302,"template":0,"mem":0,"cpu":0,"name":"win-11-dev","diskwrite":0,"status":"stopped","type":"qemu","node":"lepakshi-lenovomini","netin":0,"maxcpu":3,"disk":0,"tags":"dev","netout":0,"id":"qemu/302","maxdisk":137438953472},{"netout":0,"tags":"dev;ops","id":"lxc/303","maxdisk":68719476736,"netin":0,"maxcpu":2,"disk":0,"status":"stopped","type":"lxc","node":"lepakshi-lenovomini","name":"dev-kea-dhcp-01","diskwrite":0,"cpu":0,"template":0,"mem":0,"uptime":0,"diskread":0,"vmid":303,"maxmem":2147483648},{"node":"lepakshi-lenovomini","type":"lxc","status":"stopped","name":"test-kea-dchp","diskwrite":0,"id":"lxc/304","netout":0,"maxdisk":8589934592,"maxcpu":1,"netin":0,"disk":0,"mem":0,"template":0,"uptime":0,"vmid":304,"maxmem":1073741824,"diskread":0,"cpu":0},{"status":"stopped","type":"lxc","node":"lepakshi-lenovomini","name":"dev-kea-dhcp-02","diskwrite":0,"tags":"dev;dhcp;kea;postgresql","netout":0,"id":"lxc/305","maxdisk":34359738368,"netin":0,"maxcpu":2,"disk":0,"template":0,"mem":0,"uptime":0,"diskread":0,"vmid":305,"maxmem":2147483648,"cpu":0},{"maxdisk":34359738368,"netout":0,"id":"qemu/400","disk":0,"netin":0,"maxcpu":4,"status":"stopped","node":"lepakshi-lenovomini","type":"qemu","diskwrite":0,"name":"proxmox-dev","cpu":0,"template":0,"mem":0,"diskread":0,"maxmem":23622320128,"vmid":400,"uptime":0}]}
+2024/02/08 16:04:20 >>>>>>>>>> REQUEST:
+GET /api2/json/nodes/lepakshi-lenovomini/lxc/305/config HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56BFD::phkM8SJAGoe3YVuXwPLMB7KSCw+XbvjirxzIIvH/N7Swk6wWZMp12DE4iZ7uKFFxUloWrQ186k76CX56Mt4J4TPxRpnjzA2EBOKHTExMHNdNmXQCZ7Mnbifg6QNpR3ExEmPxbsLrel4pKg107KsciWF3x/WnkMkEwxb1tClLN6sci0F5HlrTWMT/4nDn7tv5kADkH6ZMLrDKpuoswnOtjuVt7k94E0r8UxZ/O4QVqkxQ9iw5us1VoubvqgsBMKQ7kE5oOedMbXOb4IpZo+RKssAFtb7PzP19zdaIPKzUG+CLBygUTFiJ1q0Vo0mSab7/qgrxMIF4QpwFMvw6OUj1rg==
+CSRFPreventionToken: 65C56BFD:33LTwFioirJ0/ONZHOtNNEAiZzBGHkm+PoxuIWwXjLY
+Accept-Encoding: gzip
+
+2024/02/08 16:04:20 <<<<<<<<<< RESULT:
+HTTP/1.1 200 OK
+Content-Length: 644
+Cache-Control: max-age=0
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:04:20 GMT
+Expires: Fri, 09 Feb 2024 00:04:20 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":{"description":"DHCP Server with kea and postgresql created on 2024-02-09-12-04\n","ostype":"debian","onboot":1,"hostname":"dev-kea-dhcp-02","rootfs":"proxthin:vm-305-disk-0,size=32G","cores":2,"arch":"amd64","net1":"name=eth1,bridge=vmbr2,gw=192.168.1.1,hwaddr=BC:24:11:F3:22:52,ip=192.168.1.1/24,type=veth","net0":"name=eth0,bridge=vmbr0,firewall=1,gw=192.168.30.1,hwaddr=BC:24:11:D2:35:95,ip=192.168.30.81/24,tag=30,type=veth","cmode":"tty","tags":"dev;dhcp;kea;postgresql","unprivileged":1,"protection":0,"cpuunits":1024,"memory":2048,"cpulimit":"0","swap":0,"console":1,"digest":"a5955cff5dffaeb67e640e2cc856a4ad3a289bbb","tty":2}}
+2024/02/08 16:04:20 >>>>>>>>>> REQUEST:
+GET /api2/json/cluster/ha/resources/305 HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56BFD::phkM8SJAGoe3YVuXwPLMB7KSCw+XbvjirxzIIvH/N7Swk6wWZMp12DE4iZ7uKFFxUloWrQ186k76CX56Mt4J4TPxRpnjzA2EBOKHTExMHNdNmXQCZ7Mnbifg6QNpR3ExEmPxbsLrel4pKg107KsciWF3x/WnkMkEwxb1tClLN6sci0F5HlrTWMT/4nDn7tv5kADkH6ZMLrDKpuoswnOtjuVt7k94E0r8UxZ/O4QVqkxQ9iw5us1VoubvqgsBMKQ7kE5oOedMbXOb4IpZo+RKssAFtb7PzP19zdaIPKzUG+CLBygUTFiJ1q0Vo0mSab7/qgrxMIF4QpwFMvw6OUj1rg==
+CSRFPreventionToken: 65C56BFD:33LTwFioirJ0/ONZHOtNNEAiZzBGHkm+PoxuIWwXjLY
+Accept-Encoding: gzip
+
+2024/02/08 16:04:20 <<<<<<<<<< RESULT:
+HTTP/1.1 500 no such resource 'ct:305'
+Connection: close
+Content-Length: 13
+Cache-Control: max-age=0
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:04:20 GMT
+Expires: Fri, 09 Feb 2024 00:04:20 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":null}
+2024/02/08 16:04:20 >>>>>>>>>> REQUEST:
+GET /api2/json/pools HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56BFD::phkM8SJAGoe3YVuXwPLMB7KSCw+XbvjirxzIIvH/N7Swk6wWZMp12DE4iZ7uKFFxUloWrQ186k76CX56Mt4J4TPxRpnjzA2EBOKHTExMHNdNmXQCZ7Mnbifg6QNpR3ExEmPxbsLrel4pKg107KsciWF3x/WnkMkEwxb1tClLN6sci0F5HlrTWMT/4nDn7tv5kADkH6ZMLrDKpuoswnOtjuVt7k94E0r8UxZ/O4QVqkxQ9iw5us1VoubvqgsBMKQ7kE5oOedMbXOb4IpZo+RKssAFtb7PzP19zdaIPKzUG+CLBygUTFiJ1q0Vo0mSab7/qgrxMIF4QpwFMvw6OUj1rg==
+CSRFPreventionToken: 65C56BFD:33LTwFioirJ0/ONZHOtNNEAiZzBGHkm+PoxuIWwXjLY
+Accept-Encoding: gzip
+
+2024/02/08 16:04:20 <<<<<<<<<< RESULT:
+HTTP/1.1 200 OK
+Content-Length: 11
+Cache-Control: max-age=0
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:04:20 GMT
+Expires: Fri, 09 Feb 2024 00:04:20 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":[]}
+[90mThu, 08 Feb 2024 16:07:03 -0800[0m [32mINF[0m [1mgithub.com/Telmate/terraform-provider-proxmox/v2/proxmox/util.go:159[0m[36m >[0m Enabling the capture of log-library logs as ithe _capturelog flag was detected
+[90mThu, 08 Feb 2024 16:07:03 -0800[0m [32mINF[0m [1mgithub.com/Telmate/terraform-provider-proxmox/v2/proxmox/util.go:192[0m[36m >[0m Logging Started. Root Logger Set to level debug
+2024/02/08 16:07:03 >>>>>>>>>> REQUEST:
+GET /api2/json/cluster/resources?type=vm HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56CA7::hyf4wyOig/Ezwf66hOoURszt3ogQnoLcv0II+sQqXFhjOq8zyj77UCbnALWGG9xPKiNGW1jY2OFUwcj39zEGF5vo0A5Bsap9omPwP/N4uWaREGM3XNN0ARoEQY5IBBWEYL3Rti3Jick1RkOEbjeyYi+hmQ1btqGBMVEPDrnNWDS/utxrc2ky5qo7XV4uQMlB6hN8xC0k6m/Z7n2JAX1tCBELSdrqacOSq3kp0GtC8KG8KtFaqD3m15S6t+w1fLP4f0GM94fNz9cMkgPoynPFEOI+KLyfJLlBKxdBsEiLDADXth63pfn0MWb/wlkMWA1wcZ9w48yLqyG3mi06lJQoTw==
+CSRFPreventionToken: 65C56CA7:zLPOdhd1I+Qq74yW0oLgiWli2k2UDxWQRgTltPYWNYg
+Accept-Encoding: gzip
+
+2024/02/08 16:07:03 <<<<<<<<<< RESULT:
+HTTP/1.1 200 OK
+Content-Length: 2524
+Cache-Control: max-age=0
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:07:03 GMT
+Expires: Fri, 09 Feb 2024 00:07:03 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":[{"uptime":0,"maxmem":4294967296,"vmid":100,"diskread":0,"mem":0,"template":0,"cpu":0,"name":"another-test","diskwrite":0,"type":"qemu","node":"lepakshi-lenovomini","status":"stopped","maxcpu":2,"netin":0,"disk":0,"id":"qemu/100","netout":0,"maxdisk":34359738368},{"cpu":0,"uptime":0,"maxmem":8489271296,"vmid":105,"diskread":0,"mem":0,"template":0,"maxcpu":4,"netin":0,"disk":0,"id":"qemu/105","netout":0,"maxdisk":137438953472,"name":"ubuntu-code-server","diskwrite":0,"type":"qemu","node":"lepakshi-lenovomini","status":"stopped"},{"id":"qemu/300","netout":0,"maxdisk":8589934592,"maxcpu":2,"netin":0,"disk":0,"type":"qemu","node":"lepakshi-lenovomini","status":"stopped","name":"test-admin","diskwrite":0,"cpu":0,"mem":0,"template":0,"uptime":0,"maxmem":4294967296,"vmid":300,"diskread":0},{"cpu":0,"uptime":0,"maxmem":1073741824,"vmid":301,"diskread":0,"mem":0,"template":0,"maxcpu":2,"netin":0,"disk":0,"id":"qemu/301","netout":0,"tags":"dev;gitea;terraform","maxdisk":68719476736,"name":"gitea-dev","diskwrite":0,"type":"qemu","node":"lepakshi-lenovomini","status":"stopped"},{"cpu":0,"template":0,"mem":0,"uptime":0,"diskread":0,"vmid":302,"maxmem":12884901888,"tags":"dev","netout":0,"id":"qemu/302","maxdisk":137438953472,"netin":0,"maxcpu":3,"disk":0,"status":"stopped","type":"qemu","node":"lepakshi-lenovomini","name":"win-11-dev","diskwrite":0},{"maxcpu":2,"netin":0,"disk":0,"id":"lxc/303","netout":0,"tags":"dev;ops","maxdisk":68719476736,"name":"dev-kea-dhcp-01","diskwrite":0,"node":"lepakshi-lenovomini","type":"lxc","status":"stopped","cpu":0,"uptime":0,"maxmem":2147483648,"vmid":303,"diskread":0,"mem":0,"template":0},{"cpu":0,"diskread":0,"vmid":304,"maxmem":1073741824,"uptime":0,"template":0,"mem":0,"disk":0,"netin":0,"maxcpu":1,"maxdisk":8589934592,"netout":0,"id":"lxc/304","diskwrite":0,"name":"test-kea-dchp","status":"stopped","node":"lepakshi-lenovomini","type":"lxc"},{"id":"lxc/305","netout":1312,"tags":"dev;dhcp;kea;postgresql","maxdisk":33501757440,"maxcpu":2,"netin":220,"disk":564256768,"node":"lepakshi-lenovomini","type":"lxc","status":"running","name":"dev-kea-dhcp-02","diskwrite":2367488,"cpu":0.000897797985740017,"mem":11247616,"template":0,"uptime":27,"maxmem":2147483648,"vmid":305,"diskread":197246976},{"cpu":0,"uptime":0,"diskread":0,"vmid":400,"maxmem":23622320128,"template":0,"mem":0,"netin":0,"maxcpu":4,"disk":0,"netout":0,"id":"qemu/400","maxdisk":34359738368,"name":"proxmox-dev","diskwrite":0,"status":"stopped","node":"lepakshi-lenovomini","type":"qemu"}]}
+2024/02/08 16:07:03 >>>>>>>>>> REQUEST:
+GET /api2/json/nodes/lepakshi-lenovomini/lxc/305/config HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56CA7::hyf4wyOig/Ezwf66hOoURszt3ogQnoLcv0II+sQqXFhjOq8zyj77UCbnALWGG9xPKiNGW1jY2OFUwcj39zEGF5vo0A5Bsap9omPwP/N4uWaREGM3XNN0ARoEQY5IBBWEYL3Rti3Jick1RkOEbjeyYi+hmQ1btqGBMVEPDrnNWDS/utxrc2ky5qo7XV4uQMlB6hN8xC0k6m/Z7n2JAX1tCBELSdrqacOSq3kp0GtC8KG8KtFaqD3m15S6t+w1fLP4f0GM94fNz9cMkgPoynPFEOI+KLyfJLlBKxdBsEiLDADXth63pfn0MWb/wlkMWA1wcZ9w48yLqyG3mi06lJQoTw==
+CSRFPreventionToken: 65C56CA7:zLPOdhd1I+Qq74yW0oLgiWli2k2UDxWQRgTltPYWNYg
+Accept-Encoding: gzip
+
+2024/02/08 16:07:03 <<<<<<<<<< RESULT:
+HTTP/1.1 200 OK
+Content-Length: 644
+Cache-Control: max-age=0
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:07:03 GMT
+Expires: Fri, 09 Feb 2024 00:07:03 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":{"hostname":"dev-kea-dhcp-02","onboot":1,"ostype":"debian","rootfs":"proxthin:vm-305-disk-0,size=32G","description":"DHCP Server with kea and postgresql created on 2024-02-09-12-04\n","swap":0,"digest":"a5955cff5dffaeb67e640e2cc856a4ad3a289bbb","tty":2,"console":1,"tags":"dev;dhcp;kea;postgresql","net0":"name=eth0,bridge=vmbr0,firewall=1,gw=192.168.30.1,hwaddr=BC:24:11:D2:35:95,ip=192.168.30.81/24,tag=30,type=veth","cmode":"tty","net1":"name=eth1,bridge=vmbr2,gw=192.168.1.1,hwaddr=BC:24:11:F3:22:52,ip=192.168.1.1/24,type=veth","cores":2,"arch":"amd64","cpulimit":"0","memory":2048,"protection":0,"unprivileged":1,"cpuunits":1024}}
+2024/02/08 16:07:03 >>>>>>>>>> REQUEST:
+GET /api2/json/cluster/ha/resources/305 HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56CA7::hyf4wyOig/Ezwf66hOoURszt3ogQnoLcv0II+sQqXFhjOq8zyj77UCbnALWGG9xPKiNGW1jY2OFUwcj39zEGF5vo0A5Bsap9omPwP/N4uWaREGM3XNN0ARoEQY5IBBWEYL3Rti3Jick1RkOEbjeyYi+hmQ1btqGBMVEPDrnNWDS/utxrc2ky5qo7XV4uQMlB6hN8xC0k6m/Z7n2JAX1tCBELSdrqacOSq3kp0GtC8KG8KtFaqD3m15S6t+w1fLP4f0GM94fNz9cMkgPoynPFEOI+KLyfJLlBKxdBsEiLDADXth63pfn0MWb/wlkMWA1wcZ9w48yLqyG3mi06lJQoTw==
+CSRFPreventionToken: 65C56CA7:zLPOdhd1I+Qq74yW0oLgiWli2k2UDxWQRgTltPYWNYg
+Accept-Encoding: gzip
+
+2024/02/08 16:07:03 <<<<<<<<<< RESULT:
+HTTP/1.1 500 no such resource 'ct:305'
+Connection: close
+Content-Length: 13
+Cache-Control: max-age=0
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:07:03 GMT
+Expires: Fri, 09 Feb 2024 00:07:03 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":null}
+2024/02/08 16:07:03 >>>>>>>>>> REQUEST:
+GET /api2/json/pools HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56CA7::hyf4wyOig/Ezwf66hOoURszt3ogQnoLcv0II+sQqXFhjOq8zyj77UCbnALWGG9xPKiNGW1jY2OFUwcj39zEGF5vo0A5Bsap9omPwP/N4uWaREGM3XNN0ARoEQY5IBBWEYL3Rti3Jick1RkOEbjeyYi+hmQ1btqGBMVEPDrnNWDS/utxrc2ky5qo7XV4uQMlB6hN8xC0k6m/Z7n2JAX1tCBELSdrqacOSq3kp0GtC8KG8KtFaqD3m15S6t+w1fLP4f0GM94fNz9cMkgPoynPFEOI+KLyfJLlBKxdBsEiLDADXth63pfn0MWb/wlkMWA1wcZ9w48yLqyG3mi06lJQoTw==
+CSRFPreventionToken: 65C56CA7:zLPOdhd1I+Qq74yW0oLgiWli2k2UDxWQRgTltPYWNYg
+Accept-Encoding: gzip
+
+2024/02/08 16:07:03 <<<<<<<<<< RESULT:
+HTTP/1.1 200 OK
+Content-Length: 11
+Cache-Control: max-age=0
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:07:03 GMT
+Expires: Fri, 09 Feb 2024 00:07:03 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":[]}
+[90mThu, 08 Feb 2024 16:07:15 -0800[0m [32mINF[0m [1mgithub.com/Telmate/terraform-provider-proxmox/v2/proxmox/util.go:159[0m[36m >[0m Enabling the capture of log-library logs as ithe _capturelog flag was detected
+[90mThu, 08 Feb 2024 16:07:15 -0800[0m [32mINF[0m [1mgithub.com/Telmate/terraform-provider-proxmox/v2/proxmox/util.go:192[0m[36m >[0m Logging Started. Root Logger Set to level debug
+2024/02/08 16:07:15 >>>>>>>>>> REQUEST:
+GET /api2/json/cluster/resources?type=vm HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56CB3::ijIg5NTHgzefnTshDtPQIH7LS2iSqIdhdBDOb31g5BM2Oy+GkafBA3z22yL3IMMoy0QmpbvnEwx6BnhgpzRe3PIzpUnaxYP2VrZtKkFrN9O30rBSqLq0AhO/3KgyoX+hpUqM2dqiSUfO9BnGSPVnIPPd8pOjJ414m0844mMjEhXwDuhltFqMgw4i6pmmjolgAor0QBA9/cBJz6W+b6sZX74pXB/GLPFoT74rjL+4LFQLtBrHyJGEx9BIXNB5QTR11fuyuL/UjrOysMB3a+tz88OqLgQP621qzpjYqjkfQcwa3dEym7NUyZp5wZUfOFltCM8dPMXBvmJ7VSzEsxA4PQ==
+CSRFPreventionToken: 65C56CB3:pPuWAZ4qIZlewVzcDUOVuNVnzdsFbjYnRgoVsVmKqpQ
+Accept-Encoding: gzip
+
+2024/02/08 16:07:15 <<<<<<<<<< RESULT:
+HTTP/1.1 200 OK
+Content-Length: 2470
+Cache-Control: max-age=0
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:07:15 GMT
+Expires: Fri, 09 Feb 2024 00:07:15 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":[{"cpu":0,"uptime":0,"maxmem":4294967296,"vmid":100,"diskread":0,"mem":0,"template":0,"maxcpu":2,"netin":0,"disk":0,"id":"qemu/100","netout":0,"maxdisk":34359738368,"name":"another-test","diskwrite":0,"node":"lepakshi-lenovomini","type":"qemu","status":"stopped"},{"cpu":0,"diskread":0,"vmid":105,"maxmem":8489271296,"uptime":0,"template":0,"mem":0,"disk":0,"netin":0,"maxcpu":4,"maxdisk":137438953472,"netout":0,"id":"qemu/105","diskwrite":0,"name":"ubuntu-code-server","status":"stopped","type":"qemu","node":"lepakshi-lenovomini"},{"maxdisk":8589934592,"id":"qemu/300","netout":0,"disk":0,"maxcpu":2,"netin":0,"node":"lepakshi-lenovomini","type":"qemu","status":"stopped","diskwrite":0,"name":"test-admin","cpu":0,"mem":0,"template":0,"vmid":300,"maxmem":4294967296,"diskread":0,"uptime":0},{"status":"stopped","node":"lepakshi-lenovomini","type":"qemu","name":"gitea-dev","diskwrite":0,"tags":"dev;gitea;terraform","netout":0,"id":"qemu/301","maxdisk":68719476736,"netin":0,"maxcpu":2,"disk":0,"template":0,"mem":0,"uptime":0,"diskread":0,"maxmem":1073741824,"vmid":301,"cpu":0},{"diskread":0,"vmid":302,"maxmem":12884901888,"uptime":0,"template":0,"mem":0,"cpu":0,"diskwrite":0,"name":"win-11-dev","status":"stopped","node":"lepakshi-lenovomini","type":"qemu","disk":0,"netin":0,"maxcpu":3,"maxdisk":137438953472,"netout":0,"tags":"dev","id":"qemu/302"},{"template":0,"mem":0,"diskread":0,"vmid":303,"maxmem":2147483648,"uptime":0,"cpu":0,"status":"stopped","node":"lepakshi-lenovomini","type":"lxc","diskwrite":0,"name":"dev-kea-dhcp-01","maxdisk":68719476736,"netout":0,"tags":"dev;ops","id":"lxc/303","disk":0,"netin":0,"maxcpu":2},{"diskread":0,"vmid":304,"maxmem":1073741824,"uptime":0,"template":0,"mem":0,"cpu":0,"diskwrite":0,"name":"test-kea-dchp","status":"stopped","node":"lepakshi-lenovomini","type":"lxc","disk":0,"netin":0,"maxcpu":1,"maxdisk":8589934592,"netout":0,"id":"lxc/304"},{"status":"stopped","node":"lepakshi-lenovomini","type":"lxc","name":"dev-kea-dhcp-02","diskwrite":0,"netout":0,"tags":"dev;dhcp;kea;postgresql","id":"lxc/305","maxdisk":34359738368,"netin":0,"maxcpu":2,"disk":0,"template":0,"mem":0,"uptime":0,"diskread":0,"maxmem":2147483648,"vmid":305,"cpu":0},{"cpu":0,"maxmem":23622320128,"vmid":400,"diskread":0,"uptime":0,"mem":0,"template":0,"disk":0,"maxcpu":4,"netin":0,"maxdisk":34359738368,"id":"qemu/400","netout":0,"diskwrite":0,"name":"proxmox-dev","node":"lepakshi-lenovomini","type":"qemu","status":"stopped"}]}
+2024/02/08 16:07:15 >>>>>>>>>> REQUEST:
+GET /api2/json/nodes/lepakshi-lenovomini/lxc/305/config HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56CB3::ijIg5NTHgzefnTshDtPQIH7LS2iSqIdhdBDOb31g5BM2Oy+GkafBA3z22yL3IMMoy0QmpbvnEwx6BnhgpzRe3PIzpUnaxYP2VrZtKkFrN9O30rBSqLq0AhO/3KgyoX+hpUqM2dqiSUfO9BnGSPVnIPPd8pOjJ414m0844mMjEhXwDuhltFqMgw4i6pmmjolgAor0QBA9/cBJz6W+b6sZX74pXB/GLPFoT74rjL+4LFQLtBrHyJGEx9BIXNB5QTR11fuyuL/UjrOysMB3a+tz88OqLgQP621qzpjYqjkfQcwa3dEym7NUyZp5wZUfOFltCM8dPMXBvmJ7VSzEsxA4PQ==
+CSRFPreventionToken: 65C56CB3:pPuWAZ4qIZlewVzcDUOVuNVnzdsFbjYnRgoVsVmKqpQ
+Accept-Encoding: gzip
+
+2024/02/08 16:07:15 <<<<<<<<<< RESULT:
+HTTP/1.1 200 OK
+Content-Length: 644
+Cache-Control: max-age=0
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:07:15 GMT
+Expires: Fri, 09 Feb 2024 00:07:15 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":{"net0":"name=eth0,bridge=vmbr0,firewall=1,gw=192.168.30.1,hwaddr=BC:24:11:D2:35:95,ip=192.168.30.81/24,tag=30,type=veth","cmode":"tty","tags":"dev;dhcp;kea;postgresql","cores":2,"arch":"amd64","net1":"name=eth1,bridge=vmbr2,gw=192.168.1.1,hwaddr=BC:24:11:F3:22:52,ip=192.168.1.1/24,type=veth","memory":2048,"cpulimit":"0","protection":0,"unprivileged":1,"cpuunits":1024,"swap":0,"digest":"a5955cff5dffaeb67e640e2cc856a4ad3a289bbb","tty":2,"console":1,"description":"DHCP Server with kea and postgresql created on 2024-02-09-12-04\n","hostname":"dev-kea-dhcp-02","onboot":1,"ostype":"debian","rootfs":"proxthin:vm-305-disk-0,size=32G"}}
+2024/02/08 16:07:15 >>>>>>>>>> REQUEST:
+GET /api2/json/cluster/ha/resources/305 HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56CB3::ijIg5NTHgzefnTshDtPQIH7LS2iSqIdhdBDOb31g5BM2Oy+GkafBA3z22yL3IMMoy0QmpbvnEwx6BnhgpzRe3PIzpUnaxYP2VrZtKkFrN9O30rBSqLq0AhO/3KgyoX+hpUqM2dqiSUfO9BnGSPVnIPPd8pOjJ414m0844mMjEhXwDuhltFqMgw4i6pmmjolgAor0QBA9/cBJz6W+b6sZX74pXB/GLPFoT74rjL+4LFQLtBrHyJGEx9BIXNB5QTR11fuyuL/UjrOysMB3a+tz88OqLgQP621qzpjYqjkfQcwa3dEym7NUyZp5wZUfOFltCM8dPMXBvmJ7VSzEsxA4PQ==
+CSRFPreventionToken: 65C56CB3:pPuWAZ4qIZlewVzcDUOVuNVnzdsFbjYnRgoVsVmKqpQ
+Accept-Encoding: gzip
+
+2024/02/08 16:07:15 <<<<<<<<<< RESULT:
+HTTP/1.1 500 no such resource 'ct:305'
+Connection: close
+Content-Length: 13
+Cache-Control: max-age=0
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:07:15 GMT
+Expires: Fri, 09 Feb 2024 00:07:15 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":null}
+2024/02/08 16:07:15 >>>>>>>>>> REQUEST:
+GET /api2/json/pools HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56CB3::ijIg5NTHgzefnTshDtPQIH7LS2iSqIdhdBDOb31g5BM2Oy+GkafBA3z22yL3IMMoy0QmpbvnEwx6BnhgpzRe3PIzpUnaxYP2VrZtKkFrN9O30rBSqLq0AhO/3KgyoX+hpUqM2dqiSUfO9BnGSPVnIPPd8pOjJ414m0844mMjEhXwDuhltFqMgw4i6pmmjolgAor0QBA9/cBJz6W+b6sZX74pXB/GLPFoT74rjL+4LFQLtBrHyJGEx9BIXNB5QTR11fuyuL/UjrOysMB3a+tz88OqLgQP621qzpjYqjkfQcwa3dEym7NUyZp5wZUfOFltCM8dPMXBvmJ7VSzEsxA4PQ==
+CSRFPreventionToken: 65C56CB3:pPuWAZ4qIZlewVzcDUOVuNVnzdsFbjYnRgoVsVmKqpQ
+Accept-Encoding: gzip
+
+2024/02/08 16:07:15 <<<<<<<<<< RESULT:
+HTTP/1.1 200 OK
+Content-Length: 11
+Cache-Control: max-age=0
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:07:15 GMT
+Expires: Fri, 09 Feb 2024 00:07:15 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":[]}
+[90mThu, 08 Feb 2024 16:07:41 -0800[0m [32mINF[0m [1mgithub.com/Telmate/terraform-provider-proxmox/v2/proxmox/util.go:159[0m[36m >[0m Enabling the capture of log-library logs as ithe _capturelog flag was detected
+[90mThu, 08 Feb 2024 16:07:41 -0800[0m [32mINF[0m [1mgithub.com/Telmate/terraform-provider-proxmox/v2/proxmox/util.go:192[0m[36m >[0m Logging Started. Root Logger Set to level debug
+2024/02/08 16:07:41 >>>>>>>>>> REQUEST:
+GET /api2/json/cluster/resources?type=vm HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56CCD::K65e9cacmacKsNpfrw+qEEjHGiSwFaEWpxdQQD9Ybm2h/yHjRxbztjajlFiyN14cuJiPa51l1dLG1wKLLhA6U6TE2GeMMpOCODu6810pr5waun2fsIKVfnsbHXICLwoQk+3nM1F2z2fj5RcJACMtn1p2DjlPvAcbIIg3o4ZXsxubDeCOLqR8SPhYj0ZBqrjW9CeqDocBnLxyFajhM4/3Df4rG8N7uqDMI72SSmvEzLhdKQabKhiiJG6/NoOcQrSAv74ebtwOG2JQbLeVuxUwr8i18XLYXYmIL1vbeCeZWRXummARZXbbEEb28aUAT4fFob1FyNSMGElOStCqlvJwPQ==
+CSRFPreventionToken: 65C56CCD:pE8mmMwi0jMOouprwezNDCZYTfeyY/Htzq//ci5iFIs
+Accept-Encoding: gzip
+
+2024/02/08 16:07:41 <<<<<<<<<< RESULT:
+HTTP/1.1 200 OK
+Content-Length: 2470
+Cache-Control: max-age=0
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:07:41 GMT
+Expires: Fri, 09 Feb 2024 00:07:41 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":[{"disk":0,"netin":0,"maxcpu":2,"maxdisk":34359738368,"netout":0,"id":"qemu/100","diskwrite":0,"name":"another-test","status":"stopped","type":"qemu","node":"lepakshi-lenovomini","cpu":0,"diskread":0,"maxmem":4294967296,"vmid":100,"uptime":0,"template":0,"mem":0},{"status":"stopped","node":"lepakshi-lenovomini","type":"qemu","diskwrite":0,"name":"ubuntu-code-server","maxdisk":137438953472,"netout":0,"id":"qemu/105","disk":0,"netin":0,"maxcpu":4,"template":0,"mem":0,"diskread":0,"maxmem":8489271296,"vmid":105,"uptime":0,"cpu":0},{"cpu":0,"mem":0,"template":0,"vmid":300,"maxmem":4294967296,"diskread":0,"uptime":0,"maxdisk":8589934592,"id":"qemu/300","netout":0,"disk":0,"maxcpu":2,"netin":0,"node":"lepakshi-lenovomini","type":"qemu","status":"stopped","diskwrite":0,"name":"test-admin"},{"mem":0,"template":0,"uptime":0,"maxmem":1073741824,"vmid":301,"diskread":0,"cpu":0,"node":"lepakshi-lenovomini","type":"qemu","status":"stopped","name":"gitea-dev","diskwrite":0,"id":"qemu/301","netout":0,"tags":"dev;gitea;terraform","maxdisk":68719476736,"maxcpu":2,"netin":0,"disk":0},{"status":"stopped","type":"qemu","node":"lepakshi-lenovomini","diskwrite":0,"name":"win-11-dev","maxdisk":137438953472,"netout":0,"tags":"dev","id":"qemu/302","disk":0,"netin":0,"maxcpu":3,"template":0,"mem":0,"diskread":0,"maxmem":12884901888,"vmid":302,"uptime":0,"cpu":0},{"mem":0,"template":0,"vmid":303,"maxmem":2147483648,"diskread":0,"uptime":0,"cpu":0,"type":"lxc","node":"lepakshi-lenovomini","status":"stopped","diskwrite":0,"name":"dev-kea-dhcp-01","maxdisk":68719476736,"id":"lxc/303","netout":0,"tags":"dev;ops","disk":0,"maxcpu":2,"netin":0},{"netout":0,"id":"lxc/304","maxdisk":8589934592,"netin":0,"maxcpu":1,"disk":0,"status":"stopped","type":"lxc","node":"lepakshi-lenovomini","name":"test-kea-dchp","diskwrite":0,"cpu":0,"template":0,"mem":0,"uptime":0,"diskread":0,"maxmem":1073741824,"vmid":304},{"mem":0,"template":0,"vmid":305,"maxmem":2147483648,"diskread":0,"uptime":0,"cpu":0,"type":"lxc","node":"lepakshi-lenovomini","status":"stopped","diskwrite":0,"name":"dev-kea-dhcp-02","maxdisk":34359738368,"id":"lxc/305","netout":0,"tags":"dev;dhcp;kea;postgresql","disk":0,"maxcpu":2,"netin":0},{"name":"proxmox-dev","diskwrite":0,"status":"stopped","node":"lepakshi-lenovomini","type":"qemu","netin":0,"maxcpu":4,"disk":0,"netout":0,"id":"qemu/400","maxdisk":34359738368,"uptime":0,"diskread":0,"maxmem":23622320128,"vmid":400,"template":0,"mem":0,"cpu":0}]}
+2024/02/08 16:07:41 >>>>>>>>>> REQUEST:
+GET /api2/json/nodes/lepakshi-lenovomini/lxc/305/config HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56CCD::K65e9cacmacKsNpfrw+qEEjHGiSwFaEWpxdQQD9Ybm2h/yHjRxbztjajlFiyN14cuJiPa51l1dLG1wKLLhA6U6TE2GeMMpOCODu6810pr5waun2fsIKVfnsbHXICLwoQk+3nM1F2z2fj5RcJACMtn1p2DjlPvAcbIIg3o4ZXsxubDeCOLqR8SPhYj0ZBqrjW9CeqDocBnLxyFajhM4/3Df4rG8N7uqDMI72SSmvEzLhdKQabKhiiJG6/NoOcQrSAv74ebtwOG2JQbLeVuxUwr8i18XLYXYmIL1vbeCeZWRXummARZXbbEEb28aUAT4fFob1FyNSMGElOStCqlvJwPQ==
+CSRFPreventionToken: 65C56CCD:pE8mmMwi0jMOouprwezNDCZYTfeyY/Htzq//ci5iFIs
+Accept-Encoding: gzip
+
+2024/02/08 16:07:41 <<<<<<<<<< RESULT:
+HTTP/1.1 200 OK
+Content-Length: 644
+Cache-Control: max-age=0
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:07:41 GMT
+Expires: Fri, 09 Feb 2024 00:07:41 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":{"console":1,"tty":2,"digest":"a5955cff5dffaeb67e640e2cc856a4ad3a289bbb","swap":0,"cpuunits":1024,"unprivileged":1,"protection":0,"memory":2048,"cpulimit":"0","arch":"amd64","cores":2,"net1":"name=eth1,bridge=vmbr2,gw=192.168.1.1,hwaddr=BC:24:11:F3:22:52,ip=192.168.1.1/24,type=veth","net0":"name=eth0,bridge=vmbr0,firewall=1,gw=192.168.30.1,hwaddr=BC:24:11:D2:35:95,ip=192.168.30.81/24,tag=30,type=veth","cmode":"tty","tags":"dev;dhcp;kea;postgresql","rootfs":"proxthin:vm-305-disk-0,size=32G","ostype":"debian","onboot":1,"hostname":"dev-kea-dhcp-02","description":"DHCP Server with kea and postgresql created on 2024-02-09-12-04\n"}}
+2024/02/08 16:07:41 >>>>>>>>>> REQUEST:
+GET /api2/json/cluster/ha/resources/305 HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56CCD::K65e9cacmacKsNpfrw+qEEjHGiSwFaEWpxdQQD9Ybm2h/yHjRxbztjajlFiyN14cuJiPa51l1dLG1wKLLhA6U6TE2GeMMpOCODu6810pr5waun2fsIKVfnsbHXICLwoQk+3nM1F2z2fj5RcJACMtn1p2DjlPvAcbIIg3o4ZXsxubDeCOLqR8SPhYj0ZBqrjW9CeqDocBnLxyFajhM4/3Df4rG8N7uqDMI72SSmvEzLhdKQabKhiiJG6/NoOcQrSAv74ebtwOG2JQbLeVuxUwr8i18XLYXYmIL1vbeCeZWRXummARZXbbEEb28aUAT4fFob1FyNSMGElOStCqlvJwPQ==
+CSRFPreventionToken: 65C56CCD:pE8mmMwi0jMOouprwezNDCZYTfeyY/Htzq//ci5iFIs
+Accept-Encoding: gzip
+
+2024/02/08 16:07:41 <<<<<<<<<< RESULT:
+HTTP/1.1 500 no such resource 'ct:305'
+Connection: close
+Content-Length: 13
+Cache-Control: max-age=0
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:07:41 GMT
+Expires: Fri, 09 Feb 2024 00:07:41 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":null}
+2024/02/08 16:07:41 >>>>>>>>>> REQUEST:
+GET /api2/json/pools HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56CCD::K65e9cacmacKsNpfrw+qEEjHGiSwFaEWpxdQQD9Ybm2h/yHjRxbztjajlFiyN14cuJiPa51l1dLG1wKLLhA6U6TE2GeMMpOCODu6810pr5waun2fsIKVfnsbHXICLwoQk+3nM1F2z2fj5RcJACMtn1p2DjlPvAcbIIg3o4ZXsxubDeCOLqR8SPhYj0ZBqrjW9CeqDocBnLxyFajhM4/3Df4rG8N7uqDMI72SSmvEzLhdKQabKhiiJG6/NoOcQrSAv74ebtwOG2JQbLeVuxUwr8i18XLYXYmIL1vbeCeZWRXummARZXbbEEb28aUAT4fFob1FyNSMGElOStCqlvJwPQ==
+CSRFPreventionToken: 65C56CCD:pE8mmMwi0jMOouprwezNDCZYTfeyY/Htzq//ci5iFIs
+Accept-Encoding: gzip
+
+2024/02/08 16:07:41 <<<<<<<<<< RESULT:
+HTTP/1.1 200 OK
+Content-Length: 11
+Cache-Control: max-age=0
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:07:41 GMT
+Expires: Fri, 09 Feb 2024 00:07:41 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":[]}
+[90mThu, 08 Feb 2024 16:07:41 -0800[0m [32mINF[0m [1mgithub.com/Telmate/terraform-provider-proxmox/v2/proxmox/util.go:159[0m[36m >[0m Enabling the capture of log-library logs as ithe _capturelog flag was detected
+[90mThu, 08 Feb 2024 16:07:41 -0800[0m [32mINF[0m [1mgithub.com/Telmate/terraform-provider-proxmox/v2/proxmox/util.go:192[0m[36m >[0m Logging Started. Root Logger Set to level debug
+2024/02/08 16:07:41 >>>>>>>>>> REQUEST:
+GET /api2/json/cluster/resources?type=vm HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56CCD::K65e9cacmacKsNpfrw+qEEjHGiSwFaEWpxdQQD9Ybm2h/yHjRxbztjajlFiyN14cuJiPa51l1dLG1wKLLhA6U6TE2GeMMpOCODu6810pr5waun2fsIKVfnsbHXICLwoQk+3nM1F2z2fj5RcJACMtn1p2DjlPvAcbIIg3o4ZXsxubDeCOLqR8SPhYj0ZBqrjW9CeqDocBnLxyFajhM4/3Df4rG8N7uqDMI72SSmvEzLhdKQabKhiiJG6/NoOcQrSAv74ebtwOG2JQbLeVuxUwr8i18XLYXYmIL1vbeCeZWRXummARZXbbEEb28aUAT4fFob1FyNSMGElOStCqlvJwPQ==
+CSRFPreventionToken: 65C56CCD:pE8mmMwi0jMOouprwezNDCZYTfeyY/Htzq//ci5iFIs
+Accept-Encoding: gzip
+
+2024/02/08 16:07:41 <<<<<<<<<< RESULT:
+HTTP/1.1 200 OK
+Content-Length: 2470
+Cache-Control: max-age=0
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:07:41 GMT
+Expires: Fri, 09 Feb 2024 00:07:41 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":[{"maxcpu":2,"netin":0,"disk":0,"id":"qemu/100","netout":0,"maxdisk":34359738368,"name":"another-test","diskwrite":0,"type":"qemu","node":"lepakshi-lenovomini","status":"stopped","cpu":0,"uptime":0,"vmid":100,"maxmem":4294967296,"diskread":0,"mem":0,"template":0},{"cpu":0,"diskread":0,"maxmem":8489271296,"vmid":105,"uptime":0,"template":0,"mem":0,"disk":0,"netin":0,"maxcpu":4,"maxdisk":137438953472,"netout":0,"id":"qemu/105","diskwrite":0,"name":"ubuntu-code-server","status":"stopped","node":"lepakshi-lenovomini","type":"qemu"},{"diskread":0,"maxmem":4294967296,"vmid":300,"uptime":0,"template":0,"mem":0,"cpu":0,"diskwrite":0,"name":"test-admin","status":"stopped","type":"qemu","node":"lepakshi-lenovomini","disk":0,"netin":0,"maxcpu":2,"maxdisk":8589934592,"netout":0,"id":"qemu/300"},{"type":"qemu","node":"lepakshi-lenovomini","status":"stopped","diskwrite":0,"name":"gitea-dev","maxdisk":68719476736,"id":"qemu/301","netout":0,"tags":"dev;gitea;terraform","disk":0,"maxcpu":2,"netin":0,"mem":0,"template":0,"vmid":301,"maxmem":1073741824,"diskread":0,"uptime":0,"cpu":0},{"disk":0,"netin":0,"maxcpu":3,"maxdisk":137438953472,"tags":"dev","netout":0,"id":"qemu/302","diskwrite":0,"name":"win-11-dev","status":"stopped","node":"lepakshi-lenovomini","type":"qemu","cpu":0,"diskread":0,"maxmem":12884901888,"vmid":302,"uptime":0,"template":0,"mem":0},{"uptime":0,"vmid":303,"maxmem":2147483648,"diskread":0,"mem":0,"template":0,"cpu":0,"name":"dev-kea-dhcp-01","diskwrite":0,"node":"lepakshi-lenovomini","type":"lxc","status":"stopped","maxcpu":2,"netin":0,"disk":0,"id":"lxc/303","tags":"dev;ops","netout":0,"maxdisk":68719476736},{"cpu":0,"maxmem":1073741824,"vmid":304,"diskread":0,"uptime":0,"mem":0,"template":0,"disk":0,"maxcpu":1,"netin":0,"maxdisk":8589934592,"id":"lxc/304","netout":0,"diskwrite":0,"name":"test-kea-dchp","node":"lepakshi-lenovomini","type":"lxc","status":"stopped"},{"cpu":0,"diskread":0,"vmid":305,"maxmem":2147483648,"uptime":0,"template":0,"mem":0,"disk":0,"netin":0,"maxcpu":2,"maxdisk":34359738368,"netout":0,"tags":"dev;dhcp;kea;postgresql","id":"lxc/305","diskwrite":0,"name":"dev-kea-dhcp-02","status":"stopped","node":"lepakshi-lenovomini","type":"lxc"},{"status":"stopped","node":"lepakshi-lenovomini","type":"qemu","name":"proxmox-dev","diskwrite":0,"netout":0,"id":"qemu/400","maxdisk":34359738368,"netin":0,"maxcpu":4,"disk":0,"template":0,"mem":0,"uptime":0,"diskread":0,"vmid":400,"maxmem":23622320128,"cpu":0}]}
+2024/02/08 16:07:41 >>>>>>>>>> REQUEST:
+PUT /api2/json/nodes/lepakshi-lenovomini/lxc/305/config HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Content-Length: 259
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56CCD::K65e9cacmacKsNpfrw+qEEjHGiSwFaEWpxdQQD9Ybm2h/yHjRxbztjajlFiyN14cuJiPa51l1dLG1wKLLhA6U6TE2GeMMpOCODu6810pr5waun2fsIKVfnsbHXICLwoQk+3nM1F2z2fj5RcJACMtn1p2DjlPvAcbIIg3o4ZXsxubDeCOLqR8SPhYj0ZBqrjW9CeqDocBnLxyFajhM4/3Df4rG8N7uqDMI72SSmvEzLhdKQabKhiiJG6/NoOcQrSAv74ebtwOG2JQbLeVuxUwr8i18XLYXYmIL1vbeCeZWRXummARZXbbEEb28aUAT4fFob1FyNSMGElOStCqlvJwPQ==
+CSRFPreventionToken: 65C56CCD:pE8mmMwi0jMOouprwezNDCZYTfeyY/Htzq//ci5iFIs
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip
+
+arch=amd64&cmode=tty&console=1&cores=2&cpulimit=0&cpuunits=1024&description=DHCP+Server+with+kea+and+postgresql+created+on+2024-02-09-12-07&hostname=dev-kea-dhcp-02&memory=2048&onboot=1&ostype=debian&protection=0&swap=0&tags=ops%3Bkea%3Bpostgresql%3Bdev&tty=2
+2024/02/08 16:07:41 <<<<<<<<<< RESULT:
+HTTP/1.1 200 OK
+Content-Length: 13
+Cache-Control: max-age=0
+Connection: Keep-Alive
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:07:41 GMT
+Expires: Fri, 09 Feb 2024 00:07:41 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":null}
+2024/02/08 16:07:41 >>>>>>>>>> REQUEST:
+GET /api2/json/cluster/resources?type=vm HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56CCD::K65e9cacmacKsNpfrw+qEEjHGiSwFaEWpxdQQD9Ybm2h/yHjRxbztjajlFiyN14cuJiPa51l1dLG1wKLLhA6U6TE2GeMMpOCODu6810pr5waun2fsIKVfnsbHXICLwoQk+3nM1F2z2fj5RcJACMtn1p2DjlPvAcbIIg3o4ZXsxubDeCOLqR8SPhYj0ZBqrjW9CeqDocBnLxyFajhM4/3Df4rG8N7uqDMI72SSmvEzLhdKQabKhiiJG6/NoOcQrSAv74ebtwOG2JQbLeVuxUwr8i18XLYXYmIL1vbeCeZWRXummARZXbbEEb28aUAT4fFob1FyNSMGElOStCqlvJwPQ==
+CSRFPreventionToken: 65C56CCD:pE8mmMwi0jMOouprwezNDCZYTfeyY/Htzq//ci5iFIs
+Accept-Encoding: gzip
+
+2024/02/08 16:07:41 <<<<<<<<<< RESULT:
+HTTP/1.1 200 OK
+Content-Length: 2469
+Cache-Control: max-age=0
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:07:41 GMT
+Expires: Fri, 09 Feb 2024 00:07:41 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":[{"maxdisk":34359738368,"netout":0,"id":"qemu/100","disk":0,"netin":0,"maxcpu":2,"status":"stopped","node":"lepakshi-lenovomini","type":"qemu","diskwrite":0,"name":"another-test","cpu":0,"template":0,"mem":0,"diskread":0,"vmid":100,"maxmem":4294967296,"uptime":0},{"maxcpu":4,"netin":0,"disk":0,"id":"qemu/105","netout":0,"maxdisk":137438953472,"name":"ubuntu-code-server","diskwrite":0,"node":"lepakshi-lenovomini","type":"qemu","status":"stopped","cpu":0,"uptime":0,"vmid":105,"maxmem":8489271296,"diskread":0,"mem":0,"template":0},{"status":"stopped","node":"lepakshi-lenovomini","type":"qemu","name":"test-admin","diskwrite":0,"netout":0,"id":"qemu/300","maxdisk":8589934592,"netin":0,"maxcpu":2,"disk":0,"template":0,"mem":0,"uptime":0,"diskread":0,"vmid":300,"maxmem":4294967296,"cpu":0},{"template":0,"mem":0,"uptime":0,"diskread":0,"maxmem":1073741824,"vmid":301,"cpu":0,"status":"stopped","type":"qemu","node":"lepakshi-lenovomini","name":"gitea-dev","diskwrite":0,"netout":0,"tags":"dev;gitea;terraform","id":"qemu/301","maxdisk":68719476736,"netin":0,"maxcpu":2,"disk":0},{"diskwrite":0,"name":"win-11-dev","status":"stopped","node":"lepakshi-lenovomini","type":"qemu","disk":0,"netin":0,"maxcpu":3,"maxdisk":137438953472,"tags":"dev","netout":0,"id":"qemu/302","diskread":0,"vmid":302,"maxmem":12884901888,"uptime":0,"template":0,"mem":0,"cpu":0},{"netin":0,"maxcpu":2,"disk":0,"netout":0,"tags":"dev;ops","id":"lxc/303","maxdisk":68719476736,"name":"dev-kea-dhcp-01","diskwrite":0,"status":"stopped","node":"lepakshi-lenovomini","type":"lxc","cpu":0,"uptime":0,"diskread":0,"maxmem":2147483648,"vmid":303,"template":0,"mem":0},{"netin":0,"maxcpu":1,"disk":0,"netout":0,"id":"lxc/304","maxdisk":8589934592,"name":"test-kea-dchp","diskwrite":0,"status":"stopped","type":"lxc","node":"lepakshi-lenovomini","cpu":0,"uptime":0,"diskread":0,"vmid":304,"maxmem":1073741824,"template":0,"mem":0},{"template":0,"mem":0,"diskread":0,"maxmem":2147483648,"vmid":305,"uptime":0,"cpu":0,"status":"stopped","node":"lepakshi-lenovomini","type":"lxc","diskwrite":0,"name":"dev-kea-dhcp-02","maxdisk":34359738368,"tags":"dev;kea;ops;postgresql","netout":0,"id":"lxc/305","disk":0,"netin":0,"maxcpu":2},{"uptime":0,"maxmem":23622320128,"vmid":400,"diskread":0,"mem":0,"template":0,"cpu":0,"name":"proxmox-dev","diskwrite":0,"type":"qemu","node":"lepakshi-lenovomini","status":"stopped","maxcpu":4,"netin":0,"disk":0,"id":"qemu/400","netout":0,"maxdisk":34359738368}]}
+2024/02/08 16:07:41 >>>>>>>>>> REQUEST:
+GET /api2/json/nodes/lepakshi-lenovomini/lxc/305/config HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56CCD::K65e9cacmacKsNpfrw+qEEjHGiSwFaEWpxdQQD9Ybm2h/yHjRxbztjajlFiyN14cuJiPa51l1dLG1wKLLhA6U6TE2GeMMpOCODu6810pr5waun2fsIKVfnsbHXICLwoQk+3nM1F2z2fj5RcJACMtn1p2DjlPvAcbIIg3o4ZXsxubDeCOLqR8SPhYj0ZBqrjW9CeqDocBnLxyFajhM4/3Df4rG8N7uqDMI72SSmvEzLhdKQabKhiiJG6/NoOcQrSAv74ebtwOG2JQbLeVuxUwr8i18XLYXYmIL1vbeCeZWRXummARZXbbEEb28aUAT4fFob1FyNSMGElOStCqlvJwPQ==
+CSRFPreventionToken: 65C56CCD:pE8mmMwi0jMOouprwezNDCZYTfeyY/Htzq//ci5iFIs
+Accept-Encoding: gzip
+
+2024/02/08 16:07:41 <<<<<<<<<< RESULT:
+HTTP/1.1 200 OK
+Content-Length: 643
+Cache-Control: max-age=0
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:07:41 GMT
+Expires: Fri, 09 Feb 2024 00:07:41 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":{"description":"DHCP Server with kea and postgresql created on 2024-02-09-12-07\n","hostname":"dev-kea-dhcp-02","onboot":1,"ostype":"debian","rootfs":"proxthin:vm-305-disk-0,size=32G","tags":"dev;kea;ops;postgresql","net0":"name=eth0,bridge=vmbr0,firewall=1,gw=192.168.30.1,hwaddr=BC:24:11:D2:35:95,ip=192.168.30.81/24,tag=30,type=veth","cmode":"tty","net1":"name=eth1,bridge=vmbr2,gw=192.168.1.1,hwaddr=BC:24:11:F3:22:52,ip=192.168.1.1/24,type=veth","cores":2,"arch":"amd64","cpulimit":"0","memory":2048,"cpuunits":1024,"unprivileged":1,"protection":0,"swap":0,"tty":2,"digest":"cfdb872ec07f4573af118caf6dd798e1c4e452f8","console":1}}
+2024/02/08 16:07:41 >>>>>>>>>> REQUEST:
+GET /api2/json/cluster/ha/resources/305 HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56CCD::K65e9cacmacKsNpfrw+qEEjHGiSwFaEWpxdQQD9Ybm2h/yHjRxbztjajlFiyN14cuJiPa51l1dLG1wKLLhA6U6TE2GeMMpOCODu6810pr5waun2fsIKVfnsbHXICLwoQk+3nM1F2z2fj5RcJACMtn1p2DjlPvAcbIIg3o4ZXsxubDeCOLqR8SPhYj0ZBqrjW9CeqDocBnLxyFajhM4/3Df4rG8N7uqDMI72SSmvEzLhdKQabKhiiJG6/NoOcQrSAv74ebtwOG2JQbLeVuxUwr8i18XLYXYmIL1vbeCeZWRXummARZXbbEEb28aUAT4fFob1FyNSMGElOStCqlvJwPQ==
+CSRFPreventionToken: 65C56CCD:pE8mmMwi0jMOouprwezNDCZYTfeyY/Htzq//ci5iFIs
+Accept-Encoding: gzip
+
+2024/02/08 16:07:41 <<<<<<<<<< RESULT:
+HTTP/1.1 500 no such resource 'ct:305'
+Connection: close
+Content-Length: 13
+Cache-Control: max-age=0
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:07:41 GMT
+Expires: Fri, 09 Feb 2024 00:07:41 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":null}
+2024/02/08 16:07:41 >>>>>>>>>> REQUEST:
+GET /api2/json/pools HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56CCD::K65e9cacmacKsNpfrw+qEEjHGiSwFaEWpxdQQD9Ybm2h/yHjRxbztjajlFiyN14cuJiPa51l1dLG1wKLLhA6U6TE2GeMMpOCODu6810pr5waun2fsIKVfnsbHXICLwoQk+3nM1F2z2fj5RcJACMtn1p2DjlPvAcbIIg3o4ZXsxubDeCOLqR8SPhYj0ZBqrjW9CeqDocBnLxyFajhM4/3Df4rG8N7uqDMI72SSmvEzLhdKQabKhiiJG6/NoOcQrSAv74ebtwOG2JQbLeVuxUwr8i18XLYXYmIL1vbeCeZWRXummARZXbbEEb28aUAT4fFob1FyNSMGElOStCqlvJwPQ==
+CSRFPreventionToken: 65C56CCD:pE8mmMwi0jMOouprwezNDCZYTfeyY/Htzq//ci5iFIs
+Accept-Encoding: gzip
+
+2024/02/08 16:07:41 <<<<<<<<<< RESULT:
+HTTP/1.1 200 OK
+Content-Length: 11
+Cache-Control: max-age=0
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:07:41 GMT
+Expires: Fri, 09 Feb 2024 00:07:41 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":[]}
+[90mThu, 08 Feb 2024 16:12:10 -0800[0m [32mINF[0m [1mgithub.com/Telmate/terraform-provider-proxmox/v2/proxmox/util.go:159[0m[36m >[0m Enabling the capture of log-library logs as ithe _capturelog flag was detected
+[90mThu, 08 Feb 2024 16:12:10 -0800[0m [32mINF[0m [1mgithub.com/Telmate/terraform-provider-proxmox/v2/proxmox/util.go:192[0m[36m >[0m Logging Started. Root Logger Set to level debug
+2024/02/08 16:12:10 >>>>>>>>>> REQUEST:
+GET /api2/json/cluster/resources?type=vm HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56DDA::L4zZNe9zKkuzl7eIdXI197fBdyZ8gOmsdQQ8TdxbbygvkwNCpndZhH7aFR4J8L6PBsW7cV0qK5BSl1sBYu/SnGmLpjhrbl1UM0PYPoMOulViJ8qS2oenmoPAXu02iQvd2KEiFQ5CA/Psyokpd/W9DQbMGamdxx0ia8/SKlGdXNP7U+u71oJGNflo0iYBTspsCRIEmO4Sbl8Xt90vQwhN5EZVEQyDpEGDkIZwgUNYsgaPu9Y8xJK68EJ01AjhfTJ1KOS4XMMTfgev44SjbQt7lprawxj0/fR8fur9VHjVv7cm0SCAjHyXX1OO6W9guIiAnbFwpuBNJXsfueYowMhEtw==
+CSRFPreventionToken: 65C56DDA:Vo7g91drwHMossthYgVe95vCJJGK5xMB5wQGmWFoJdA
+Accept-Encoding: gzip
+
+2024/02/08 16:12:10 <<<<<<<<<< RESULT:
+HTTP/1.1 200 OK
+Content-Length: 2524
+Cache-Control: max-age=0
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:12:10 GMT
+Expires: Fri, 09 Feb 2024 00:12:10 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":[{"diskread":0,"maxmem":4294967296,"vmid":100,"uptime":0,"template":0,"mem":0,"cpu":0,"diskwrite":0,"name":"another-test","status":"stopped","type":"qemu","node":"lepakshi-lenovomini","disk":0,"netin":0,"maxcpu":2,"maxdisk":34359738368,"netout":0,"id":"qemu/100"},{"node":"lepakshi-lenovomini","type":"qemu","status":"stopped","name":"ubuntu-code-server","diskwrite":0,"id":"qemu/105","netout":0,"maxdisk":137438953472,"maxcpu":4,"netin":0,"disk":0,"mem":0,"template":0,"uptime":0,"vmid":105,"maxmem":8489271296,"diskread":0,"cpu":0},{"name":"test-admin","diskwrite":0,"node":"lepakshi-lenovomini","type":"qemu","status":"stopped","maxcpu":2,"netin":0,"disk":0,"id":"qemu/300","netout":0,"maxdisk":8589934592,"uptime":0,"maxmem":4294967296,"vmid":300,"diskread":0,"mem":0,"template":0,"cpu":0},{"name":"gitea-dev","diskwrite":0,"type":"qemu","node":"lepakshi-lenovomini","status":"stopped","maxcpu":2,"netin":0,"disk":0,"id":"qemu/301","tags":"dev;gitea;terraform","netout":0,"maxdisk":68719476736,"uptime":0,"vmid":301,"maxmem":1073741824,"diskread":0,"mem":0,"template":0,"cpu":0},{"cpu":0,"mem":0,"template":0,"vmid":302,"maxmem":12884901888,"diskread":0,"uptime":0,"maxdisk":137438953472,"id":"qemu/302","tags":"dev","netout":0,"disk":0,"maxcpu":3,"netin":0,"node":"lepakshi-lenovomini","type":"qemu","status":"stopped","diskwrite":0,"name":"win-11-dev"},{"disk":0,"maxcpu":2,"netin":0,"maxdisk":68719476736,"id":"lxc/303","tags":"dev;ops","netout":0,"diskwrite":0,"name":"dev-kea-dhcp-01","type":"lxc","node":"lepakshi-lenovomini","status":"stopped","cpu":0,"maxmem":2147483648,"vmid":303,"diskread":0,"uptime":0,"mem":0,"template":0},{"mem":0,"template":0,"uptime":0,"maxmem":1073741824,"vmid":304,"diskread":0,"cpu":0,"node":"lepakshi-lenovomini","type":"lxc","status":"stopped","name":"test-kea-dchp","diskwrite":0,"id":"lxc/304","netout":0,"maxdisk":8589934592,"maxcpu":1,"netin":0,"disk":0},{"netin":1243,"maxcpu":2,"disk":564264960,"tags":"dev;kea;ops;postgresql","netout":2183,"id":"lxc/305","maxdisk":33501757440,"name":"dev-kea-dhcp-02","diskwrite":3141632,"status":"running","node":"lepakshi-lenovomini","type":"lxc","cpu":0.00084791185000604,"uptime":248,"diskread":206176256,"maxmem":2147483648,"vmid":305,"template":0,"mem":12890112},{"cpu":0,"mem":0,"template":0,"maxmem":23622320128,"vmid":400,"diskread":0,"uptime":0,"maxdisk":34359738368,"id":"qemu/400","netout":0,"disk":0,"maxcpu":4,"netin":0,"node":"lepakshi-lenovomini","type":"qemu","status":"stopped","diskwrite":0,"name":"proxmox-dev"}]}
+2024/02/08 16:12:10 >>>>>>>>>> REQUEST:
+GET /api2/json/nodes/lepakshi-lenovomini/lxc/305/config HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56DDA::L4zZNe9zKkuzl7eIdXI197fBdyZ8gOmsdQQ8TdxbbygvkwNCpndZhH7aFR4J8L6PBsW7cV0qK5BSl1sBYu/SnGmLpjhrbl1UM0PYPoMOulViJ8qS2oenmoPAXu02iQvd2KEiFQ5CA/Psyokpd/W9DQbMGamdxx0ia8/SKlGdXNP7U+u71oJGNflo0iYBTspsCRIEmO4Sbl8Xt90vQwhN5EZVEQyDpEGDkIZwgUNYsgaPu9Y8xJK68EJ01AjhfTJ1KOS4XMMTfgev44SjbQt7lprawxj0/fR8fur9VHjVv7cm0SCAjHyXX1OO6W9guIiAnbFwpuBNJXsfueYowMhEtw==
+CSRFPreventionToken: 65C56DDA:Vo7g91drwHMossthYgVe95vCJJGK5xMB5wQGmWFoJdA
+Accept-Encoding: gzip
+
+2024/02/08 16:12:10 <<<<<<<<<< RESULT:
+HTTP/1.1 200 OK
+Content-Length: 629
+Cache-Control: max-age=0
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:12:10 GMT
+Expires: Fri, 09 Feb 2024 00:12:10 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":{"hostname":"dev-kea-dhcp-02","ostype":"debian","onboot":1,"rootfs":"proxthin:vm-305-disk-0,size=32G","description":"DHCP Server with kea and postgresql created on 2024-02-09-12-07\n","swap":0,"digest":"cffdb211adb9ec9922d381bab03c2410bc2a8819","tty":2,"console":1,"net0":"name=eth0,bridge=vmbr0,firewall=1,gw=192.168.30.1,hwaddr=BC:24:11:D2:35:95,ip=192.168.30.81/24,tag=30,type=veth","tags":"dev;kea;ops;postgresql","cores":2,"arch":"amd64","net1":"name=eth1,bridge=vmbr2,gw=192.168.1.1,hwaddr=BC:24:11:F3:22:52,ip=192.168.1.1/24,type=veth","memory":2048,"cpulimit":"0","protection":0,"unprivileged":1,"cpuunits":1024}}
+2024/02/08 16:12:10 >>>>>>>>>> REQUEST:
+GET /api2/json/cluster/ha/resources/305 HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56DDA::L4zZNe9zKkuzl7eIdXI197fBdyZ8gOmsdQQ8TdxbbygvkwNCpndZhH7aFR4J8L6PBsW7cV0qK5BSl1sBYu/SnGmLpjhrbl1UM0PYPoMOulViJ8qS2oenmoPAXu02iQvd2KEiFQ5CA/Psyokpd/W9DQbMGamdxx0ia8/SKlGdXNP7U+u71oJGNflo0iYBTspsCRIEmO4Sbl8Xt90vQwhN5EZVEQyDpEGDkIZwgUNYsgaPu9Y8xJK68EJ01AjhfTJ1KOS4XMMTfgev44SjbQt7lprawxj0/fR8fur9VHjVv7cm0SCAjHyXX1OO6W9guIiAnbFwpuBNJXsfueYowMhEtw==
+CSRFPreventionToken: 65C56DDA:Vo7g91drwHMossthYgVe95vCJJGK5xMB5wQGmWFoJdA
+Accept-Encoding: gzip
+
+2024/02/08 16:12:10 <<<<<<<<<< RESULT:
+HTTP/1.1 500 no such resource 'ct:305'
+Connection: close
+Content-Length: 13
+Cache-Control: max-age=0
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:12:10 GMT
+Expires: Fri, 09 Feb 2024 00:12:10 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":null}
+2024/02/08 16:12:10 >>>>>>>>>> REQUEST:
+GET /api2/json/pools HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56DDA::L4zZNe9zKkuzl7eIdXI197fBdyZ8gOmsdQQ8TdxbbygvkwNCpndZhH7aFR4J8L6PBsW7cV0qK5BSl1sBYu/SnGmLpjhrbl1UM0PYPoMOulViJ8qS2oenmoPAXu02iQvd2KEiFQ5CA/Psyokpd/W9DQbMGamdxx0ia8/SKlGdXNP7U+u71oJGNflo0iYBTspsCRIEmO4Sbl8Xt90vQwhN5EZVEQyDpEGDkIZwgUNYsgaPu9Y8xJK68EJ01AjhfTJ1KOS4XMMTfgev44SjbQt7lprawxj0/fR8fur9VHjVv7cm0SCAjHyXX1OO6W9guIiAnbFwpuBNJXsfueYowMhEtw==
+CSRFPreventionToken: 65C56DDA:Vo7g91drwHMossthYgVe95vCJJGK5xMB5wQGmWFoJdA
+Accept-Encoding: gzip
+
+2024/02/08 16:12:10 <<<<<<<<<< RESULT:
+HTTP/1.1 200 OK
+Content-Length: 11
+Cache-Control: max-age=0
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:12:10 GMT
+Expires: Fri, 09 Feb 2024 00:12:10 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":[]}
+[90mThu, 08 Feb 2024 16:12:16 -0800[0m [32mINF[0m [1mgithub.com/Telmate/terraform-provider-proxmox/v2/proxmox/util.go:159[0m[36m >[0m Enabling the capture of log-library logs as ithe _capturelog flag was detected
+[90mThu, 08 Feb 2024 16:12:16 -0800[0m [32mINF[0m [1mgithub.com/Telmate/terraform-provider-proxmox/v2/proxmox/util.go:192[0m[36m >[0m Logging Started. Root Logger Set to level debug
+2024/02/08 16:12:16 >>>>>>>>>> REQUEST:
+GET /api2/json/cluster/resources?type=vm HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56DE0::gSG/AzttbLo0Is/7hS/D9TcyYl6Nhn+2rLOOBxr98Ag31C2tvp+7XnMgypC5+/SP1Z3zUItx3OI5LJrM/bHDuIi97rG8en/pasz6HazZt5/JMqCzluZuWIUOQJowBuDmJu1B4yLqXUcFOeZ5zXvL1nmgcnJ5wz8Tve7v+QHWhyOtazNKWrexmzQZmPYvivL1BgyL7FJPdEVpXH9vwQGkcJOcECgOXtQilOGa7dgEDH4U7TvfHTQtcMKJtgHHeOadiDfbAsWHB2dUnRtHimsgHDuSAQSDiCo6wTdmFC7VvZ3ETibyPPQmr7qTp3zxbjVbR5iBucXFQVYaTN/aXwcosA==
+CSRFPreventionToken: 65C56DE0:Xtv9CNRl/APQRPOKhm1XU7d5zY3ybBhwEzfN8e6etU8
+Accept-Encoding: gzip
+
+2024/02/08 16:12:16 <<<<<<<<<< RESULT:
+HTTP/1.1 200 OK
+Content-Length: 2524
+Cache-Control: max-age=0
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:12:16 GMT
+Expires: Fri, 09 Feb 2024 00:12:16 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":[{"template":0,"mem":0,"diskread":0,"maxmem":4294967296,"vmid":100,"uptime":0,"cpu":0,"status":"stopped","type":"qemu","node":"lepakshi-lenovomini","diskwrite":0,"name":"another-test","maxdisk":34359738368,"netout":0,"id":"qemu/100","disk":0,"netin":0,"maxcpu":2},{"netin":0,"maxcpu":4,"disk":0,"netout":0,"id":"qemu/105","maxdisk":137438953472,"name":"ubuntu-code-server","diskwrite":0,"status":"stopped","type":"qemu","node":"lepakshi-lenovomini","cpu":0,"uptime":0,"diskread":0,"maxmem":8489271296,"vmid":105,"template":0,"mem":0},{"mem":0,"template":0,"vmid":300,"maxmem":4294967296,"diskread":0,"uptime":0,"cpu":0,"type":"qemu","node":"lepakshi-lenovomini","status":"stopped","diskwrite":0,"name":"test-admin","maxdisk":8589934592,"id":"qemu/300","netout":0,"disk":0,"maxcpu":2,"netin":0},{"template":0,"mem":0,"diskread":0,"maxmem":1073741824,"vmid":301,"uptime":0,"cpu":0,"status":"stopped","node":"lepakshi-lenovomini","type":"qemu","diskwrite":0,"name":"gitea-dev","maxdisk":68719476736,"tags":"dev;gitea;terraform","netout":0,"id":"qemu/301","disk":0,"netin":0,"maxcpu":2},{"cpu":0,"mem":0,"template":0,"uptime":0,"maxmem":12884901888,"vmid":302,"diskread":0,"id":"qemu/302","netout":0,"tags":"dev","maxdisk":137438953472,"maxcpu":3,"netin":0,"disk":0,"type":"qemu","node":"lepakshi-lenovomini","status":"stopped","name":"win-11-dev","diskwrite":0},{"cpu":0,"mem":0,"template":0,"uptime":0,"vmid":303,"maxmem":2147483648,"diskread":0,"id":"lxc/303","netout":0,"tags":"dev;ops","maxdisk":68719476736,"maxcpu":2,"netin":0,"disk":0,"node":"lepakshi-lenovomini","type":"lxc","status":"stopped","name":"dev-kea-dhcp-01","diskwrite":0},{"cpu":0,"mem":0,"template":0,"vmid":304,"maxmem":1073741824,"diskread":0,"uptime":0,"maxdisk":8589934592,"id":"lxc/304","netout":0,"disk":0,"maxcpu":1,"netin":0,"type":"lxc","node":"lepakshi-lenovomini","status":"stopped","diskwrite":0,"name":"test-kea-dchp"},{"uptime":248,"vmid":305,"maxmem":2147483648,"diskread":206176256,"mem":12890112,"template":0,"cpu":0.00084791185000604,"name":"dev-kea-dhcp-02","diskwrite":3141632,"node":"lepakshi-lenovomini","type":"lxc","status":"running","maxcpu":2,"netin":1243,"disk":564264960,"id":"lxc/305","tags":"dev;kea;ops;postgresql","netout":2183,"maxdisk":33501757440},{"template":0,"mem":0,"uptime":0,"diskread":0,"vmid":400,"maxmem":23622320128,"cpu":0,"status":"stopped","node":"lepakshi-lenovomini","type":"qemu","name":"proxmox-dev","diskwrite":0,"netout":0,"id":"qemu/400","maxdisk":34359738368,"netin":0,"maxcpu":4,"disk":0}]}
+2024/02/08 16:12:16 >>>>>>>>>> REQUEST:
+GET /api2/json/nodes/lepakshi-lenovomini/lxc/305/config HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56DE0::gSG/AzttbLo0Is/7hS/D9TcyYl6Nhn+2rLOOBxr98Ag31C2tvp+7XnMgypC5+/SP1Z3zUItx3OI5LJrM/bHDuIi97rG8en/pasz6HazZt5/JMqCzluZuWIUOQJowBuDmJu1B4yLqXUcFOeZ5zXvL1nmgcnJ5wz8Tve7v+QHWhyOtazNKWrexmzQZmPYvivL1BgyL7FJPdEVpXH9vwQGkcJOcECgOXtQilOGa7dgEDH4U7TvfHTQtcMKJtgHHeOadiDfbAsWHB2dUnRtHimsgHDuSAQSDiCo6wTdmFC7VvZ3ETibyPPQmr7qTp3zxbjVbR5iBucXFQVYaTN/aXwcosA==
+CSRFPreventionToken: 65C56DE0:Xtv9CNRl/APQRPOKhm1XU7d5zY3ybBhwEzfN8e6etU8
+Accept-Encoding: gzip
+
+2024/02/08 16:12:16 <<<<<<<<<< RESULT:
+HTTP/1.1 200 OK
+Content-Length: 629
+Cache-Control: max-age=0
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:12:16 GMT
+Expires: Fri, 09 Feb 2024 00:12:16 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":{"swap":0,"tty":2,"digest":"cffdb211adb9ec9922d381bab03c2410bc2a8819","console":1,"tags":"dev;kea;ops;postgresql","net0":"name=eth0,bridge=vmbr0,firewall=1,gw=192.168.30.1,hwaddr=BC:24:11:D2:35:95,ip=192.168.30.81/24,tag=30,type=veth","net1":"name=eth1,bridge=vmbr2,gw=192.168.1.1,hwaddr=BC:24:11:F3:22:52,ip=192.168.1.1/24,type=veth","cores":2,"arch":"amd64","cpulimit":"0","memory":2048,"cpuunits":1024,"unprivileged":1,"protection":0,"hostname":"dev-kea-dhcp-02","onboot":1,"ostype":"debian","rootfs":"proxthin:vm-305-disk-0,size=32G","description":"DHCP Server with kea and postgresql created on 2024-02-09-12-07\n"}}
+2024/02/08 16:12:16 >>>>>>>>>> REQUEST:
+GET /api2/json/cluster/ha/resources/305 HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56DE0::gSG/AzttbLo0Is/7hS/D9TcyYl6Nhn+2rLOOBxr98Ag31C2tvp+7XnMgypC5+/SP1Z3zUItx3OI5LJrM/bHDuIi97rG8en/pasz6HazZt5/JMqCzluZuWIUOQJowBuDmJu1B4yLqXUcFOeZ5zXvL1nmgcnJ5wz8Tve7v+QHWhyOtazNKWrexmzQZmPYvivL1BgyL7FJPdEVpXH9vwQGkcJOcECgOXtQilOGa7dgEDH4U7TvfHTQtcMKJtgHHeOadiDfbAsWHB2dUnRtHimsgHDuSAQSDiCo6wTdmFC7VvZ3ETibyPPQmr7qTp3zxbjVbR5iBucXFQVYaTN/aXwcosA==
+CSRFPreventionToken: 65C56DE0:Xtv9CNRl/APQRPOKhm1XU7d5zY3ybBhwEzfN8e6etU8
+Accept-Encoding: gzip
+
+2024/02/08 16:12:16 <<<<<<<<<< RESULT:
+HTTP/1.1 500 no such resource 'ct:305'
+Connection: close
+Content-Length: 13
+Cache-Control: max-age=0
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:12:16 GMT
+Expires: Fri, 09 Feb 2024 00:12:16 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":null}
+2024/02/08 16:12:16 >>>>>>>>>> REQUEST:
+GET /api2/json/pools HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56DE0::gSG/AzttbLo0Is/7hS/D9TcyYl6Nhn+2rLOOBxr98Ag31C2tvp+7XnMgypC5+/SP1Z3zUItx3OI5LJrM/bHDuIi97rG8en/pasz6HazZt5/JMqCzluZuWIUOQJowBuDmJu1B4yLqXUcFOeZ5zXvL1nmgcnJ5wz8Tve7v+QHWhyOtazNKWrexmzQZmPYvivL1BgyL7FJPdEVpXH9vwQGkcJOcECgOXtQilOGa7dgEDH4U7TvfHTQtcMKJtgHHeOadiDfbAsWHB2dUnRtHimsgHDuSAQSDiCo6wTdmFC7VvZ3ETibyPPQmr7qTp3zxbjVbR5iBucXFQVYaTN/aXwcosA==
+CSRFPreventionToken: 65C56DE0:Xtv9CNRl/APQRPOKhm1XU7d5zY3ybBhwEzfN8e6etU8
+Accept-Encoding: gzip
+
+2024/02/08 16:12:16 <<<<<<<<<< RESULT:
+HTTP/1.1 200 OK
+Content-Length: 11
+Cache-Control: max-age=0
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:12:16 GMT
+Expires: Fri, 09 Feb 2024 00:12:16 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":[]}
+[90mThu, 08 Feb 2024 16:12:16 -0800[0m [32mINF[0m [1mgithub.com/Telmate/terraform-provider-proxmox/v2/proxmox/util.go:159[0m[36m >[0m Enabling the capture of log-library logs as ithe _capturelog flag was detected
+[90mThu, 08 Feb 2024 16:12:16 -0800[0m [32mINF[0m [1mgithub.com/Telmate/terraform-provider-proxmox/v2/proxmox/util.go:192[0m[36m >[0m Logging Started. Root Logger Set to level debug
+2024/02/08 16:12:16 >>>>>>>>>> REQUEST:
+GET /api2/json/cluster/resources?type=vm HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56DE0::gSG/AzttbLo0Is/7hS/D9TcyYl6Nhn+2rLOOBxr98Ag31C2tvp+7XnMgypC5+/SP1Z3zUItx3OI5LJrM/bHDuIi97rG8en/pasz6HazZt5/JMqCzluZuWIUOQJowBuDmJu1B4yLqXUcFOeZ5zXvL1nmgcnJ5wz8Tve7v+QHWhyOtazNKWrexmzQZmPYvivL1BgyL7FJPdEVpXH9vwQGkcJOcECgOXtQilOGa7dgEDH4U7TvfHTQtcMKJtgHHeOadiDfbAsWHB2dUnRtHimsgHDuSAQSDiCo6wTdmFC7VvZ3ETibyPPQmr7qTp3zxbjVbR5iBucXFQVYaTN/aXwcosA==
+CSRFPreventionToken: 65C56DE0:Xtv9CNRl/APQRPOKhm1XU7d5zY3ybBhwEzfN8e6etU8
+Accept-Encoding: gzip
+
+2024/02/08 16:12:16 <<<<<<<<<< RESULT:
+HTTP/1.1 200 OK
+Content-Length: 2524
+Cache-Control: max-age=0
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:12:16 GMT
+Expires: Fri, 09 Feb 2024 00:12:16 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":[{"maxcpu":2,"netin":0,"disk":0,"id":"qemu/100","netout":0,"maxdisk":34359738368,"name":"another-test","diskwrite":0,"node":"lepakshi-lenovomini","type":"qemu","status":"stopped","cpu":0,"uptime":0,"maxmem":4294967296,"vmid":100,"diskread":0,"mem":0,"template":0},{"disk":0,"netin":0,"maxcpu":4,"maxdisk":137438953472,"netout":0,"id":"qemu/105","diskwrite":0,"name":"ubuntu-code-server","status":"stopped","node":"lepakshi-lenovomini","type":"qemu","cpu":0,"diskread":0,"maxmem":8489271296,"vmid":105,"uptime":0,"template":0,"mem":0},{"template":0,"mem":0,"uptime":0,"diskread":0,"vmid":300,"maxmem":4294967296,"cpu":0,"status":"stopped","node":"lepakshi-lenovomini","type":"qemu","name":"test-admin","diskwrite":0,"netout":0,"id":"qemu/300","maxdisk":8589934592,"netin":0,"maxcpu":2,"disk":0},{"node":"lepakshi-lenovomini","type":"qemu","status":"stopped","diskwrite":0,"name":"gitea-dev","maxdisk":68719476736,"id":"qemu/301","netout":0,"tags":"dev;gitea;terraform","disk":0,"maxcpu":2,"netin":0,"mem":0,"template":0,"vmid":301,"maxmem":1073741824,"diskread":0,"uptime":0,"cpu":0},{"diskwrite":0,"name":"win-11-dev","status":"stopped","node":"lepakshi-lenovomini","type":"qemu","disk":0,"netin":0,"maxcpu":3,"maxdisk":137438953472,"netout":0,"tags":"dev","id":"qemu/302","diskread":0,"maxmem":12884901888,"vmid":302,"uptime":0,"template":0,"mem":0,"cpu":0},{"type":"lxc","node":"lepakshi-lenovomini","status":"stopped","diskwrite":0,"name":"dev-kea-dhcp-01","maxdisk":68719476736,"id":"lxc/303","netout":0,"tags":"dev;ops","disk":0,"maxcpu":2,"netin":0,"mem":0,"template":0,"vmid":303,"maxmem":2147483648,"diskread":0,"uptime":0,"cpu":0},{"uptime":0,"diskread":0,"maxmem":1073741824,"vmid":304,"template":0,"mem":0,"cpu":0,"name":"test-kea-dchp","diskwrite":0,"status":"stopped","type":"lxc","node":"lepakshi-lenovomini","netin":0,"maxcpu":1,"disk":0,"netout":0,"id":"lxc/304","maxdisk":8589934592},{"type":"lxc","node":"lepakshi-lenovomini","status":"running","name":"dev-kea-dhcp-02","diskwrite":3141632,"id":"lxc/305","netout":2183,"tags":"dev;kea;ops;postgresql","maxdisk":33501757440,"maxcpu":2,"netin":1243,"disk":564264960,"mem":12890112,"template":0,"uptime":248,"maxmem":2147483648,"vmid":305,"diskread":206176256,"cpu":0.00084791185000604},{"status":"stopped","type":"qemu","node":"lepakshi-lenovomini","name":"proxmox-dev","diskwrite":0,"netout":0,"id":"qemu/400","maxdisk":34359738368,"netin":0,"maxcpu":4,"disk":0,"template":0,"mem":0,"uptime":0,"diskread":0,"maxmem":23622320128,"vmid":400,"cpu":0}]}
+2024/02/08 16:12:16 >>>>>>>>>> REQUEST:
+PUT /api2/json/nodes/lepakshi-lenovomini/lxc/305/config HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Content-Length: 262
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56DE0::gSG/AzttbLo0Is/7hS/D9TcyYl6Nhn+2rLOOBxr98Ag31C2tvp+7XnMgypC5+/SP1Z3zUItx3OI5LJrM/bHDuIi97rG8en/pasz6HazZt5/JMqCzluZuWIUOQJowBuDmJu1B4yLqXUcFOeZ5zXvL1nmgcnJ5wz8Tve7v+QHWhyOtazNKWrexmzQZmPYvivL1BgyL7FJPdEVpXH9vwQGkcJOcECgOXtQilOGa7dgEDH4U7TvfHTQtcMKJtgHHeOadiDfbAsWHB2dUnRtHimsgHDuSAQSDiCo6wTdmFC7VvZ3ETibyPPQmr7qTp3zxbjVbR5iBucXFQVYaTN/aXwcosA==
+CSRFPreventionToken: 65C56DE0:Xtv9CNRl/APQRPOKhm1XU7d5zY3ybBhwEzfN8e6etU8
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip
+
+arch=amd64&cmode=tty&console=1&cores=2&cpulimit=0&cpuunits=1024&description=DHCP+Server+with+kea+and+postgresql+created+on+2024-02-09-12-12&hostname=dev-kea-dhcp-02&memory=2048&onboot=1&ostype=debian&protection=0&swap=1024&tags=ops%3Bkea%3Bpostgresql%3Bdev&tty=2
+2024/02/08 16:12:16 <<<<<<<<<< RESULT:
+HTTP/1.1 200 OK
+Content-Length: 13
+Cache-Control: max-age=0
+Connection: Keep-Alive
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:12:16 GMT
+Expires: Fri, 09 Feb 2024 00:12:16 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":null}
+2024/02/08 16:12:16 >>>>>>>>>> REQUEST:
+GET /api2/json/cluster/resources?type=vm HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56DE0::gSG/AzttbLo0Is/7hS/D9TcyYl6Nhn+2rLOOBxr98Ag31C2tvp+7XnMgypC5+/SP1Z3zUItx3OI5LJrM/bHDuIi97rG8en/pasz6HazZt5/JMqCzluZuWIUOQJowBuDmJu1B4yLqXUcFOeZ5zXvL1nmgcnJ5wz8Tve7v+QHWhyOtazNKWrexmzQZmPYvivL1BgyL7FJPdEVpXH9vwQGkcJOcECgOXtQilOGa7dgEDH4U7TvfHTQtcMKJtgHHeOadiDfbAsWHB2dUnRtHimsgHDuSAQSDiCo6wTdmFC7VvZ3ETibyPPQmr7qTp3zxbjVbR5iBucXFQVYaTN/aXwcosA==
+CSRFPreventionToken: 65C56DE0:Xtv9CNRl/APQRPOKhm1XU7d5zY3ybBhwEzfN8e6etU8
+Accept-Encoding: gzip
+
+2024/02/08 16:12:16 <<<<<<<<<< RESULT:
+HTTP/1.1 200 OK
+Content-Length: 2524
+Cache-Control: max-age=0
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:12:16 GMT
+Expires: Fri, 09 Feb 2024 00:12:16 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":[{"maxmem":4294967296,"vmid":100,"diskread":0,"uptime":0,"mem":0,"template":0,"cpu":0,"diskwrite":0,"name":"another-test","node":"lepakshi-lenovomini","type":"qemu","status":"stopped","disk":0,"maxcpu":2,"netin":0,"maxdisk":34359738368,"id":"qemu/100","netout":0},{"maxdisk":137438953472,"id":"qemu/105","netout":0,"disk":0,"maxcpu":4,"netin":0,"type":"qemu","node":"lepakshi-lenovomini","status":"stopped","diskwrite":0,"name":"ubuntu-code-server","cpu":0,"mem":0,"template":0,"maxmem":8489271296,"vmid":105,"diskread":0,"uptime":0},{"name":"test-admin","diskwrite":0,"node":"lepakshi-lenovomini","type":"qemu","status":"stopped","maxcpu":2,"netin":0,"disk":0,"id":"qemu/300","netout":0,"maxdisk":8589934592,"uptime":0,"vmid":300,"maxmem":4294967296,"diskread":0,"mem":0,"template":0,"cpu":0},{"template":0,"mem":0,"diskread":0,"vmid":301,"maxmem":1073741824,"uptime":0,"cpu":0,"status":"stopped","type":"qemu","node":"lepakshi-lenovomini","diskwrite":0,"name":"gitea-dev","maxdisk":68719476736,"tags":"dev;gitea;terraform","netout":0,"id":"qemu/301","disk":0,"netin":0,"maxcpu":2},{"maxdisk":137438953472,"id":"qemu/302","netout":0,"tags":"dev","disk":0,"maxcpu":3,"netin":0,"node":"lepakshi-lenovomini","type":"qemu","status":"stopped","diskwrite":0,"name":"win-11-dev","cpu":0,"mem":0,"template":0,"vmid":302,"maxmem":12884901888,"diskread":0,"uptime":0},{"cpu":0,"vmid":303,"maxmem":2147483648,"diskread":0,"uptime":0,"mem":0,"template":0,"disk":0,"maxcpu":2,"netin":0,"maxdisk":68719476736,"id":"lxc/303","netout":0,"tags":"dev;ops","diskwrite":0,"name":"dev-kea-dhcp-01","type":"lxc","node":"lepakshi-lenovomini","status":"stopped"},{"cpu":0,"template":0,"mem":0,"uptime":0,"diskread":0,"vmid":304,"maxmem":1073741824,"netout":0,"id":"lxc/304","maxdisk":8589934592,"netin":0,"maxcpu":1,"disk":0,"status":"stopped","type":"lxc","node":"lepakshi-lenovomini","name":"test-kea-dchp","diskwrite":0},{"disk":564264960,"netin":1243,"maxcpu":2,"maxdisk":33501757440,"tags":"dev;kea;ops;postgresql","netout":2183,"id":"lxc/305","diskwrite":3141632,"name":"dev-kea-dhcp-02","status":"running","type":"lxc","node":"lepakshi-lenovomini","cpu":0.00084791185000604,"diskread":206176256,"vmid":305,"maxmem":2147483648,"uptime":248,"template":0,"mem":12890112},{"status":"stopped","node":"lepakshi-lenovomini","type":"qemu","name":"proxmox-dev","diskwrite":0,"netout":0,"id":"qemu/400","maxdisk":34359738368,"netin":0,"maxcpu":4,"disk":0,"template":0,"mem":0,"uptime":0,"diskread":0,"vmid":400,"maxmem":23622320128,"cpu":0}]}
+2024/02/08 16:12:16 >>>>>>>>>> REQUEST:
+GET /api2/json/nodes/lepakshi-lenovomini/lxc/305/config HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56DE0::gSG/AzttbLo0Is/7hS/D9TcyYl6Nhn+2rLOOBxr98Ag31C2tvp+7XnMgypC5+/SP1Z3zUItx3OI5LJrM/bHDuIi97rG8en/pasz6HazZt5/JMqCzluZuWIUOQJowBuDmJu1B4yLqXUcFOeZ5zXvL1nmgcnJ5wz8Tve7v+QHWhyOtazNKWrexmzQZmPYvivL1BgyL7FJPdEVpXH9vwQGkcJOcECgOXtQilOGa7dgEDH4U7TvfHTQtcMKJtgHHeOadiDfbAsWHB2dUnRtHimsgHDuSAQSDiCo6wTdmFC7VvZ3ETibyPPQmr7qTp3zxbjVbR5iBucXFQVYaTN/aXwcosA==
+CSRFPreventionToken: 65C56DE0:Xtv9CNRl/APQRPOKhm1XU7d5zY3ybBhwEzfN8e6etU8
+Accept-Encoding: gzip
+
+2024/02/08 16:12:16 <<<<<<<<<< RESULT:
+HTTP/1.1 200 OK
+Content-Length: 646
+Cache-Control: max-age=0
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:12:16 GMT
+Expires: Fri, 09 Feb 2024 00:12:16 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":{"digest":"2c6c1884f961359178c7ee9804391867bb14a1f1","tty":2,"console":1,"swap":1024,"cpulimit":"0","memory":2048,"unprivileged":1,"protection":0,"cpuunits":1024,"tags":"dev;kea;ops;postgresql","net0":"name=eth0,bridge=vmbr0,firewall=1,gw=192.168.30.1,hwaddr=BC:24:11:D2:35:95,ip=192.168.30.81/24,tag=30,type=veth","cmode":"tty","net1":"name=eth1,bridge=vmbr2,gw=192.168.1.1,hwaddr=BC:24:11:F3:22:52,ip=192.168.1.1/24,type=veth","arch":"amd64","cores":2,"rootfs":"proxthin:vm-305-disk-0,size=32G","hostname":"dev-kea-dhcp-02","onboot":1,"ostype":"debian","description":"DHCP Server with kea and postgresql created on 2024-02-09-12-12\n"}}
+2024/02/08 16:12:16 >>>>>>>>>> REQUEST:
+GET /api2/json/cluster/ha/resources/305 HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56DE0::gSG/AzttbLo0Is/7hS/D9TcyYl6Nhn+2rLOOBxr98Ag31C2tvp+7XnMgypC5+/SP1Z3zUItx3OI5LJrM/bHDuIi97rG8en/pasz6HazZt5/JMqCzluZuWIUOQJowBuDmJu1B4yLqXUcFOeZ5zXvL1nmgcnJ5wz8Tve7v+QHWhyOtazNKWrexmzQZmPYvivL1BgyL7FJPdEVpXH9vwQGkcJOcECgOXtQilOGa7dgEDH4U7TvfHTQtcMKJtgHHeOadiDfbAsWHB2dUnRtHimsgHDuSAQSDiCo6wTdmFC7VvZ3ETibyPPQmr7qTp3zxbjVbR5iBucXFQVYaTN/aXwcosA==
+CSRFPreventionToken: 65C56DE0:Xtv9CNRl/APQRPOKhm1XU7d5zY3ybBhwEzfN8e6etU8
+Accept-Encoding: gzip
+
+2024/02/08 16:12:16 <<<<<<<<<< RESULT:
+HTTP/1.1 500 no such resource 'ct:305'
+Connection: close
+Content-Length: 13
+Cache-Control: max-age=0
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:12:16 GMT
+Expires: Fri, 09 Feb 2024 00:12:16 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":null}
+2024/02/08 16:12:16 >>>>>>>>>> REQUEST:
+GET /api2/json/pools HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56DE0::gSG/AzttbLo0Is/7hS/D9TcyYl6Nhn+2rLOOBxr98Ag31C2tvp+7XnMgypC5+/SP1Z3zUItx3OI5LJrM/bHDuIi97rG8en/pasz6HazZt5/JMqCzluZuWIUOQJowBuDmJu1B4yLqXUcFOeZ5zXvL1nmgcnJ5wz8Tve7v+QHWhyOtazNKWrexmzQZmPYvivL1BgyL7FJPdEVpXH9vwQGkcJOcECgOXtQilOGa7dgEDH4U7TvfHTQtcMKJtgHHeOadiDfbAsWHB2dUnRtHimsgHDuSAQSDiCo6wTdmFC7VvZ3ETibyPPQmr7qTp3zxbjVbR5iBucXFQVYaTN/aXwcosA==
+CSRFPreventionToken: 65C56DE0:Xtv9CNRl/APQRPOKhm1XU7d5zY3ybBhwEzfN8e6etU8
+Accept-Encoding: gzip
+
+2024/02/08 16:12:16 <<<<<<<<<< RESULT:
+HTTP/1.1 200 OK
+Content-Length: 11
+Cache-Control: max-age=0
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:12:16 GMT
+Expires: Fri, 09 Feb 2024 00:12:16 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":[]}
+[90mThu, 08 Feb 2024 16:14:50 -0800[0m [32mINF[0m [1mgithub.com/Telmate/terraform-provider-proxmox/v2/proxmox/util.go:159[0m[36m >[0m Enabling the capture of log-library logs as ithe _capturelog flag was detected
+[90mThu, 08 Feb 2024 16:14:50 -0800[0m [32mINF[0m [1mgithub.com/Telmate/terraform-provider-proxmox/v2/proxmox/util.go:192[0m[36m >[0m Logging Started. Root Logger Set to level debug
+2024/02/08 16:14:50 >>>>>>>>>> REQUEST:
+GET /api2/json/cluster/resources?type=vm HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56E7A::ssXKTLiHX3x1LMiogMSZttVYs1x4pYCB2IYx5q+YPcEMkYqQ5q4RG8kmn2EDhRWasctll83h3puVM4NWjFPCBrkTrEC3D/C6oZVol1hBNjjyUOA7WYrPjkCfcY1XLn0OUE7EPe8gvf9nGbFKw1P9eO5hvnxotD+VvPLskl89D3Rr7FOxSnbO7MlXalBIVFlB7wR9oDftPlcjIMYbjk9LyM9RPh1kxL8+JQG6awXDlZ+CZIZlQoAorTKHV0feG6vVUFmVAXvYSIjoNnRiYJgojEZvLoBhfVtxvRVpedPgrC5AKe1c/Mej3bQbxaZy2UZHWz1elsePtuIfw7K9PV2nqA==
+CSRFPreventionToken: 65C56E7A:oe0LRkdYLAOah8d12ZyEhPf5Skadfu7xWy8hrjq9BxQ
+Accept-Encoding: gzip
+
+2024/02/08 16:14:50 <<<<<<<<<< RESULT:
+HTTP/1.1 200 OK
+Content-Length: 2506
+Cache-Control: max-age=0
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:14:50 GMT
+Expires: Fri, 09 Feb 2024 00:14:50 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":[{"vmid":100,"maxmem":4294967296,"diskread":0,"uptime":0,"mem":0,"template":0,"cpu":0,"diskwrite":0,"name":"another-test","type":"qemu","node":"lepakshi-lenovomini","status":"stopped","disk":0,"maxcpu":2,"netin":0,"maxdisk":34359738368,"id":"qemu/100","netout":0},{"cpu":0,"diskread":0,"vmid":105,"maxmem":8489271296,"uptime":0,"template":0,"mem":0,"disk":0,"netin":0,"maxcpu":4,"maxdisk":137438953472,"netout":0,"id":"qemu/105","diskwrite":0,"name":"ubuntu-code-server","status":"stopped","type":"qemu","node":"lepakshi-lenovomini"},{"mem":0,"template":0,"uptime":0,"maxmem":4294967296,"vmid":300,"diskread":0,"cpu":0,"node":"lepakshi-lenovomini","type":"qemu","status":"stopped","name":"test-admin","diskwrite":0,"id":"qemu/300","netout":0,"maxdisk":8589934592,"maxcpu":2,"netin":0,"disk":0},{"mem":0,"template":0,"vmid":301,"maxmem":1073741824,"diskread":0,"uptime":0,"cpu":0,"node":"lepakshi-lenovomini","type":"qemu","status":"stopped","diskwrite":0,"name":"gitea-dev","maxdisk":68719476736,"id":"qemu/301","netout":0,"tags":"dev;gitea;terraform","disk":0,"maxcpu":2,"netin":0},{"cpu":0,"uptime":0,"vmid":302,"maxmem":12884901888,"diskread":0,"mem":0,"template":0,"maxcpu":3,"netin":0,"disk":0,"id":"qemu/302","netout":0,"tags":"dev","maxdisk":137438953472,"name":"win-11-dev","diskwrite":0,"node":"lepakshi-lenovomini","type":"qemu","status":"stopped"},{"uptime":0,"diskread":0,"maxmem":2147483648,"vmid":303,"template":0,"mem":0,"cpu":0,"name":"dev-kea-dhcp-01","diskwrite":0,"status":"stopped","type":"lxc","node":"lepakshi-lenovomini","netin":0,"maxcpu":2,"disk":0,"tags":"dev;ops","netout":0,"id":"lxc/303","maxdisk":68719476736},{"uptime":0,"diskread":0,"maxmem":1073741824,"vmid":304,"template":0,"mem":0,"cpu":0,"name":"test-kea-dchp","diskwrite":0,"status":"stopped","node":"lepakshi-lenovomini","type":"lxc","netin":0,"maxcpu":1,"disk":0,"netout":0,"id":"lxc/304","maxdisk":8589934592},{"maxdisk":33501757440,"tags":"dev;kea;ops;postgresql","netout":2323,"id":"lxc/305","disk":564936704,"netin":1506,"maxcpu":2,"status":"running","node":"lepakshi-lenovomini","type":"lxc","diskwrite":4427776,"name":"dev-kea-dhcp-02","cpu":0,"template":0,"mem":15724544,"diskread":224575488,"vmid":305,"maxmem":2147483648,"uptime":408},{"maxdisk":34359738368,"netout":0,"id":"qemu/400","disk":0,"netin":0,"maxcpu":4,"status":"stopped","type":"qemu","node":"lepakshi-lenovomini","diskwrite":0,"name":"proxmox-dev","cpu":0,"template":0,"mem":0,"diskread":0,"maxmem":23622320128,"vmid":400,"uptime":0}]}
+2024/02/08 16:14:50 >>>>>>>>>> REQUEST:
+GET /api2/json/nodes/lepakshi-lenovomini/lxc/305/config HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56E7A::ssXKTLiHX3x1LMiogMSZttVYs1x4pYCB2IYx5q+YPcEMkYqQ5q4RG8kmn2EDhRWasctll83h3puVM4NWjFPCBrkTrEC3D/C6oZVol1hBNjjyUOA7WYrPjkCfcY1XLn0OUE7EPe8gvf9nGbFKw1P9eO5hvnxotD+VvPLskl89D3Rr7FOxSnbO7MlXalBIVFlB7wR9oDftPlcjIMYbjk9LyM9RPh1kxL8+JQG6awXDlZ+CZIZlQoAorTKHV0feG6vVUFmVAXvYSIjoNnRiYJgojEZvLoBhfVtxvRVpedPgrC5AKe1c/Mej3bQbxaZy2UZHWz1elsePtuIfw7K9PV2nqA==
+CSRFPreventionToken: 65C56E7A:oe0LRkdYLAOah8d12ZyEhPf5Skadfu7xWy8hrjq9BxQ
+Accept-Encoding: gzip
+
+2024/02/08 16:14:50 <<<<<<<<<< RESULT:
+HTTP/1.1 200 OK
+Content-Length: 615
+Cache-Control: max-age=0
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:14:50 GMT
+Expires: Fri, 09 Feb 2024 00:14:50 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":{"protection":0,"unprivileged":1,"memory":2048,"net1":"name=eth1,bridge=vmbr2,gw=192.168.1.1,hwaddr=BC:24:11:F3:22:52,ip=192.168.1.1/24,type=veth","cores":2,"description":"DHCP Server with kea and postgresql created on 2024-02-09-12-12\n","arch":"amd64","tags":"dev;kea;ops;postgresql","net0":"name=eth0,bridge=vmbr0,firewall=1,gw=192.168.30.1,hwaddr=BC:24:11:D2:35:95,ip=192.168.30.81/24,tag=30,type=veth","cmode":"tty","rootfs":"proxthin:vm-305-disk-0,size=32G","console":1,"digest":"97d086ea7e798b827de08ecc95f404010c723218","tty":2,"onboot":1,"ostype":"debian","swap":1024,"hostname":"dev-kea-dhcp-02"}}
+2024/02/08 16:14:50 >>>>>>>>>> REQUEST:
+GET /api2/json/cluster/ha/resources/305 HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56E7A::ssXKTLiHX3x1LMiogMSZttVYs1x4pYCB2IYx5q+YPcEMkYqQ5q4RG8kmn2EDhRWasctll83h3puVM4NWjFPCBrkTrEC3D/C6oZVol1hBNjjyUOA7WYrPjkCfcY1XLn0OUE7EPe8gvf9nGbFKw1P9eO5hvnxotD+VvPLskl89D3Rr7FOxSnbO7MlXalBIVFlB7wR9oDftPlcjIMYbjk9LyM9RPh1kxL8+JQG6awXDlZ+CZIZlQoAorTKHV0feG6vVUFmVAXvYSIjoNnRiYJgojEZvLoBhfVtxvRVpedPgrC5AKe1c/Mej3bQbxaZy2UZHWz1elsePtuIfw7K9PV2nqA==
+CSRFPreventionToken: 65C56E7A:oe0LRkdYLAOah8d12ZyEhPf5Skadfu7xWy8hrjq9BxQ
+Accept-Encoding: gzip
+
+2024/02/08 16:14:50 <<<<<<<<<< RESULT:
+HTTP/1.1 500 no such resource 'ct:305'
+Connection: close
+Content-Length: 13
+Cache-Control: max-age=0
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:14:50 GMT
+Expires: Fri, 09 Feb 2024 00:14:50 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":null}
+2024/02/08 16:14:50 >>>>>>>>>> REQUEST:
+GET /api2/json/pools HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56E7A::ssXKTLiHX3x1LMiogMSZttVYs1x4pYCB2IYx5q+YPcEMkYqQ5q4RG8kmn2EDhRWasctll83h3puVM4NWjFPCBrkTrEC3D/C6oZVol1hBNjjyUOA7WYrPjkCfcY1XLn0OUE7EPe8gvf9nGbFKw1P9eO5hvnxotD+VvPLskl89D3Rr7FOxSnbO7MlXalBIVFlB7wR9oDftPlcjIMYbjk9LyM9RPh1kxL8+JQG6awXDlZ+CZIZlQoAorTKHV0feG6vVUFmVAXvYSIjoNnRiYJgojEZvLoBhfVtxvRVpedPgrC5AKe1c/Mej3bQbxaZy2UZHWz1elsePtuIfw7K9PV2nqA==
+CSRFPreventionToken: 65C56E7A:oe0LRkdYLAOah8d12ZyEhPf5Skadfu7xWy8hrjq9BxQ
+Accept-Encoding: gzip
+
+2024/02/08 16:14:50 <<<<<<<<<< RESULT:
+HTTP/1.1 200 OK
+Content-Length: 11
+Cache-Control: max-age=0
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:14:50 GMT
+Expires: Fri, 09 Feb 2024 00:14:50 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":[]}
+[90mThu, 08 Feb 2024 16:14:54 -0800[0m [32mINF[0m [1mgithub.com/Telmate/terraform-provider-proxmox/v2/proxmox/util.go:159[0m[36m >[0m Enabling the capture of log-library logs as ithe _capturelog flag was detected
+[90mThu, 08 Feb 2024 16:14:54 -0800[0m [32mINF[0m [1mgithub.com/Telmate/terraform-provider-proxmox/v2/proxmox/util.go:192[0m[36m >[0m Logging Started. Root Logger Set to level debug
+2024/02/08 16:14:54 >>>>>>>>>> REQUEST:
+GET /api2/json/cluster/resources?type=vm HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56E7E::eQYSFCfhxGc7HKhYO6gO7kRbo+C3mMcj+Sq4nOHU7+uXQchzHOBtmODc4YW8Kr/ajW7qQu1KsKQYbJg/Eg2qI0Cod5R0Znj5rQkdXh1G2SD0o6XPzBWIpbXz/RziOdAKXWNyNWsdMHAco+FvR2DxXhuxYS/bCW+uZ50KPiRBdtyQouuPdlBySBAxZjTj2soB4kLzMziplq7LU/9v4TTOlu020GlJHNzrXWx0zIOfi6XfX1rf5pK6S90SDbhKbKje5aY8QVmBGsvWBXJ4YveDuKVaPVoiQTiN+A4CrRx/rrLYwfAbOUWaFPTWrMch8OM2OAI6F94JWszeU0Iq6x5PGQ==
+CSRFPreventionToken: 65C56E7E:Mjzdu8/iGu7NQ3MX9gazm/4aTH1dwq7VYxxVOfhYcRE
+Accept-Encoding: gzip
+
+2024/02/08 16:14:54 <<<<<<<<<< RESULT:
+HTTP/1.1 200 OK
+Content-Length: 2506
+Cache-Control: max-age=0
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:14:54 GMT
+Expires: Fri, 09 Feb 2024 00:14:54 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":[{"cpu":0,"vmid":100,"maxmem":4294967296,"diskread":0,"uptime":0,"mem":0,"template":0,"disk":0,"maxcpu":2,"netin":0,"maxdisk":34359738368,"id":"qemu/100","netout":0,"diskwrite":0,"name":"another-test","node":"lepakshi-lenovomini","type":"qemu","status":"stopped"},{"mem":0,"template":0,"vmid":105,"maxmem":8489271296,"diskread":0,"uptime":0,"cpu":0,"type":"qemu","node":"lepakshi-lenovomini","status":"stopped","diskwrite":0,"name":"ubuntu-code-server","maxdisk":137438953472,"id":"qemu/105","netout":0,"disk":0,"maxcpu":4,"netin":0},{"maxmem":4294967296,"vmid":300,"diskread":0,"uptime":0,"mem":0,"template":0,"cpu":0,"diskwrite":0,"name":"test-admin","node":"lepakshi-lenovomini","type":"qemu","status":"stopped","disk":0,"maxcpu":2,"netin":0,"maxdisk":8589934592,"id":"qemu/300","netout":0},{"name":"gitea-dev","diskwrite":0,"status":"stopped","type":"qemu","node":"lepakshi-lenovomini","netin":0,"maxcpu":2,"disk":0,"netout":0,"tags":"dev;gitea;terraform","id":"qemu/301","maxdisk":68719476736,"uptime":0,"diskread":0,"vmid":301,"maxmem":1073741824,"template":0,"mem":0,"cpu":0},{"mem":0,"template":0,"maxmem":12884901888,"vmid":302,"diskread":0,"uptime":0,"cpu":0,"node":"lepakshi-lenovomini","type":"qemu","status":"stopped","diskwrite":0,"name":"win-11-dev","maxdisk":137438953472,"id":"qemu/302","tags":"dev","netout":0,"disk":0,"maxcpu":3,"netin":0},{"cpu":0,"uptime":0,"diskread":0,"vmid":303,"maxmem":2147483648,"template":0,"mem":0,"netin":0,"maxcpu":2,"disk":0,"tags":"dev;ops","netout":0,"id":"lxc/303","maxdisk":68719476736,"name":"dev-kea-dhcp-01","diskwrite":0,"status":"stopped","node":"lepakshi-lenovomini","type":"lxc"},{"type":"lxc","node":"lepakshi-lenovomini","status":"stopped","diskwrite":0,"name":"test-kea-dchp","maxdisk":8589934592,"id":"lxc/304","netout":0,"disk":0,"maxcpu":1,"netin":0,"mem":0,"template":0,"vmid":304,"maxmem":1073741824,"diskread":0,"uptime":0,"cpu":0},{"cpu":0,"uptime":408,"maxmem":2147483648,"vmid":305,"diskread":224575488,"mem":15724544,"template":0,"maxcpu":2,"netin":1506,"disk":564936704,"id":"lxc/305","tags":"dev;kea;ops;postgresql","netout":2323,"maxdisk":33501757440,"name":"dev-kea-dhcp-02","diskwrite":4427776,"node":"lepakshi-lenovomini","type":"lxc","status":"running"},{"node":"lepakshi-lenovomini","type":"qemu","status":"stopped","name":"proxmox-dev","diskwrite":0,"id":"qemu/400","netout":0,"maxdisk":34359738368,"maxcpu":4,"netin":0,"disk":0,"mem":0,"template":0,"uptime":0,"vmid":400,"maxmem":23622320128,"diskread":0,"cpu":0}]}
+2024/02/08 16:14:54 >>>>>>>>>> REQUEST:
+GET /api2/json/nodes/lepakshi-lenovomini/lxc/305/config HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56E7E::eQYSFCfhxGc7HKhYO6gO7kRbo+C3mMcj+Sq4nOHU7+uXQchzHOBtmODc4YW8Kr/ajW7qQu1KsKQYbJg/Eg2qI0Cod5R0Znj5rQkdXh1G2SD0o6XPzBWIpbXz/RziOdAKXWNyNWsdMHAco+FvR2DxXhuxYS/bCW+uZ50KPiRBdtyQouuPdlBySBAxZjTj2soB4kLzMziplq7LU/9v4TTOlu020GlJHNzrXWx0zIOfi6XfX1rf5pK6S90SDbhKbKje5aY8QVmBGsvWBXJ4YveDuKVaPVoiQTiN+A4CrRx/rrLYwfAbOUWaFPTWrMch8OM2OAI6F94JWszeU0Iq6x5PGQ==
+CSRFPreventionToken: 65C56E7E:Mjzdu8/iGu7NQ3MX9gazm/4aTH1dwq7VYxxVOfhYcRE
+Accept-Encoding: gzip
+
+2024/02/08 16:14:54 <<<<<<<<<< RESULT:
+HTTP/1.1 200 OK
+Content-Length: 615
+Cache-Control: max-age=0
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:14:54 GMT
+Expires: Fri, 09 Feb 2024 00:14:54 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":{"tags":"dev;kea;ops;postgresql","cmode":"tty","net0":"name=eth0,bridge=vmbr0,firewall=1,gw=192.168.30.1,hwaddr=BC:24:11:D2:35:95,ip=192.168.30.81/24,tag=30,type=veth","net1":"name=eth1,bridge=vmbr2,gw=192.168.1.1,hwaddr=BC:24:11:F3:22:52,ip=192.168.1.1/24,type=veth","arch":"amd64","cores":2,"description":"DHCP Server with kea and postgresql created on 2024-02-09-12-12\n","memory":2048,"protection":0,"unprivileged":1,"hostname":"dev-kea-dhcp-02","onboot":1,"ostype":"debian","swap":1024,"tty":2,"digest":"97d086ea7e798b827de08ecc95f404010c723218","rootfs":"proxthin:vm-305-disk-0,size=32G","console":1}}
+2024/02/08 16:14:54 >>>>>>>>>> REQUEST:
+GET /api2/json/cluster/ha/resources/305 HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56E7E::eQYSFCfhxGc7HKhYO6gO7kRbo+C3mMcj+Sq4nOHU7+uXQchzHOBtmODc4YW8Kr/ajW7qQu1KsKQYbJg/Eg2qI0Cod5R0Znj5rQkdXh1G2SD0o6XPzBWIpbXz/RziOdAKXWNyNWsdMHAco+FvR2DxXhuxYS/bCW+uZ50KPiRBdtyQouuPdlBySBAxZjTj2soB4kLzMziplq7LU/9v4TTOlu020GlJHNzrXWx0zIOfi6XfX1rf5pK6S90SDbhKbKje5aY8QVmBGsvWBXJ4YveDuKVaPVoiQTiN+A4CrRx/rrLYwfAbOUWaFPTWrMch8OM2OAI6F94JWszeU0Iq6x5PGQ==
+CSRFPreventionToken: 65C56E7E:Mjzdu8/iGu7NQ3MX9gazm/4aTH1dwq7VYxxVOfhYcRE
+Accept-Encoding: gzip
+
+2024/02/08 16:14:54 <<<<<<<<<< RESULT:
+HTTP/1.1 500 no such resource 'ct:305'
+Connection: close
+Content-Length: 13
+Cache-Control: max-age=0
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:14:54 GMT
+Expires: Fri, 09 Feb 2024 00:14:54 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":null}
+2024/02/08 16:14:54 >>>>>>>>>> REQUEST:
+GET /api2/json/pools HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56E7E::eQYSFCfhxGc7HKhYO6gO7kRbo+C3mMcj+Sq4nOHU7+uXQchzHOBtmODc4YW8Kr/ajW7qQu1KsKQYbJg/Eg2qI0Cod5R0Znj5rQkdXh1G2SD0o6XPzBWIpbXz/RziOdAKXWNyNWsdMHAco+FvR2DxXhuxYS/bCW+uZ50KPiRBdtyQouuPdlBySBAxZjTj2soB4kLzMziplq7LU/9v4TTOlu020GlJHNzrXWx0zIOfi6XfX1rf5pK6S90SDbhKbKje5aY8QVmBGsvWBXJ4YveDuKVaPVoiQTiN+A4CrRx/rrLYwfAbOUWaFPTWrMch8OM2OAI6F94JWszeU0Iq6x5PGQ==
+CSRFPreventionToken: 65C56E7E:Mjzdu8/iGu7NQ3MX9gazm/4aTH1dwq7VYxxVOfhYcRE
+Accept-Encoding: gzip
+
+2024/02/08 16:14:54 <<<<<<<<<< RESULT:
+HTTP/1.1 200 OK
+Content-Length: 11
+Cache-Control: max-age=0
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:14:54 GMT
+Expires: Fri, 09 Feb 2024 00:14:54 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":[]}
+[90mThu, 08 Feb 2024 16:14:54 -0800[0m [32mINF[0m [1mgithub.com/Telmate/terraform-provider-proxmox/v2/proxmox/util.go:159[0m[36m >[0m Enabling the capture of log-library logs as ithe _capturelog flag was detected
+[90mThu, 08 Feb 2024 16:14:54 -0800[0m [32mINF[0m [1mgithub.com/Telmate/terraform-provider-proxmox/v2/proxmox/util.go:192[0m[36m >[0m Logging Started. Root Logger Set to level debug
+2024/02/08 16:14:54 >>>>>>>>>> REQUEST:
+GET /api2/json/cluster/resources?type=vm HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56E7E::eQYSFCfhxGc7HKhYO6gO7kRbo+C3mMcj+Sq4nOHU7+uXQchzHOBtmODc4YW8Kr/ajW7qQu1KsKQYbJg/Eg2qI0Cod5R0Znj5rQkdXh1G2SD0o6XPzBWIpbXz/RziOdAKXWNyNWsdMHAco+FvR2DxXhuxYS/bCW+uZ50KPiRBdtyQouuPdlBySBAxZjTj2soB4kLzMziplq7LU/9v4TTOlu020GlJHNzrXWx0zIOfi6XfX1rf5pK6S90SDbhKbKje5aY8QVmBGsvWBXJ4YveDuKVaPVoiQTiN+A4CrRx/rrLYwfAbOUWaFPTWrMch8OM2OAI6F94JWszeU0Iq6x5PGQ==
+CSRFPreventionToken: 65C56E7E:Mjzdu8/iGu7NQ3MX9gazm/4aTH1dwq7VYxxVOfhYcRE
+Accept-Encoding: gzip
+
+2024/02/08 16:14:54 <<<<<<<<<< RESULT:
+HTTP/1.1 200 OK
+Content-Length: 2506
+Cache-Control: max-age=0
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:14:54 GMT
+Expires: Fri, 09 Feb 2024 00:14:54 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":[{"cpu":0,"maxmem":4294967296,"vmid":100,"diskread":0,"uptime":0,"mem":0,"template":0,"disk":0,"maxcpu":2,"netin":0,"maxdisk":34359738368,"id":"qemu/100","netout":0,"diskwrite":0,"name":"another-test","type":"qemu","node":"lepakshi-lenovomini","status":"stopped"},{"cpu":0,"diskread":0,"vmid":105,"maxmem":8489271296,"uptime":0,"template":0,"mem":0,"disk":0,"netin":0,"maxcpu":4,"maxdisk":137438953472,"netout":0,"id":"qemu/105","diskwrite":0,"name":"ubuntu-code-server","status":"stopped","node":"lepakshi-lenovomini","type":"qemu"},{"type":"qemu","node":"lepakshi-lenovomini","status":"stopped","name":"test-admin","diskwrite":0,"id":"qemu/300","netout":0,"maxdisk":8589934592,"maxcpu":2,"netin":0,"disk":0,"mem":0,"template":0,"uptime":0,"maxmem":4294967296,"vmid":300,"diskread":0,"cpu":0},{"mem":0,"template":0,"uptime":0,"vmid":301,"maxmem":1073741824,"diskread":0,"cpu":0,"type":"qemu","node":"lepakshi-lenovomini","status":"stopped","name":"gitea-dev","diskwrite":0,"id":"qemu/301","tags":"dev;gitea;terraform","netout":0,"maxdisk":68719476736,"maxcpu":2,"netin":0,"disk":0},{"cpu":0,"diskread":0,"maxmem":12884901888,"vmid":302,"uptime":0,"template":0,"mem":0,"disk":0,"netin":0,"maxcpu":3,"maxdisk":137438953472,"netout":0,"tags":"dev","id":"qemu/302","diskwrite":0,"name":"win-11-dev","status":"stopped","node":"lepakshi-lenovomini","type":"qemu"},{"name":"dev-kea-dhcp-01","diskwrite":0,"status":"stopped","node":"lepakshi-lenovomini","type":"lxc","netin":0,"maxcpu":2,"disk":0,"tags":"dev;ops","netout":0,"id":"lxc/303","maxdisk":68719476736,"uptime":0,"diskread":0,"vmid":303,"maxmem":2147483648,"template":0,"mem":0,"cpu":0},{"mem":0,"template":0,"uptime":0,"maxmem":1073741824,"vmid":304,"diskread":0,"cpu":0,"node":"lepakshi-lenovomini","type":"lxc","status":"stopped","name":"test-kea-dchp","diskwrite":0,"id":"lxc/304","netout":0,"maxdisk":8589934592,"maxcpu":1,"netin":0,"disk":0},{"maxdisk":33501757440,"netout":2323,"tags":"dev;kea;ops;postgresql","id":"lxc/305","disk":564936704,"netin":1506,"maxcpu":2,"status":"running","type":"lxc","node":"lepakshi-lenovomini","diskwrite":4427776,"name":"dev-kea-dhcp-02","cpu":0,"template":0,"mem":15724544,"diskread":224575488,"maxmem":2147483648,"vmid":305,"uptime":408},{"template":0,"mem":0,"diskread":0,"maxmem":23622320128,"vmid":400,"uptime":0,"cpu":0,"status":"stopped","type":"qemu","node":"lepakshi-lenovomini","diskwrite":0,"name":"proxmox-dev","maxdisk":34359738368,"netout":0,"id":"qemu/400","disk":0,"netin":0,"maxcpu":4}]}
+2024/02/08 16:14:54 >>>>>>>>>> REQUEST:
+PUT /api2/json/nodes/lepakshi-lenovomini/lxc/305/config HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Content-Length: 259
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56E7E::eQYSFCfhxGc7HKhYO6gO7kRbo+C3mMcj+Sq4nOHU7+uXQchzHOBtmODc4YW8Kr/ajW7qQu1KsKQYbJg/Eg2qI0Cod5R0Znj5rQkdXh1G2SD0o6XPzBWIpbXz/RziOdAKXWNyNWsdMHAco+FvR2DxXhuxYS/bCW+uZ50KPiRBdtyQouuPdlBySBAxZjTj2soB4kLzMziplq7LU/9v4TTOlu020GlJHNzrXWx0zIOfi6XfX1rf5pK6S90SDbhKbKje5aY8QVmBGsvWBXJ4YveDuKVaPVoiQTiN+A4CrRx/rrLYwfAbOUWaFPTWrMch8OM2OAI6F94JWszeU0Iq6x5PGQ==
+CSRFPreventionToken: 65C56E7E:Mjzdu8/iGu7NQ3MX9gazm/4aTH1dwq7VYxxVOfhYcRE
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip
+
+arch=amd64&cmode=tty&console=1&cores=2&cpulimit=0&cpuunits=0&description=DHCP+Server+with+kea+and+postgresql+created+on+2024-02-09-12-14&hostname=dev-kea-dhcp-02&memory=2048&onboot=1&ostype=debian&protection=0&swap=1024&tags=ops%3Bkea%3Bpostgresql%3Bdev&tty=2
+2024/02/08 16:14:54 <<<<<<<<<< RESULT:
+HTTP/1.1 400 Parameter verification failed.
+Connection: close
+Content-Length: 230
+Cache-Control: max-age=0
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:14:54 GMT
+Expires: Fri, 09 Feb 2024 00:14:54 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"errors":{"cpulimit":"unable to hotplug cpulimit: closing file '/sys/fs/cgroup/lxc/305/cpu.max' failed - Invalid argument\n","cpuunits":"unable to hotplug cpuunits: cpu weight (shares) must be in range [1, 10000]\n"},"data":null}
+[90mThu, 08 Feb 2024 16:15:25 -0800[0m [32mINF[0m [1mgithub.com/Telmate/terraform-provider-proxmox/v2/proxmox/util.go:159[0m[36m >[0m Enabling the capture of log-library logs as ithe _capturelog flag was detected
+[90mThu, 08 Feb 2024 16:15:25 -0800[0m [32mINF[0m [1mgithub.com/Telmate/terraform-provider-proxmox/v2/proxmox/util.go:192[0m[36m >[0m Logging Started. Root Logger Set to level debug
+2024/02/08 16:15:25 >>>>>>>>>> REQUEST:
+GET /api2/json/cluster/resources?type=vm HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56E9D::eYnh405jYcLICnpDBu/J9Vht7w2cOz7I/KfseQ/zb1g5QHj3UpK2YVDW6eSb6cYdobU9TYag2+azYXUsQIOl0nYwkwmnfHqol4oEgZZxKybRFtVt58Y3s+yJDNne5ZaxqFrnshjGVxOrwQQe9Y9fjgbyw46XK94g78C04WFHF/i1OthB91/zgipWhvCVm/OGW3Lwm/itID+sHd0e9bobjGd8HY4pkJrPGrvKaXbanQ9+G22Yz0lJw8VYJna0lof2u6YLUy+y91hBBjavJPj6Rm4VA+AeXTgOe3qrcB2baIMQkU4yDuHV9/luQwTrA1DrMVF+aUsEZ5qQXxf3FPVTdg==
+CSRFPreventionToken: 65C56E9D:e0hswBRUlxX2t0/5GR/Gc4vfY8hCbBhNnkK8a5ZNdu4
+Accept-Encoding: gzip
+
+2024/02/08 16:15:25 <<<<<<<<<< RESULT:
+HTTP/1.1 200 OK
+Content-Length: 2506
+Cache-Control: max-age=0
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:15:25 GMT
+Expires: Fri, 09 Feb 2024 00:15:25 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":[{"uptime":0,"diskread":0,"vmid":100,"maxmem":4294967296,"template":0,"mem":0,"cpu":0,"name":"another-test","diskwrite":0,"status":"stopped","type":"qemu","node":"lepakshi-lenovomini","netin":0,"maxcpu":2,"disk":0,"netout":0,"id":"qemu/100","maxdisk":34359738368},{"mem":0,"template":0,"uptime":0,"maxmem":8489271296,"vmid":105,"diskread":0,"cpu":0,"node":"lepakshi-lenovomini","type":"qemu","status":"stopped","name":"ubuntu-code-server","diskwrite":0,"id":"qemu/105","netout":0,"maxdisk":137438953472,"maxcpu":4,"netin":0,"disk":0},{"cpu":0,"uptime":0,"maxmem":4294967296,"vmid":300,"diskread":0,"mem":0,"template":0,"maxcpu":2,"netin":0,"disk":0,"id":"qemu/300","netout":0,"maxdisk":8589934592,"name":"test-admin","diskwrite":0,"node":"lepakshi-lenovomini","type":"qemu","status":"stopped"},{"cpu":0,"template":0,"mem":0,"uptime":0,"diskread":0,"maxmem":1073741824,"vmid":301,"netout":0,"tags":"dev;gitea;terraform","id":"qemu/301","maxdisk":68719476736,"netin":0,"maxcpu":2,"disk":0,"status":"stopped","type":"qemu","node":"lepakshi-lenovomini","name":"gitea-dev","diskwrite":0},{"template":0,"mem":0,"diskread":0,"vmid":302,"maxmem":12884901888,"uptime":0,"cpu":0,"status":"stopped","type":"qemu","node":"lepakshi-lenovomini","diskwrite":0,"name":"win-11-dev","maxdisk":137438953472,"netout":0,"tags":"dev","id":"qemu/302","disk":0,"netin":0,"maxcpu":3},{"status":"stopped","node":"lepakshi-lenovomini","type":"lxc","diskwrite":0,"name":"dev-kea-dhcp-01","maxdisk":68719476736,"tags":"dev;ops","netout":0,"id":"lxc/303","disk":0,"netin":0,"maxcpu":2,"template":0,"mem":0,"diskread":0,"maxmem":2147483648,"vmid":303,"uptime":0,"cpu":0},{"maxdisk":8589934592,"netout":0,"id":"lxc/304","disk":0,"netin":0,"maxcpu":1,"status":"stopped","node":"lepakshi-lenovomini","type":"lxc","diskwrite":0,"name":"test-kea-dchp","cpu":0,"template":0,"mem":0,"diskread":0,"maxmem":1073741824,"vmid":304,"uptime":0},{"mem":15724544,"template":0,"maxmem":2147483648,"vmid":305,"diskread":224575488,"uptime":438,"cpu":0,"node":"lepakshi-lenovomini","type":"lxc","status":"running","diskwrite":4427776,"name":"dev-kea-dhcp-02","maxdisk":33501757440,"id":"lxc/305","tags":"dev;kea;ops;postgresql","netout":2323,"disk":564936704,"maxcpu":2,"netin":1506},{"cpu":0,"diskread":0,"maxmem":23622320128,"vmid":400,"uptime":0,"template":0,"mem":0,"disk":0,"netin":0,"maxcpu":4,"maxdisk":34359738368,"netout":0,"id":"qemu/400","diskwrite":0,"name":"proxmox-dev","status":"stopped","node":"lepakshi-lenovomini","type":"qemu"}]}
+2024/02/08 16:15:25 >>>>>>>>>> REQUEST:
+GET /api2/json/nodes/lepakshi-lenovomini/lxc/305/config HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56E9D::eYnh405jYcLICnpDBu/J9Vht7w2cOz7I/KfseQ/zb1g5QHj3UpK2YVDW6eSb6cYdobU9TYag2+azYXUsQIOl0nYwkwmnfHqol4oEgZZxKybRFtVt58Y3s+yJDNne5ZaxqFrnshjGVxOrwQQe9Y9fjgbyw46XK94g78C04WFHF/i1OthB91/zgipWhvCVm/OGW3Lwm/itID+sHd0e9bobjGd8HY4pkJrPGrvKaXbanQ9+G22Yz0lJw8VYJna0lof2u6YLUy+y91hBBjavJPj6Rm4VA+AeXTgOe3qrcB2baIMQkU4yDuHV9/luQwTrA1DrMVF+aUsEZ5qQXxf3FPVTdg==
+CSRFPreventionToken: 65C56E9D:e0hswBRUlxX2t0/5GR/Gc4vfY8hCbBhNnkK8a5ZNdu4
+Accept-Encoding: gzip
+
+2024/02/08 16:15:25 <<<<<<<<<< RESULT:
+HTTP/1.1 200 OK
+Content-Length: 643
+Cache-Control: max-age=0
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:15:25 GMT
+Expires: Fri, 09 Feb 2024 00:15:25 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":{"rootfs":"proxthin:vm-305-disk-0,size=32G","hostname":"dev-kea-dhcp-02","onboot":1,"ostype":"debian","description":"DHCP Server with kea and postgresql created on 2024-02-09-12-14\n","digest":"b58f624bcc44be749aae67bbabaf05ef512dc8ed","tty":2,"console":1,"swap":1024,"cpulimit":"0","memory":2048,"protection":0,"unprivileged":1,"cpuunits":0,"tags":"dev;kea;ops;postgresql","cmode":"tty","net0":"name=eth0,bridge=vmbr0,firewall=1,gw=192.168.30.1,hwaddr=BC:24:11:D2:35:95,ip=192.168.30.81/24,tag=30,type=veth","net1":"name=eth1,bridge=vmbr2,gw=192.168.1.1,hwaddr=BC:24:11:F3:22:52,ip=192.168.1.1/24,type=veth","arch":"amd64","cores":2}}
+2024/02/08 16:15:25 >>>>>>>>>> REQUEST:
+GET /api2/json/cluster/ha/resources/305 HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56E9D::eYnh405jYcLICnpDBu/J9Vht7w2cOz7I/KfseQ/zb1g5QHj3UpK2YVDW6eSb6cYdobU9TYag2+azYXUsQIOl0nYwkwmnfHqol4oEgZZxKybRFtVt58Y3s+yJDNne5ZaxqFrnshjGVxOrwQQe9Y9fjgbyw46XK94g78C04WFHF/i1OthB91/zgipWhvCVm/OGW3Lwm/itID+sHd0e9bobjGd8HY4pkJrPGrvKaXbanQ9+G22Yz0lJw8VYJna0lof2u6YLUy+y91hBBjavJPj6Rm4VA+AeXTgOe3qrcB2baIMQkU4yDuHV9/luQwTrA1DrMVF+aUsEZ5qQXxf3FPVTdg==
+CSRFPreventionToken: 65C56E9D:e0hswBRUlxX2t0/5GR/Gc4vfY8hCbBhNnkK8a5ZNdu4
+Accept-Encoding: gzip
+
+2024/02/08 16:15:25 <<<<<<<<<< RESULT:
+HTTP/1.1 500 no such resource 'ct:305'
+Connection: close
+Content-Length: 13
+Cache-Control: max-age=0
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:15:25 GMT
+Expires: Fri, 09 Feb 2024 00:15:25 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":null}
+2024/02/08 16:15:25 >>>>>>>>>> REQUEST:
+GET /api2/json/pools HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56E9D::eYnh405jYcLICnpDBu/J9Vht7w2cOz7I/KfseQ/zb1g5QHj3UpK2YVDW6eSb6cYdobU9TYag2+azYXUsQIOl0nYwkwmnfHqol4oEgZZxKybRFtVt58Y3s+yJDNne5ZaxqFrnshjGVxOrwQQe9Y9fjgbyw46XK94g78C04WFHF/i1OthB91/zgipWhvCVm/OGW3Lwm/itID+sHd0e9bobjGd8HY4pkJrPGrvKaXbanQ9+G22Yz0lJw8VYJna0lof2u6YLUy+y91hBBjavJPj6Rm4VA+AeXTgOe3qrcB2baIMQkU4yDuHV9/luQwTrA1DrMVF+aUsEZ5qQXxf3FPVTdg==
+CSRFPreventionToken: 65C56E9D:e0hswBRUlxX2t0/5GR/Gc4vfY8hCbBhNnkK8a5ZNdu4
+Accept-Encoding: gzip
+
+2024/02/08 16:15:25 <<<<<<<<<< RESULT:
+HTTP/1.1 200 OK
+Content-Length: 11
+Cache-Control: max-age=0
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:15:25 GMT
+Expires: Fri, 09 Feb 2024 00:15:25 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":[]}
+[90mThu, 08 Feb 2024 16:15:25 -0800[0m [32mINF[0m [1mgithub.com/Telmate/terraform-provider-proxmox/v2/proxmox/util.go:159[0m[36m >[0m Enabling the capture of log-library logs as ithe _capturelog flag was detected
+[90mThu, 08 Feb 2024 16:15:25 -0800[0m [32mINF[0m [1mgithub.com/Telmate/terraform-provider-proxmox/v2/proxmox/util.go:192[0m[36m >[0m Logging Started. Root Logger Set to level debug
+2024/02/08 16:15:25 >>>>>>>>>> REQUEST:
+GET /api2/json/cluster/resources?type=vm HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56E9D::eYnh405jYcLICnpDBu/J9Vht7w2cOz7I/KfseQ/zb1g5QHj3UpK2YVDW6eSb6cYdobU9TYag2+azYXUsQIOl0nYwkwmnfHqol4oEgZZxKybRFtVt58Y3s+yJDNne5ZaxqFrnshjGVxOrwQQe9Y9fjgbyw46XK94g78C04WFHF/i1OthB91/zgipWhvCVm/OGW3Lwm/itID+sHd0e9bobjGd8HY4pkJrPGrvKaXbanQ9+G22Yz0lJw8VYJna0lof2u6YLUy+y91hBBjavJPj6Rm4VA+AeXTgOe3qrcB2baIMQkU4yDuHV9/luQwTrA1DrMVF+aUsEZ5qQXxf3FPVTdg==
+CSRFPreventionToken: 65C56E9D:e0hswBRUlxX2t0/5GR/Gc4vfY8hCbBhNnkK8a5ZNdu4
+Accept-Encoding: gzip
+
+2024/02/08 16:15:25 <<<<<<<<<< RESULT:
+HTTP/1.1 200 OK
+Content-Length: 2506
+Cache-Control: max-age=0
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:15:25 GMT
+Expires: Fri, 09 Feb 2024 00:15:25 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":[{"netin":0,"maxcpu":2,"disk":0,"netout":0,"id":"qemu/100","maxdisk":34359738368,"name":"another-test","diskwrite":0,"status":"stopped","node":"lepakshi-lenovomini","type":"qemu","cpu":0,"uptime":0,"diskread":0,"vmid":100,"maxmem":4294967296,"template":0,"mem":0},{"disk":0,"netin":0,"maxcpu":4,"maxdisk":137438953472,"netout":0,"id":"qemu/105","diskwrite":0,"name":"ubuntu-code-server","status":"stopped","type":"qemu","node":"lepakshi-lenovomini","cpu":0,"diskread":0,"vmid":105,"maxmem":8489271296,"uptime":0,"template":0,"mem":0},{"maxdisk":8589934592,"id":"qemu/300","netout":0,"disk":0,"maxcpu":2,"netin":0,"node":"lepakshi-lenovomini","type":"qemu","status":"stopped","diskwrite":0,"name":"test-admin","cpu":0,"mem":0,"template":0,"maxmem":4294967296,"vmid":300,"diskread":0,"uptime":0},{"netout":0,"tags":"dev;gitea;terraform","id":"qemu/301","maxdisk":68719476736,"netin":0,"maxcpu":2,"disk":0,"status":"stopped","type":"qemu","node":"lepakshi-lenovomini","name":"gitea-dev","diskwrite":0,"cpu":0,"template":0,"mem":0,"uptime":0,"diskread":0,"maxmem":1073741824,"vmid":301},{"cpu":0,"mem":0,"template":0,"uptime":0,"vmid":302,"maxmem":12884901888,"diskread":0,"id":"qemu/302","tags":"dev","netout":0,"maxdisk":137438953472,"maxcpu":3,"netin":0,"disk":0,"type":"qemu","node":"lepakshi-lenovomini","status":"stopped","name":"win-11-dev","diskwrite":0},{"cpu":0,"template":0,"mem":0,"uptime":0,"diskread":0,"maxmem":2147483648,"vmid":303,"tags":"dev;ops","netout":0,"id":"lxc/303","maxdisk":68719476736,"netin":0,"maxcpu":2,"disk":0,"status":"stopped","type":"lxc","node":"lepakshi-lenovomini","name":"dev-kea-dhcp-01","diskwrite":0},{"netout":0,"id":"lxc/304","maxdisk":8589934592,"netin":0,"maxcpu":1,"disk":0,"status":"stopped","node":"lepakshi-lenovomini","type":"lxc","name":"test-kea-dchp","diskwrite":0,"cpu":0,"template":0,"mem":0,"uptime":0,"diskread":0,"vmid":304,"maxmem":1073741824},{"cpu":0,"uptime":438,"vmid":305,"maxmem":2147483648,"diskread":224575488,"mem":15724544,"template":0,"maxcpu":2,"netin":1506,"disk":564936704,"id":"lxc/305","tags":"dev;kea;ops;postgresql","netout":2323,"maxdisk":33501757440,"name":"dev-kea-dhcp-02","diskwrite":4427776,"node":"lepakshi-lenovomini","type":"lxc","status":"running"},{"id":"qemu/400","netout":0,"maxdisk":34359738368,"maxcpu":4,"netin":0,"disk":0,"node":"lepakshi-lenovomini","type":"qemu","status":"stopped","name":"proxmox-dev","diskwrite":0,"cpu":0,"mem":0,"template":0,"uptime":0,"vmid":400,"maxmem":23622320128,"diskread":0}]}
+2024/02/08 16:15:25 >>>>>>>>>> REQUEST:
+PUT /api2/json/nodes/lepakshi-lenovomini/lxc/305/config HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Content-Length: 259
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56E9D::eYnh405jYcLICnpDBu/J9Vht7w2cOz7I/KfseQ/zb1g5QHj3UpK2YVDW6eSb6cYdobU9TYag2+azYXUsQIOl0nYwkwmnfHqol4oEgZZxKybRFtVt58Y3s+yJDNne5ZaxqFrnshjGVxOrwQQe9Y9fjgbyw46XK94g78C04WFHF/i1OthB91/zgipWhvCVm/OGW3Lwm/itID+sHd0e9bobjGd8HY4pkJrPGrvKaXbanQ9+G22Yz0lJw8VYJna0lof2u6YLUy+y91hBBjavJPj6Rm4VA+AeXTgOe3qrcB2baIMQkU4yDuHV9/luQwTrA1DrMVF+aUsEZ5qQXxf3FPVTdg==
+CSRFPreventionToken: 65C56E9D:e0hswBRUlxX2t0/5GR/Gc4vfY8hCbBhNnkK8a5ZNdu4
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip
+
+arch=amd64&cmode=tty&console=1&cores=2&cpulimit=0&cpuunits=0&description=DHCP+Server+with+kea+and+postgresql+created+on+2024-02-09-12-15&hostname=dev-kea-dhcp-02&memory=2048&onboot=1&ostype=debian&protection=0&swap=1024&tags=ops%3Bkea%3Bpostgresql%3Bdev&tty=2
+2024/02/08 16:15:25 <<<<<<<<<< RESULT:
+HTTP/1.1 200 OK
+Content-Length: 13
+Cache-Control: max-age=0
+Connection: Keep-Alive
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:15:25 GMT
+Expires: Fri, 09 Feb 2024 00:15:25 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":null}
+2024/02/08 16:15:25 >>>>>>>>>> REQUEST:
+GET /api2/json/cluster/resources?type=vm HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56E9D::eYnh405jYcLICnpDBu/J9Vht7w2cOz7I/KfseQ/zb1g5QHj3UpK2YVDW6eSb6cYdobU9TYag2+azYXUsQIOl0nYwkwmnfHqol4oEgZZxKybRFtVt58Y3s+yJDNne5ZaxqFrnshjGVxOrwQQe9Y9fjgbyw46XK94g78C04WFHF/i1OthB91/zgipWhvCVm/OGW3Lwm/itID+sHd0e9bobjGd8HY4pkJrPGrvKaXbanQ9+G22Yz0lJw8VYJna0lof2u6YLUy+y91hBBjavJPj6Rm4VA+AeXTgOe3qrcB2baIMQkU4yDuHV9/luQwTrA1DrMVF+aUsEZ5qQXxf3FPVTdg==
+CSRFPreventionToken: 65C56E9D:e0hswBRUlxX2t0/5GR/Gc4vfY8hCbBhNnkK8a5ZNdu4
+Accept-Encoding: gzip
+
+2024/02/08 16:15:25 <<<<<<<<<< RESULT:
+HTTP/1.1 200 OK
+Content-Length: 2506
+Cache-Control: max-age=0
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:15:25 GMT
+Expires: Fri, 09 Feb 2024 00:15:25 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":[{"diskwrite":0,"name":"another-test","type":"qemu","node":"lepakshi-lenovomini","status":"stopped","disk":0,"maxcpu":2,"netin":0,"maxdisk":34359738368,"id":"qemu/100","netout":0,"vmid":100,"maxmem":4294967296,"diskread":0,"uptime":0,"mem":0,"template":0,"cpu":0},{"disk":0,"netin":0,"maxcpu":4,"maxdisk":137438953472,"netout":0,"id":"qemu/105","diskwrite":0,"name":"ubuntu-code-server","status":"stopped","type":"qemu","node":"lepakshi-lenovomini","cpu":0,"diskread":0,"vmid":105,"maxmem":8489271296,"uptime":0,"template":0,"mem":0},{"diskread":0,"maxmem":4294967296,"vmid":300,"uptime":0,"template":0,"mem":0,"cpu":0,"diskwrite":0,"name":"test-admin","status":"stopped","node":"lepakshi-lenovomini","type":"qemu","disk":0,"netin":0,"maxcpu":2,"maxdisk":8589934592,"netout":0,"id":"qemu/300"},{"maxmem":1073741824,"vmid":301,"diskread":0,"uptime":0,"mem":0,"template":0,"cpu":0,"diskwrite":0,"name":"gitea-dev","node":"lepakshi-lenovomini","type":"qemu","status":"stopped","disk":0,"maxcpu":2,"netin":0,"maxdisk":68719476736,"id":"qemu/301","tags":"dev;gitea;terraform","netout":0},{"maxmem":12884901888,"vmid":302,"diskread":0,"uptime":0,"mem":0,"template":0,"cpu":0,"diskwrite":0,"name":"win-11-dev","node":"lepakshi-lenovomini","type":"qemu","status":"stopped","disk":0,"maxcpu":3,"netin":0,"maxdisk":137438953472,"id":"qemu/302","tags":"dev","netout":0},{"cpu":0,"template":0,"mem":0,"diskread":0,"vmid":303,"maxmem":2147483648,"uptime":0,"maxdisk":68719476736,"tags":"dev;ops","netout":0,"id":"lxc/303","disk":0,"netin":0,"maxcpu":2,"status":"stopped","type":"lxc","node":"lepakshi-lenovomini","diskwrite":0,"name":"dev-kea-dhcp-01"},{"name":"test-kea-dchp","diskwrite":0,"status":"stopped","node":"lepakshi-lenovomini","type":"lxc","netin":0,"maxcpu":1,"disk":0,"netout":0,"id":"lxc/304","maxdisk":8589934592,"uptime":0,"diskread":0,"vmid":304,"maxmem":1073741824,"template":0,"mem":0,"cpu":0},{"cpu":0,"mem":15724544,"template":0,"maxmem":2147483648,"vmid":305,"diskread":224575488,"uptime":438,"maxdisk":33501757440,"id":"lxc/305","tags":"dev;kea;ops;postgresql","netout":2323,"disk":564936704,"maxcpu":2,"netin":1506,"type":"lxc","node":"lepakshi-lenovomini","status":"running","diskwrite":4427776,"name":"dev-kea-dhcp-02"},{"netout":0,"id":"qemu/400","maxdisk":34359738368,"netin":0,"maxcpu":4,"disk":0,"status":"stopped","type":"qemu","node":"lepakshi-lenovomini","name":"proxmox-dev","diskwrite":0,"cpu":0,"template":0,"mem":0,"uptime":0,"diskread":0,"vmid":400,"maxmem":23622320128}]}
+2024/02/08 16:15:25 >>>>>>>>>> REQUEST:
+GET /api2/json/nodes/lepakshi-lenovomini/lxc/305/config HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56E9D::eYnh405jYcLICnpDBu/J9Vht7w2cOz7I/KfseQ/zb1g5QHj3UpK2YVDW6eSb6cYdobU9TYag2+azYXUsQIOl0nYwkwmnfHqol4oEgZZxKybRFtVt58Y3s+yJDNne5ZaxqFrnshjGVxOrwQQe9Y9fjgbyw46XK94g78C04WFHF/i1OthB91/zgipWhvCVm/OGW3Lwm/itID+sHd0e9bobjGd8HY4pkJrPGrvKaXbanQ9+G22Yz0lJw8VYJna0lof2u6YLUy+y91hBBjavJPj6Rm4VA+AeXTgOe3qrcB2baIMQkU4yDuHV9/luQwTrA1DrMVF+aUsEZ5qQXxf3FPVTdg==
+CSRFPreventionToken: 65C56E9D:e0hswBRUlxX2t0/5GR/Gc4vfY8hCbBhNnkK8a5ZNdu4
+Accept-Encoding: gzip
+
+2024/02/08 16:15:25 <<<<<<<<<< RESULT:
+HTTP/1.1 200 OK
+Content-Length: 643
+Cache-Control: max-age=0
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:15:25 GMT
+Expires: Fri, 09 Feb 2024 00:15:25 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":{"rootfs":"proxthin:vm-305-disk-0,size=32G","ostype":"debian","onboot":1,"hostname":"dev-kea-dhcp-02","description":"DHCP Server with kea and postgresql created on 2024-02-09-12-15\n","console":1,"tty":2,"digest":"008d9ffe848212cab023499b1460eabe692f37dc","swap":1024,"cpuunits":0,"protection":0,"unprivileged":1,"memory":2048,"cpulimit":"0","arch":"amd64","cores":2,"net1":"name=eth1,bridge=vmbr2,gw=192.168.1.1,hwaddr=BC:24:11:F3:22:52,ip=192.168.1.1/24,type=veth","net0":"name=eth0,bridge=vmbr0,firewall=1,gw=192.168.30.1,hwaddr=BC:24:11:D2:35:95,ip=192.168.30.81/24,tag=30,type=veth","cmode":"tty","tags":"dev;kea;ops;postgresql"}}
+2024/02/08 16:15:25 >>>>>>>>>> REQUEST:
+GET /api2/json/cluster/ha/resources/305 HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56E9D::eYnh405jYcLICnpDBu/J9Vht7w2cOz7I/KfseQ/zb1g5QHj3UpK2YVDW6eSb6cYdobU9TYag2+azYXUsQIOl0nYwkwmnfHqol4oEgZZxKybRFtVt58Y3s+yJDNne5ZaxqFrnshjGVxOrwQQe9Y9fjgbyw46XK94g78C04WFHF/i1OthB91/zgipWhvCVm/OGW3Lwm/itID+sHd0e9bobjGd8HY4pkJrPGrvKaXbanQ9+G22Yz0lJw8VYJna0lof2u6YLUy+y91hBBjavJPj6Rm4VA+AeXTgOe3qrcB2baIMQkU4yDuHV9/luQwTrA1DrMVF+aUsEZ5qQXxf3FPVTdg==
+CSRFPreventionToken: 65C56E9D:e0hswBRUlxX2t0/5GR/Gc4vfY8hCbBhNnkK8a5ZNdu4
+Accept-Encoding: gzip
+
+2024/02/08 16:15:25 <<<<<<<<<< RESULT:
+HTTP/1.1 500 no such resource 'ct:305'
+Connection: close
+Content-Length: 13
+Cache-Control: max-age=0
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:15:25 GMT
+Expires: Fri, 09 Feb 2024 00:15:25 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":null}
+2024/02/08 16:15:25 >>>>>>>>>> REQUEST:
+GET /api2/json/pools HTTP/1.1
+Host: 192.168.30.22:8006
+User-Agent: Go-http-client/1.1
+Accept: application/json
+Authorization: PVEAuthCookie=PVE:root@pam:65C56E9D::eYnh405jYcLICnpDBu/J9Vht7w2cOz7I/KfseQ/zb1g5QHj3UpK2YVDW6eSb6cYdobU9TYag2+azYXUsQIOl0nYwkwmnfHqol4oEgZZxKybRFtVt58Y3s+yJDNne5ZaxqFrnshjGVxOrwQQe9Y9fjgbyw46XK94g78C04WFHF/i1OthB91/zgipWhvCVm/OGW3Lwm/itID+sHd0e9bobjGd8HY4pkJrPGrvKaXbanQ9+G22Yz0lJw8VYJna0lof2u6YLUy+y91hBBjavJPj6Rm4VA+AeXTgOe3qrcB2baIMQkU4yDuHV9/luQwTrA1DrMVF+aUsEZ5qQXxf3FPVTdg==
+CSRFPreventionToken: 65C56E9D:e0hswBRUlxX2t0/5GR/Gc4vfY8hCbBhNnkK8a5ZNdu4
+Accept-Encoding: gzip
+
+2024/02/08 16:15:25 <<<<<<<<<< RESULT:
+HTTP/1.1 200 OK
+Content-Length: 11
+Cache-Control: max-age=0
+Connection: Keep-Alive
+Content-Type: application/json;charset=UTF-8
+Date: Fri, 09 Feb 2024 00:15:25 GMT
+Expires: Fri, 09 Feb 2024 00:15:25 GMT
+Pragma: no-cache
+Server: pve-api-daemon/3.0
+
+{"data":[]}

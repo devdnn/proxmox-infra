@@ -17,5 +17,9 @@
   },
   "[hcl]": {
     "editor.defaultFormatter": "hashicorp.terraform"
+  },
+  "[terraform,tf]": {
+    "editor.defaultFormatter": "hashicorp.terraform",
+    "editor.formatOnSave": true
   }
 }
