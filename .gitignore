@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/ansible,visualstudiocode,terraform,packer
-# Edit at https://www.toptal.com/developers/gitignore?templates=ansible,visualstudiocode,terraform,packer
+# Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,ansible,terraform,terragrunt,packer
+# Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,ansible,terraform,terragrunt,packer
 
 ### Ansible ###
 *.retry
@@ -17,10 +17,7 @@ crash.log
 # version control as they are data points which are potentially sensitive and
 # subject to change depending on the environment.
 #
-# *.pkrvars.hcl
-#
-#  FOR FUTURE USE
-#
+#### *.pkrvars.hcl
 
 # For built boxes
 *.box
@@ -33,7 +30,6 @@ output-*/
 # Local .terraform directories
 **/.terraform/*
 
-# **** CONFLICTING DETAILS OF WHETHER TO INCLUDE OR EXCLUDE .TFSTATE FILES ****
 # .tfstate files
 # *.tfstate
 # *.tfstate.*
@@ -45,11 +41,8 @@ crash.*.log
 # password, private keys, and other secrets. These should not be part of version
 # control as they are data points which are potentially sensitive and subject
 # to change depending on the environment.
-# *.tfvars
-# *.tfvars.json
-#
-#  FOR FUTURE USE
-#
+#### *.tfvars
+#### *.tfvars.json
 
 # Ignore override files as they are usually used to override resources locally and so
 # are not checked in
@@ -67,6 +60,14 @@ override.tf.json
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
+
+### Terragrunt ###
+# terragrunt cache directories
+**/.terragrunt-cache/*
+
+# Terragrunt debug output file (when using `--terragrunt-debug` option)
+# See: https://terragrunt.gruntwork.io/docs/reference/cli-options/#terragrunt-debug
+terragrunt-debug.tfvars.json
 
 ### VisualStudioCode ###
 .vscode/*
@@ -87,4 +88,4 @@ terraform.rc
 .history
 .ionide
 
-# End of https://www.toptal.com/developers/gitignore/api/ansible,visualstudiocode,terraform,packer
+# End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,ansible,terraform,terragrunt,packer
