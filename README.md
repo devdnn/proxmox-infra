@@ -8,17 +8,44 @@ This repository contains Terraform and Ansible configurations for managing the i
 project-root/
 │
 ├── ansible/                    # Ansible configurations
-│   ├── inventory/              # Dynamic/static inventory definitions
-│   ├── playbooks/              # Organized playbooks for configurations
-│   └── roles/                  # Reusable roles for various setup tasks
+│   ├── inventory/              # Inventory files for different environments
+│   │   ├── dev/                # Development environment inventory
+│   │   │   └── hosts.yml
+│   │   └── prod/               # Production environment inventory
+│   │       └── hosts.yml
+│   ├── playbooks/              # Ansible playbooks
+│   │   ├── common/             # Common playbooks that apply to all environments
+│   │   │   └── setup-common.yml
+│   │   ├── dev/                # Development environment specific playbooks
+│   │   │   └── setup-dev.yml
+│   │   └── prod/               # Production environment specific playbooks
+│   │       └── setup-prod.yml
+│   └── roles/                  # Reusable roles for Ansible tasks
+│       ├── docker/
+│       ├── dnsmasq/
+│       ├── kea-dhcp/
+│       └── postgresql/
 │
 ├── terraform/                  # Terraform configurations
-│   ├── modules/                # Reusable modules for infrastructure components
-│   └── environments/           # Environment-specific infrastructure configurations
-│       ├── dev/                # Development environment configurations
-│       └── prod/               # Production environment configurations
+│   ├── modules/                # Reusable Terraform modules
+│   │   ├── debian-vm/
+│   │   ├── debian-lxc/
+│   │   └── docker/
+│   ├── environments/           # Environment-specific Terraform configurations
+│   │   ├── dev/                # Development environment
+│   │   │   ├── main.tf         # Main Terraform configuration for dev
+│   │   │   ├── outputs.tf      # Outputs for dev environment
+│   │   │   ├── variables.tf    # Variables for dev environment
+│   │   │   └── terraform.tfvars# Variable values for dev environment
+│   │   └── prod/               # Production environment
+│   │       ├── main.tf         # Main Terraform configuration for prod
+│   │       ├── outputs.tf      # Outputs for prod environment
+│   │       ├── variables.tf    # Variables for prod environment
+│   │       └── terraform.tfvars# Variable values for prod environment
+│   └── common.tfvars           # Common variable definitions, if any
 │
 └── README.md                   # Project documentation
+
 ```
 
 ### Infrastructure Components (`infra`)
