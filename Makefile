@@ -26,6 +26,10 @@ hello:
 
 
 # packer debian validate
+packer-init-debian:
+	echo "Init for plugin installation"
+	cd packer && packer init ./base-debian-bookworm
+
 packer-validate-debian:
 	echo "Validating a Debian VM Template in $(env) environment"
 	cd packer && packer validate -var-file vars/debian-bookworm-pkrvars-$(env).hcl ./base-debian-bookworm
@@ -61,3 +65,17 @@ gitea-destroy-terraform:
 	echo "Destroying terraform VM for Gitea with PostgreSQL in $(env) environment"
 	cd terraform && cd gitea && terraform init && terraform destroy -var-file ./vars/gitea-pkrvars-$(env).tfvars -auto-approve
 #endregion
+
+# region Setup and configure infrastructure
+setup-configure-validate-terraform:
+	echo "Setting up and configuring infrastructure in $(env) environment"
+	cd terraform && cd $(env) && cd infra && terraform init && terraform validate
+
+setup-configure-plan-terraform:
+	echo "Setting up and configuring infrastructure in $(env) environment"
+	cd terraform && cd $(env) && cd infra && terraform init && terraform validate && terraform plan
+
+setup-configure-apply-terraform:
+	echo "Setting up and configuring infrastructure in $(env) environment"
+	cd terraform && cd $(env) && cd infra && terraform apply -auto-approve
+# endregion Setup and configure ifrastructure
