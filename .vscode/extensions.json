@@ -1,0 +1,24 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "hashicorp.terraform",
+    "redhat.vscode-yaml",
+    "redhat.vscode-yaml-validation",
+    "redhat.ansible",
+    "samuelcolvin.jinjahtml",
+    "GitHub.copilot",
+    "GitHub.copilot-chat",
+    "VisbyDev.folder-path-color",
+    "hashicorp.hcl",
+    "fnando.linter",
+    "ms-vscode.makefile-tools",
+    "esbenp.prettier-vscode",
+    "ms-python.vscode-pylance",
+    "ms-python.python",
+    "ms-python.debugpy",
+    "redhat.vscode-xml",
+    "redhat.vscode-yaml",
+    "eamodio.gitlens"
+  ]
+}

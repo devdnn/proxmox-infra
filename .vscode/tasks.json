@@ -1,36 +1,48 @@
 {
-    
-    "version": "2.0.0",
-    "tasks": [
-        // run command to run packer validate
-        {
-            "label": "packer validate",
-            "type": "shell",
-            "command": "packer validate -var-file vars/debian_12_bookworm.pkrvars-dev.hcl ./debian-server-bookworm",
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
-        },
-        // run command to run packer build to dev
-        {
-            "label": "packer dev build",
-            "type": "shell",
-            "command": "packer build -var-file vars/debian_12_bookworm.pkrvars-dev.hcl ./debian-server-bookworm",
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
-        },
-        // run command to run packer build to prod
-        {
-            "label": "packer prod build",
-            "type": "shell",
-            "command": "packer build -var-file vars/debian_12_bookworm.pkrvars-prod.hcl ./debian-server-bookworm",
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
-        },
-    ]
+  "version": "2.0.0",
+  "tasks": [
+    // run command to run packer validate
+    {
+      "label": "packer validate",
+      "type": "shell",
+      "command": "packer validate -var-file vars/debian_12_bookworm.pkrvars-dev.hcl ./debian-server-bookworm",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    // run command to run packer build to dev
+    {
+      "label": "packer dev build",
+      "type": "shell",
+      "command": "packer build -var-file vars/debian_12_bookworm.pkrvars-dev.hcl ./debian-server-bookworm",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    // run command to run packer build to prod
+    {
+      "label": "packer prod build",
+      "type": "shell",
+      "command": "packer build -var-file vars/debian_12_bookworm.pkrvars-prod.hcl ./debian-server-bookworm",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    // install all recommended extensions fromm extensions.json file
+    {
+      "label": "install recommended extensions",
+      "type": "shell",
+      "command": "jq -r '.recommendations[]' .vscode/extensions.json | xargs -L 1 code --install-extension",
+      "presentation": {
+        "reveal": "silent"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
 }

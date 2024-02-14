@@ -17,6 +17,12 @@ variable "vm_description" {
   type = string
 }
 
+variable "vm_tags" {
+  type        = list(string)
+  description = "value for the tags"
+  default     = []
+}
+
 variable "proxmox_node" {
   type = string
 }

@@ -24,5 +24,30 @@
   },
   "[terraform]": {
     "editor.defaultFormatter": "hashicorp.terraform"
+  },
+  "folder-path-color.folders": [
+    {
+      "path": "terraform",
+      "symbol": "TF",
+      "tooltip": "Terraform"
+    },
+    {
+      "path": "ansible",
+      "symbol": "AS",
+      "tooltip": "Ansible"
+    },
+    {
+      "path": "packer",
+      "symbol": "PK",
+      "tooltip": "Packer"
+    },
+    {
+      "path": "docs",
+      "symbol": "DO",
+      "tooltip": "Documentation"
+    }
+  ],
+  "[terraform-vars]": {
+    "editor.defaultFormatter": "hashicorp.terraform"
   }
 }

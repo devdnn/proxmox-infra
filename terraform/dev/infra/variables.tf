@@ -22,3 +22,16 @@ variable "proxmox_tls_insecure" {
   type    = bool
   default = true
 }
+
+variable "template_file_location_id" {
+  type = string
+}
+
+
+variable "storage_pool" {
+  type = string
+}
+
+variable "interface_bridge" {
+  type = string
+}

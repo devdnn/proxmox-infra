@@ -11,12 +11,14 @@ locals {
   // timestamp with hour and minute
   timestamp = formatdate("YYYY-MM-DD-HH-mm", timestamp())
   hostname  = var.new_hostname_prefix == "" ? var.new_hostname : "${var.new_hostname_prefix}-${var.new_hostname}"
+  // merge the tags with var.environmenttype
+  tags = concat(var.vm_tags, [var.environmenttype])
 }
 
 resource "proxmox_virtual_environment_vm" "debian_vm" {
   name        = local.hostname
   description = var.vm_description
-  tags        = ["tf-ansible", var.environmenttype]
+  tags        = local.tags
 
   node_name = var.proxmox_node
 
