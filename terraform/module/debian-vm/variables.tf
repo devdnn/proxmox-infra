@@ -86,3 +86,7 @@ variable "interface_bridge" {
   type    = string
   default = "vmbr0"
 }
+
+variable "vlan_id" {
+  type = number
+}

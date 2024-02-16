@@ -61,6 +61,7 @@ resource "proxmox_virtual_environment_vm" "debian_vm" {
     enabled  = true
     firewall = false
     model    = "virtio"
+    vlan_id  = var.vlan_id
   }
 
   machine = var.QMEU_machine_type

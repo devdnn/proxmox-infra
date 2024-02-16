@@ -88,20 +88,6 @@ build {
     ]
   }
 
-  # Using ansible playbooks to configure debian
-  provisioner "ansible" {
-    playbook_file       = "./ansible/debian_config.yml"
-    use_proxy           = false
-    user                = "dnndev"
-    ansible_env_vars    = ["ANSIBLE_HOST_KEY_CHECKING=False"]
-    extra_arguments     = [
-                            "-e",
-                            "ansible_user=dnndev",
-                            "-e",
-                            "ansible_ssh_pass=Float12345678"
-                        ]
-  }
-
   # Copy default cloud-init config
   provisioner "file" {
     destination = "/tmp/cloud.cfg"

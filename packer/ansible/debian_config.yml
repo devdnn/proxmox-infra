@@ -1,8 +1,0 @@
----
-- name: Debian Config - Debian Baseline
-  hosts: default
-  gather_facts: yes
-  become: yes
-
-  tasks:
-    - include_tasks: tasks/baseline.yml

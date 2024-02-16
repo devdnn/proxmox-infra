@@ -79,3 +79,25 @@ setup-configure-apply-terraform:
 	echo "Setting up and configuring infrastructure in $(env) environment"
 	cd terraform && cd $(env) && cd infra && terraform apply -auto-approve
 # endregion Setup and configure ifrastructure
+
+# region Setup and configure dev coding server
+setup-configure-validate-dev-coding-server:
+	echo "Setting up and configuring dev coding server in $(env) environment"
+	cd terraform && cd debian-code-server && terraform init && terraform validate
+
+setup-configure-plan-dev-coding-server:
+	echo "Setting up and configuring dev coding server in $(env) environment"
+	cd terraform && cd debian-code-server && terraform init && terraform validate && terraform plan -var-file ./tfvars/lenovo-dev.tfvars
+
+setup-configure-apply-dev-coding-server:
+	echo "Setting up and configuring dev coding server in $(env) environment"
+	cd terraform && cd debian-code-server && terraform apply -var-file ./tfvars/lenovo-dev.tfvars -auto-approve
+
+setup-configure-install-tools-dev-coding-server:
+	echo "Installing tools on dev coding server in $(env) environment"
+	cd ansible && ansible-playbook -i inventories/$(env) playbooks/setup-debian-code-server.yml -k -K
+
+setup-configure-destroy-dev-coding-server:
+	echo "Destroying dev coding server in $(env) environment"
+	cd terraform && cd debian-code-server && terraform destroy -var-file ./tfvars/lenovo-dev.tfvars -auto-approve
+# endregion Setup and configure dev coding server
