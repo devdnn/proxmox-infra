@@ -10,9 +10,8 @@ terraform {
 
 locals {
   // timestamp with hour and minute
-  timestamp = formatdate("YYYY-MM-DD-HH-mm", timestamp())
-  hostname  = var.new_hostname_prefix == "" ? var.new_hostname : "${var.new_hostname_prefix}-${var.new_hostname}"
-  tags      = concat(var.lxc_tags, [var.environmenttype])
+  hostname = var.new_hostname_prefix == "" ? var.new_hostname : "${var.new_hostname_prefix}-${var.new_hostname}"
+  tags     = concat(var.lxc_tags, [var.environmenttype])
 }
 
 output "hostname" {
@@ -21,7 +20,7 @@ output "hostname" {
 
 resource "proxmox_virtual_environment_container" "debian_lxc" {
   node_name    = var.proxmox_node
-  description  = "${var.lxc_description} - ${local.timestamp}"
+  description  = var.lxc_description
   unprivileged = true
 
 
@@ -43,15 +42,13 @@ resource "proxmox_virtual_environment_container" "debian_lxc" {
   initialization {
     hostname = local.hostname
 
-    ip_config {
-      ipv4 {
-        address = "dhcp"
-      }
-    }
-
-    ip_config {
-      ipv4 {
-        address = "dhcp"
+    dynamic "ip_config" {
+      for_each = var.ip_details
+      content {
+        ipv4 {
+          address = ip_config.value.lxc_ip_address
+          gateway = ip_config.value.lxc_gateway
+        }
       }
     }
 

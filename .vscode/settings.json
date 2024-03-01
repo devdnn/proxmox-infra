@@ -1,8 +1,8 @@
 {
+  "ansible.python.interpreterPath": "/bin/python3",
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "ansible.python.interpreterPath": "/home/dnaidu/.pyenv/versions/3.10.13/bin/python",
   "[yml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
@@ -49,5 +49,8 @@
   ],
   "[terraform-vars]": {
     "editor.defaultFormatter": "hashicorp.terraform"
+  },
+  "github.copilot.enable": {
+    "markdown": "true"
   }
 }

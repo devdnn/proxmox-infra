@@ -27,7 +27,7 @@ resource "proxmox_virtual_environment_vm" "debian_vm" {
     enabled = true
   }
   on_boot = var.system_start_on_boot
-  started = false
+  started = var.keep_system_running
 
   clone {
     vm_id = var.clone_vm_id

@@ -1,20 +1,27 @@
 ---
 - hosts: codeserver
-  become: yes
-  become_method: sudo
-  become_user: root
-  remote_user: root
+  remote_user: dnndev
+  vars:
+    omz_install_path: '$HOME/.oh-my-zsh'
+    zsh_plugins:
+      - zsh-users/zsh-autosuggestions
+      - zsh-users/zsh-syntax-highlighting
+    zsh_themes:
+      - romkatv/powerlevel10k
 
   tasks:
     - name: Update the system
       apt:
         update_cache: yes
+        autoremove: yes
+        autoclean: yes
         upgrade: dist
+      become: true
 
     - name: Install basic packages
       apt:
         name: '{{ item }}'
-        state: present
+        state: latest
       with_items:
         - gnupg2
         - curl
@@ -22,6 +29,7 @@
         - wget
         - unzip
         - build-essential
+      become: true
 
     - name: Install Ansible and Python
       apt:
@@ -36,6 +44,7 @@
         - ansible
         - virtualenv
         - ansible-lint
+      become: true
 
     - name: Install Terraform dependencies
       apt:
@@ -44,99 +53,86 @@
           - wget
           - gnupg
           - software-properties-common
-        state: present
+        state: latest
+      become: true
 
     - name: Remove existing HashiCorp GPG key
       ansible.builtin.apt_key:
         url: https://apt.releases.hashicorp.com/gpg
         state: absent
+      become: true
 
     - name: Add HashiCorp GPG key
       ansible.builtin.apt_key:
         url: https://apt.releases.hashicorp.com/gpg
         keyring: /usr/share/keyrings/hashicorp-archive-keyring.gpg
+      become: true
 
     - name: Add HashiCorp repository
       ansible.builtin.apt_repository:
         repo: deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg]
           https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main
         filename: hashicorp
+      become: true
 
-    - name: Apt Uppdate
+    - name: Apt Update
       apt:
         update_cache: true
+      become: true
 
     - name: Install Terraform
       apt:
         name: terraform
-        state: present
+        state: latest
+      become: true
 
     - name: Install Node.js and npm
       apt:
         name: '{{ item }}'
-        state: present
+        state: latest
       with_items:
         - nodejs
         - npm
+      become: true
 
-    - name: Install zsh
+    - name: Ensure zsh is installed
+      become: true
       apt:
-        name: '{{ item }}'
-        state: present
-      with_items:
-        - zsh
-        - fonts-powerline
+        name: zsh
+        state: latest
 
-    - name: Download Oh my zsh to tmp folder
-      get_url:
-        url: https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh
-        dest: /tmp/install_oh_my_zsh.sh
+    - name: Set OMZ install path.
+      set_fact:
+        omz_path: "{{ omz_install_path | default('$HOME/.oh-my-zsh') }}"
 
-    - name: Delete oh-my-zsh folder if it exists
-      become_user: dnndev
-      become_method: sudo
-      shell: rm -rf /home/dnndev/.oh-my-zsh
+    - name: Install Oh My Zsh
+      become: true
+      .git:
+        repo: https://github.com/ohmyzsh/ohmyzsh.git
+        dest: '{{ omz_path }}'
+        clone: true
+        update: true
 
-    - name: Install Oh My Zsh for dnndev
-      become_user: dnndev
-      become_method: sudo
-      command: sh /tmp/install_oh_my_zsh.sh --unattended
+    - name: Install ZSH Plugins.
+      ansible.builtin.git:
+        repo: 'https://github.com/{{ item }}.git'
+        dest: "{{ omz_path }}/custom/plugins/{{ item.split('/')[1:] | join('/') }}"
+        clone: true
+        update: true
+      with_items: '{{ zsh_plugins }}'
+      when: zsh_plugins is defined
 
-    - name: Set zsh as default shell
-      become_user: dnndev
-      become_method: sudo
-      shell: chsh -s $(which zsh)
+    - name: Install ZSH Themes.
+      ansible.builtin.git:
+        repo: 'https://github.com/{{ item }}.git'
+        dest: "{{ omz_path }}/custom/themes/{{ item.split('/')[1:] | join('/') }}"
+        clone: true
+        update: true
+      with_items: '{{ zsh_themes }}'
+      when: zsh_themes is defined
 
-    - name: Delete powerlevel10k and clone it again
-      become_user: dnndev
-      become_method: sudo
-      shell: rm -rf ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k && git clone https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
-
-    - name: Delete zsh-autosuggestions and clone it again
-      become_user: dnndev
-      become_method: sudo
-      shell: rm -rf  ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions && git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-
-    - name: Delete zsh-syntax-highlighting and clone it again
-      become_user: dnndev
-      become_method: sudo
-      shell: rm -rf ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-
-    - name: Update .zshrc for root using sed to replace the default theme
-      become_user: dnndev
-      become_method: sudo
-      shell: sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="powerlevel10k\/powerlevel10k"/' ~/.zshrc
-
-    - name: Update .zshrc for dnndev
-      become_user: dnndev
-      become_method: sudo
-      lineinfile:
-        path: ~/.zshrc
-        line: '{{ item }}'
-      with_items:
-        - 'ZSH_THEME="powerlevel10k/powerlevel10k"'
-        - 'plugins=(git zsh-autosuggestions zsh-syntax-highlighting)'
-        - 'source $ZSH/oh-my-zsh.sh'
-
-    - name: Install nvm
-      shell: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+    - name: Set ZSH as the default shell.
+      become: true
+      ansible.builtin.user:
+        name: 'dnndev'
+        shell: /bin/zsh

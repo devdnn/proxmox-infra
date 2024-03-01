@@ -5,8 +5,7 @@ variable "environmenttype" {
 }
 
 variable "new_hostname_prefix" {
-  type    = string
-  default = ""
+  type = string
 }
 
 variable "new_hostname" {
@@ -32,6 +31,10 @@ variable "vm_bios_type" {
   default = "seabios"
 }
 variable "system_start_on_boot" {
+  type = bool
+}
+
+variable "keep_system_running" {
   type = bool
 }
 

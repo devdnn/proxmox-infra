@@ -37,6 +37,7 @@ module "gitea_vm" {
   vm_gateway           = "192.168.80.1"
   vm_bios_type         = "seabios"
   system_start_on_boot = false
+  keep_system_running  = true
   clone_vm_id          = 5000
   storage_pool         = var.storage_pool
   vm_dedicated_memory  = 1024
@@ -46,6 +47,47 @@ module "gitea_vm" {
   disk_size            = 22
   disk_format          = "qcow2"
   interface_bridge     = var.interface_bridge
+  vlan_id              = 80
+}
+
+module "pi_hole_vm" {
+  source = "../../module/debian-lxc"
+
+  environmenttype           = "dev"
+  new_hostname_prefix       = "dev"
+  new_hostname              = "pihole"
+  lxc_description           = "pihole server for development"
+  proxmox_node              = var.proxmox_node
+  storage_pool              = var.storage_pool
+  start_on_boot             = true
+  started                   = true
+  var_cpu_cores             = 1
+  var_cpu_architecture      = "amd64"
+  cpu_units                 = 1024
+  new_lxc_os_type           = "debian"
+  os_storage_disk_size      = 8
+  lxc_dedicated_memory      = 512
+  template_file_location_id = var.template_file_location_id
+  lxc_tags                  = ["lxc", "pihole"]
+  ip_details = [
+    {
+      lxc_ip_address = "192.168.80.14/24"
+      lxc_gateway    = "192.168.80.1"
+    }
+  ]
+  list_of_networks = [
+    {
+      name           = "eth0"
+      bridge         = var.interface_bridge
+      enabled        = true
+      firewall       = false
+      vlan_id        = 80
+      lxc_ip_address = "192.168.80.14/24"
+      lxc_gateway    = "192.168.80.1"
+    }
+  ]
+
+
 }
 
 
@@ -53,7 +95,8 @@ module "dev_lxc" {
   source = "../../module/debian-lxc"
 
   environmenttype           = "dev"
-  new_hostname              = "dev-lxc"
+  new_hostname_prefix       = "dev"
+  new_hostname              = "lxc"
   lxc_description           = "LXC for development"
   proxmox_node              = var.proxmox_node
   storage_pool              = var.storage_pool
@@ -66,7 +109,12 @@ module "dev_lxc" {
   os_storage_disk_size      = 20
   lxc_dedicated_memory      = 1024
   template_file_location_id = var.template_file_location_id
-  lxc_tags                  = ["dev", "lxc", "tf-ansible"]
+  lxc_tags                  = ["lxc", "tf-ansible"]
+  ip_details = [
+    {
+      lxc_ip_address = "dhcp"
+    }
+  ]
   list_of_networks = [
     {
       name     = "eth0"

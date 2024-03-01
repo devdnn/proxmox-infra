@@ -81,6 +81,13 @@ variable "start_on_boot" {
   default     = true
 }
 
+variable "ip_details" {
+  type = list(object({
+    lxc_ip_address = string
+    lxc_gateway    = optional(string)
+  }))
+}
+
 variable "list_of_networks" {
   type = list(object({
     name     = string

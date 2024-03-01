@@ -5,12 +5,13 @@ module "debian_code_server_vm" {
   new_hostname_prefix  = ""
   new_hostname         = "debian-code-server"
   vm_description       = "Code server for development based on debian"
-  vm_tags              = ["dev", "tf-ansible"]
+  vm_tags              = ["tf-ansible"]
   proxmox_node         = var.proxmox_node
   vm_ip_address        = "192.168.80.14/24"
   vm_gateway           = "192.168.80.1"
   vm_bios_type         = "seabios"
   system_start_on_boot = false
+  keep_system_running  = true
   clone_vm_id          = 5000
   storage_pool         = var.storage_pool
   vm_dedicated_memory  = 2048
