@@ -25,7 +25,7 @@ hello:
 	echo $(VARIABLES.users.username)
 
 
-# packer debian validate
+#region packer debian validate
 packer-init-debian:
 	echo "Init for plugin installation"
 	cd packer && packer init ./base-debian-bookworm
@@ -37,6 +37,7 @@ packer-validate-debian:
 packer-create-debian-template:
 	echo "Creating a Debian VM Template in $(env) environment"
 	cd packer && packer build -force -var-file vars/debian-bookworm-pkrvars-$(env).hcl ./base-debian-bookworm
+#endregion
 
 #region gitea with postgresql
 gitea-setup-configure:
@@ -67,37 +68,37 @@ gitea-destroy-terraform:
 #endregion
 
 # region Setup and configure infrastructure
-setup-configure-validate-infra-terraform:
+infra-validate-terraform:
 	echo "Setting up and configuring infrastructure in $(env) environment"
 	cd terraform && cd $(env) && cd infra && terraform init && terraform validate
 
-setup-configure-plan-infra-terraform:
+infra-plan-infra-terraform:
 	echo "Setting up and configuring infrastructure in $(env) environment"
 	cd terraform && cd $(env) && cd infra && terraform init && terraform validate && terraform plan
 
-setup-configure-apply-infra-terraform:
+infra-apply-terraform:
 	echo "Setting up and configuring infrastructure in $(env) environment"
 	cd terraform && cd $(env) && cd infra && terraform apply -auto-approve
-# endregion Setup and configure ifrastructure
+# endregion Setup and configure infrastructure
 
 # region Setup and configure dev coding server
-setup-configure-validate-dev-coding-server:
+dev-coding-server-terraform-validate:
 	echo "Setting up and configuring dev coding server in $(env) environment"
 	cd terraform && cd debian-code-server && terraform init && terraform validate
 
-setup-configure-plan-dev-coding-server:
+dev-coding-server-terraform-plan:
 	echo "Setting up and configuring dev coding server in $(env) environment"
 	cd terraform && cd debian-code-server && terraform init && terraform validate && terraform plan -var-file ./tfvars/lenovo-dev.tfvars
 
-setup-configure-apply-dev-coding-server:
+dev-coding-server-terraform-apply:
 	echo "Setting up and configuring dev coding server in $(env) environment"
 	cd terraform && cd debian-code-server && terraform apply -var-file ./tfvars/lenovo-dev.tfvars -auto-approve
 
-setup-configure-install-tools-dev-coding-server:
-	echo "Installing tools on dev coding server in $(env) environment"
-	cd ansible && ansible-playbook -i inventories/$(env) playbooks/setup-debian-code-server.yml -k -K
-
-setup-configure-destroy-dev-coding-server:
+dev-coding-server-terraform-destroy:
 	echo "Destroying dev coding server in $(env) environment"
 	cd terraform && cd debian-code-server && terraform destroy -var-file ./tfvars/lenovo-dev.tfvars -auto-approve
+
+dev-coding-server-ansible-setup:
+	echo "Installing tools on dev coding server in $(env) environment"
+	cd ansible && ansible-playbook -i inventories/$(env) playbooks/setup-debian-code-server.yml -k -K
 # endregion Setup and configure dev coding server
