@@ -1,18 +1,18 @@
 # Mutable vs. Immutable in a Homelab
 
-### Mutable (Changeable)
+## Mutable (Changeable)
 
 - VM/Container Configurations (settings, packages, data)
 - Database Contents (stored records and tables)
 - Network Device Configurations (on devices allowing direct changes)
 
-### Immutable (Unchangeable)
+## Immutable (Unchangeable)
 
 - VM/Container Base Images (core OS templates)
 - Infrastructure as Code Definitions (Terraform, Ansible, etc.)
 - Network Device Configurations (ideally managed via IaC)
 
-#### <u>Benefits of Immutability</u>
+### <u>Benefits of Immutability</u>
 
 - Reliability: Reduced risk of configuration issues.
 - Consistency: Environments stay predictable.

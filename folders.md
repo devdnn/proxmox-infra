@@ -1,6 +1,3 @@
-
-Global vars
-
 # Ansible Project Structure
 
 This document outlines the folder structure of our Ansible project.
@@ -44,18 +41,18 @@ ansible-project/
 └── ansible.cfg                  # Ansible configuration file
 ```
 
-# Kubernetes folder structure
+## Kubernetes folder structure
 
 ```plaintext
 my-kubernetes-project/
 │
-├── packer/                       
-│   └── debian_bookworm/          
+├── packer/
+│   └── debian_bookworm/
 │       ├── debian_bookworm.json  # Packer JSON template for Debian Bookworm
 │       └── scripts/              # Provisioning scripts for Debian Bookworm
 │
-├── ansible/                      
-│   ├── roles/                    
+├── ansible/
+│   ├── roles/
 │   │   ├── gitea/                # Role for Gitea setup
 │   │   │   ├── tasks/            # Tasks for Gitea
 │   │   │   ├── handlers/         # Handlers for Gitea

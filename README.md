@@ -62,6 +62,26 @@ project-root/
 - **Security Tools**: Firewalls, intrusion detection, and vulnerability scanning setups.
 - **CI/CD Pipelines**: Continuous integration and deployment configurations.
 
+### Sample classifications
+
+#### Infrastructure Components
+
+- DNS Server
+- DHCP Server
+- UniFi Controller
+- PostgreSQL Database
+- NGINX Proxy Manager
+- Netboot Server
+- Gitea Server
+- Cloudflared DNS-over-HTTPS Proxy
+
+#### Operational Components
+
+- Prometheus Monitoring
+- Speedtest Monitoring
+- Netdata Monitoring
+- Nagios Monitoring
+
 ## Getting Started
 
 ### Prerequisites
