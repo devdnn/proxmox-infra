@@ -2,7 +2,7 @@ terraform {
   required_providers {
     proxmox = {
       source  = "bpg/proxmox"
-      version = "0.46.3"
+      version = "0.47.0"
     }
   }
 }
@@ -50,6 +50,13 @@ resource "proxmox_virtual_environment_container" "debian_lxc" {
           gateway = ip_config.value.lxc_gateway
         }
       }
+    }
+
+    dns {
+      domain = "naiduden.dev"
+      servers = [
+        "192.168.30.43"
+      ]
     }
 
     user_account {

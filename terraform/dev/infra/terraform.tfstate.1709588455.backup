@@ -1,7 +1,7 @@
 {
   "version": 4,
   "terraform_version": "1.7.4",
-  "serial": 96,
+  "serial": 95,
   "lineage": "392acce5-6c3d-b59f-9865-88e97b172234",
   "outputs": {},
   "resources": [
@@ -399,7 +399,7 @@
       ]
     },
     {
-      "module": "module.proxmox_backup_server",
+      "module": "module.proxmox_backup_server_vm_from_iso",
       "mode": "managed",
       "type": "proxmox_virtual_environment_vm",
       "name": "debian_vm",

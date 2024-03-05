@@ -68,17 +68,21 @@ gitea-destroy-terraform:
 #endregion
 
 # region Setup and configure infrastructure
-infra-validate-terraform:
+infra-terraform-validate:
 	echo "Setting up and configuring infrastructure in $(env) environment"
 	cd terraform && cd $(env) && cd infra && terraform init && terraform validate
 
-infra-plan-infra-terraform:
+infra-terraform-plan:
 	echo "Setting up and configuring infrastructure in $(env) environment"
 	cd terraform && cd $(env) && cd infra && terraform init && terraform validate && terraform plan
 
-infra-apply-terraform:
+infra-terraform-apply:
 	echo "Setting up and configuring infrastructure in $(env) environment"
 	cd terraform && cd $(env) && cd infra && terraform apply -auto-approve
+
+infra-terraform-destroy:
+	echo "Destroying infrastructure in $(env) environment"
+	cd terraform && cd $(env) && cd infra && terraform destroy -auto-approve
 # endregion Setup and configure infrastructure
 
 # region Setup and configure dev coding server

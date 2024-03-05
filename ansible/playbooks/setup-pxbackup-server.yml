@@ -1,0 +1,134 @@
+---
+- name: Configure Proxmox Backup Server
+  hosts: proxmox-backup-server
+  become: yes
+
+  vars:
+    expected_checksum: '7da6fe34168adc6e479327ba517796d4702fa2f8b4f0a9833f5ea6e6b48f6507a6da403a274fe201595edc86a84463d50383d07f64bdde2e3658108db7d6dc87'
+
+  tasks:
+    # - name: Create poxmoxdev user
+    #   block:
+    #     - name: Create backup user
+    #       ansible.builtin.user:
+    #         name: '{{ backup_user }}'
+    #         password: "{{ backup_password | password_hash('sha512') }}"
+    #         uid: 3000
+    #         shell: /bin/bash
+    #         create_home: no
+    #         state: present
+    #       register: backup_user_result
+    #       changed_when: backup_user_result.changed
+
+    - name: Download and Install Proxmox Backup Server
+      block:
+        - name: Remote SSH User from host_vars
+          ansible.builtin.debug:
+            var: hostvars[inventory_hostname]['ansible_user']
+
+        - name: Download gpg key for Proxmox Backup Server
+          ansible.builtin.get_url:
+            url: https://enterprise.proxmox.com/debian/proxmox-release-bookworm.gpg
+            dest: /etc/apt/trusted.gpg.d/proxmox-release-bookworm.gpg
+            mode: 0644
+
+        - name: Enure enterprise repository is not present
+          ansible.builtin.file:
+            path: /etc/apt/sources.list.d/pbs-enterprise.list
+            state: absent
+
+        - name: Get SHA512 checksum of the GPG key
+          ansible.builtin.command:
+            cmd: 'sha512sum /etc/apt/trusted.gpg.d/proxmox-release-bookworm.gpg'
+          register: checksum_result
+          changed_when: false
+
+        - name: Verify checksum
+          ansible.builtin.fail:
+            msg: 'Checksum verification failed!'
+          when: expected_checksum not in checksum_result.stdout
+
+        - name: Add promox release bookworm repository
+          apt_repository:
+            repo: 'deb http://download.proxmox.com/debian/pbs bookworm pbs-no-subscription'
+            state: present
+
+        - name: Update apt cache
+          ansible.builtin.apt:
+            update_cache: yes
+
+        - name: Install Proxmox Backup Server
+          ansible.builtin.apt:
+            name: proxmox-backup
+            state: present
+
+        - name: Enable Proxmox Backup Server
+          ansible.builtin.service:
+            name: proxmox-backup
+            state: started
+            enabled: yes
+
+        - name: Start Proxmox Backup Server
+          ansible.builtin.service:
+            name: proxmox-backup
+            state: started
+            enabled: yes
+
+    # - name: Create backup user using command line
+    #   ansible.builtin.command:
+    #     cmd: 'proxmox-backup-manager user create {{ backup_user }} --password {{ backup_password }}'
+    #   register: backup_user_result
+    #   changed_when: backup_user_result.rc == 0
+
+    # - name: Provide DatastoreAdmin role to backup user
+    #   ansible.builtin.command:
+    #     cmd: 'proxmox-backup-manager acl update /datastore DatastoreAdmin --auth-id {{ backup_user }}'
+    #   register: backup_user_result
+    #   changed_when: backup_user_result.rc == 0
+
+    - name: Create mount folder for nfs from truenas
+      block:
+        - name: Install NFS client utilities on Debian
+          ansible.builtin.apt:
+            name: nfs-common
+            state: present
+            update_cache: yes
+
+        - name: Create mount folder
+          ansible.builtin.file:
+            path: /mnt/nfs
+            state: directory
+            mode: 0770
+            owner: '{{  backup_user }}'
+            group: '{{  backup_user }}'
+          register: nfs_folder_result
+          changed_when: nfs_folder_result.changed
+
+        - name: Remote SSH User from host_vars
+          ansible.builtin.debug:
+            var: nfs_folder_result.changed
+
+        - name: Mount NFS share from TrueNAS
+          ansible.posix.mount:
+            path: /mnt/nfs
+            src: '{{ truenas_ip }}:/mnt/gajasenastor/pbsbackups'
+            fstype: nfs
+            state: mounted
+            opts: 'nfsvers=3,defaults,_netdev'
+          when: nfs_folder_result.changed
+
+        - name: Add mount to /etc/fstab
+          ansible.builtin.lineinfile:
+            path: /etc/fstab
+            line: '{{ truenas_ip }}:/mnt/gajasenastor/pbsbackups /mnt/nfs nfs nfsvers=3,defaults,_netdev  0 0'
+            create: false
+          when: nfs_folder_result.changed
+
+        - name: Set recursive permissions on /mnt/nfs
+          ansible.builtin.file:
+            path: /mnt/nfs
+            recurse: yes
+            owner: '{{  backup_user }}'
+            group: '{{  backup_user }}'
+            mode: 0770
+          when: set_permissions_recursive

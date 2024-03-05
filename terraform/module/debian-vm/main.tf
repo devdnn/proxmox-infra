@@ -2,7 +2,7 @@ terraform {
   required_providers {
     proxmox = {
       source  = "bpg/proxmox"
-      version = "0.46.3"
+      version = "0.47.0"
     }
   }
 }
@@ -41,6 +41,13 @@ resource "proxmox_virtual_environment_vm" "debian_vm" {
         address = var.vm_ip_address
         gateway = var.vm_gateway
       }
+    }
+
+    dns {
+      domain = "naiduden.dev"
+      servers = [
+        "192.168.30.43"
+      ]
     }
 
     datastore_id = var.storage_pool
