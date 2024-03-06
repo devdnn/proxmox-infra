@@ -87,6 +87,7 @@
     #   changed_when: backup_user_result.rc == 0
 
     - name: Create mount folder for nfs from truenas
+      when: mount_nfs
       block:
         - name: Install NFS client utilities on Debian
           ansible.builtin.apt:
