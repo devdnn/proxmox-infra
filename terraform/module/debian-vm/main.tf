@@ -79,13 +79,22 @@ resource "proxmox_virtual_environment_vm" "debian_vm" {
   reboot        = "true"
   scsi_hardware = "virtio-scsi-single"
 
-  disk {
-    size         = var.disk_size
-    file_format  = var.disk_format
-    datastore_id = var.storage_pool
-    iothread     = true
-    interface    = "scsi0"
-    discard      = "on"
-    ssd          = true
+  dynamic "disk" {
+    for_each = var.list_of_disks
+    content {
+      size         = disk.value.disk_size
+      file_format  = disk.value.disk_format
+      datastore_id = var.storage_pool
+      interface    = disk.value.interface
+      iothread     = true
+      discard      = "on"
+      ssd          = true
+    }
   }
+
+  timeout_clone     = 3600
+  timeout_create    = 3600
+  timeout_move_disk = 3600
+  timeout_migrate   = 3600
+
 }

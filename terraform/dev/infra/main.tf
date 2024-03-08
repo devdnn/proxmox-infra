@@ -4,6 +4,10 @@ terraform {
       source  = "bpg/proxmox"
       version = "0.47.0"
     }
+    truenas = {
+      source  = "dariusbakunas/truenas"
+      version = "0.11.1"
+    }
   }
 }
 
@@ -48,10 +52,20 @@ module "gitea_vm" {
   var_cpu_cores        = 2
   var_cpu_sockets      = 1
   QMEU_machine_type    = "q35"
-  disk_size            = 22
-  disk_format          = "qcow2"
-  interface_bridge     = local.yaml_variables_list.interface_bridge
-  vlan_id              = 80
+  list_of_disks = [
+    {
+      disk_size   = 16
+      disk_format = "qcow2"
+      interface   = "scsi0"
+    },
+    {
+      disk_size   = 64
+      disk_format = "qcow2"
+      interface   = "scsi1"
+    }
+  ]
+  interface_bridge = local.yaml_variables_list.interface_bridge
+  vlan_id          = 80
 }
 
 module "proxmox_backup_server" {
@@ -61,7 +75,7 @@ module "proxmox_backup_server" {
   new_hostname_prefix  = local.yaml_variables_list.pxbackup_vm_prefix
   new_hostname         = local.yaml_variables_list.pxbackup_vm_name
   vm_description       = local.yaml_variables_list.pxbackup_vm_description
-  vm_tags              = ["pxbackup", "source-control", "tf-ansible"]
+  vm_tags              = ["pxbackup", "tf-ansible"]
   proxmox_node         = local.yaml_variables_list.proxmox_node
   vm_ip_address        = local.yaml_variables_list.pxbackup_server_ip
   vm_gateway           = local.yaml_variables_list.pxbackup_server_gateway
@@ -69,15 +83,27 @@ module "proxmox_backup_server" {
   system_start_on_boot = true
   keep_system_running  = true
   clone_vm_id          = 5000
-  storage_pool         = local.yaml_variables_list.storage_pool
+  storage_pool         = local.yaml_variables_list.nas_storage_pool
   vm_dedicated_memory  = 2048
   var_cpu_cores        = 2
   var_cpu_sockets      = 1
   QMEU_machine_type    = "q35"
-  disk_size            = 22
-  disk_format          = "qcow2"
-  interface_bridge     = local.yaml_variables_list.interface_bridge
-  vlan_id              = 80
+  list_of_disks = [
+    {
+      disk_size   = 16
+      disk_format = "qcow2"
+      interface   = "scsi0"
+    },
+    {
+      disk_size   = 32
+      disk_format = "qcow2"
+      interface   = "scsi1"
+    }
+  ]
+  # disk_size            = 22
+  # disk_format          = "qcow2"
+  interface_bridge = local.yaml_variables_list.interface_bridge
+  vlan_id          = 80
 }
 
 module "pi_hole_vm" {

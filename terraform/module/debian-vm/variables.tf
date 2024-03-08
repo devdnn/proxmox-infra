@@ -75,16 +75,6 @@ variable "QMEU_machine_type" {
   default = "q35"
 }
 
-variable "disk_size" {
-  type    = number
-  default = 16
-}
-
-variable "disk_format" {
-  type    = string
-  default = "raw"
-}
-
 variable "interface_bridge" {
   type    = string
   default = "vmbr0"
@@ -92,4 +82,17 @@ variable "interface_bridge" {
 
 variable "vlan_id" {
   type = number
+}
+
+variable "list_of_disks" {
+  type = list(object({
+    disk_size   = optional(number)
+    disk_format = optional(string)
+    interface   = string
+  }))
+  default = [{
+    disk_size   = 16
+    disk_format = "raw"
+    interface   = "scsi0"
+  }]
 }
