@@ -1,0 +1,12 @@
+---
+# Credentials
+ansible_user: 'dnndev'
+ansible_ssh_pass: 'Float12345678'
+
+mount_nfs: false
+backup_user: 'backup'
+backup_password: 'backup'
+
+truenas_ip: '192.168.80.34'
+
+set_permissions_recursive: false

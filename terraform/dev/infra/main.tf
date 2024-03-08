@@ -12,7 +12,17 @@ terraform {
 }
 
 locals {
-  yaml_variables_list = yamldecode(file("${path.module}/../../../global_vars/${var.environmenttype}.yml"))
+  yaml_variables_list = yamldecode(file("${path.module}/../../../global_vars/${terraform.workspace}.yml"))
+  only_in_prod_mapping = {
+    dev   = 0
+    stage = 0
+    prod  = 1
+  }
+  only_in_prod = local.only_in_prod_mapping[terraform.workspace]
+}
+
+output "current_workspace" {
+  value = terraform.workspace
 }
 
 provider "proxmox" {
@@ -95,7 +105,7 @@ module "proxmox_backup_server" {
       interface   = "scsi0"
     },
     {
-      disk_size   = 32
+      disk_size   = 1024
       disk_format = "qcow2"
       interface   = "scsi1"
     }

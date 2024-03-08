@@ -10,7 +10,14 @@ LOCAL_BIN = $(shell echo $$HOME/.local/bin)
 
 VARIABLES = '{"users": [{"username": "$(shell whoami)"}], "ansible_user": "$(shell whoami)", "docker_users": ["$(shell whoami)"]}'
 
-env ?= dev
+Makefile: _check-make-vars-defined
+
+.PHONY: _check-make-vars-defined
+_check-make-vars-defined:
+ifndef env
+    $(error env is not set)
+endif
+
 create_gitea_vm ?= false
 
 help:
@@ -70,19 +77,23 @@ gitea-destroy-terraform:
 # region Setup and configure infrastructure
 infra-terraform-validate:
 	echo "Setting up and configuring infrastructure in $(env) environment"
-	cd terraform && cd $(env) && cd infra && terraform init && terraform validate
+	cd terraform && cd $(env) && cd infra && terraform workspace select $(env) && terraform init && terraform validate
 
 infra-terraform-plan:
 	echo "Setting up and configuring infrastructure in $(env) environment"
-	cd terraform && cd $(env) && cd infra && terraform init && terraform validate && terraform plan
+	cd terraform && cd $(env) && cd infra && terraform workspace select $(env) && terraform init && terraform validate && terraform plan
 
 infra-terraform-apply:
 	echo "Setting up and configuring infrastructure in $(env) environment"
-	cd terraform && cd $(env) && cd infra && terraform apply -auto-approve
+	cd terraform && cd $(env) && cd infra && terraform workspace select $(env) && terraform apply -auto-approve
 
 infra-terraform-destroy:
 	echo "Destroying infrastructure in $(env) environment"
-	cd terraform && cd $(env) && cd infra && terraform destroy -auto-approve
+	cd terraform && cd $(env) && terraform workspace select $(env) && cd infra && terraform destroy -auto-approve
+
+infra-ansible-proxmox-backup-server-setup:
+	echo "Installing tools on Proxmox Backup Server in $(env) environment"
+	cd ansible && ansible-playbook -i inventories/$(env) playbooks/setup-pxbackup-server.yml
 # endregion Setup and configure infrastructure
 
 # region Setup and configure dev coding server
