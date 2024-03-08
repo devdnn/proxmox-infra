@@ -11,6 +11,7 @@ gitea_app_name: 'Gitea - Local'
 
 # For terraform
 environmenttype: 'stage'
+needed_vms: ['pxbackupserver']
 
 # host node proxmox details
 proxmox_api_endpoint_url: 'https://192.168.80.11:8006/'

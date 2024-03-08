@@ -4,21 +4,11 @@ terraform {
       source  = "bpg/proxmox"
       version = "0.47.0"
     }
-    truenas = {
-      source  = "dariusbakunas/truenas"
-      version = "0.11.1"
-    }
   }
 }
 
 locals {
   yaml_variables_list = yamldecode(file("${path.module}/../../../global_vars/${terraform.workspace}.yml"))
-  only_in_prod_mapping = {
-    dev   = 0
-    stage = 0
-    prod  = 1
-  }
-  only_in_prod = local.only_in_prod_mapping[terraform.workspace]
 }
 
 output "current_workspace" {
@@ -44,6 +34,9 @@ provider "proxmox" {
 
 module "gitea_vm" {
   source = "../../module/debian-vm"
+
+  # create this VM only if its in the array needed_vms
+  count = contains(local.yaml_variables_list.needed_vms, local.yaml_variables_list.gitea_vm_name) ? 1 : 0
 
   environmenttype      = var.environmenttype
   new_hostname_prefix  = local.yaml_variables_list.gitea_vm_prefix
@@ -80,6 +73,9 @@ module "gitea_vm" {
 
 module "proxmox_backup_server" {
   source = "../../module/debian-vm"
+
+  # create this VM only if its in the array needed_vms
+  count = contains(local.yaml_variables_list.needed_vms, local.yaml_variables_list.pxbackup_vm_name) ? 1 : 0
 
   environmenttype      = var.environmenttype
   new_hostname_prefix  = local.yaml_variables_list.pxbackup_vm_prefix
@@ -119,6 +115,9 @@ module "proxmox_backup_server" {
 module "pi_hole_vm" {
   source = "../../module/debian-lxc"
 
+  # create this VM only if its in the array needed_vms
+  count = contains(local.yaml_variables_list.needed_vms, local.yaml_variables_list.pihole_vm_name) ? 1 : 0
+
   environmenttype           = var.environmenttype
   new_hostname_prefix       = local.yaml_variables_list.pihole_vm_prefix
   new_hostname              = local.yaml_variables_list.pihole_vm_name
@@ -157,6 +156,9 @@ module "pi_hole_vm" {
 
 module "dev_lxc" {
   source = "../../module/debian-lxc"
+
+  # create this LXC only in dev environment
+  count = terraform.workspace == "dev" ? 1 : 0
 
   environmenttype           = "dev"
   new_hostname_prefix       = ""
