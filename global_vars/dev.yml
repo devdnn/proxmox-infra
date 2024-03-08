@@ -19,6 +19,7 @@ proxmox_tls_insecure: true
 proxmox_node: 'pveopsauto'
 
 storage_pool: 'proxvz'
+nas_storage_pool: 'nasvmdrivesdev'
 interface_bridge: 'vmbr0'
 template_file_location_id: 'proxvz:vztmpl/debian-12-standard_12.2-1_amd64.tar.zst'
 
@@ -43,7 +44,7 @@ dev_lxc_server_gateway: '192.168.80.1'
 
 # proxmox backup server
 pxbackup_vm_prefix: 'dev'
-pxbackup_vm_name: 'pxbackup'
+pxbackup_vm_name: 'pxbackupserver'
 pxbackup_vm_description: 'Proxmox backup server for dev'
 pxbackup_server_ip: '192.168.80.45/24'
 pxbackup_server_gateway: '192.168.80.1'
