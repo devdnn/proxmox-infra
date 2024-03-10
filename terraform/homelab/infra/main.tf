@@ -15,6 +15,10 @@ output "current_workspace" {
   value = terraform.workspace
 }
 
+output "current_environment" {
+  value = local.yaml_variables_list.environmenttype
+}
+
 provider "proxmox" {
   endpoint = local.yaml_variables_list.proxmox_api_endpoint_url
   username = local.yaml_variables_list.proxmox_api_user
@@ -38,7 +42,7 @@ module "gitea_vm" {
   # create this VM only if its in the array needed_vms
   count = contains(local.yaml_variables_list.needed_vms, local.yaml_variables_list.gitea_vm_name) ? 1 : 0
 
-  environmenttype      = var.environmenttype
+  environmenttype      = local.yaml_variables_list.environmenttype
   new_hostname_prefix  = local.yaml_variables_list.gitea_vm_prefix
   new_hostname         = local.yaml_variables_list.gitea_vm_name
   vm_description       = local.yaml_variables_list.gitea_vm_description
@@ -58,17 +62,17 @@ module "gitea_vm" {
   list_of_disks = [
     {
       disk_size   = 16
-      disk_format = "qcow2"
+      disk_format = local.yaml_variables_list.supported_disk_format
       interface   = "scsi0"
     },
     {
       disk_size   = 64
-      disk_format = "qcow2"
+      disk_format = local.yaml_variables_list.supported_disk_format
       interface   = "scsi1"
     }
   ]
   interface_bridge = local.yaml_variables_list.interface_bridge
-  vlan_id          = 80
+  vlan_id          = 30
 }
 
 module "proxmox_backup_server" {
@@ -77,7 +81,7 @@ module "proxmox_backup_server" {
   # create this VM only if its in the array needed_vms
   count = contains(local.yaml_variables_list.needed_vms, local.yaml_variables_list.pxbackup_vm_name) ? 1 : 0
 
-  environmenttype      = var.environmenttype
+  environmenttype      = local.yaml_variables_list.environmenttype
   new_hostname_prefix  = local.yaml_variables_list.pxbackup_vm_prefix
   new_hostname         = local.yaml_variables_list.pxbackup_vm_name
   vm_description       = local.yaml_variables_list.pxbackup_vm_description
@@ -90,26 +94,26 @@ module "proxmox_backup_server" {
   keep_system_running  = true
   clone_vm_id          = 5000
   storage_pool         = local.yaml_variables_list.nas_storage_pool
-  vm_dedicated_memory  = 2048
+  vm_dedicated_memory  = 4096
   var_cpu_cores        = 2
   var_cpu_sockets      = 1
   QMEU_machine_type    = "q35"
   list_of_disks = [
     {
       disk_size   = 16
-      disk_format = "qcow2"
+      disk_format = local.yaml_variables_list.supported_disk_format
       interface   = "scsi0"
     },
     {
       disk_size   = 1024
-      disk_format = "qcow2"
+      disk_format = local.yaml_variables_list.supported_disk_format
       interface   = "scsi1"
     }
   ]
   # disk_size            = 22
-  # disk_format          = "qcow2"
+  # disk_format          = local.yaml_variables_list.supported_disk_format
   interface_bridge = local.yaml_variables_list.interface_bridge
-  vlan_id          = 80
+  vlan_id          = local.yaml_variables_list.vlan_id
 }
 
 module "pi_hole_vm" {
@@ -118,7 +122,7 @@ module "pi_hole_vm" {
   # create this VM only if its in the array needed_vms
   count = contains(local.yaml_variables_list.needed_vms, local.yaml_variables_list.pihole_vm_name) ? 1 : 0
 
-  environmenttype           = var.environmenttype
+  environmenttype           = local.yaml_variables_list.environmenttype
   new_hostname_prefix       = local.yaml_variables_list.pihole_vm_prefix
   new_hostname              = local.yaml_variables_list.pihole_vm_name
   lxc_description           = local.yaml_variables_list.pihole_vm_description
@@ -146,7 +150,7 @@ module "pi_hole_vm" {
       bridge   = local.yaml_variables_list.interface_bridge
       enabled  = true
       firewall = false
-      vlan_id  = 80
+      vlan_id  = local.yaml_variables_list.vlan_id
     }
   ]
 
@@ -188,7 +192,7 @@ module "dev_lxc" {
       bridge   = local.yaml_variables_list.interface_bridge
       enabled  = true
       firewall = false
-      vlan_id  = 80
+      vlan_id  = local.yaml_variables_list.vlan_id
     }
   ]
 }

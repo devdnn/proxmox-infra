@@ -77,19 +77,19 @@ gitea-destroy-terraform:
 # region Setup and configure infrastructure
 infra-terraform-validate:
 	echo "Setting up and configuring infrastructure in $(env) environment"
-	cd terraform && cd $(env) && cd infra && terraform workspace select $(env) && terraform init && terraform validate
+	cd terraform && cd homelab && cd infra && terraform workspace select $(env) && terraform init && terraform validate
 
 infra-terraform-plan:
 	echo "Setting up and configuring infrastructure in $(env) environment"
-	cd terraform && cd $(env) && cd infra && terraform workspace select $(env) && terraform init && terraform validate && terraform plan
+	cd terraform && cd homelab && cd infra && terraform workspace select $(env) && terraform init && terraform validate && terraform plan
 
 infra-terraform-apply:
 	echo "Setting up and configuring infrastructure in $(env) environment"
-	cd terraform && cd $(env) && cd infra && terraform workspace select $(env) && terraform apply -auto-approve
+	cd terraform && cd homelab && cd infra && terraform workspace select $(env) && terraform apply -auto-approve
 
 infra-terraform-destroy:
 	echo "Destroying infrastructure in $(env) environment"
-	cd terraform && cd $(env) && terraform workspace select $(env) && cd infra && terraform destroy -auto-approve
+	cd terraform && cd homelab && terraform workspace select $(env) && cd infra && terraform destroy -auto-approve
 
 infra-ansible-proxmox-backup-server-setup:
 	echo "Installing tools on Proxmox Backup Server in $(env) environment"

@@ -92,9 +92,12 @@ resource "proxmox_virtual_environment_vm" "debian_vm" {
     }
   }
 
-  timeout_clone     = 3600
-  timeout_create    = 3600
-  timeout_move_disk = 3600
-  timeout_migrate   = 3600
-
+  timeout_clone       = 3600
+  timeout_create      = 3600
+  timeout_move_disk   = 3600
+  timeout_migrate     = 3600
+  timeout_reboot      = 3600
+  timeout_shutdown_vm = 3600
+  timeout_start_vm    = 3600
+  timeout_stop_vm     = 3600
 }

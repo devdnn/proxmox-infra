@@ -1,1 +1,1 @@
-proxmox-backup-server ansible_host=192.168.30.45
+proxmox-backup-server ansible_host=192.168.30.46
