@@ -1,0 +1,13 @@
+---
+collections:
+  - name: community.general
+    version: '8.4.0'
+  - name: ansible.posix
+    version: '1.5.4'
+  - name: ansible.windows
+    version: '2.2.0'
+  - name: microsoft.ad
+    # Assuming "microsoft.ad" is a hypothetical example. Replace with the actual collection name if different.
+    version: '1.4.1'
+  - name: community.postgresql
+    version: '3.4.0'

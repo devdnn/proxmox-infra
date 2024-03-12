@@ -196,3 +196,40 @@ module "dev_lxc" {
     }
   ]
 }
+
+
+module "postgres_sql_vm" {
+  source = "../../module/debian-vm"
+
+  # create this VM only if its in the array needed_vms
+  count = contains(local.yaml_variables_list.needed_vms, local.yaml_variables_list.postgres_vm_name) ? 1 : 0
+
+  environmenttype      = local.yaml_variables_list.environmenttype
+  new_hostname_prefix  = local.yaml_variables_list.postgres_vm_prefix
+  new_hostname         = local.yaml_variables_list.postgres_vm_name
+  vm_description       = local.yaml_variables_list.postgres_vm_description
+  vm_tags              = ["postgresql", "tf-ansible"]
+  proxmox_node         = local.yaml_variables_list.proxmox_node
+  vm_ip_address        = local.yaml_variables_list.postgres_server_ip
+  vm_gateway           = local.yaml_variables_list.postgres_server_gateway
+  vm_bios_type         = "seabios"
+  system_start_on_boot = true
+  keep_system_running  = true
+  clone_vm_id          = 5000
+  storage_pool         = local.yaml_variables_list.storage_pool
+  vm_dedicated_memory  = 4096
+  var_cpu_cores        = 2
+  var_cpu_sockets      = 1
+  QMEU_machine_type    = "q35"
+  list_of_disks = [
+    {
+      disk_size   = 128
+      disk_format = local.yaml_variables_list.supported_disk_format
+      interface   = "scsi0"
+    }
+  ]
+  # disk_size            = 22
+  # disk_format          = local.yaml_variables_list.supported_disk_format
+  interface_bridge = local.yaml_variables_list.interface_bridge
+  vlan_id          = local.yaml_variables_list.vlan_id
+}

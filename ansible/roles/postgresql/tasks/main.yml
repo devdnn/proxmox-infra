@@ -6,3 +6,6 @@
 - name: Configure test database
   import_tasks: configure-test-database.yml
   when: postgresql_db is defined
+
+- name: Install pgAdmin
+  import_tasks: install-pgAdmin.yml

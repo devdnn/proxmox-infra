@@ -20,7 +20,7 @@
 
     - name: Instal dependencies for PostgreSQL
       apt:
-        name: "{{ item }}"
+        name: '{{ item }}'
         state: latest
         update_cache: true
       loop:
@@ -29,7 +29,7 @@
 
     - name: Install PostgreSQL packages
       apt:
-        name: "{{ item }}"
+        name: '{{ item }}'
         state: present
       loop:
         - postgresql-{{ postgresql_version }}
@@ -49,6 +49,33 @@
         group: postgres
         mode: '0644'
       notify: Restart postgresql
+
+    - name: Output the environment type
+      debug:
+        msg: "Environment type is {{ lookup('env', 'CURRENT_ENVIRONMENT') }}"
+
+    - name: Allow CIDR {{postgresql_allow_connections_from_cidr_dev}} to connect to PostgreSQL
+      lineinfile:
+        path: /etc/postgresql/{{ postgresql_version }}/main/pg_hba.conf
+        line: 'host    all             all             {{postgresql_allow_connections_from_cidr_dev}}            md5'
+        state: present
+      notify: Restart postgresql
+      when: lookup('env', 'CURRENT_ENVIRONMENT') == 'dev'
+
+    - name: Allow CIDR {{postgresql_allow_connections_from_cidr_prod}} to connect to PostgreSQL
+      lineinfile:
+        path: /etc/postgresql/{{ postgresql_version }}/main/pg_hba.conf
+        line: 'host    all             all             {{postgresql_allow_connections_from_cidr_prod}}            md5'
+        state: present
+      notify: Restart postgresql
+      when: lookup('env', 'CURRENT_ENVIRONMENT') == 'prod'
+
+    - name: Change the password for postgres admin user
+      become: true
+      become_user: postgres
+      postgresql_user:
+        name: '{{ postgres_admin_user }}'
+        password: '{{ postgres_admin_password }}'
 
     - name: Apt Cleanup
       apt:

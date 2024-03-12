@@ -2,33 +2,35 @@
 # Default values for PostgreSQL configuration
 
 # Basic server setup
-postgresql_version: "15"  # Version of PostgreSQL
-postgresql_locale: "en_US.UTF-8" # Locale settings for database
-postgresql_encoding: "UTF-8"  # Encoding for the database
+postgresql_version: '15' # Version of PostgreSQL
+postgresql_locale: 'en_US.UTF-8' # Locale settings for database
+postgresql_encoding: 'UTF-8' # Encoding for the database
 
 # Connection settings
-postgresql_listen_addresses: "localhost"  # IP addresses to listen on ('*' for all)
+postgresql_listen_addresses: '*' # IP addresses to listen on ('*' for all)
 postgresql_port: 5432 # Port for PostgreSQL to listen on
+postgresql_allow_connections_from_cidr_dev: '192.168.80.0/24'
+postgresql_allow_connections_from_cidr_prod: '192.168.30.0/24'
 
-postgresql_install_psycopg2: true   # Install psycopg2 Python library
+postgresql_install_psycopg2: true # Install psycopg2 Python library
 
 # Authentication settings
-postgresql_admin_user: "postgres" # Default admin user
-postgresql_default_auth_method: "scram-sha-256"   # Default authentication method
+postgresql_admin_user: 'postgres' # Default admin user
+postgresql_default_auth_method: 'scram-sha-256' # Default authentication method
 
 # Database settings
 postgresql_max_connections: 100 # Maximum number of database connections
-postgresql_shared_buffers: "128MB" # Memory for shared data
-postgresql_work_mem: "4MB" # Memory per query
-postgresql_maintenance_work_mem: "64MB" # Maintenance operations memory
-postgresql_effective_cache_size: "256MB" # Estimated cache size
+postgresql_shared_buffers: '128MB' # Memory for shared data
+postgresql_work_mem: '4MB' # Memory per query
+postgresql_maintenance_work_mem: '64MB' # Maintenance operations memory
+postgresql_effective_cache_size: '256MB' # Estimated cache size
 
 # Replication settings (default: replication not configured)
-postgresql_wal_level: "minimal" # Write-ahead log level
+postgresql_wal_level: 'minimal' # Write-ahead log level
 postgresql_max_wal_senders: 0 # Max WAL sender processes
 postgresql_wal_keep_segments: 0 # WAL segments to retain
 
-postgresql_password_encryption: "scram-sha-256" # Password encryption method
+postgresql_password_encryption: 'scram-sha-256' # Password encryption method
 postgresql_log_min_duration_statement: 10000 # Log queries longer than 10s
 
 # Point-In-Time Recovery (PITR) backup options
@@ -38,6 +40,20 @@ postgresql_backup_local_dir: >-
       '/var/lib/postgresql' if ansible_os_family == 'Debian' else '~postgres') }}/backup
 postgresql_create_backup_dir: true
 # Sample
-postgresql_db: "testdb" # Database name for Gitea
-postgresql_user: "testUser" # PostgreSQL user for Gitea
-postgresql_password: "Test@123" # Password for the PostgreSQL Gitea user
+postgresql_db: 'testdb' # Database name for Gitea
+postgresql_user: 'testUser' # PostgreSQL user for Gitea
+postgresql_password: 'Test@123' # Password for the PostgreSQL Gitea user
+
+# postgres admin user password
+postgres_admin_user: 'postgres'
+postgres_admin_password: '1Uh4$f^Vrtju^J'
+
+# pgAdmin4 config values
+pgadmin4_admin_email: 'deepakn.dev@gmail.com'
+pgadmin4_admin_password: 'Gn29*Bh#DRtRQDi'
+pgadmin4_home_dir: /usr/pgadmin4
+pgadmin4_data_dir: /var/lib/pgadmin4
+pgadmin4_sqlite_path: '{{ pgadmin4_data_dir }}/pgadmin4.db'
+pgadmin4_system_config_dir: /etc/pgadmin
+pgadmin4_system_config_path: '{{ pgadmin4_system_config_dir }}/config_system.py'
+pgadmin4_system_config: {}

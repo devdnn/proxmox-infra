@@ -14,3 +14,19 @@
     enabled: yes
     daemon_reload: yes
   listen: reload postgresql
+
+- name: Restart apache2
+  service:
+    name: apache2
+    state: restarted
+    enabled: yes
+    daemon_reload: yes
+  listen: restart apache2
+
+- name: Restart httpd
+  service:
+    name: httpd
+    state: restarted
+    enabled: yes
+    daemon_reload: yes
+  listen: restart httpd

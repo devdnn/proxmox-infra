@@ -11,7 +11,7 @@ gitea_app_name: 'Gitea - Local'
 
 # For terraform
 environmenttype: 'stage'
-needed_vms: ['pxbackupserver']
+needed_vms: ['pxbackupserver', 'postgres']
 
 # host node proxmox details
 proxmox_api_endpoint_url: 'https://192.168.80.11:8006/'
@@ -23,7 +23,9 @@ proxmox_node: 'lepakshi-lenovomini'
 storage_pool: 'vz'
 nas_storage_pool: 'nasvmdrivesdev'
 interface_bridge: 'vmbr0'
+vlan_id: 80
 template_file_location_id: 'vz:vztmpl/debian-12-standard_12.2-1_amd64.tar.zst'
+supported_disk_format: 'qcow2'
 
 # gitea server config values
 gitea_vm_prefix: 'stage'
@@ -50,3 +52,10 @@ pxbackup_vm_name: 'pxbackupserver'
 pxbackup_vm_description: 'Proxmox backup server for dev'
 pxbackup_server_ip: '192.168.80.45/24'
 pxbackup_server_gateway: '192.168.80.1'
+
+# postgres server
+postgres_vm_prefix: 'stage'
+postgres_vm_name: 'postgres'
+postgres_vm_description: 'Postgres server for dev'
+postgres_server_ip: '192.168.80.44/24'
+postgres_server_gateway: '192.168.80.1'

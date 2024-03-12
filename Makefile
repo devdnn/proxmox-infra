@@ -94,6 +94,12 @@ infra-terraform-destroy:
 infra-ansible-proxmox-backup-server-setup:
 	echo "Installing tools on Proxmox Backup Server in $(env) environment"
 	cd ansible && ansible-playbook -i inventories/$(env) playbooks/setup-pxbackup-server.yml
+
+infra-ansible-postgresql-setup:
+	echo "Installing tools on PostgreSQL in $(env) environment"
+	export CURRENT_ENVIRONMENT=$(env)
+	echo "Current environment is $(CURRENT_ENVIRONMENT)"
+	cd ansible && ansible-playbook -i inventories/$(env) playbooks/setup-postgresql.yml
 # endregion Setup and configure infrastructure
 
 # region Setup and configure dev coding server
