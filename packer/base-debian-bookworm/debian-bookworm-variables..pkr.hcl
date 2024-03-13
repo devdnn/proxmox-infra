@@ -13,7 +13,7 @@ variable "iso_checksum" {
 }
 
 variable "vmid" {
-  type = string
+  type = number
   description = "Proxmox Template ID"
 }
 
@@ -80,8 +80,8 @@ variable "proxmox_host" {
 }
 
 variable "proxmox_node" {
-  type    = string
-  default = ""
+  type    = list(string)
+  default = []
 }
 
 variable "ssh_username" {
@@ -94,4 +94,15 @@ variable "ssh_password" {
   type        = string
   description = "SSH password"
   default     = "Float12345678"
+}
+
+
+variable "preseed_url_bind_address"{
+  type        = string
+  description = "Preseed URL bind address"
+}
+
+variable "preseed_url_path" {
+  type        = string
+  description = "path to preseed file"
 }

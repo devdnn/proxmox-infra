@@ -27,7 +27,7 @@ source "proxmox-iso" "debian-12" {
   username                 = var.proxmox_api_token_id
   token                    = var.proxmox_api_token_secret
   insecure_skip_tls_verify = true
-  node                     = var.proxmox_node
+  node                     = var.proxmox_node[0]
 
   vm_name                 = var.vm_name
   template_description    = "Debian 12 Bookworm Packer Template -- Created: ${formatdate("YYYY-MM-DD hh:mm:ss ZZZ", timestamp())}"
@@ -67,11 +67,16 @@ source "proxmox-iso" "debian-12" {
   iso_checksum     = var.iso_checksum
   unmount_iso      = true
 
-  http_directory = "http"
-  http_port_min  = 8100
-  http_port_max  = 8100
+  #http_directory = "http"
+  #http_port_min  = 8100
+  #http_port_max  = 8100
   boot_wait      = "10s"
-  boot_command   = ["<esc><wait>auto url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed-bookworm.cfg<enter>"]
+  boot_command   = ["<esc><wait>auto url=https://{{ .HTTPIP }}${var.preseed_url_path}<enter>"]
+
+  #http_directory = "preseed"
+  http_bind_address = var.preseed_url_bind_address
+  http_port_min = 443
+  http_port_max = 443
 
   ssh_username = "dnndev"
   ssh_password  = "Float12345678"
