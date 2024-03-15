@@ -3,11 +3,6 @@ variable "environmenttype" {
   default = "dev"
 }
 
-variable "new_hostname_prefix" {
-  type    = string
-  default = ""
-}
-
 variable "new_hostname" {
   type = string
 }

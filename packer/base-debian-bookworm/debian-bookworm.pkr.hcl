@@ -60,6 +60,7 @@ source "proxmox-iso" "debian-12" {
     type              = "scsi"
     discard           = true
     ssd               = true
+    io_thread         = true
   }
 
   iso_url          = var.iso_url

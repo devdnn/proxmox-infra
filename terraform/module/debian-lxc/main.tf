@@ -10,12 +10,11 @@ terraform {
 
 locals {
   // timestamp with hour and minute
-  hostname = var.new_hostname_prefix == "" ? var.new_hostname : "${var.new_hostname_prefix}-${var.new_hostname}"
-  tags     = concat(var.lxc_tags, [var.environmenttype])
+  tags = concat(var.lxc_tags, [var.environmenttype])
 }
 
 output "hostname" {
-  value = local.hostname
+  value = var.new_hostname
 }
 
 resource "proxmox_virtual_environment_container" "debian_lxc" {
@@ -40,7 +39,7 @@ resource "proxmox_virtual_environment_container" "debian_lxc" {
   }
 
   initialization {
-    hostname = local.hostname
+    hostname = var.new_hostname
 
     dynamic "ip_config" {
       for_each = var.ip_details

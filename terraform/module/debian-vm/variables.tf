@@ -4,11 +4,11 @@ variable "environmenttype" {
   default = "dev"
 }
 
-variable "new_hostname_prefix" {
+variable "new_hostname" {
   type = string
 }
 
-variable "new_hostname" {
+variable "new_hostname_inside_vm" {
   type = string
 }
 
@@ -23,6 +23,10 @@ variable "vm_tags" {
 }
 
 variable "proxmox_node" {
+  type = string
+}
+
+variable "proxmox_node_with_clone" {
   type = string
 }
 
@@ -41,14 +45,6 @@ variable "keep_system_running" {
 variable "clone_vm_id" {
   type    = number
   default = 5000
-}
-
-variable "vm_ip_address" {
-  type = string
-}
-
-variable "vm_gateway" {
-  type = string
 }
 
 variable "storage_pool" {
@@ -75,13 +71,21 @@ variable "QMEU_machine_type" {
   default = "q35"
 }
 
-variable "interface_bridge" {
-  type    = string
-  default = "vmbr0"
+variable "list_of_networks" {
+  type = list(object({
+    bridge   = string
+    enabled  = bool
+    firewall = bool
+    vlan_id  = number
+  }))
+  description = "List of networks to be created"
 }
 
-variable "vlan_id" {
-  type = number
+variable "ip_details" {
+  type = list(object({
+    vm_ip_address = string
+    vm_gateway    = optional(string)
+  }))
 }
 
 variable "list_of_disks" {

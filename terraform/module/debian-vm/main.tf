@@ -10,13 +10,29 @@ terraform {
 locals {
   // timestamp with hour and minute
   timestamp = formatdate("YYYY-MM-DD-HH-mm", timestamp())
-  hostname  = var.new_hostname_prefix == "" ? var.new_hostname : "${var.new_hostname_prefix}-${var.new_hostname}"
   // merge the tags with var.environmenttype
   tags = concat(var.vm_tags, [var.environmenttype])
 }
 
+resource "proxmox_virtual_environment_file" "cloud_config" {
+  content_type = "snippets"
+  datastore_id = "nasbackups"
+  node_name    = var.proxmox_node
+
+  source_raw {
+    data = <<EOF
+      #cloud-config
+      #cloud-config
+        hostname: ${var.new_hostname_inside_vm}
+      EOF
+
+    file_name = "${var.new_hostname_inside_vm}.cloud-config.yaml"
+  }
+}
+
 resource "proxmox_virtual_environment_vm" "debian_vm" {
-  name        = local.hostname
+
+  name        = var.new_hostname
   description = var.vm_description
   tags        = local.tags
 
@@ -30,16 +46,21 @@ resource "proxmox_virtual_environment_vm" "debian_vm" {
   started = var.keep_system_running
 
   clone {
-    vm_id = var.clone_vm_id
-    full  = true
+    vm_id     = var.clone_vm_id
+    full      = true
+    node_name = var.proxmox_node_with_clone
+    retries   = 3
   }
 
 
   initialization {
-    ip_config {
-      ipv4 {
-        address = var.vm_ip_address
-        gateway = var.vm_gateway
+    dynamic "ip_config" {
+      for_each = var.ip_details
+      content {
+        ipv4 {
+          address = ip_config.value.vm_ip_address
+          gateway = ip_config.value.vm_gateway
+        }
       }
     }
 
@@ -51,6 +72,8 @@ resource "proxmox_virtual_environment_vm" "debian_vm" {
     }
 
     datastore_id = var.storage_pool
+
+    user_data_file_id = proxmox_virtual_environment_file.cloud_config.id
   }
 
   memory {
@@ -63,12 +86,15 @@ resource "proxmox_virtual_environment_vm" "debian_vm" {
     type    = "x86-64-v2-AES"
   }
 
-  network_device {
-    bridge   = var.interface_bridge
-    enabled  = true
-    firewall = false
-    model    = "virtio"
-    vlan_id  = var.vlan_id
+  dynamic "network_device" {
+    for_each = var.list_of_networks
+    content {
+      bridge   = network_device.value.bridge
+      enabled  = network_device.value.enabled
+      firewall = network_device.value.firewall
+      model    = "virtio"
+      vlan_id  = network_device.value.vlan_id
+    }
   }
 
   machine = var.QMEU_machine_type
@@ -100,4 +126,10 @@ resource "proxmox_virtual_environment_vm" "debian_vm" {
   timeout_shutdown_vm = 3600
   timeout_start_vm    = 3600
   timeout_stop_vm     = 3600
+
+  lifecycle {
+    ignore_changes = [
+      clone, vga
+    ]
+  }
 }

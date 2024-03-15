@@ -10,7 +10,7 @@ gitea_app_name: 'Gitea - Prod'
 
 # For terraform
 environmenttype: 'prod'
-needed_vms: ['pxbackupserver', 'postgres']
+# needed_vms: ['backup-pxb', 'db-postgres']
 
 # host node proxmox details
 proxmox_api_endpoint_url: 'https://192.168.1.11:8006/'
@@ -18,42 +18,83 @@ proxmox_api_user: 'root@pam'
 proxmox_api_password: 'Float12345678'
 proxmox_tls_insecure: true
 proxmox_node: 'spmhampi'
+proxmox_node_with_clone: 'spmhampi'
 
 storage_pool: 'proxthin'
 nas_storage_pool: 'nasvmdrives'
 interface_bridge: 'vmbr2'
-vlan_id: 30
 template_file_location_id: 'nasisos:vztmpl/debian-12-standard_12.2-1_amd64.tar.zst'
-supported_disk_format: 'qcow2'
+supported_disk_format_raw: 'raw'
+supported_disk_format_qcow2: 'qcow2'
 
 # gitea server config values
-gitea_vm_prefix: ''
-gitea_vm_name: 'gitea'
+# gitea_vm_suffix: 'prod'
+gitea_vm_name: 'gitea-prod' # index will added in terraform code
+# gitea_host_name_inside_vm: 'gitea' # index will added in terraform code
+gitea_number_of_instances: 0
 gitea_vm_description: 'Gitea for source control management and CI/CD'
-gitea_server_ip: '192.168.80.13/24'
-gitea_server_gateway: '192.168.80.1'
+gitea_network_interface_details:
+  first_interface:
+    ip: '192.168.30.45/24'
+    gateway: '192.168.30.1'
+    vlan_id: 30
+    interface_bridge: 'vmbr2'
 
 # pihole server config values
-pihole_vm_prefix: ''
-pihole_vm_name: 'pihole'
+pihole_vm_suffix: 'prod' # index will added in terraform code
+pihole_vm_name: 'pihole-prod' # index will added in terraform code
+pihole_host_name_inside_vm: 'pihole' # index will added in terraform code
+pihole_number_of_instances: 0
 pihole_vm_description: 'pihole server for development'
-pihole_server_ip: '192.168.80.14/24'
-pihole_server_gateway: '192.168.80.1'
+pihole_network_interface_details:
+  first_interface:
+    ip: '192.168.30.51/24'
+    gateway: '192.168.30.1'
+    vlan_id: 30
+    interface_bridge: 'vmbr2'
 
 # dev lxc server config values
+dev_lxc_vm_name: 'dev-debian' # index will added in terraform code
+dev_lxc_host_name_inside_vm: 'devdebian' # index will added in terraform code
+dev_lxc_number_of_instances: 0
+dev_lxc_vm_description: 'development box for coding'
 dev_lxc_server_ip: '192.168.80.15/24'
 dev_lxc_server_gateway: '192.168.80.1'
+dev_lxc_network_interface_details:
+  first_interface:
+    ip: '192.168.80.15/24'
+    gateway: '192.168.80.1'
+    vlan_id: 80
+    interface_bridge: 'vmbr0'
 #
 
 # proxmox backup server
-pxbackup_vm_prefix: ''
-pxbackup_vm_name: 'pxbackupserver'
+pxbackup_vm_suffix: 'prod'
+pxbackup_vm_name: 'backup-pxb-prod' # index will added in terraform code
+pxbackup_host_name_inside_vm: 'backuppxb' # index will added in terraform code
+pxbackup_number_of_instances: 1
 pxbackup_vm_description: 'Proxmox backup server for dev'
-pxbackup_server_ip: '192.168.30.46/24'
-pxbackup_server_gateway: '192.168.30.1'
+pxbackup_network_interface_details:
+  first_interface:
+    ip: '192.168.30.46/24'
+    gateway: '192.168.30.1'
+    vlan_id: 30
+    interface_bridge: 'vmbr2'
+  second_interface:
+    ip: '192.168.80.46/24'
+    gateway: '192.168.80.1'
+    vlan_id: 80
+    interface_bridge: 'vmbr2'
+
 # postgres server
-postgres_vm_prefix: ''
-postgres_vm_name: 'postgres'
+postgres_vm_suffix: 'prod'
+postgres_vm_name: 'db-postgres-prod' # index will added in terraform code
+postgres_host_name_inside_vm: 'dbpostgres' # index will added in terraform code
+postgres_number_of_instances: 1
 postgres_vm_description: 'Postgres server for dev'
-postgres_server_ip: '192.168.30.44/24'
-postgres_server_gateway: '192.168.30.1'
+postgres_network_interface_details:
+  first_interface:
+    ip: '192.168.30.44/24'
+    gateway: '192.168.30.1'
+    vlan_id: 30
+    interface_bridge: 'vmbr2'

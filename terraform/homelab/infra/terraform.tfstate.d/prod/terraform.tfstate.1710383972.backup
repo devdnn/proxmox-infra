@@ -1,7 +1,7 @@
 {
   "version": 4,
   "terraform_version": "1.7.3",
-  "serial": 97,
+  "serial": 44,
   "lineage": "3190b346-4d6c-0b4b-8c70-2f321319bf3e",
   "outputs": {
     "current_environment": {
@@ -10,10 +10,6 @@
     },
     "current_workspace": {
       "value": "prod",
-      "type": "string"
-    },
-    "name": {
-      "value": "dbpostgresprod-01",
       "type": "string"
     }
   },
@@ -79,8 +75,8 @@
               {
                 "datastore_id": "",
                 "full": true,
-                "node_name": "spmhampi",
-                "retries": 3,
+                "node_name": "kishkindha-pcli",
+                "retries": 1,
                 "vm_id": 5000
               }
             ],
@@ -106,7 +102,7 @@
                 "file_format": "raw",
                 "file_id": "",
                 "interface": "scsi0",
-                "iothread": true,
+                "iothread": false,
                 "path_in_datastore": "vm-105-disk-0",
                 "size": 128,
                 "speed": [],
@@ -162,14 +158,14 @@
                 "::1"
               ],
               [
-                "fe80::be24:11ff:feee:fa30"
+                "fe80::be24:11ff:fee5:9ef4"
               ]
             ],
             "keyboard_layout": "en-us",
             "kvm_arguments": null,
             "mac_addresses": [
               "00:00:00:00:00:00",
-              "BC:24:11:EE:FA:30"
+              "BC:24:11:E5:9E:F4"
             ],
             "machine": "q35",
             "memory": [
@@ -186,7 +182,7 @@
                 "bridge": "vmbr2",
                 "enabled": true,
                 "firewall": false,
-                "mac_address": "BC:24:11:EE:FA:30",
+                "mac_address": "BC:24:11:E5:9E:F4",
                 "model": "virtio",
                 "mtu": 0,
                 "queues": 0,
@@ -308,8 +304,8 @@
               {
                 "datastore_id": "",
                 "full": true,
-                "node_name": "spmhampi",
-                "retries": 3,
+                "node_name": "kishkindha-pcli",
+                "retries": 1,
                 "vm_id": 5000
               }
             ],
@@ -335,7 +331,7 @@
                 "file_format": "raw",
                 "file_id": "",
                 "interface": "scsi0",
-                "iothread": true,
+                "iothread": false,
                 "path_in_datastore": "102/vm-102-disk-0.raw",
                 "size": 16,
                 "speed": [],
@@ -396,7 +392,7 @@
             "keyboard_layout": "en-us",
             "kvm_arguments": null,
             "mac_addresses": [
-              "BC:24:11:3F:36:C9"
+              "BC:24:11:E0:A3:71"
             ],
             "machine": "q35",
             "memory": [
@@ -413,7 +409,7 @@
                 "bridge": "vmbr2",
                 "enabled": true,
                 "firewall": false,
-                "mac_address": "BC:24:11:3F:36:C9",
+                "mac_address": "BC:24:11:E0:A3:71",
                 "model": "virtio",
                 "mtu": 0,
                 "queues": 0,
