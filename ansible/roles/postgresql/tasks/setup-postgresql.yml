@@ -62,6 +62,14 @@
       notify: Restart postgresql
       when: lookup('env', 'CURRENT_ENVIRONMENT') == 'dev'
 
+    - name: Allow CIDR {{postgresql_allow_connections_from_cidr_dev}} to connect to PostgreSQL
+      lineinfile:
+        path: /etc/postgresql/{{ postgresql_version }}/main/pg_hba.conf
+        line: 'host    all             all             {{postgresql_allow_connections_from_cidr_stage}}            md5'
+        state: present
+      notify: Restart postgresql
+      when: lookup('env', 'CURRENT_ENVIRONMENT') == 'stage'
+
     - name: Allow CIDR {{postgresql_allow_connections_from_cidr_prod}} to connect to PostgreSQL
       lineinfile:
         path: /etc/postgresql/{{ postgresql_version }}/main/pg_hba.conf

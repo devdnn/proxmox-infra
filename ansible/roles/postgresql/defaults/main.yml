@@ -10,6 +10,7 @@ postgresql_encoding: 'UTF-8' # Encoding for the database
 postgresql_listen_addresses: '*' # IP addresses to listen on ('*' for all)
 postgresql_port: 5432 # Port for PostgreSQL to listen on
 postgresql_allow_connections_from_cidr_dev: '192.168.80.0/24'
+postgresql_allow_connections_from_cidr_stage: '192.168.80.0/24'
 postgresql_allow_connections_from_cidr_prod: '192.168.30.0/24'
 
 postgresql_install_psycopg2: true # Install psycopg2 Python library

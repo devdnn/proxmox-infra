@@ -16,14 +16,14 @@ locals {
 
 resource "proxmox_virtual_environment_file" "cloud_config" {
   content_type = "snippets"
-  datastore_id = "nasbackups"
+  datastore_id = "nasbackupdev"
   node_name    = var.proxmox_node
 
   source_raw {
     data = <<EOF
       #cloud-config
-      #cloud-config
         hostname: ${var.new_hostname_inside_vm}
+        manage_etc_hosts: true
       EOF
 
     file_name = "${var.new_hostname_inside_vm}.cloud-config.yaml"
@@ -133,3 +133,5 @@ resource "proxmox_virtual_environment_vm" "debian_vm" {
     ]
   }
 }
+
+

@@ -1,8 +1,9 @@
 ---
-gitea_http_domain: 192.168.30.60
-gitea_root_url: http://192.168.30.60:80
+# LENOVO MINI is my dev server
+gitea_http_domain: 192.168.80.45
+gitea_root_url: http://192.168.80.45:80
 gitea_protocol: http
-gitea_http_listen: 192.168.30.60
+gitea_http_listen: 192.168.80.45
 gitea_http_port: 80
 gitea_offline_mode: true
 
@@ -10,41 +11,89 @@ gitea_app_name: 'Gitea - Local'
 
 # For terraform
 environmenttype: 'dev'
+# needed_vms: ['backup-pxb', 'db-postgres', 'gitea']
 
 # host node proxmox details
-proxmox_api_endpoint_url: 'https://192.168.80.12:8006/'
+proxmox_api_endpoint_url: 'https://192.168.80.11:8006/'
 proxmox_api_user: 'root@pam'
-proxmox_api_password: 'Kites123'
+proxmox_api_password: 'Float12345678'
 proxmox_tls_insecure: true
-proxmox_node: 'pveopsauto'
+proxmox_node: 'lepakshi-lenovomini'
+proxmox_node_with_clone: 'lepakshi-lenovomini'
 
-storage_pool: 'proxvz'
+storage_pool: 'vz'
 nas_storage_pool: 'nasvmdrivesdev'
 interface_bridge: 'vmbr0'
-template_file_location_id: 'proxvz:vztmpl/debian-12-standard_12.2-1_amd64.tar.zst'
+vlan_id: 80
+template_file_location_id: 'vz:vztmpl/debian-12-standard_12.2-1_amd64.tar.zst'
+supported_disk_format_raw: 'raw'
+supported_disk_format_qcow2: 'qcow2'
 
 # gitea server config values
-gitea_vm_prefix: 'dev'
-gitea_vm_name: 'gitea'
+# gitea_vm_suffix: 'dev'
+gitea_vm_name: 'gitea-dev' # index will added in terraform code
+# gitea_host_name_inside_vm: 'gitea' # index will added in terraform code
+gitea_number_of_instances: 0
 gitea_vm_description: 'Gitea for source control management and CI/CD'
-gitea_server_ip: '192.168.80.13/24'
-gitea_server_gateway: '192.168.80.1'
+gitea_network_interface_details:
+  first_interface:
+    ip: '192.168.80.45/24'
+    gateway: '192.168.80.1'
+    vlan_id: 80
+    interface_bridge: 'vmbr0'
 
 # pihole server config values
-pihole_vm_prefix: 'dev'
-pihole_vm_name: 'pihole'
+pihole_vm_suffix: 'dev' # index will added in terraform code
+pihole_vm_name: 'pihole-dev' # index will added in terraform code
+pihole_host_name_inside_vm: 'pihole' # index will added in terraform code
+pihole_number_of_instances: 0
 pihole_vm_description: 'pihole server for development'
-pihole_server_ip: '192.168.80.14/24'
-pihole_server_gateway: '192.168.80.1'
+pihole_network_interface_details:
+  first_interface:
+    ip: '192.168.80.51/24'
+    gateway: '192.168.80.1'
+    vlan_id: 80
+    interface_bridge: 'vmbr0'
 
 # dev lxc server config values
-dev_lxc_server_ip: '192.168.80.15/24'
-dev_lxc_server_gateway: '192.168.80.1'
-#
+dev_lxc_vm_name: 'dev-debian' # index will added in terraform code
+dev_lxc_host_name_inside_vm: 'devdebian' # index will added in terraform code
+dev_lxc_number_of_instances: 0
+dev_lxc_vm_description: 'development box for coding'
+dev_lxc_network_interface_details:
+  first_interface:
+    ip: '192.168.80.15/24'
+    gateway: '192.168.80.1'
+    vlan_id: 80
+    interface_bridge: 'vmbr0'
 
 # proxmox backup server
-pxbackup_vm_prefix: 'dev'
-pxbackup_vm_name: 'pxbackupserver'
+pxbackup_vm_suffix: 'dev'
+pxbackup_vm_name: 'backup-pxb-dev' # index will added in terraform code
+pxbackup_host_name_inside_vm: 'backuppxb' # index will added in terraform code
+pxbackup_number_of_instances: 0
 pxbackup_vm_description: 'Proxmox backup server for dev'
-pxbackup_server_ip: '192.168.80.45/24'
-pxbackup_server_gateway: '192.168.80.1'
+pxbackup_network_interface_details:
+  first_interface:
+    ip: '192.168.30.96/24'
+    gateway: '192.168.30.1'
+    vlan_id: 30
+    interface_bridge: 'vmbr0'
+  second_interface:
+    ip: '192.168.80.96/24'
+    gateway: '192.168.80.1'
+    vlan_id: 80
+    interface_bridge: 'vmbr0'
+
+# postgres server
+postgres_vm_suffix: 'dev'
+postgres_vm_name: 'db-postgres-dev' # index will added in terraform code
+postgres_host_name_inside_vm: 'dbpostgres' # index will added in terraform code
+postgres_number_of_instances: 1
+postgres_vm_description: 'Postgres server for dev'
+postgres_network_interface_details:
+  first_interface:
+    ip: '192.168.80.44/24'
+    gateway: '192.168.80.1'
+    vlan_id: 80
+    interface_bridge: 'vmbr0'
