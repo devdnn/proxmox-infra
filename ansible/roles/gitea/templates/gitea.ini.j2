@@ -5,10 +5,10 @@ RUN_MODE = prod
 
 [database]
 DB_TYPE = postgres
-HOST = 127.0.0.1:5432
-NAME = giteadb
-USER = gitea
-PASSWD = gitea
+HOST = {{gitea_db_host}}:{{gitea_db_host_port}}
+NAME = {{gitea_db_name}}
+USER = {{gitea_db_user}}
+PASSWD = {{gitea_db_password}}
 SCHEMA =
 SSL_MODE = disable
 PATH = /var/lib/gitea/data/gitea.db
@@ -38,7 +38,7 @@ ENABLED = false
 [service]
 REGISTER_EMAIL_CONFIRM = false
 ENABLE_NOTIFY_MAIL = true
-DISABLE_REGISTRATION = true
+DISABLE_REGISTRATION = false
 ALLOW_ONLY_EXTERNAL_REGISTRATION = false
 ENABLE_CAPTCHA = false
 REQUIRE_SIGNIN_VIEW = false

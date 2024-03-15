@@ -61,14 +61,9 @@ module "gitea_vm" {
   QMEU_machine_type       = "q35"
   list_of_disks = [
     {
-      disk_size   = 16
+      disk_size   = 32
       disk_format = local.yaml_variables_list.supported_disk_format_raw
       interface   = "scsi0"
-    },
-    {
-      disk_size   = 64
-      disk_format = local.yaml_variables_list.supported_disk_format_raw
-      interface   = "scsi1"
     }
   ]
 

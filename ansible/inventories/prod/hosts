@@ -1,2 +1,3 @@
 proxmox-backup-server ansible_host=192.168.30.46
 postgresql-server ansible_host=192.168.30.44
+gitea-server ansible_host=192.168.30.45

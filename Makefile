@@ -10,6 +10,8 @@ LOCAL_BIN = $(shell echo $$HOME/.local/bin)
 
 VARIABLES = '{"users": [{"username": "$(shell whoami)"}], "ansible_user": "$(shell whoami)", "docker_users": ["$(shell whoami)"]}'
 
+export CURRENT_ENVIRONMENT := $(env)
+
 Makefile: _check-make-vars-defined
 
 .PHONY: _check-make-vars-defined
@@ -97,9 +99,11 @@ infra-ansible-proxmox-backup-server-setup:
 
 infra-ansible-postgresql-setup:
 	echo "Installing tools on PostgreSQL in $(env) environment"
-	export CURRENT_ENVIRONMENT=$(env)
-	echo "Current environment is $(CURRENT_ENVIRONMENT)"
 	cd ansible && ansible-playbook -i inventories/$(env) playbooks/setup-postgresql.yml
+
+infra-ansible-gitea-setup:
+	echo "Installing tools on Gitea in $(env) environment"
+	cd ansible && ansible-playbook -i inventories/$(env) playbooks/setup-gitea.yml -e @../global_vars/$(env).yml
 # endregion Setup and configure infrastructure
 
 # region Setup and configure dev coding server

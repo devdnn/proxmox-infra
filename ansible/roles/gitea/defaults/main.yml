@@ -4,7 +4,7 @@
 # Gitea specific variables
 
 # Gitea details for download
-gitea_version: '1.21.4' # Version of Gitea to install
+gitea_version: '1.21.8' # Version of Gitea to install
 gitea_version_check: true # Check for new version of Gitea
 # URL to download Gitea from
 gitea_dl_url: 'https://dl.gitea.io/gitea/{{ gitea_version }}/gitea-{{ gitea_version }}-linux-{{ gitea_arch }}'
@@ -26,10 +26,10 @@ gitea_user_repo_limit: -1
 gitea_force_private: true
 gitea_disable_http_git: false
 
-gitea_http_domain: 192.168.30.60
-gitea_root_url: http://192.168.30.60:3000
+gitea_http_domain: 192.168.30.45
+gitea_root_url: http://192.168.30.45:3000
 gitea_protocol: http
-gitea_http_listen: 192.168.30.60
+gitea_http_listen: 192.168.30.45
 gitea_http_port: 3000
 gitea_offline_mode: true
 
@@ -40,7 +40,8 @@ gitea_lfs_secret: D2xUYD6LdIz1ErIWQ5Ea_X9__dxlfTYgwX94Bo_pZ70
 gitea_lfs_mode: true
 
 gitea_db_type: postgres
-gitea_db_host: 127.0.0.0:5432
+gitea_db_host: 192.168.30.44
+gitea_db_host_port: 5432
 gitea_db_name: giteadb
 gitea_db_user: gitea
 gitea_db_password: Kites@123
@@ -108,6 +109,5 @@ gitea_backup_on_upgrade: false
 gitea_backup_location: '{{ gitea_home }}/backups/'
 
 # PostgreSQL specific variables
-postgresql_user: gitea
-postgresql_password: gitea
-postgresql_db: giteadb
+postgresql_user: postgres
+postgresql_password: 1Uh4$f^Vrtju^J

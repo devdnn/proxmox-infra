@@ -1,8 +1,8 @@
 ---
-gitea_http_domain: 192.168.30.42
-gitea_root_url: http://192.168.30.42:80
+gitea_http_domain: 192.168.30.45
+gitea_root_url: http://192.168.30.45:80
 gitea_protocol: http
-gitea_http_listen: 192.168.30.42
+gitea_http_listen: 192.168.30.45
 gitea_http_port: 80
 gitea_offline_mode: true
 
@@ -31,7 +31,7 @@ supported_disk_format_qcow2: 'qcow2'
 # gitea_vm_suffix: 'prod'
 gitea_vm_name: 'gitea-prod' # index will added in terraform code
 # gitea_host_name_inside_vm: 'gitea' # index will added in terraform code
-gitea_number_of_instances: 0
+gitea_number_of_instances: 1
 gitea_vm_description: 'Gitea for source control management and CI/CD'
 gitea_network_interface_details:
   first_interface:
