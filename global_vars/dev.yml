@@ -1,13 +1,32 @@
 ---
 # LENOVO MINI is my dev server
+
+# gitea details passed to ansible gitea role
 gitea_http_domain: 192.168.80.45
 gitea_root_url: http://192.168.80.45:80
 gitea_protocol: http
 gitea_http_listen: 192.168.80.45
 gitea_http_port: 80
 gitea_offline_mode: true
-
 gitea_app_name: 'Gitea - Local'
+
+gitea_db_type: postgres
+gitea_db_host: 192.168.80.44
+gitea_db_host_port: 5432
+gitea_db_name: giteadb
+gitea_db_user: gitea
+gitea_db_password: Kites@123
+gitea_db_ssl: disable
+gitea_db_path: '{{ gitea_home }}/data/gitea.db'
+
+gitea_ssh_listen: 192.168.80.45
+gitea_ssh_domain: 192.168.80.45
+gitea_start_ssh: true
+gitea_ssh_port: 2222
+
+# PostgreSQL specific variables
+postgresql_user: postgres
+postgresql_password: 1Uh4$f^Vrtju^J
 
 # For terraform
 environmenttype: 'dev'

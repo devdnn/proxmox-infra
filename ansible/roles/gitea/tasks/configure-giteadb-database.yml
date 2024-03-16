@@ -46,3 +46,28 @@
         login_port: '{{gitea_db_host_port}}'
         login_password: '{{postgresql_password}}'
         login_user: '{{postgresql_user}}'
+
+    - name: Ensure the '{{gitea_db_user}}' user has sequence privileges
+      postgresql_privs:
+        db: '{{gitea_db_name}}'
+        role: '{{gitea_db_user}}'
+        objs: ALL_IN_SCHEMA
+        privs: ALL
+        schema: public
+        type: sequence
+        login_host: '{{gitea_db_host}}'
+        login_port: '{{gitea_db_host_port}}'
+        login_password: '{{postgresql_password}}'
+        login_user: '{{postgresql_user}}'
+
+    - name: Grant usage on schema public to the '{{gitea_db_user}}' user
+      postgresql_privs:
+        db: '{{gitea_db_name}}'
+        role: '{{gitea_db_user}}'
+        type: schema
+        objs: public
+        privs: USAGE,CREATE
+        login_host: '{{gitea_db_host}}'
+        login_port: '{{gitea_db_host_port}}'
+        login_password: '{{postgresql_password}}'
+        login_user: '{{postgresql_user}}'

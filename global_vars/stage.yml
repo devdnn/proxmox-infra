@@ -1,5 +1,6 @@
 ---
 # LENOVO MINI is my stage server
+# gitea details passed to ansible gitea role
 gitea_http_domain: 192.168.80.45
 gitea_root_url: http://192.168.80.45:80
 gitea_protocol: http
@@ -8,6 +9,24 @@ gitea_http_port: 80
 gitea_offline_mode: true
 
 gitea_app_name: 'Gitea - Local'
+
+gitea_db_type: postgres
+gitea_db_host: 192.168.80.44
+gitea_db_host_port: 5432
+gitea_db_name: giteadb
+gitea_db_user: gitea
+gitea_db_password: Kites@123
+gitea_db_ssl: disable
+gitea_db_path: '{{ gitea_home }}/data/gitea.db'
+
+gitea_ssh_listen: 192.168.80.45
+gitea_ssh_domain: 192.168.80.45
+gitea_start_ssh: true
+gitea_ssh_port: 2222
+
+# PostgreSQL specific variables
+postgresql_user: postgres
+postgresql_password: 1Uh4$f^Vrtju^J
 
 # For terraform
 environmenttype: 'stage'
@@ -33,7 +52,7 @@ supported_disk_format_qcow2: 'qcow2'
 # gitea_vm_suffix: 'stage'
 gitea_vm_name: 'gitea-stage' # index will added in terraform code
 # gitea_host_name_inside_vm: 'gitea' # index will added in terraform code
-gitea_number_of_instances: 0
+gitea_number_of_instances: 1
 gitea_vm_description: 'Gitea for source control management and CI/CD'
 gitea_network_interface_details:
   first_interface:

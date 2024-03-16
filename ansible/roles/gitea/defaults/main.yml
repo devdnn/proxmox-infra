@@ -9,35 +9,42 @@ gitea_version_check: true # Check for new version of Gitea
 # URL to download Gitea from
 gitea_dl_url: 'https://dl.gitea.io/gitea/{{ gitea_version }}/gitea-{{ gitea_version }}-linux-{{ gitea_arch }}'
 gitea_gpg_key: '7C9E68152594688862D62AF62D9AE806EC1592E2' # GPG key for Gitea
-gitea_gpg_server: 'keys.openpgp.org' # GPG key server for Gitea
+gitea_gpg_server: 'hkps://keys.openpgp.org' # GPG key server for Gitea
 
 gitea_app_name: 'Gitea - Local' # Name of the Gitea application
 gitea_user: 'gitea' # User under which Gitea will run
 gite_user_home: '/etc/gitea' # Home directory for Gitea user
 gitea_shell: '/bin/false' # Shell for Gitea user
 gitea_group: 'gitea'
-gitea_domain: 'giteas.naiduden.dev' # Domain for Gitea
-gitea_install_dir: '/opt/gitea' # Installation directory for Gitea
+
 gitea_home: '/var/lib/gitea' # Data directory for Gitea
+gitea_app_data_path: '{{ gitea_home }}/data' # App Data directory for Gitea
+gitea_log_root_path: '{{ gitea_home }}/log' # Log directory for Gitea
 gitea_systemd_cap_net_bind_service: true # Allow Gitea to bind to privileged ports
 
-gitea_repository_root: '{{ gitea_home }}'
+gitea_repository_root: '{{ gitea_home }}/repos'
 gitea_user_repo_limit: -1
 gitea_force_private: true
 gitea_disable_http_git: false
+gitea_default_branch: 'main'
+gitea_default_private: 'last'
 
+gitea_lfs_server_enabled: true
+gitea_lfs_jwt_secret: ''
+gitea_lfs_mode: true
+gitea_lfs_storage_type: 'local'
+gitea_lfs_serve_direct: false
+gitea_lfs_content_path: '{{ gitea_home }}/data/lfs'
+gitea_lfs_extra: ''
+gitea_actions_extra: ''
+
+# These variables will be overridden from variables files passed to the role
 gitea_http_domain: 192.168.30.45
 gitea_root_url: http://192.168.30.45:3000
 gitea_protocol: http
 gitea_http_listen: 192.168.30.45
 gitea_http_port: 3000
 gitea_offline_mode: true
-
-gitea_lfs_server_enabled: true
-gitea_lfs_content_path: '{{ gitea_home }}/data/lfs'
-gitea_lfs_jwt_secret: ''
-gitea_lfs_secret: D2xUYD6LdIz1ErIWQ5Ea_X9__dxlfTYgwX94Bo_pZ70
-gitea_lfs_mode: true
 
 gitea_db_type: postgres
 gitea_db_host: 192.168.30.44
@@ -70,6 +77,19 @@ gitea_mail_default: onmention
 gitea_autowatch_new_repo: false
 gitea_autowatch_on_change: true
 gitea_show_mailstones_dashboard: true
+gitea_default_keep_mail_private: true
+gitea_auto_watch_new_repos: true
+gitea_show_milestones_dashboard_page: true
+gitea_register_manual_confirm: false
+gitea_default_allow_create_organization: false
+gitea_default_allow_time_tracking: true
+gitea_email_domain_allowlist: ''
+gitea_default_user_visibility: public
+gitea_default_org_visibility: public
+gitea_allow_only_internal_registration: false
+gitea_allow_only_external_registration: false
+gitea_service_extra_config: ''
+gitea_allow_localnetworks: true
 
 gitea_mailer_enabled: false
 gitea_mailer_skip_verify: false
@@ -101,11 +121,16 @@ gitea_repo_indexer_exclude: ''
 gitea_repo_exclude_vendored: true
 gitea_repo_indexer_max_file_size: 1048576
 
-gitea_log_level: Info
+# Log (log)
+# -> https://docs.gitea.io/en-us/config-cheat-sheet/#log-log
+gitea_log_systemd: false
+gitea_log_level: 'Warn'
+gitea_log_extra_config: ''
 
 gitea_extra_config: ''
 
-gitea_backup_on_upgrade: false
+# for future
+gitea_backup_on_upgrade: true
 gitea_backup_location: '{{ gitea_home }}/backups/'
 
 # PostgreSQL specific variables

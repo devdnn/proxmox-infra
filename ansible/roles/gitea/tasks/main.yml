@@ -51,16 +51,18 @@
     recurse: true
   with_items:
     - '{{ gitea_home }}'
-    - '{{ gitea_home }}/data'
+    - '{{ gitea_app_data_path }}'
     - '{{ gitea_home }}/custom'
     - '{{ gitea_home }}/custom/https'
     - '{{ gitea_home }}/custom/mailer'
     - '{{ gitea_home }}/indexers'
-    - '{{ gitea_home }}/log'
+    - '{{ gitea_log_root_path }}'
     - '{{ gitea_repository_root }}'
+    - '{{ gitea_app_data_path }}'
+    - '{{ gitea_lfs_content_path }}'
 
 - name: Install and Configure Gitea
-  include_tasks: install.yml
+  include_tasks: install-gitea.yml
 
 - name: Render Gitea systemd service file
   include_tasks: install-systemd.yml

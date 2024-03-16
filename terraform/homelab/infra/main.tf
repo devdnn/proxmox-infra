@@ -258,7 +258,7 @@ module "postgres_sql_vm" {
   list_of_disks = [
     {
       disk_size   = 128
-      disk_format = local.yaml_variables_list.supported_disk_format_raw
+      disk_format = local.yaml_variables_list.supported_disk_format_qcow2
       interface   = "scsi0"
     }
   ]

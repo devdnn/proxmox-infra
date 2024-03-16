@@ -1,51 +1,75 @@
 APP_NAME = {{gitea_app_name}}
-RUN_USER = gitea
-WORK_PATH = /var/lib/gitea
+RUN_USER = {{gitea_user}}
+WORK_PATH = {{gitea_home}}
 RUN_MODE = prod
 
 [database]
-DB_TYPE = postgres
+DB_TYPE = {{gitea_db_type}}
 HOST = {{gitea_db_host}}:{{gitea_db_host_port}}
 NAME = {{gitea_db_name}}
 USER = {{gitea_db_user}}
 PASSWD = {{gitea_db_password}}
 SCHEMA =
-SSL_MODE = disable
-PATH = /var/lib/gitea/data/gitea.db
+SSL_MODE = {{gitea_db_ssl}}
+PATH = {{gitea_db_path}}
 LOG_SQL = false
 
 [repository]
-ROOT = /var/lib/gitea/data/gitea-repositories
+ROOT = {{ gitea_repository_root }} # /var/lib/gitea/data/gitea-repositories
+FORCE_PRIVATE = {{ gitea_force_private | ternary('true', 'false') }}
+DEFAULT_PRIVATE = {{ gitea_default_private }}
+DEFAULT_BRANCH = {{ gitea_default_branch }}
 
 [server]
-SSH_DOMAIN = {{gitea_http_domain}}
+APP_DATA_PATH = {{gitea_app_data_path}}
+DISABLE_SSH = false
 DOMAIN = {{gitea_http_domain}}
 HTTP_PORT = {{gitea_http_port}}
-ROOT_URL = {{gitea_root_url}}
-APP_DATA_PATH = /var/lib/gitea/data
-DISABLE_SSH = false
-SSH_PORT = 2222
+{% if gitea_lfs_server_enabled | bool %}
 LFS_START_SERVER = true
-LFS_JWT_SECRET = D2xUYD6LdIz1ErIWQ5Ea_X9__dxlfTYgwX94Bo_pZ70
+LFS_JWT_SECRET = {{ gitea_lfs_jwt_secret }}
+{% endif %}
 OFFLINE_MODE = false
+ROOT_URL = {{gitea_root_url}}
+SSH_DOMAIN = {{gitea_http_domain}}
+SSH_PORT = {{gitea_ssh_port}}
 
+{% if gitea_lfs_server_enabled | bool %}
+; -> https://docs.gitea.com/next/administration/config-cheat-sheet/#lfs-lfs
 [lfs]
-PATH = /var/lib/gitea/data/lfs
+STORAGE_TYPE = {{ gitea_lfs_storage_type }}
+SERVE_DIRECT = {{ gitea_lfs_serve_direct | ternary('true', 'false') }}
+PATH = {{ gitea_lfs_content_path }}
+{{ gitea_lfs_extra }}
+{% endif %}
 
 [mailer]
 ENABLED = false
 
 [service]
-REGISTER_EMAIL_CONFIRM = false
-ENABLE_NOTIFY_MAIL = true
-DISABLE_REGISTRATION = false
-ALLOW_ONLY_EXTERNAL_REGISTRATION = false
-ENABLE_CAPTCHA = false
-REQUIRE_SIGNIN_VIEW = false
-DEFAULT_KEEP_EMAIL_PRIVATE = false
-DEFAULT_ALLOW_CREATE_ORGANIZATION = true
-DEFAULT_ENABLE_TIMETRACKING = true
+REGISTER_EMAIL_CONFIRM = {{ gitea_register_email_confirm | ternary('true', 'false') }}
+ENABLE_NOTIFY_MAIL = {{ gitea_enable_notify_mail | ternary('true', 'false') }}
+DISABLE_REGISTRATION = {{ gitea_disable_registration | ternary('true', 'false') }}
+ALLOW_ONLY_EXTERNAL_REGISTRATION = {{ gitea_only_allow_external_registration | ternary('true', 'false') }}
+ENABLE_CAPTCHA = {{ gitea_enable_captcha | ternary('true', 'false') }}
+REQUIRE_SIGNIN_VIEW = {{ gitea_require_signin | ternary('true', 'false') }}
+DEFAULT_KEEP_EMAIL_PRIVATE = {{ gitea_default_keep_mail_private | ternary('true', 'false') }}
+SHOW_REGISTRATION_BUTTON = {{ gitea_show_registration_button | ternary('true', 'false') }}
+AUTO_WATCH_NEW_REPOS = {{ gitea_auto_watch_new_repos | ternary('true', 'false') }}
+AUTO_WATCH_ON_CHANGES = {{ gitea_autowatch_on_change | ternary('true', 'false') }}
+SHOW_MILESTONES_DASHBOARD_PAGE = {{ gitea_show_milestones_dashboard_page | ternary('true', 'false') }}
+REGISTER_MANUAL_CONFIRM = {{ gitea_register_manual_confirm | ternary('true', 'false') }}
+DEFAULT_ALLOW_CREATE_ORGANIZATION = {{ gitea_default_allow_create_organization | ternary('true', 'false') }}
+DEFAULT_ENABLE_TIMETRACKING = {{ gitea_default_allow_time_tracking | ternary('true', 'false') }}
 NO_REPLY_ADDRESS = noreply.localhost
+{% if gitea_email_domain_allowlist is defined and gitea_email_domain_allowlist | length  %}
+EMAIL_DOMAIN_ALLOWLIST = {{ gitea_email_domain_allowlist }}
+{% endif %}
+DEFAULT_USER_VISIBILITY = {{ gitea_default_user_visibility }}
+DEFAULT_ORG_VISIBILITY = {{ gitea_default_org_visibility }}
+ALLOW_ONLY_INTERNAL_REGISTRATION = {{ gitea_allow_only_internal_registration | ternary('true', 'false') }}
+ALLOW_ONLY_EXTERNAL_REGISTRATION = {{ gitea_allow_only_external_registration | ternary('true', 'false') }}
+{{ gitea_service_extra_config }}
 
 [openid]
 ENABLE_OPENID_SIGNIN = false
@@ -58,15 +82,24 @@ ENABLED = true
 PROVIDER = file
 
 [log]
+ROOT_PATH = {{gitea_log_root_path}}
+{% if gitea_log_systemd %}
 MODE = console
-LEVEL = info
-ROOT_PATH = /var/lib/gitea/log
+{% else %}
+MODE = file
+{% endif %}
+LEVEL = {{ gitea_log_level }}
+{{ gitea_log_extra_config }}
 
 [repository.pull-request]
 DEFAULT_MERGE_STYLE = merge
 
 [repository.signing]
 DEFAULT_TRUST_MODEL = committer
+
+[migrations]
+ALLOWED_DOMAINS = *
+ALLOW_LOCALNETWORKS = {{ gitea_allow_localnetworks | ternary('true', 'false') }}
 
 [security]
 INSTALL_LOCK = true
@@ -75,3 +108,6 @@ PASSWORD_HASH_ALGO = pbkdf2
 
 [oauth2]
 JWT_SECRET = dtSIH-1ls-oqInAL4nnI4f5uNeqodqDZz8EQr7U9DWI
+
+; Optional additional config
+{{ gitea_extra_config }}
