@@ -31,8 +31,10 @@ LFS_JWT_SECRET = {{ gitea_lfs_jwt_secret }}
 {% endif %}
 OFFLINE_MODE = false
 ROOT_URL = {{gitea_root_url}}
-SSH_DOMAIN = {{gitea_http_domain}}
+START_SSH_SERVER = {{gitea_start_ssh}}
+SSH_DOMAIN = {{gitea_ssh_domain}}
 SSH_PORT = {{gitea_ssh_port}}
+SSH_LISTEN_PORT  = {{gitea_ssh_port}}
 
 {% if gitea_lfs_server_enabled | bool %}
 ; -> https://docs.gitea.com/next/administration/config-cheat-sheet/#lfs-lfs

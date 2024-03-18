@@ -19,6 +19,7 @@ output "current_environment" {
   value = local.yaml_variables_list.environmenttype
 }
 
+
 provider "proxmox" {
   endpoint = local.yaml_variables_list.proxmox_api_endpoint_url
   username = local.yaml_variables_list.proxmox_api_user
@@ -55,6 +56,7 @@ module "gitea_vm" {
   keep_system_running     = true
   clone_vm_id             = 5000
   storage_pool            = local.yaml_variables_list.storage_pool
+  snippets_storage_pool   = local.yaml_variables_list.snippets_storage_pool
   vm_dedicated_memory     = 1024
   var_cpu_cores           = 2
   var_cpu_sockets         = 1
@@ -103,6 +105,7 @@ module "proxmox_backup_server" {
   keep_system_running     = true
   clone_vm_id             = 5000
   storage_pool            = local.yaml_variables_list.nas_storage_pool
+  snippets_storage_pool   = local.yaml_variables_list.snippets_storage_pool
   vm_dedicated_memory     = 4096
   var_cpu_cores           = 2
   var_cpu_sockets         = 1
@@ -251,6 +254,7 @@ module "postgres_sql_vm" {
   keep_system_running     = true
   clone_vm_id             = 5000
   storage_pool            = local.yaml_variables_list.storage_pool
+  snippets_storage_pool   = local.yaml_variables_list.snippets_storage_pool
   vm_dedicated_memory     = 4096
   var_cpu_cores           = 2
   var_cpu_sockets         = 1
@@ -258,7 +262,7 @@ module "postgres_sql_vm" {
   list_of_disks = [
     {
       disk_size   = 128
-      disk_format = local.yaml_variables_list.supported_disk_format_qcow2
+      disk_format = local.yaml_variables_list.supported_disk_format_raw
       interface   = "scsi0"
     }
   ]

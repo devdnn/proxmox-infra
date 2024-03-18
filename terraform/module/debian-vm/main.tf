@@ -16,7 +16,7 @@ locals {
 
 resource "proxmox_virtual_environment_file" "cloud_config" {
   content_type = "snippets"
-  datastore_id = "nasbackupdev"
+  datastore_id = var.snippets_storage_pool
   node_name    = var.proxmox_node
 
   source_raw {

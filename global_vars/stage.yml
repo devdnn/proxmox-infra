@@ -42,6 +42,7 @@ proxmox_node_with_clone: 'lepakshi-lenovomini'
 
 storage_pool: 'vz'
 nas_storage_pool: 'nasvmdrivesdev'
+snippets_storage_pool: 'nasbackupdev'
 interface_bridge: 'vmbr0'
 vlan_id: 80
 template_file_location_id: 'vz:vztmpl/debian-12-standard_12.2-1_amd64.tar.zst'

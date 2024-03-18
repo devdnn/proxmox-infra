@@ -51,6 +51,10 @@ variable "storage_pool" {
   type = string
 }
 
+variable "snippets_storage_pool" {
+  type = string
+}
+
 variable "vm_dedicated_memory" {
   type    = number
   default = 1024

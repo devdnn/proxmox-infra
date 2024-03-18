@@ -3,8 +3,7 @@
   vars:
     pgadmin_repo: >-
       deb [signed-by=/usr/share/keyrings/packages-pgadmin-org.gpg]
-      https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/
-      {{ ansible_distribution_release | lower }} pgadmin4 main
+      https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/{{ ansible_distribution_release | lower }} pgadmin4 main
   block:
     - name: Install dependencies
       ansible.builtin.apt:
@@ -27,12 +26,20 @@
         cmd: gpg --dearmor -o /usr/share/keyrings/packages-pgadmin-org.gpg /tmp/packages_pgadmin_org.pub
         creates: /usr/share/keyrings/packages-pgadmin-org.gpg
 
+    - name: Output the pgadmin_repo
+      ansible.builtin.debug:
+        var: pgadmin_repo
+
     - name: Add pgAdmin repository
       ansible.builtin.apt_repository:
         repo: '{{ pgadmin_repo }}'
         state: present
         update_cache: yes
         filename: 'pgadmin4'
+
+    - name: Apt update
+      ansible.builtin.apt:
+        update_cache: yes
 
     - name: Install pgAdmin web mode
       ansible.builtin.apt:

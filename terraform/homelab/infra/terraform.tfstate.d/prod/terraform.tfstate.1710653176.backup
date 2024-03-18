@@ -1,7 +1,7 @@
 {
   "version": 4,
   "terraform_version": "1.7.3",
-  "serial": 119,
+  "serial": 102,
   "lineage": "3190b346-4d6c-0b4b-8c70-2f321319bf3e",
   "outputs": {
     "current_environment": {
@@ -40,7 +40,7 @@
             "source_file": [],
             "source_raw": [
               {
-                "data": "      #cloud-config\n        hostname: giteaprod01\n        manage_etc_hosts: true\n",
+                "data": "      #cloud-config\n      #cloud-config\n        hostname: giteaprod01\n",
                 "file_name": "giteaprod01.cloud-config.yaml",
                 "resize": 0
               }
@@ -108,7 +108,20 @@
                 "interface": "scsi0",
                 "iothread": true,
                 "path_in_datastore": "vm-108-disk-0",
-                "size": 32,
+                "size": 16,
+                "speed": [],
+                "ssd": true
+              },
+              {
+                "cache": "none",
+                "datastore_id": "proxthin",
+                "discard": "on",
+                "file_format": "raw",
+                "file_id": "",
+                "interface": "scsi1",
+                "iothread": true,
+                "path_in_datastore": "vm-108-disk-1",
+                "size": 64,
                 "speed": [],
                 "ssd": true
               }
@@ -162,14 +175,14 @@
                 "::1"
               ],
               [
-                "fe80::be24:11ff:fe20:809b"
+                "fe80::be24:11ff:fe98:60a6"
               ]
             ],
             "keyboard_layout": "en-us",
             "kvm_arguments": null,
             "mac_addresses": [
               "00:00:00:00:00:00",
-              "BC:24:11:20:80:9B"
+              "BC:24:11:98:60:A6"
             ],
             "machine": "q35",
             "memory": [
@@ -186,7 +199,7 @@
                 "bridge": "vmbr2",
                 "enabled": true,
                 "firewall": false,
-                "mac_address": "BC:24:11:20:80:9B",
+                "mac_address": "BC:24:11:98:60:A6",
                 "model": "virtio",
                 "mtu": 0,
                 "queues": 0,
@@ -270,7 +283,7 @@
             "source_file": [],
             "source_raw": [
               {
-                "data": "      #cloud-config\n        hostname: dbpostgresprod01\n        manage_etc_hosts: true\n",
+                "data": "      #cloud-config\n      #cloud-config\n        hostname: dbpostgresprod01\n",
                 "file_name": "dbpostgresprod01.cloud-config.yaml",
                 "resize": 0
               }
@@ -318,7 +331,7 @@
               {
                 "architecture": "x86_64",
                 "cores": 2,
-                "flags": null,
+                "flags": [],
                 "hotplugged": 0,
                 "limit": 0,
                 "numa": false,
@@ -379,12 +392,27 @@
                 "vendor_data_file_id": ""
               }
             ],
-            "ipv4_addresses": [],
-            "ipv6_addresses": [],
+            "ipv4_addresses": [
+              [
+                "127.0.0.1"
+              ],
+              [
+                "192.168.30.44"
+              ]
+            ],
+            "ipv6_addresses": [
+              [
+                "::1"
+              ],
+              [
+                "fe80::be24:11ff:feee:fa30"
+              ]
+            ],
             "keyboard_layout": "en-us",
             "kvm_arguments": null,
             "mac_addresses": [
-              "BC:24:11:18:1B:F3"
+              "00:00:00:00:00:00",
+              "BC:24:11:EE:FA:30"
             ],
             "machine": "q35",
             "memory": [
@@ -401,7 +429,7 @@
                 "bridge": "vmbr2",
                 "enabled": true,
                 "firewall": false,
-                "mac_address": "BC:24:11:18:1B:F3",
+                "mac_address": "BC:24:11:EE:FA:30",
                 "model": "virtio",
                 "mtu": 0,
                 "queues": 0,
@@ -409,7 +437,10 @@
                 "vlan_id": 30
               }
             ],
-            "network_interface_names": [],
+            "network_interface_names": [
+              "lo",
+              "eth0"
+            ],
             "node_name": "spmhampi",
             "on_boot": true,
             "operating_system": [
@@ -422,7 +453,7 @@
             "scsi_hardware": "virtio-scsi-single",
             "serial_device": [],
             "smbios": [],
-            "started": false,
+            "started": true,
             "startup": [],
             "stop_on_destroy": false,
             "tablet_device": true,
@@ -481,7 +512,7 @@
             "source_file": [],
             "source_raw": [
               {
-                "data": "      #cloud-config\n        hostname: backuppxbprod01\n        manage_etc_hosts: true\n",
+                "data": "      #cloud-config\n      #cloud-config\n        hostname: backuppxbprod01\n",
                 "file_name": "backuppxbprod01.cloud-config.yaml",
                 "resize": 0
               }
@@ -628,18 +659,18 @@
                 "::1"
               ],
               [
-                "fe80::be24:11ff:fead:8394"
+                "fe80::be24:11ff:fe3f:36c9"
               ],
               [
-                "fe80::be24:11ff:fe85:4812"
+                "fe80::be24:11ff:fefd:594"
               ]
             ],
             "keyboard_layout": "en-us",
             "kvm_arguments": null,
             "mac_addresses": [
               "00:00:00:00:00:00",
-              "BC:24:11:AD:83:94",
-              "BC:24:11:85:48:12"
+              "BC:24:11:3F:36:C9",
+              "BC:24:11:FD:05:94"
             ],
             "machine": "q35",
             "memory": [
@@ -656,7 +687,7 @@
                 "bridge": "vmbr2",
                 "enabled": true,
                 "firewall": false,
-                "mac_address": "BC:24:11:AD:83:94",
+                "mac_address": "BC:24:11:3F:36:C9",
                 "model": "virtio",
                 "mtu": 0,
                 "queues": 0,
@@ -667,7 +698,7 @@
                 "bridge": "vmbr2",
                 "enabled": true,
                 "firewall": false,
-                "mac_address": "BC:24:11:85:48:12",
+                "mac_address": "BC:24:11:FD:05:94",
                 "model": "virtio",
                 "mtu": 0,
                 "queues": 0,
