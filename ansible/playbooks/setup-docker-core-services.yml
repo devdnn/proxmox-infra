@@ -1,0 +1,13 @@
+---
+- name: Install Docker on Ubuntu
+  hosts: docker-core-services
+  remote_user: dnndev # Change remote user to your sudo user!
+  become: true
+  gather_facts: true
+  vars:
+    arch_mapping: # Map ansible architecture {{ ansible_architecture }} names to Docker's architecture names
+      x86_64: amd64
+      aarch64: arm64
+    ansible_ssh_pipelining: true
+  roles:
+    - role: docker-core-services

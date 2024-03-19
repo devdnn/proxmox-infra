@@ -104,6 +104,10 @@ infra-ansible-postgresql-setup:
 infra-ansible-gitea-setup:
 	echo "Installing tools on Gitea in $(env) environment"
 	cd ansible && ansible-playbook -i inventories/$(env) playbooks/setup-gitea.yml -e @../global_vars/$(env).yml
+
+infra-ansible-docker-core-services-setup:
+	echo "Installing tools on Docker Core Services in $(env) environment"
+	cd ansible && ansible-playbook -i inventories/$(env) playbooks/setup-docker-core-services.yml -e @../global_vars/$(env).yml
 # endregion Setup and configure infrastructure
 
 # region Setup and configure dev coding server

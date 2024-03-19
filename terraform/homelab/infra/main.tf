@@ -283,3 +283,50 @@ module "postgres_sql_vm" {
     }
   ]
 }
+
+module "docker-coreservices" {
+  source = "../../module/debian-vm"
+
+  count = local.yaml_variables_list.docker_core_vm_number_of_instances
+
+  environmenttype         = local.yaml_variables_list.environmenttype
+  new_hostname            = "${local.yaml_variables_list.docker_core_vm_name}-${format("%02d", count.index + 1)}"
+  new_hostname_inside_vm  = "${replace(local.yaml_variables_list.docker_core_vm_name, "-", "")}${format("%02d", count.index + 1)}"
+  vm_description          = local.yaml_variables_list.docker_core_vm_description
+  vm_tags                 = ["docker", "core-services", "tf-ansible"]
+  proxmox_node            = local.yaml_variables_list.proxmox_node_for_core_services
+  proxmox_node_with_clone = local.yaml_variables_list.proxmox_node_with_clone
+  vm_bios_type            = "seabios"
+  system_start_on_boot    = true
+  keep_system_running     = true
+  clone_vm_id             = 5000
+  storage_pool            = local.yaml_variables_list.storage_pool
+  snippets_storage_pool   = local.yaml_variables_list.snippets_storage_pool
+  vm_dedicated_memory     = local.yaml_variables_list.docker_core_vm_memory
+  var_cpu_cores           = local.yaml_variables_list.docker_core_vm_cpu_cores
+  var_cpu_sockets         = 1
+  QMEU_machine_type       = "q35"
+  list_of_disks = [
+    {
+      disk_size   = 128
+      disk_format = local.yaml_variables_list.supported_disk_format_raw
+      interface   = "scsi0"
+    }
+  ]
+
+  list_of_networks = [
+    {
+      bridge   = local.yaml_variables_list.docker_core_vm_network_interface_details["first_interface"].interface_bridge
+      enabled  = true
+      firewall = false
+      vlan_id  = local.yaml_variables_list.docker_core_vm_network_interface_details["first_interface"].vlan_id
+    }
+  ]
+
+  ip_details = [
+    {
+      vm_ip_address = local.yaml_variables_list.docker_core_vm_network_interface_details["first_interface"].ip
+      vm_gateway    = local.yaml_variables_list.docker_core_vm_network_interface_details["first_interface"].gateway
+    }
+  ]
+}

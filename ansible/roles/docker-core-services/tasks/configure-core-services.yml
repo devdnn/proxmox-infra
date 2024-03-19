@@ -1,0 +1,49 @@
+---
+- name: Deploy application using docker-compose
+  remote_user: '{{ ansible_user }}'
+  become: true
+  block:
+    - name: Output current user
+      ansible.builtin.debug:
+        msg: '{{ ansible_user }}'
+
+    - name: Determine the current user's home directory
+      ansible.builtin.command: echo $HOME
+      become_user: '{{ ansible_user }}'
+      register: home_dir
+      changed_when: false
+
+    - name: Create target directory
+      become_user: '{{ ansible_user }}'
+      ansible.builtin.file:
+        path: '{{ home_dir.stdout }}/docker/core-services'
+        state: directory
+        mode: '0755'
+        owner: '{{ ansible_user }}'
+        group: '{{ ansible_user }}'
+
+    - name: Copy docker-compose.yml to the target directory
+      become_user: '{{ ansible_user }}'
+      ansible.builtin.copy:
+        src: ../files/docker-compose.yml
+        dest: '{{ home_dir.stdout }}/docker/core-services/docker-compose.yml'
+        mode: '0644'
+        owner: '{{ ansible_user }}'
+        group: '{{ ansible_user }}'
+
+    - name: Copy .env to the target directory
+      become_user: '{{ ansible_user }}'
+      ansible.builtin.copy:
+        src: ../files/.env
+        dest: '{{ home_dir.stdout }}/docker/core-services/.env'
+        mode: '0644'
+        owner: '{{ ansible_user }}'
+        group: '{{ ansible_user }}'
+
+    - name: Run docker-compose up
+      become_user: '{{ ansible_user }}'
+      become: true
+      become_method: sudo
+      ansible.builtin.command: docker-compose up -d
+      args:
+        chdir: '{{ home_dir.stdout }}/docker/core-services'

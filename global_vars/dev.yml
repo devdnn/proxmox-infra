@@ -108,7 +108,7 @@ pxbackup_network_interface_details:
 postgres_vm_suffix: 'dev'
 postgres_vm_name: 'db-postgres-dev' # index will added in terraform code
 postgres_host_name_inside_vm: 'dbpostgres' # index will added in terraform code
-postgres_number_of_instances: 1
+postgres_number_of_instances: 0
 postgres_vm_description: 'Postgres server for dev'
 postgres_network_interface_details:
   first_interface:

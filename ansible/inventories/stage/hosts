@@ -1,3 +1,4 @@
-proxmox-backup-server ansible_host=192.168.80.44
 postgresql-server ansible_host=192.168.80.44
 gitea-server ansible_host=192.168.80.45
+proxmox-backup-server ansible_host=192.168.80.46
+docker-core-services ansible_host=192.168.80.47

@@ -39,6 +39,7 @@ proxmox_api_password: 'Float12345678'
 proxmox_tls_insecure: true
 proxmox_node: 'lepakshi-lenovomini'
 proxmox_node_with_clone: 'lepakshi-lenovomini'
+proxmox_node_for_core_services: 'lepakshi-lenovomini'
 
 storage_pool: 'vz'
 nas_storage_pool: 'nasvmdrivesdev'
@@ -53,7 +54,7 @@ supported_disk_format_qcow2: 'qcow2'
 # gitea_vm_suffix: 'stage'
 gitea_vm_name: 'gitea-stage' # index will added in terraform code
 # gitea_host_name_inside_vm: 'gitea' # index will added in terraform code
-gitea_number_of_instances: 1
+gitea_number_of_instances: 0
 gitea_vm_description: 'Gitea for source control management and CI/CD'
 gitea_network_interface_details:
   first_interface:
@@ -109,11 +110,26 @@ pxbackup_network_interface_details:
 postgres_vm_suffix: 'stage'
 postgres_vm_name: 'db-postgres-stage' # index will added in terraform code
 postgres_host_name_inside_vm: 'dbpostgres' # index will added in terraform code
-postgres_number_of_instances: 1
+postgres_number_of_instances: 0
 postgres_vm_description: 'Postgres server for dev'
 postgres_network_interface_details:
   first_interface:
     ip: '192.168.80.44/24'
+    gateway: '192.168.80.1'
+    vlan_id: 80
+    interface_bridge: 'vmbr0'
+
+# doceker core server
+docker_core_vm_suffix: 'stage'
+docker_core_vm_name: 'docker-coreservices-stage' # index will added in terraform code
+docker_core_vm_name_inside_vm: 'dockercoreservices' # index will added in terraform code
+docker_core_vm_number_of_instances: 1
+docker_core_vm_cpu_cores: 4
+docker_core_vm_memory: 4096
+docker_core_vm_description: 'Docker with core servevices like DNS/DHCP and CI/CD'
+docker_core_vm_network_interface_details:
+  first_interface:
+    ip: '192.168.80.47/24'
     gateway: '192.168.80.1'
     vlan_id: 80
     interface_bridge: 'vmbr0'
