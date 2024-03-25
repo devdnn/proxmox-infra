@@ -1,0 +1,48 @@
+---
+- name: Create a cron to turn off and on a VM
+  hosts: spmhampi
+  remote_user: root
+  become: true
+  vars:
+    vm_id: 102
+
+  tasks:
+    - name: Check if VM exists
+      command: qm status {{ vm_id }}
+      register: vm_status
+      ignore_errors: yes
+      changed_when: vm_status.rc != 0
+
+    - name: Output the status of the VM
+      debug:
+        msg: 'VM {{ vm_id }} is {{ vm_status.rc }}'
+
+    - name: Remove the cron to turn off the VM
+      cron:
+        name: 'Turn off VM {{ vm_id }}'
+        state: absent
+      when: vm_status.rc != 0
+
+    - name: Remove the cron to turn on the VM
+      cron:
+        name: 'Turn on VM {{ vm_id }}'
+        state: absent
+      when: vm_status.rc != 0
+
+    - name: If VM exists, create a cron to turn it off at 02:00 AM
+      cron:
+        name: 'Turn off VM {{ vm_id }}'
+        minute: 0
+        hour: 2
+        job: '/usr/sbin/qm stop {{ vm_id }}'
+        state: present
+      when: vm_status.rc == 0
+
+    - name: If VM exists, create a cron to tunr it on at 21:00 PM
+      cron:
+        name: 'Turn on VM {{ vm_id }}'
+        minute: 0
+        hour: 21
+        job: '/usr/sbin/qm start {{ vm_id }}'
+        state: present
+      when: vm_status.rc == 0
