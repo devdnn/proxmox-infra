@@ -1,4 +1,12 @@
 ---
+- name: Output the docker_core details
+  debug:
+    msg: 'The docker core details are: {{ docker_core.services }}'
+
+- name: Output email from docker core details
+  debug:
+    msg: 'The email from docker core details is: {{ docker_core.services.cf_api_email }}'
+
 - name: Configure debian for docker
   include_tasks: setup-debian.yml
   when: ansible_os_family == 'Debian'

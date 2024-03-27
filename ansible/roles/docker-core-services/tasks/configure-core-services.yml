@@ -7,38 +7,77 @@
       ansible.builtin.debug:
         msg: '{{ ansible_user }}'
 
+    - name: Enure rsync is installed
+      ansible.builtin.package:
+        name: rsync
+        state: present
+
     - name: Determine the current user's home directory
       ansible.builtin.command: echo $HOME
       become_user: '{{ ansible_user }}'
       register: home_dir
       changed_when: false
 
-    - name: Create target directory
-      become_user: '{{ ansible_user }}'
+    - name: Ensure core-services directory exists
       ansible.builtin.file:
         path: '{{ home_dir.stdout }}/docker/core-services'
         state: directory
-        mode: '0755'
         owner: '{{ ansible_user }}'
         group: '{{ ansible_user }}'
+        mode: 0755
 
-    - name: Copy docker-compose.yml to the target directory
-      become_user: '{{ ansible_user }}'
-      ansible.builtin.copy:
-        src: ../files/docker-compose.yml
-        dest: '{{ home_dir.stdout }}/docker/core-services/docker-compose.yml'
-        mode: '0644'
-        owner: '{{ ansible_user }}'
-        group: '{{ ansible_user }}'
+    - name: Synchronize files
+      ansible.builtin.synchronize:
+        src: ../files/
+        dest: '{{ home_dir.stdout }}/docker/core-services/'
+        recursive: yes
+        delete: no
+        rsync_opts:
+          - '--no-perms'
+          - '--omit-dir-times'
+          - '--exclude={.git,traefik/acme.json}'
 
-    - name: Copy .env to the target directory
-      become_user: '{{ ansible_user }}'
-      ansible.builtin.copy:
-        src: ../files/.env
+    - name: Copy .env template file
+      template:
+        src: .env.j2
         dest: '{{ home_dir.stdout }}/docker/core-services/.env'
-        mode: '0644'
         owner: '{{ ansible_user }}'
         group: '{{ ansible_user }}'
+        mode: 0644
+
+    - name: Copy traefik static configuration file
+      template:
+        src: traefik.yml.j2
+        dest: '{{ home_dir.stdout }}/docker/core-services/traefik/config/traefik.yml'
+        owner: '{{ ansible_user }}'
+        group: '{{ ansible_user }}'
+        mode: 0444
+
+    - name: Copy traefik dynamic configuration file
+      template:
+        src: config.yml.j2
+        dest: '{{ home_dir.stdout }}/docker/core-services/traefik/config/config.yml'
+        owner: '{{ ansible_user }}'
+        group: '{{ ansible_user }}'
+        mode: 0444
+
+    - name: Check acme.json file existence and size
+      ansible.builtin.stat:
+        path: '{{ home_dir.stdout }}/docker/core-services/traefik/acme.json'
+      register: acme_file
+
+    - name: Output acme.json file stats
+      ansible.builtin.debug:
+        msg: 'exists - {{ acme_file.stat.exists }} and size - {{ acme_file.stat.size }}'
+
+    - name: Create acme.json only if doesn't exist
+      ansible.builtin.file:
+        path: '{{ home_dir.stdout }}/docker/core-services/traefik/acme.json'
+        state: touch
+        owner: '{{ ansible_user }}'
+        group: '{{ ansible_user }}'
+        mode: 0600
+      when: not acme_file.stat.exists or acme_file.stat.size == 0
 
     - name: Run docker-compose up
       become_user: '{{ ansible_user }}'
@@ -47,3 +86,22 @@
       ansible.builtin.command: docker-compose up -d
       args:
         chdir: '{{ home_dir.stdout }}/docker/core-services'
+      register: docker_compose_up_result
+      tags: ['docker-compose-up']
+
+    - name: Run docker-compose down up
+      become_user: '{{ ansible_user }}'
+      become: true
+      become_method: sudo
+      ansible.builtin.command: '{{item}}'
+      with_items:
+        - docker-compose down
+        - docker-compose up -d
+      args:
+        chdir: '{{ home_dir.stdout }}/docker/core-services'
+      register: docker_compose_up_result
+      tags: ['docker-compose-down-up']
+
+    - name: Output docker-compose up result
+      ansible.builtin.debug:
+        msg: '{{ docker_compose_up_result }}'

@@ -107,7 +107,11 @@ infra-ansible-gitea-setup:
 
 infra-ansible-docker-core-services-setup:
 	echo "Installing tools on Docker Core Services in $(env) environment"
-	cd ansible && ansible-playbook -i inventories/$(env) playbooks/setup-docker-core-services.yml -e @../global_vars/$(env).yml
+	cd ansible && ansible-playbook -i inventories/$(env) playbooks/setup-docker-core-services.yml --tags "all, docker-compose-up" --skip-tags docker-compose-down-up -e @../global_vars/$(env).yml
+
+infra-ansible-docker-core-services-setup-down-up:
+	echo "Installing tools on Docker Core Services in $(env) environment"
+	cd ansible && ansible-playbook -i inventories/$(env) playbooks/setup-docker-core-services.yml --tags "all, docker-compose-down-up" --skip-tags docker-compose-up -e @../global_vars/$(env).yml
 # endregion Setup and configure infrastructure
 
 # region Setup and configure dev coding server

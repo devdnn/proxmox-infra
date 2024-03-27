@@ -1,4 +1,21 @@
 ---
+environmenttype: 'stage'
+# cf_domain_for_apps_to_be_deployed: 'lo.dnnio.dev'
+# # services_prefix_and_domain: 'lo.dnnio.dev' # for prod the prefix will be empty before.lo
+# cf_api_key: 'e436d5c4f61e4cdb31d54b7e4f35e54c1683e'
+# cf_api_email: 'deepakn.dev@gmail.com'
+# pf_sense_domain: 'pf.stage.naiduden.dev'
+
+docker_core:
+  services:
+    cf_domain_for_apps_to_be_deployed: 'stage.core.dnnio.dev'
+    cf_api_key: 'e436d5c4f61e4cdb31d54b7e4f35e54c1683e'
+    cf_api_email: 'deepak.dev@gmail.com'
+    pf_sense_domain: 'pf.stage.naiduden.dev'
+    dns_challenge_subnet: '192.168.80.0/24'
+    dns_challenge_gateway: '192.168.80.1'
+    dns_challenge_static_ip: '192.168.80.80'
+
 docker_edition: 'ce'
 docker_packages:
   - 'docker-{{ docker_edition }}'

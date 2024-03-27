@@ -2,7 +2,9 @@ services:
   portainer:
     image: portainer/portainer-ce:linux-amd64
     container_name: portainer
-    restart: unless-stopped
+    restart: always
+    networks:
+      - iac-provisioned-network
     ports:
       - '9000:9000'
       - '8000:8000'
@@ -16,13 +18,92 @@ services:
       - traefik.http.routers.portainer.entrypoints=websecure
       - traefik.http.routers.portainer.service=portainer
       - traefik.http.services.portainer.loadbalancer.server.port=9000
-      - traefik.docker.network=traefik_default
       #- traefik.http.routers.portainer.tls.certresolver=letsencrypt
-    networks:
-      - prod_default
 
-networks:
-  prod_default:
+  traefik:
+    image: 'traefik:v3.0'
+    container_name: 'traefik'
+    restart: always
+    networks:
+      iac-provisioned-network:
+      iac-provisioned-network-for-traefik:
+        ipv4_address: ${DNS_CHALLENGE_STATIC_IP}
+    dns:
+      - 1.1.1.1
+    ports:
+      - '80:80'
+      - '443:443'
+      - '8080:8080'
+      - '2222:2222'
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./traefik/logs:/var/log/traefik
+      - ./traefik/acme.json:/etc/traefik/acme/acme.json
+      - ./traefik/config/config.yml:/etc/traefik/config.yml:ro
+      - ./traefik/config/traefik.yml:/etc/traefik/traefik.yml:ro
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.traefik.rule=Host(`traefik.${CF_DOMAIN}`)
+      - traefik.http.routers.traefik.entrypoints=websecure
+      - traefik.http.services.traefik.loadbalancer.server.port=8080
+      #- traefik.http.routers.traefik.tls.certresolver=letsencrypt
+      - traefik.http.routers.traefik.service=api@internal
+      #- traefik.http.routers.traefik.middlewares=local-ipwhitelist@file
+    environment:
+      CF_API_KEY: ${CF_API_KEY}
+      CF_API_EMAIL: ${CF_API_EMAIL}
+      CLOUDFLARE_EMAIL: ${CF_API_EMAIL}
+      CLOUDFLARE_API_KEY: ${CF_API_KEY}
+
+  pihole:
+    container_name: pihole
+    image: pihole/pihole:2024.02.2
+    # For DHCP it is recommended to remove these ports and instead add: network_mode: "host"
+    ports:
+      - '53:53/tcp'
+      - '53:53/udp'
+    environment:
+      WEBPASSWORD: 'BangaloreIsMyHomeCity!@#'
+      WEB_PORT: 8081
+      VIRTUAL_HOST: pihole.${CF_DOMAIN}
+      VIRTUAL_PORT: 8081
+    cap_add:
+      - CHOWN
+    restart: unless-stopped
+    networks:
+      - iac-provisioned-network
+    # Volumes store your data between container upgrades
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./pihole/etc-pihole:/etc/pihole
+      - ./pihole/etc-dnsmasq.d:/etc/dnsmasq.d
+      - ./pihole/etc-custom.list:/etc/pihole/custom.list
+    #   https://github.com/pi-hole/docker-pi-hole#note-on-capabilities
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.pihole.rule=Host(`pihole.${CF_DOMAIN}`)
+      - traefik.http.routers.pihole.entrypoints=websecure
+      - traefik.http.routers.pihole.service=pihole
+      - traefik.http.services.pihole.loadbalancer.server.port=8081
+      - traefik.http.middlewares.pihole-replacepath.addprefix.prefix=/admin
+      - traefik.http.middlewares.pihole-redirectregex.redirectregex.regex=/admin/$
+      - traefik.http.middlewares.pihole-redirectregex.redirectregex.replacement=/
+      - traefik.http.routers.pihole.middlewares=pihole-redirectregex@docker,pihole-replacepath@docker
 
 volumes:
   portainer_data:
+
+networks:
+  iac-provisioned-network:
+  iac-provisioned-network-for-traefik:
+    driver: macvlan
+    driver_opts:
+      parent: eth0
+    ipam:
+      config:
+        - subnet: ${DNS_CHALLENGE_SUBNET}
+          gateway: ${DNS_CHALLENGE_GATEWAY}
+          ip_range: ${DNS_CHALLENGE_IP_RANGE}

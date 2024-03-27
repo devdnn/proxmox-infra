@@ -37,6 +37,7 @@ proxmox_api_password: 'Float12345678'
 proxmox_tls_insecure: true
 proxmox_node: 'spmhampi'
 proxmox_node_with_clone: 'spmhampi'
+proxmox_node_for_core_services: 'kishkindha-pcli'
 
 storage_pool: 'proxthin'
 nas_storage_pool: 'nasvmdrives'
@@ -77,12 +78,12 @@ dev_lxc_vm_name: 'dev-debian' # index will added in terraform code
 dev_lxc_host_name_inside_vm: 'devdebian' # index will added in terraform code
 dev_lxc_number_of_instances: 0
 dev_lxc_vm_description: 'development box for coding'
-dev_lxc_server_ip: '192.168.80.15/24'
-dev_lxc_server_gateway: '192.168.80.1'
+dev_lxc_server_ip: '192.168.30.15/24'
+dev_lxc_server_gateway: '192.168.30.1'
 dev_lxc_network_interface_details:
   first_interface:
-    ip: '192.168.80.15/24'
-    gateway: '192.168.80.1'
+    ip: '192.168.30.15/24'
+    gateway: '192.168.30.1'
     vlan_id: 80
     interface_bridge: 'vmbr0'
 #
@@ -117,3 +118,44 @@ postgres_network_interface_details:
     gateway: '192.168.30.1'
     vlan_id: 30
     interface_bridge: 'vmbr2'
+
+# doceker core server
+docker_core_vm_suffix: 'prod'
+docker_core_vm_name: 'docker-coreservices-prod' # index will added in terraform code
+docker_core_vm_name_inside_vm: 'dockercoreservices' # index will added in terraform code
+docker_core_vm_number_of_instances: 1
+docker_core_vm_cpu_cores: 4
+docker_core_vm_memory: 4096
+docker_core_vm_description: 'Docker with core servevices like DNS/DHCP and CI/CD'
+docker_core_vm_network_interface_details:
+  first_interface:
+    ip: '192.168.30.47/24'
+    gateway: '192.168.30.1'
+    vlan_id: 30
+    interface_bridge: 'vmbr2'
+
+# docker core services overrides
+docker_core:
+  services:
+    cf_domain_for_apps_to_be_deployed: 'core.naiduden.dev'
+    cf_api_key: 'e436d5c4f61e4cdb31d54b7e4f35e54c1683e'
+    cf_api_email: 'deepakn.dev@gmail.com'
+    pf_sense_domain: 'pf.naiduden.dev'
+    dns_challenge_subnet: '192.168.30.0/24'
+    dns_challenge_gateway: '192.168.30.1'
+    dns_challenge_ip_range: '192.168.30.80/28'
+    dns_challenge_static_ip: '192.168.30.81'
+  vm_details:
+    suffix: 'stage'
+    name: 'docker-coreservices-stage' # index will added in terraform code
+    name_inside_vm: 'dockercoreservices' # index will added in terraform code
+    number_of_instances: 1
+    cpu_cores: 4
+    memory: 4096
+    description: 'Docker with core servevices like DNS/DHCP and CI/CD'
+    network_interface_details:
+      first_interface:
+        ip: '192.168.30.47/24'
+        gateway: '192.168.30.1'
+        vlan_id: 80
+        interface_bridge: 'vmbr2'

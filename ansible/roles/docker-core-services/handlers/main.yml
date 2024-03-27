@@ -3,4 +3,4 @@
   service:
     name: docker
     state: restarted
-  notify: 'Restart gitea'
+  notify: 'Restart docker'

@@ -1,0 +1,112 @@
+---
+http:
+  routers:
+    kasm-workspaces:
+      rule: 'Host(`go.{{ docker_core.services.cf_domain_for_apps_to_be_deployed }}`)'
+      service: kasm-workspaces
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      entryPoints:
+        - websecure
+
+  middlewares:
+    addprefix-pihole:
+      addPrefix:
+        prefix: '/admin'
+    https-redirectscheme:
+      redirectScheme:
+        scheme: https
+        permanent: true
+    redirectregex-pihole:
+      redirectRegex:
+        regex: /admin/$
+        replacement: /
+    default-headers:
+      headers:
+        frameDeny: true # X-Frame-Options
+        browserXssFilter: true # X-XSS-Protection
+        contentTypeNosniff: true # X-Content-Type-Options
+        forceSTSHeader: true # Strict-Transport-Security
+        stsIncludeSubdomains: true # Strict-Transport-Security
+        stsPreload: true # Strict-Transport-Security
+        stsSeconds: 15552000 # Strict-Transport-Security
+        customFrameOptionsValue: SAMEORIGIN # X-Frame-Options
+        customResponseHeaders: # field names are case-insensitive
+          # X-Robots-Tag: "all,noarchive,nosnippet,notranslate,noimageindex"
+          Server: '' # prevent version disclosure
+          X-Powered-By: '' # prevent version disclosure
+          X-Forwarded-Proto: 'https' # set X-Forwarded-Proto header to https
+        customRequestHeaders:
+          X-Forwarded-Proto: https
+        sslProxyHeaders:
+          X-Forwarded-Proto: 'https'
+        hostsProxyHeaders:
+          - 'X-Forwarded-Host'
+    # Only Allow Local networks
+    local-ipwhitelist:
+      ipWhiteList:
+        sourceRange:
+          - 127.0.0.1/32 # localhost
+          - 10.0.0.0/8 # private class A
+          - 172.16.0.0/12 # private class B
+          - 192.168.0.0/16 # private class C
+    # rate limiting
+    rate-limit:
+      rateLimit:
+        average: 100
+        period: 1
+        burst: 100
+    # compress
+    compress:
+      compress:
+        excludedContentTypes:
+          - text/event-stream
+        minResponseBodyBytes: 1200
+    # latency check
+    latency:
+      circuitBreaker:
+        expression: LatencyAtQuantileMS(50.0) > 100.0
+
+  services:
+    kasm-workspaces:
+      loadBalancer:
+        servers:
+          - url: 'https://192.168.130.46'
+
+tcp:
+{#   routers:
+    gitea-ssh-router:
+      entryPoints:
+        - ssh
+      rule: HostSNI(`*`)
+      service: gitea-ssh-service
+  services:
+    gitea-ssh-service:
+      loadBalancer:
+        servers:
+          - address: 192.168.30.45:2222 #}
+
+# You might need to configure the Docker provider if you are using Docker
+providers:
+  docker:
+    network: iac-provisioned-network
+    exposedByDefault: false
+
+# Uncomment and configure the following part if you are using TLS
+# tls:
+#   certificates:
+#     - certFile: "/path/to/certfile"
+#     - keyFile: "/path/to/keyfile"
+
+tls:
+  options:
+    default:
+      minVersion: VersionTLS12
+      cipherSuites:
+        - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+        - TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+        - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+        - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+        - TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305
+        - TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305
