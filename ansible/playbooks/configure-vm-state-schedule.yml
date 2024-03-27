@@ -17,32 +17,32 @@
       debug:
         msg: 'VM {{ vm_id }} is {{ vm_status.rc }}'
 
-    - name: Remove the cron to turn off the VM
-      cron:
-        name: 'Turn off VM {{ vm_id }}'
-        state: absent
-      when: vm_status.rc != 0
-
     - name: Remove the cron to turn on the VM
       cron:
         name: 'Turn on VM {{ vm_id }}'
         state: absent
       when: vm_status.rc != 0
 
-    - name: If VM exists, create a cron to turn it off at 02:00 AM
+    - name: If VM exists, create a cron to tunr it on at 10:50 PM
       cron:
-        name: 'Turn off VM {{ vm_id }}'
-        minute: 0
-        hour: 2
-        job: '/usr/sbin/qm stop {{ vm_id }}'
+        name: 'Turn on VM {{ vm_id }}'
+        minute: 50
+        hour: 22
+        job: '/usr/sbin/qm start {{ vm_id }}'
         state: present
       when: vm_status.rc == 0
 
-    - name: If VM exists, create a cron to tunr it on at 21:00 PM
+    - name: Remove the cron to turn off the VM
       cron:
-        name: 'Turn on VM {{ vm_id }}'
+        name: 'Turn off VM {{ vm_id }}'
+        state: absent
+      when: vm_status.rc != 0
+
+    - name: If VM exists, create a cron to turn it off at 01:00 AM
+      cron:
+        name: 'Turn off VM {{ vm_id }}'
         minute: 0
-        hour: 21
-        job: '/usr/sbin/qm start {{ vm_id }}'
+        hour: 1
+        job: '/usr/sbin/qm stop {{ vm_id }}'
         state: present
       when: vm_status.rc == 0
