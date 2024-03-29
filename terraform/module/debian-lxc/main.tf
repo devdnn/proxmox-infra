@@ -60,6 +60,9 @@ resource "proxmox_virtual_environment_container" "debian_lxc" {
 
     user_account {
       password = "Float12345678"
+      keys = [
+        trimspace("ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJkfromqUW6GMgjh59GmnLXS0oQKQMdOT0hu6Ppcf0EL proxmox_stage_ssh_key_key_Connect to proxmox lxc and vms")
+      ]
     }
   }
 
