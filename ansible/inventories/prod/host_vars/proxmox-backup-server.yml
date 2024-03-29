@@ -2,6 +2,7 @@
 # Credentials
 ansible_user: 'dnndev'
 ansible_ssh_pass: 'Float12345678'
+ansible_host_key_checking: false
 
 mount_nfs: false
 backup_user: 'backup'

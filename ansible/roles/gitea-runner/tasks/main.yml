@@ -9,6 +9,8 @@
 - name: import act-runner configuration tasks
   import_tasks: act-runner.yml
   become: true
+  become_user: root
+  remote_user: root
   tags:
     - gitea
     - gitea_act_runner

@@ -127,6 +127,7 @@ docker_core_vm_number_of_instances: 1
 docker_core_vm_cpu_cores: 4
 docker_core_vm_memory: 4096
 docker_core_vm_description: 'Docker with core servevices like DNS/DHCP and CI/CD'
+docker_core_vm_storage_disk_type: 'raw'
 docker_core_vm_network_interface_details:
   first_interface:
     ip: '192.168.30.47/24'
@@ -158,4 +159,26 @@ docker_core:
         ip: '192.168.30.47/24'
         gateway: '192.168.30.1'
         vlan_id: 80
+        interface_bridge: 'vmbr2'
+# gitea runner server
+gitea_runner_vm:
+  host_details:
+    proxmox_node: 'spmhampi'
+    proxmox_node_with_clone: 'spmhampi'
+    clone_id: '5000'
+  vm_details:
+    suffix: 'prod' # index will added in terraform code
+    description: 'Gitea act runner to run the jobs'
+    name: 'gitea-runner-prod' # index will added in terraform code
+    host_name_inside_vm: 'gitearunnerprod' # index will added in terraform code
+    number_of_instances: 1
+    cpu_cores: 2
+    memory: 2048
+    storage_pool: 'proxthin'
+    os_storage_disk_type: 'raw'
+    network_interface_details:
+      first_interface:
+        ip: '192.168.30.48/24'
+        gateway: '192.168.30.1'
+        vlan_id: 30
         interface_bridge: 'vmbr2'

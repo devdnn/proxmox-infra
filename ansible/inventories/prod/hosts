@@ -2,6 +2,7 @@ proxmox-backup-server ansible_host=192.168.30.46
 postgresql-server ansible_host=192.168.30.44
 gitea-server ansible_host=192.168.30.45
 docker-core-services ansible_host=192.168.30.47
+gitea-runner ansible_host=192.168.30.48
 
 [proxmox_prod]
 kishkindha  ansible_host=192.168.1.12

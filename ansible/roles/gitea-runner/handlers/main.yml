@@ -5,6 +5,7 @@
     state: restarted
     enabled: yes
   become: true
+  become_user: root
   when: gitea_act_runner_enable_service | bool
   ignore_errors: '{{ ansible_check_mode }}'
 

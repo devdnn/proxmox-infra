@@ -123,7 +123,7 @@ postgres_network_interface_details:
 docker_core_vm_suffix: 'stage'
 docker_core_vm_name: 'docker-coreservices-stage' # index will added in terraform code
 docker_core_vm_name_inside_vm: 'dockercoreservices' # index will added in terraform code
-docker_core_vm_number_of_instances: 1
+docker_core_vm_number_of_instances: 0
 docker_core_vm_cpu_cores: 4
 docker_core_vm_memory: 4096
 docker_core_vm_description: 'Docker with core servevices like DNS/DHCP and CI/CD'
@@ -150,7 +150,7 @@ docker_core:
     suffix: 'stage'
     name: 'docker-coreservices-stage' # index will added in terraform code
     name_inside_vm: 'dockercoreservices' # index will added in terraform code
-    number_of_instances: 1
+    number_of_instances: 0
     cpu_cores: 4
     memory: 4096
     description: 'Docker with core servevices like DNS/DHCP and CI/CD'
@@ -162,19 +162,20 @@ docker_core:
         interface_bridge: 'vmbr0'
 
 # gitea runner server
-gitea_runner_lxc:
-  lxc_details:
+gitea_runner_vm:
+  vm_details:
     suffix: 'stage' # index will added in terraform code
     description: 'Gitea act runner to run the jobs'
-    name: 'gitearunnerstage' # index will added in terraform code
+    name: 'gitea-runner-stage' # index will added in terraform code
     host_name_inside_vm: 'gitearunnerstage' # index will added in terraform code
     number_of_instances: 1
     cpu_cores: 2
     memory: 2048
     storage_pool: 'proxthin'
-  network_interface_details:
-    first_interface:
-      ip: '192.168.80.48/24'
-      gateway: '192.168.80.1'
-      vlan_id: 80
-      interface_bridge: 'vmbr0'
+    os_storage_disk_type: 'raw'
+    network_interface_details:
+      first_interface:
+        ip: '192.168.80.48/24'
+        gateway: '192.168.80.1'
+        vlan_id: 80
+        interface_bridge: 'vmbr0'
