@@ -1,9 +1,9 @@
 ---
 gitea_http_domain: gitea.lo.naiduden.dev
-gitea_root_url: http://gitea.lo.naiduden.dev:80
+gitea_root_url: https://gitea.lo.naiduden.dev
 gitea_protocol: http
 gitea_http_listen: gitea.lo.naiduden.dev
-gitea_http_port: 80
+gitea_http_port: 443
 gitea_offline_mode: true
 
 gitea_app_name: 'Gitea - Prod'

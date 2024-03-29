@@ -1,0 +1,119 @@
+---
+- name: Install dependencies
+  package:
+    name: '{{ item }}'
+    state: present
+  with_items:
+    - sudo
+
+- name: create act-runner user
+  user:
+    name: act-runner
+    system: yes
+    shell: '/bin/bash'
+    comment: 'Gitea Actions runner'
+    password: '*'
+    home: /var/lib/act-runner
+  register: gitea_act_runner_user
+
+- name: update act-runner home directory ownership
+  file:
+    path: /var/lib/act-runner
+    state: directory
+    owner: act-runner
+    group: act-runner
+    recurse: yes
+  when: ansible_local.gitea_act_runner.work_directory_ownership_migrated is not defined
+  ignore_errors: '{{ ansible_check_mode }}'
+
+- name: Add act-runner to docker group
+  user:
+    name: act-runner
+    groups: docker
+    append: yes
+  when: gitea_act_runner_user.changed
+  ignore_errors: '{{ ansible_check_mode }}'
+
+- name: download act-runner binary
+  get_url:
+    url: 'https://dl.gitea.com/act_runner/{{ gitea_act_runner_version }}/act_runner-{{ gitea_act_runner_version }}-linux-amd64'
+    dest: '/root/act_runner-{{ gitea_act_runner_version }}-linux-amd64'
+    owner: root
+    group: root
+    mode: '0640'
+
+- name: install act-runner binary
+  copy:
+    src: '/root/act_runner-{{ gitea_act_runner_version }}-linux-amd64'
+    dest: '/usr/local/bin/act-runner'
+    mode: '0755'
+    remote_src: yes
+    owner: root
+    group: root
+  notify: restart act-runner
+  when: not ansible_check_mode
+
+- name: create act-runner configuration directory
+  file:
+    state: directory
+    path: /etc/act-runner
+    owner: root
+    group: act-runner
+    mode: '0770'
+  ignore_errors: '{{ ansible_check_mode }}'
+
+- name: copy act-runner configuration
+  template:
+    src: etc_act-runner_config.yaml.j2
+    dest: /etc/act-runner/config.yaml
+    owner: root
+    group: act-runner
+    mode: '0640'
+  notify: restart act-runner
+  ignore_errors: '{{ ansible_check_mode }}'
+
+- name: copy CA certificates store file to act-runner configuration directory
+  copy:
+    remote_src: yes
+    src: /etc/ssl/certs/ca-certificates.crt
+    dest: /etc/act-runner/ca-certificates.crt
+    owner: root
+    group: act-runner
+    mode: '0640'
+  ignore_errors: '{{ ansible_check_mode }}'
+
+##### SERVICES #####
+
+- name: install act-runner systemd service/unit file
+  template:
+    src: 'etc_systemd_system_act-runner.service.j2'
+    dest: '/etc/systemd/system/act-runner.service'
+    mode: '0644'
+  notify:
+    - reload systemd unit files
+    - restart act-runner
+
+# re-read systemd service configuration
+- name: apply configuration (flush handlers)
+  meta: flush_handlers
+
+- name: enable/disable start/stop act-runner service
+  systemd:
+    name: act-runner
+    enabled: '{{ gitea_act_runner_enable_service }}'
+    state: "{{ 'started' if gitea_act_runner_enable_service else 'stopped' }}"
+    daemon_reload: yes
+  ignore_errors: '{{ ansible_check_mode }}'
+
+##### RUNNER REGISTRATION #####
+
+- name: register the runner on the gitea instance (if this fails, check host logs and ensure that the actions API is enabled on the gitea instance)
+  become: true
+  become_user: act-runner
+  shell:
+    cmd: /usr/local/bin/act-runner --config /etc/act-runner/config.yaml register --no-interactive --instance https://{{ gitea_act_runner_gitea_instance_fqdn }} --token {{ gitea_runner_registration_token }}
+    chdir: '/var/lib/act-runner'
+  ignore_errors: '{{ ansible_check_mode }}'
+  changed_when: yes
+  timeout: 10
+  notify: restart act-runner

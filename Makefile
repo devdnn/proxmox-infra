@@ -105,6 +105,10 @@ infra-ansible-gitea-setup:
 	echo "Installing tools on Gitea in $(env) environment"
 	cd ansible && ansible-playbook -i inventories/$(env) playbooks/setup-gitea.yml -e @../global_vars/$(env).yml
 
+infra-ansible-gitea-runner-setup:
+	echo "Installing tools on Gitea in $(env) environment"
+	cd ansible && ansible-playbook -i inventories/$(env) playbooks/setup-gitea-runner.yml -e @../global_vars/$(env).yml --skip-tags core-services
+
 infra-ansible-docker-core-services-setup:
 	echo "Installing tools on Docker Core Services in $(env) environment"
 	cd ansible && ansible-playbook -i inventories/$(env) playbooks/setup-docker-core-services.yml --tags "all, docker-compose-up" --skip-tags docker-compose-down-up -e @../global_vars/$(env).yml

@@ -1,0 +1,8 @@
+---
+- hosts: gitea-runner
+  become: yes
+  become_method: sudo
+  become_user: root
+  roles:
+    - docker-core-services
+    - gitea-runner

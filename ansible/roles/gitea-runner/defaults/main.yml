@@ -1,0 +1,35 @@
+---
+gitea_runner_registration_token: 'spOBhFOtprMBNsSlv5Js9L9nAAeaC6OWL7HayYhc'
+
+##### GITEA ACTIONS RUNNER #####
+# FQDN of the gitea instance to register the runner on
+gitea_act_runner_gitea_instance_fqdn: "{{ gitea_fqdn | default('gitea.lo.naiduden.dev') }}"
+# inventory hostname of the gitea host to register the runner on (if different from the runner host)
+# gitea_act_runner_gitea_instance_hostname: "CHANGEME"
+# how many tasks the runner can execute concurrently at the same time (integer)
+gitea_act_runner_capacity: 1
+# container engine to use (docker/podman)
+gitea_act_runner_container_engine: ''
+# network to which the containers managed by act-runner will connect (host/bridge/custom)
+# set to an empty string to have act-runner create a network automatically. "host" is required when using gitea_act_runner_container_engine: podman, and the gitea instance is on the same host as the runner
+gitea_actions_runner_container_network: ''
+# list of labels to use when registering the runner (https://docs.gitea.com/usage/actions/design)
+# If the list of labels is changed, the runner must be unregistered (delete /var/lib/act-runner/.runner) and the role must be redeployed
+# Add "host:host" to this list to allow running workflows directly on the host, without containerization (and specify "runs-on: host" in your workflow yml file)
+# If host-based workflows are allowed, you probably want to install the nodejs package on the host so that nodejs-based actions can run
+# Example:
+# gitea_act_runner_labels:
+#   - 'host:host'
+#   - "debian-bookworm-backports:docker://debian:bookworm-backports"
+gitea_act_runner_labels:
+  - 'debian-latest:docker://node:21-bookworm'
+  - 'ubuntu-latest:docker://node:21-bookworm'
+  - 'ubuntu-22.04:docker://node:16-bullseye'
+  - 'ubuntu-20.04:docker://node:16-bullseye'
+  - 'ubuntu-18.04:docker://node:16-buster'
+# prune act-runner's podman downloaded images/stopped containers nightly at 03:30 to save disk space (no/yes)
+gitea_act_runner_daily_podman_prune: no
+# act-runner version (https://gitea.com/gitea/act_runner/releases, remove leading v)
+gitea_act_runner_version: '0.2.8'
+# start/stop the gitea actions runner service, enable/disable it on boot (yes/no)
+gitea_act_runner_enable_service: yes

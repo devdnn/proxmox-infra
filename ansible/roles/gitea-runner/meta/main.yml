@@ -1,0 +1,26 @@
+---
+# @tag gitea_act_runner - setup gitea CI/CD runner (act-runner)
+
+galaxy_info:
+  role_name: gitea_act_runner
+  author: 'dnndev <deepakn.dev@gmail.com>'
+  description: 'CI/CD runner for Gitea Actions'
+  license: 'GPL-3.0'
+  min_ansible_version: '2.14'
+  platforms:
+    - name: Debian
+      versions:
+        - 'bookworm'
+  galaxy_tags:
+    - ci
+    - cd
+    - continuous
+    - integration
+    - delivery
+    - testing
+    - runner
+    - git
+    - gitea
+# dependencies:
+# - nodiscc.xsrv.handlers
+# - nodiscc.xsrv.docker

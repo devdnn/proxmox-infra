@@ -76,3 +76,4 @@
 
 - name: Configure core services
   include_tasks: configure-core-services.yml
+  tags: ['core-services']

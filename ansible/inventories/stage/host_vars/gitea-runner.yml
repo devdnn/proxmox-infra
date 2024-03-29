@@ -1,0 +1,4 @@
+---
+# Credentials
+ansible_user: 'root'
+ansible_ssh_private_key_file: ~/.ssh/proxmox_stage_ssh_key_ed25519
