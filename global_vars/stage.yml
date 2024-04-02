@@ -146,6 +146,8 @@ docker_core:
     dns_challenge_gateway: '192.168.80.1'
     dns_challenge_ip_range: '192.168.80.80/28'
     dns_challenge_static_ip: '192.168.80.81'
+  hosted_services:
+    pihole_static_ip_address: '192.168.80.40'
   vm_details:
     suffix: 'stage'
     name: 'docker-coreservices-stage' # index will added in terraform code

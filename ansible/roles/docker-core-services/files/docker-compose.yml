@@ -72,7 +72,9 @@ services:
       - CHOWN
     restart: unless-stopped
     networks:
-      - iac-provisioned-network
+      iac-provisioned-network:
+      iac-provisioned-network-for-traefik:
+        ipv4_address: ${PIHOLE_STATIC_IP_ADDRESS}
     # Volumes store your data between container upgrades
     volumes:
       - /etc/localtime:/etc/localtime:ro
