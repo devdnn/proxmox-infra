@@ -8,7 +8,8 @@ environmenttype: 'stage'
 
 docker_core:
   services:
-    cf_domain_for_apps_to_be_deployed: 'stage.core.dnnio.dev'
+    cf_domain_for_core_apps: 'stage.core.dnnio.dev'
+    cf_domain_for_all_apps: 'stage.apps.dnnio.dev'
     cf_api_key: 'e436d5c4f61e4cdb31d54b7e4f35e54c1683e'
     cf_api_email: 'deepak.dev@gmail.com'
     pf_sense_domain: 'pf.stage.naiduden.dev'

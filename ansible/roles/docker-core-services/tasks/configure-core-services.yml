@@ -26,6 +26,23 @@
         group: '{{ ansible_user }}'
         mode: 0755
 
+    - name: Create a network iac-provisioned-network
+      community.docker.docker_network:
+        name: iac-provisioned-network
+        state: present
+
+    - name: Create a network iac-provisioned-network-for-traefik with custom IPAM config
+      community.docker.docker_network:
+        name: iac-provisioned-network-for-traefik
+        driver: macvlan
+        driver_options:
+          parent: eth0
+        ipam_config:
+          - subnet: '{{ docker_core.services.dns_challenge_subnet  }}'
+            gateway: '{{ docker_core.services.dns_challenge_gateway  }}'
+            iprange: '{{ docker_core.services.dns_challenge_ip_range  }}'
+        state: present
+
     - name: Synchronize files
       ansible.builtin.synchronize:
         src: ../files/

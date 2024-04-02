@@ -138,7 +138,8 @@ docker_core_vm_network_interface_details:
 # docker core services overrides
 docker_core:
   services:
-    cf_domain_for_apps_to_be_deployed: 'core.naiduden.dev'
+    cf_domain_for_core_apps: 'core.naiduden.dev'
+    cf_domain_for_all_apps: 'apps.naiduden.dev'
     cf_api_key: 'e436d5c4f61e4cdb31d54b7e4f35e54c1683e'
     cf_api_email: 'deepakn.dev@gmail.com'
     pf_sense_domain: 'pf.naiduden.dev'
@@ -147,7 +148,7 @@ docker_core:
     dns_challenge_ip_range: '192.168.30.80/28'
     dns_challenge_static_ip: '192.168.30.81'
   hosted_services:
-    pihole_static_ip_address: '192.168.30.40'
+    pihole_static_ip_address: '192.168.30.82'
   vm_details:
     suffix: 'stage'
     name: 'docker-coreservices-stage' # index will added in terraform code

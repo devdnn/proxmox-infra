@@ -2,11 +2,19 @@
 http:
   routers:
     kasm-workspaces:
-      rule: 'Host(`go.{{ docker_core.services.cf_domain_for_apps_to_be_deployed }}`)'
+      rule: 'Host(`go.{{ docker_core.services.cf_domain_for_all_apps }}`)'
       service: kasm-workspaces
       middlewares:
         - default-headers
         - https-redirectscheme
+      entryPoints:
+        - websecure
+    pgadmin:
+      rule: 'Host(`pgadmin.{{ docker_core.services.cf_domain_for_all_apps }}`)'
+      service: pgadmin
+      middlewares:
+        - https-redirectscheme
+        - default-headers
       entryPoints:
         - websecure
 
@@ -14,14 +22,21 @@ http:
     addprefix-pihole:
       addPrefix:
         prefix: '/admin'
-    https-redirectscheme:
-      redirectScheme:
-        scheme: https
-        permanent: true
     redirectregex-pihole:
       redirectRegex:
         regex: /admin/$
         replacement: /
+    addprefix-pgadmin:
+      addPrefix:
+        prefix: '/pgadmin4'
+    redirectregex-pgadmin:
+      redirectRegex:
+        regex: /pgadmin4/$
+        replacement: /
+    https-redirectscheme:
+      redirectScheme:
+        scheme: https
+        permanent: true
     default-headers:
       headers:
         frameDeny: true # X-Frame-Options
@@ -73,6 +88,10 @@ http:
       loadBalancer:
         servers:
           - url: 'https://192.168.130.46'
+    pgadmin:
+      loadBalancer:
+        servers:
+          - url: 'http://192.168.30.44'
 
 tcp:
 {#   routers:

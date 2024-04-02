@@ -75,9 +75,12 @@ entryPoints:
       tls:
         certResolver: letsencrypt
         domains:
-          - main: {{ docker_core.services.cf_domain_for_apps_to_be_deployed}}
+          - main: {{ docker_core.services.cf_domain_for_core_apps}}
             sans:
-              - "{{ '*' ~ '.' ~ docker_core.services.cf_domain_for_apps_to_be_deployed }}"
+              - "{{ '*' ~ '.' ~ docker_core.services.cf_domain_for_core_apps }}"
+          - main: {{ docker_core.services.cf_domain_for_all_apps}}
+            sans:
+              - "{{ '*' ~ '.' ~ docker_core.services.cf_domain_for_all_apps }}"
           - main: {{ docker_core.services.pf_sense_domain }}
           #   middlewares:
           #     -security-headers@file # reference to a dynamic middleware for setting http security headers per default
@@ -89,7 +92,7 @@ providers:
     watch: true
     endpoint: 'unix:///var/run/docker.sock'
     # Default host rule to containername.domain.example
-    defaultRule: 'Host(`{{ '{{' }} index .Labels "com.docker.compose.service" {{ '}}' }}`.{{ docker_core.services.cf_domain_for_apps_to_be_deployed }}`)'
+    defaultRule: 'Host(`{{ '{{' }} index .Labels "com.docker.compose.service" {{ '}}' }}`.{{ docker_core.services.cf_domain_for_core_apps }}`)'
     exposedByDefault: false
     network: iac-provisioned-network
   file:
