@@ -52,7 +52,7 @@
         rsync_opts:
           - '--no-perms'
           - '--omit-dir-times'
-          - '--exclude={.git,traefik/acme.json}'
+          - '--exclude={.git,traefik/acme.json,.gitkeep}'
 
     - name: Copy .env template file
       template:

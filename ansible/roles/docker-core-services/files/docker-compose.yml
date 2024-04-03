@@ -33,7 +33,7 @@ services:
     ports:
       - '80:80'
       - '443:443'
-      - '8080:8080'
+      - '8081:8080'
       - '2222:2222'
     volumes:
       - /etc/localtime:/etc/localtime:ro
@@ -46,7 +46,7 @@ services:
       - traefik.enable=true
       - traefik.http.routers.traefik.rule=Host(`traefik.${CF_DOMAIN}`)
       - traefik.http.routers.traefik.entrypoints=websecure
-      - traefik.http.services.traefik.loadbalancer.server.port=8080
+      - traefik.http.services.traefik.loadbalancer.server.port=8081
       #- traefik.http.routers.traefik.tls.certresolver=letsencrypt
       - traefik.http.routers.traefik.service=api@internal
       #- traefik.http.routers.traefik.middlewares=local-ipwhitelist@file
@@ -75,7 +75,7 @@ services:
       iac-provisioned-network:
       iac-provisioned-network-for-traefik:
         ipv4_address: ${PIHOLE_STATIC_IP_ADDRESS}
-    # Volumes store your data between container upgrades
+        # Volumes store your data between container upgrades
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
@@ -94,6 +94,83 @@ services:
       - traefik.http.middlewares.pihole-redirectregex.redirectregex.regex=/admin/$
       - traefik.http.middlewares.pihole-redirectregex.redirectregex.replacement=/
       - traefik.http.routers.pihole.middlewares=pihole-redirectregex@docker,pihole-replacepath@docker
+
+  unifi-db:
+    image: docker.io/mongo:4.4.6
+    container_name: unifi-db
+    networks:
+      iac-provisioned-network:
+    expose:
+      - 27017
+    environment:
+      MONGO_INITDB_DATABASE: unifidb
+    volumes:
+      - ./unifi/db/data:/data/db
+      - ./unifi/db/files/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+    restart: unless-stopped
+
+  unifiapp:
+    image: lscr.io/linuxserver/unifi-network-application:latest
+    container_name: unifiapp
+    restart: unless-stopped
+    depends_on:
+      - unifi-db
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Los_Angeles
+      - MONGO_USER=unifi
+      - MONGO_PASS=unifi
+      - MONGO_HOST=unifi-db
+      - MONGO_PORT=27017
+      - MONGO_DBNAME=unifidb
+      - MEM_LIMIT=1024 #optional
+      - MEM_STARTUP=1024 #optional
+    volumes:
+      - ./unifi/netapp/data:/config
+    networks:
+      iac-provisioned-network:
+    ports:
+      - 8443:8443
+      - 3478:3478/udp
+      - 10001:10001/udp
+      - 8080:8080
+      - 1900:1900/udp #optional
+      - 8843:8843 #optional
+      - 8880:8880 #optional
+      - 6789:6789 #optional
+      - 5514:5514/udp #optional
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.unifiapp.rule=Host(`unifi.${APPS_CF_DOMAIN}`)
+      - traefik.http.routers.unifiapp.entrypoints=websecure
+      - traefik.http.routers.unifiapp.service=unifiapp
+      - traefik.http.services.unifiapp.loadbalancer.server.port=8443
+      - traefik.http.services.unifiapp.loadbalancer.server.scheme=https
+
+  mongo-express:
+    image: mongo-express
+    container_name: mongoexpress
+    restart: unless-stopped
+    depends_on:
+      - unifi-db
+    networks:
+      iac-provisioned-network:
+    ports:
+      - 8086:8081
+    environment:
+      ME_CONFIG_MONGODB_URL: unifi-db://unifi:unifi@unifi-db
+      ME_CONFIG_MONGODB_SERVER: unifi-db
+      ME_CONFIG_BASICAUTH_USERNAME: unifi
+      ME_CONFIG_BASICAUTH_PASSWORD: unifi
+    volumes:
+      - ./unifi/mongodb-web/data:/data/db
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.mongoexpress.rule=Host(`mongoexpress.${APPS_CF_DOMAIN}`)
+      - traefik.http.routers.mongoexpress.entrypoints=websecure
+      - traefik.http.routers.mongoexpress.service=mongoexpress
+      - traefik.http.services.mongoexpress.loadbalancer.server.port=8086
 
 volumes:
   portainer_data:
