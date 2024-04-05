@@ -125,7 +125,7 @@ docker_core_vm_name: 'docker-coreservices-prod' # index will added in terraform 
 docker_core_vm_name_inside_vm: 'dockercoreservices' # index will added in terraform code
 docker_core_vm_number_of_instances: 1
 docker_core_vm_cpu_cores: 4
-docker_core_vm_memory: 4096
+docker_core_vm_memory: 6144
 docker_core_vm_description: 'Docker with core servevices like DNS/DHCP and CI/CD'
 docker_core_vm_storage_disk_type: 'raw'
 docker_core_vm_network_interface_details:
@@ -155,7 +155,7 @@ docker_core:
     name_inside_vm: 'dockercoreservices' # index will added in terraform code
     number_of_instances: 1
     cpu_cores: 4
-    memory: 4096
+    memory: 6144
     description: 'Docker with core servevices like DNS/DHCP and CI/CD'
     network_interface_details:
       first_interface:
