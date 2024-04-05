@@ -67,7 +67,7 @@ resource "proxmox_virtual_environment_vm" "debian_vm" {
     dns {
       domain = "naiduden.dev"
       servers = [
-        "192.168.30.43"
+        "192.168.30.41"
       ]
     }
 
