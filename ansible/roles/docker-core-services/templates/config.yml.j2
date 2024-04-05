@@ -1,6 +1,15 @@
 ---
 http:
   routers:
+    pfsense-secure:
+      rule: 'Host(`{{ docker_core.services.pf_sense_domain }}`)'
+      tls: {}
+      service: pfsense
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      entryPoints:
+        - websecure
     kasm-workspaces:
       rule: 'Host(`go.{{ docker_core.services.cf_domain_for_all_apps }}`)'
       service: kasm-workspaces
@@ -17,7 +26,86 @@ http:
         - default-headers
       entryPoints:
         - websecure
-
+    gitea-secure:
+      rule: 'Host(`gitea.{{ docker_core.services.cf_domain_for_all_apps }}`)'
+      tls: {}
+      service: gitea
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      entryPoints:
+        - websecure
+    ipmi-nas-secure:
+      rule: 'Host(`ipminas.{{ docker_core.services.cf_domain_for_all_apps }}`)'
+      tls: {}
+      service: ipminas
+      entryPoints:
+        - websecure
+    ipmi-hampi-secure:
+      rule: 'Host(`ipmihampi.{{ docker_core.services.cf_domain_for_all_apps }}`)'
+      tls: {}
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      service: ipmihampi
+      entryPoints:
+        - websecure
+    ipmidandaka-nas-secure:
+      rule: 'Host(`ipmidandaka.{{ docker_core.services.cf_domain_for_all_apps }}`)'
+      tls: {}
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      service: ipmidandaka
+      entryPoints:
+        - websecure
+    truenas-nas-secure:
+      rule: 'Host(`truenas.{{ docker_core.services.cf_domain_for_all_apps }}`)'
+      tls: {}
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      service: truenas
+      entryPoints:
+        - websecure
+    proxmox-lepakshi-secure:
+      rule: 'Host(`lepakshi.{{ docker_core.services.cf_domain_for_all_apps }}`)'
+      tls: {}
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      service: proxmox-lepakshi
+      entryPoints:
+        - websecure
+    proxmox-rameswaram-secure:
+      rule: 'Host(`rameswaram.{{ docker_core.services.cf_domain_for_all_apps }}`)'
+      tls: {}
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      service: proxmox-rameswaram
+      entryPoints:
+        - websecure
+    proxmox-kishkindha-secure:
+      rule: 'Host(`kishkindha.{{ docker_core.services.cf_domain_for_all_apps }}`)'
+      tls: {}
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      service: proxmox-kishkindha
+      entryPoints:
+        - websecure
+    proxmox-hampi-secure:
+      rule: 'Host(`hampi.{{ docker_core.services.cf_domain_for_all_apps }}`)'
+      tls: {}
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      service: proxmox-hampi
+      entryPoints:
+        - websecure
+    
+  
   middlewares:
     addprefix-pihole:
       addPrefix:
@@ -25,13 +113,6 @@ http:
     redirectregex-pihole:
       redirectRegex:
         regex: /admin/$
-        replacement: /
-    addprefix-pgadmin:
-      addPrefix:
-        prefix: '/pgadmin4'
-    redirectregex-pgadmin:
-      redirectRegex:
-        regex: /pgadmin4/$
         replacement: /
     https-redirectscheme:
       redirectScheme:
@@ -84,6 +165,10 @@ http:
         expression: LatencyAtQuantileMS(50.0) > 100.0
 
   services:
+    pfsense:
+      loadBalancer:
+        servers:
+          - url: "https://192.168.1.1:10443"
     kasm-workspaces:
       loadBalancer:
         servers:
@@ -92,9 +177,45 @@ http:
       loadBalancer:
         servers:
           - url: 'http://192.168.30.44'
+    gitea:
+      loadBalancer:
+        servers:
+          - url: 'http://192.168.30.45:443'
+    ipminas:
+      loadBalancer:
+        servers:
+          - url: "https://192.168.30.36"
+    ipmihampi:
+      loadBalancer:
+        servers:
+          - url: "https://192.168.30.38"
+    ipmidandaka:
+      loadBalancer:
+        servers:
+          - url: "https://192.168.30.37"
+    truenas:
+      loadBalancer:
+        servers:
+          - url: "https://192.168.1.10"
+    proxmox-lepakshi:
+      loadBalancer:
+        servers:
+          - url: "https://192.168.80.11:8006"
+    proxmox-rameswaram:
+      loadBalancer:
+        servers:
+          - url: "https://192.168.1.13:8006"
+    proxmox-kishkindha:
+      loadBalancer:
+        servers:
+          - url: "https://192.168.1.12:8006"
+    proxmox-hampi:  
+      loadBalancer:
+        servers:
+          - url: "https://192.168.1.11:8006"
 
 tcp:
-{#   routers:
+  routers:
     gitea-ssh-router:
       entryPoints:
         - ssh
@@ -104,7 +225,7 @@ tcp:
     gitea-ssh-service:
       loadBalancer:
         servers:
-          - address: 192.168.30.45:2222 #}
+          - address: 192.168.30.45:2222
 
 # You might need to configure the Docker provider if you are using Docker
 providers:

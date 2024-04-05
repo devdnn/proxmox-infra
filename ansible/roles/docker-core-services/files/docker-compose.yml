@@ -25,7 +25,6 @@ services:
     container_name: 'traefik'
     restart: always
     networks:
-      iac-provisioned-network:
       iac-provisioned-network-for-traefik:
         ipv4_address: ${DNS_CHALLENGE_STATIC_IP}
     dns:
