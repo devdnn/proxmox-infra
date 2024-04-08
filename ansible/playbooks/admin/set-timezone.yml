@@ -1,0 +1,53 @@
+---
+- name: Get the timezone of the system
+  command: date +%Z
+  register: timezone
+  changed_when: false
+
+- name: Output the timezone of the system
+  debug:
+    msg: 'The timezone of the system is {{ timezone.stdout }}'
+
+- name: Set timezone to America/Los_Angeles
+  command: timedatectl set-timezone America/Los_Angeles
+  when: timezone.stdout != 'PDT'
+  changed_when: timezone.stdout != 'PDT'
+
+- name: Make sure timesyncd is stopped only if exists
+  service:
+    name: systemd-timesyncd
+    state: stopped
+  when: ansible_systemd_services['systemd-timesyncd'] is defined
+
+- name: Copy the new timesyncd.conf file
+  template:
+    src: /home/dnndev/_prj/gitea_prod/proxmox-infra/ansible/templates/timesyncd.conf.j2
+    dest: /etc/systemd/timesyncd.conf
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Install systemd-timesyncd
+  package:
+    name: systemd-timesyncd
+    state: present
+
+- name: Make sure timesyncd is enabled to start on boot
+  service:
+    name: systemd-timesyncd
+    enabled: yes
+
+- name: Restart timesyncd
+  service:
+    name: systemd-timesyncd
+    state: restarted
+
+- name: Output the current ntp servers
+  command: timedatectl show-timesync --property=NTP
+  register: ntp_servers
+  changed_when: false
+  ignore_errors: true
+
+- name: Output the current ntp servers
+  debug:
+    msg: 'The current NTP servers are {{ ntp_servers.stdout }}'
