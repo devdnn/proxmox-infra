@@ -1,0 +1,10 @@
+{
+  "url": "https://192.168.1.11:8006/",
+  "username": "root@pam",
+  "password": "Float12345678",
+  "validateCert": false,
+  "include": [".*"],
+  "exclude": ["pfsense", "docker.*;veth.*"],
+  "token": "",
+  "secret": ""
+}
