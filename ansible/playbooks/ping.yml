@@ -1,0 +1,10 @@
+---
+- name: Ping all hosts
+  hosts: all
+  gather_facts: no
+  become: yes
+
+  tasks:
+    - name: Ping test
+      ping:
+      ignore_unreachable: yes
