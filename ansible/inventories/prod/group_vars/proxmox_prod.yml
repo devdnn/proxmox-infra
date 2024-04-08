@@ -1,6 +1,0 @@
----
-# Credentials
-ansible_user: 'root'
-ansible_ssh_pass: 'Float12345678'
-
-ansible_host_key_checking: false
