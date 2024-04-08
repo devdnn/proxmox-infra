@@ -1,4 +1,0 @@
----
-# Credentials
-ansible_user: 'dnndev'
-ansible_ssh_pass: 'Float12345678'
