@@ -1,7 +1,6 @@
 ---
 - name: Install Docker on Ubuntu
   hosts: docker-core-services
-  remote_user: dnndev # Change remote user to your sudo user!
   become: true
   gather_facts: true
   vars:

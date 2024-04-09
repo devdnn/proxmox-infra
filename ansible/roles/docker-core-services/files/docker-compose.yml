@@ -171,6 +171,16 @@ services:
       - traefik.http.routers.mongoexpress.service=mongoexpress
       - traefik.http.services.mongoexpress.loadbalancer.server.port=8086
 
+  cloudflared:
+    image: cloudflare/cloudflared:2024.3.0
+    container_name: cloudflared
+    restart: unless-stopped
+    command: tunnel run
+    networks:
+      iac-provisioned-network:
+    environment:
+      TUNNEL_TOKEN: ${CLOUDFLARE_TUNNERL_TOKEN}
+
 volumes:
   portainer_data:
 

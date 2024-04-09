@@ -1,0 +1,9 @@
+---
+- name: Configure all proxmox guests
+  hosts: proxmox_client
+  become: yes
+
+  tasks:
+    - name: Reboot the proxmox guest
+      reboot:
+        reboot_timeout: 3600
