@@ -8,10 +8,3 @@
     ansible_ssh_pipelining: true
   roles:
     - role: gitea
-
-- hosts: gitea-runner
-  become: yes
-  become_method: sudo
-  become_user: root
-  roles:
-    - role: gitea-runner

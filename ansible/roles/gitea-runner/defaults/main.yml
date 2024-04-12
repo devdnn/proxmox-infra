@@ -1,9 +1,9 @@
 ---
-gitea_runner_registration_token: 'spOBhFOtprMBNsSlv5Js9L9nAAeaC6OWL7HayYhc'
+gitea_runner_registration_token: 'UReXOPak1uoxDKS4Scbpv6EddWDW3do0RAIncxhG'
 
 ##### GITEA ACTIONS RUNNER #####
 # FQDN of the gitea instance to register the runner on
-gitea_act_runner_gitea_instance_fqdn: "{{ gitea_fqdn | default('gitea.lo.naiduden.dev') }}"
+gitea_act_runner_gitea_instance_fqdn: "{{ gitea_fqdn | default('gitea.apps.naiduden.dev') }}"
 # inventory hostname of the gitea host to register the runner on (if different from the runner host)
 # gitea_act_runner_gitea_instance_hostname: "CHANGEME"
 # how many tasks the runner can execute concurrently at the same time (integer)

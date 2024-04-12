@@ -1,9 +1,9 @@
 ---
-gitea_http_domain: gitea.lo.naiduden.dev
-gitea_root_url: https://gitea.lo.naiduden.dev
-gitea_protocol: http
-gitea_http_listen: gitea.lo.naiduden.dev
-gitea_http_port: 443
+gitea_http_domain: gitea.apps.naiduden.dev
+gitea_root_url: https://gitea.apps.naiduden.dev
+gitea_protocol: https
+gitea_http_listen: gitea.apps.naiduden.dev
+gitea_http_port: 80
 gitea_offline_mode: true
 
 gitea_app_name: 'Gitea - Prod'
@@ -17,8 +17,8 @@ gitea_db_password: Kites@123
 gitea_db_ssl: disable
 gitea_db_path: '{{ gitea_home }}/data/gitea.db'
 
-gitea_ssh_listen: gitea.lo.naiduden.dev
-gitea_ssh_domain: gitea.lo.naiduden.dev
+gitea_ssh_listen: gitea.apps.naiduden.dev
+gitea_ssh_domain: gitea.apps.naiduden.dev
 gitea_start_ssh: true
 gitea_ssh_port: 2222
 

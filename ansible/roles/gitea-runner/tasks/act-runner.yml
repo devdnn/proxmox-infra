@@ -115,5 +115,4 @@
     chdir: '/var/lib/act-runner'
   ignore_errors: '{{ ansible_check_mode }}'
   changed_when: yes
-  timeout: 10
   notify: restart act-runner
