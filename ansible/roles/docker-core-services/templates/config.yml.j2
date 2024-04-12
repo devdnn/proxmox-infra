@@ -104,6 +104,14 @@ http:
       service: proxmox-hampi
       entryPoints:
         - websecure
+    nginx-simple-web:
+      rule: 'Host(`simpleweb.{{ docker_core.services.cf_domain_for_all_apps }}`)'
+      service: nginx-simple-web
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      entryPoints:
+        - websecure
     
   
   middlewares:
@@ -213,6 +221,10 @@ http:
       loadBalancer:
         servers:
           - url: "https://192.168.1.11:8006"
+    nginx-simple-web:
+      loadBalancer:
+        servers:
+          - url: 'http://192.168.30.35:8100'
 
 tcp:
   routers:

@@ -100,6 +100,14 @@ http:
         - https-redirectscheme
       entryPoints:
         - websecure
+    nginx-simple-web:
+      rule: 'Host(`simpleweb.lo.naiduden.dev`)'
+      service: nginx-simple-web
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      entryPoints:
+        - websecure
 
   middlewares:
     addprefix-pihole:
@@ -204,6 +212,10 @@ http:
       loadBalancer:
         servers:
           - url: 'https://192.168.130.46'
+    nginx-simple-web:
+      loadBalancer:
+        servers:
+          - url: 'http://192.168.30.35:8100'
 
 tcp:
   routers:

@@ -153,7 +153,7 @@ docker_core:
     suffix: 'stage'
     name: 'docker-coreservices-stage' # index will added in terraform code
     name_inside_vm: 'dockercoreservices' # index will added in terraform code
-    number_of_instances: 0
+    number_of_instances: 1
     cpu_cores: 4
     memory: 4096
     description: 'Docker with core servevices like DNS/DHCP and CI/CD'
@@ -166,12 +166,16 @@ docker_core:
 
 # gitea runner server
 gitea_runner_vm:
+  host_details:
+    proxmox_node: 'lepakshi-lenovomini'
+    proxmox_node_with_clone: 'lepakshi-lenovomini'
+    clone_id: '5000'
   vm_details:
     suffix: 'stage' # index will added in terraform code
     description: 'Gitea act runner to run the jobs'
     name: 'gitea-runner-stage' # index will added in terraform code
     host_name_inside_vm: 'gitearunnerstage' # index will added in terraform code
-    number_of_instances: 1
+    number_of_instances: 0
     cpu_cores: 2
     memory: 2048
     storage_pool: 'proxthin'
@@ -179,6 +183,29 @@ gitea_runner_vm:
     network_interface_details:
       first_interface:
         ip: '192.168.80.48/24'
+        gateway: '192.168.80.1'
+        vlan_id: 80
+        interface_bridge: 'vmbr0'
+
+proxy_ingress_lxc:
+  host_details:
+    proxmox_node: 'lepakshi-lenovomini'
+    proxmox_node_with_clone: 'lepakshi-lenovomini'
+    clone_id: '5000'
+  lxc_details:
+    suffix: 'stage' # index will added in terraform code
+    description: 'Proxy ingress server'
+    name: 'proxyingresslxc' # index will added in terraform code
+    host_name_inside_vm: 'proxyingresslxc' # index will added in terraform code
+    number_of_instances: 1
+    cpu_cores: 2
+    memory: 1024
+    storage_pool: 'proxthin'
+    os_storage_disk_type: 'raw'
+    os_storage_disk_size: '10'
+    network_interface_details:
+      first_interface:
+        ip: '192.168.80.57/24'
         gateway: '192.168.80.1'
         vlan_id: 80
         interface_bridge: 'vmbr0'
