@@ -185,3 +185,94 @@ gitea_runner_vm:
         gateway: '192.168.30.1'
         vlan_id: 30
         interface_bridge: 'vmbr2'
+
+# k8s control plane server
+k8s_cp_vm:
+  host_details:
+    proxmox_node: 'lepakshi-lenovomini'
+    proxmox_node_with_clone: 'lepakshi-lenovomini'
+    clone_id: '5000'
+  vm_details:
+    suffix: 'stage' # index will added in terraform code
+    description: 'K8s control plane server'
+    name: 'k8s-cp-stage' # index will added in terraform code
+    host_name_inside_vm: 'k8scpstage' # index will added in terraform code
+    number_of_instances: 0
+    cpu_cores: 2
+    memory: 2048
+    storage_pool: 'proxthin'
+    os_storage_disk_type: 'qcow2'
+    network_interface_details:
+      first_interface:
+        ip: '192.168.80.55/24'
+        gateway: '192.168.80.1'
+        vlan_id: 80
+        interface_bridge: 'vmbr0'
+
+k8s_wn_vm:
+  host_details:
+    proxmox_node: 'lepakshi-lenovomini'
+    proxmox_node_with_clone: 'lepakshi-lenovomini'
+    clone_id: '5000'
+  vm_details:
+    suffix: 'stage' # index will added in terraform code
+    description: 'K8s worker node server'
+    name: 'k8s-wn-stage' # index will added in terraform code
+    host_name_inside_vm: 'k8swnstage' # index will added in terraform code
+    number_of_instances: 0
+    cpu_cores: 2
+    memory: 2048
+    storage_pool: 'proxthin'
+    os_storage_disk_type: 'qcow2'
+    network_interface_details:
+      first_interface:
+        ip: '192.168.80.56/24'
+        gateway: '192.168.80.1'
+        vlan_id: 80
+        interface_bridge: 'vmbr0'
+
+proxy_ingress_lxc:
+  host_details:
+    proxmox_node: 'lepakshi-lenovomini'
+    proxmox_node_with_clone: 'lepakshi-lenovomini'
+    clone_id: '5000'
+  lxc_details:
+    suffix: 'stage' # index will added in terraform code
+    description: 'Proxy ingress server'
+    name: 'proxyingresslxc' # index will added in terraform code
+    host_name_inside_vm: 'proxyingresslxc' # index will added in terraform code
+    number_of_instances: 0
+    cpu_cores: 2
+    memory: 1024
+    storage_pool: 'proxthin'
+    os_storage_disk_type: 'raw'
+    os_storage_disk_size: '10'
+    network_interface_details:
+      first_interface:
+        ip: '192.168.80.57/24'
+        gateway: '192.168.80.1'
+        vlan_id: 80
+        interface_bridge: 'vmbr0'
+
+# gitea runner server
+dev_debian_vm:
+  host_details:
+    proxmox_node: 'spmhampi'
+    proxmox_node_with_clone: 'spmhampi'
+    clone_id: '5000'
+  vm_details:
+    suffix: 'prod' # index will added in terraform code
+    description: 'Debian development box for coding'
+    name: 'debian-dev-server' # index will added in terraform code
+    host_name_inside_vm: 'debiandevserver' # index will added in terraform code
+    number_of_instances: 1
+    cpu_cores: 4
+    memory: 8192
+    storage_pool: 'nasvmdrives'
+    os_storage_disk_type: 'raw'
+    network_interface_details:
+      first_interface:
+        ip: '192.168.80.80/24'
+        gateway: '192.168.80.1'
+        vlan_id: 80
+        interface_bridge: 'vmbr2'

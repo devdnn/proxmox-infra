@@ -253,3 +253,144 @@ module "gitea_runner_vm" {
     }
   ]
 }
+
+module "dev_debian_vm" {
+  source = "../../module/debian-vm"
+
+  count = local.yaml_variables_list.dev_debian_vm.vm_details.number_of_instances
+
+  environmenttype         = local.yaml_variables_list.environmenttype
+  new_hostname            = "${local.yaml_variables_list.dev_debian_vm.vm_details.name}-${format("%02d", count.index + 1)}"
+  new_hostname_inside_vm  = "${replace(local.yaml_variables_list.dev_debian_vm.vm_details.host_name_inside_vm, "-", "")}${format("%02d", count.index + 1)}"
+  vm_description          = local.yaml_variables_list.dev_debian_vm.vm_details.description
+  vm_tags                 = ["docker", "core-services", "tf-ansible"]
+  proxmox_node            = local.yaml_variables_list.dev_debian_vm.host_details.proxmox_node
+  proxmox_node_with_clone = local.yaml_variables_list.dev_debian_vm.host_details.proxmox_node_with_clone
+  vm_bios_type            = "seabios"
+  system_start_on_boot    = true
+  keep_system_running     = true
+  clone_vm_id             = local.yaml_variables_list.dev_debian_vm.host_details.clone_id
+  storage_pool            = local.yaml_variables_list.storage_pool
+  snippets_storage_pool   = local.yaml_variables_list.snippets_storage_pool
+  vm_dedicated_memory     = local.yaml_variables_list.dev_debian_vm.vm_details.memory
+  var_cpu_cores           = local.yaml_variables_list.dev_debian_vm.vm_details.cpu_cores
+  var_cpu_sockets         = 1
+  QMEU_machine_type       = "q35"
+  list_of_disks = [
+    {
+      disk_size   = 64
+      disk_format = local.yaml_variables_list.dev_debian_vm.vm_details.os_storage_disk_type
+      interface   = "scsi0"
+    }
+  ]
+
+  list_of_networks = [
+    {
+      bridge   = local.yaml_variables_list.dev_debian_vm.vm_details.network_interface_details["first_interface"].interface_bridge
+      enabled  = true
+      firewall = false
+      vlan_id  = local.yaml_variables_list.dev_debian_vm.vm_details.network_interface_details["first_interface"].vlan_id
+    }
+  ]
+
+  ip_details = [
+    {
+      vm_ip_address = local.yaml_variables_list.dev_debian_vm.vm_details.network_interface_details["first_interface"].ip
+      vm_gateway    = local.yaml_variables_list.dev_debian_vm.vm_details.network_interface_details["first_interface"].gateway
+    }
+  ]
+}
+
+module "k8s_cp_vm" {
+  source = "../../module/debian-vm"
+
+  count = local.yaml_variables_list.k8s_cp_vm.vm_details.number_of_instances
+
+  environmenttype         = local.yaml_variables_list.environmenttype
+  new_hostname            = "${local.yaml_variables_list.k8s_cp_vm.vm_details.name}-${format("%02d", count.index + 1)}"
+  new_hostname_inside_vm  = "${replace(local.yaml_variables_list.k8s_cp_vm.vm_details.host_name_inside_vm, "-", "")}${format("%02d", count.index + 1)}"
+  vm_description          = local.yaml_variables_list.k8s_cp_vm.vm_details.description
+  vm_tags                 = ["k8s", "control-plane", "tf-ansible"]
+  proxmox_node            = local.yaml_variables_list.k8s_cp_vm.host_details.proxmox_node
+  proxmox_node_with_clone = local.yaml_variables_list.k8s_cp_vm.host_details.proxmox_node_with_clone
+  vm_bios_type            = "seabios"
+  system_start_on_boot    = true
+  keep_system_running     = true
+  clone_vm_id             = local.yaml_variables_list.k8s_cp_vm.host_details.clone_id
+  storage_pool            = local.yaml_variables_list.storage_pool
+  snippets_storage_pool   = local.yaml_variables_list.snippets_storage_pool
+  vm_dedicated_memory     = local.yaml_variables_list.k8s_cp_vm.vm_details.memory
+  var_cpu_cores           = local.yaml_variables_list.k8s_cp_vm.vm_details.cpu_cores
+  var_cpu_sockets         = 1
+  QMEU_machine_type       = "q35"
+  list_of_disks = [
+    {
+      disk_size   = 64
+      disk_format = local.yaml_variables_list.k8s_cp_vm.vm_details.os_storage_disk_type
+      interface   = "scsi0"
+    }
+  ]
+
+  list_of_networks = [
+    {
+      bridge   = local.yaml_variables_list.k8s_cp_vm.vm_details.network_interface_details["first_interface"].interface_bridge
+      enabled  = true
+      firewall = false
+      vlan_id  = local.yaml_variables_list.k8s_cp_vm.vm_details.network_interface_details["first_interface"].vlan_id
+    }
+  ]
+
+  ip_details = [
+    {
+      vm_ip_address = local.yaml_variables_list.k8s_cp_vm.vm_details.network_interface_details["first_interface"].ip
+      vm_gateway    = local.yaml_variables_list.k8s_cp_vm.vm_details.network_interface_details["first_interface"].gateway
+    }
+  ]
+}
+
+module "k8s_wn_vm" {
+  source = "../../module/debian-vm"
+
+  count = local.yaml_variables_list.k8s_wn_vm.vm_details.number_of_instances
+
+  environmenttype         = local.yaml_variables_list.environmenttype
+  new_hostname            = "${local.yaml_variables_list.k8s_wn_vm.vm_details.name}-${format("%02d", count.index + 1)}"
+  new_hostname_inside_vm  = "${replace(local.yaml_variables_list.k8s_wn_vm.vm_details.host_name_inside_vm, "-", "")}${format("%02d", count.index + 1)}"
+  vm_description          = local.yaml_variables_list.k8s_wn_vm.vm_details.description
+  vm_tags                 = ["k8s", "worker-node", "tf-ansible"]
+  proxmox_node            = local.yaml_variables_list.k8s_wn_vm.host_details.proxmox_node
+  proxmox_node_with_clone = local.yaml_variables_list.k8s_wn_vm.host_details.proxmox_node_with_clone
+  vm_bios_type            = "seabios"
+  system_start_on_boot    = true
+  keep_system_running     = true
+  clone_vm_id             = local.yaml_variables_list.k8s_wn_vm.host_details.clone_id
+  storage_pool            = local.yaml_variables_list.storage_pool
+  snippets_storage_pool   = local.yaml_variables_list.snippets_storage_pool
+  vm_dedicated_memory     = local.yaml_variables_list.k8s_wn_vm.vm_details.memory
+  var_cpu_cores           = local.yaml_variables_list.k8s_wn_vm.vm_details.cpu_cores
+  var_cpu_sockets         = 1
+  QMEU_machine_type       = "q35"
+  list_of_disks = [
+    {
+      disk_size   = 64
+      disk_format = local.yaml_variables_list.k8s_wn_vm.vm_details.os_storage_disk_type
+      interface   = "scsi0"
+    }
+  ]
+
+  list_of_networks = [
+    {
+      bridge   = local.yaml_variables_list.k8s_wn_vm.vm_details.network_interface_details["first_interface"].interface_bridge
+      enabled  = true
+      firewall = false
+      vlan_id  = local.yaml_variables_list.k8s_wn_vm.vm_details.network_interface_details["first_interface"].vlan_id
+    }
+  ]
+
+  ip_details = [
+    {
+      vm_ip_address = local.yaml_variables_list.k8s_wn_vm.vm_details.network_interface_details["first_interface"].ip
+      vm_gateway    = local.yaml_variables_list.k8s_wn_vm.vm_details.network_interface_details["first_interface"].gateway
+    }
+  ]
+}
